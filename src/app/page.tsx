@@ -1,0 +1,2450 @@
+"use client"
+
+import { useState, useEffect, useRef } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import Navigation from "@/components/Navigation";
+import Footer from "@/components/Footer";
+import { 
+  Heart, Users, Target, Compass, BookOpen, HandHeart, 
+  Home, Truck, Utensils, MessageSquare, Shield, Stethoscope,
+  TrendingUp, Award, CheckCircle2, ArrowRight, Star, 
+  ChevronRight, MapPin, Calendar, Clock, Phone, Mail,
+  Sparkles, Crown, Mountain, Rocket, GraduationCap, Building2,
+  Quote, Lightbulb, UserCheck, Briefcase
+} from "lucide-react";
+
+// Intersection Observer Hook for animations
+function useIntersectionObserver(options = {}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.1, ...options });
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return [ref, isVisible] as const;
+}
+
+export default function HomePage() {
+  const [heroRef, heroVisible] = useIntersectionObserver();
+  const [missionRef, missionVisible] = useIntersectionObserver();
+  const [valuesRef, valuesVisible] = useIntersectionObserver();
+  const [tracksRef, tracksVisible] = useIntersectionObserver();
+  const [ldiRef, ldiVisible] = useIntersectionObserver();
+  const [servicesRef, servicesVisible] = useIntersectionObserver();
+  const [outreachRef, outreachVisible] = useIntersectionObserver();
+  const [testimonialsRef, testimonialsVisible] = useIntersectionObserver();
+  const [founderRef, founderVisible] = useIntersectionObserver();
+  const [staffRef, staffVisible] = useIntersectionObserver();
+  const [impactRef, impactVisible] = useIntersectionObserver();
+  const [ctaRef, ctaVisible] = useIntersectionObserver();
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      
+      {/* SECTION 1: HERO - 12 Containers */}
+      <section 
+        ref={heroRef}
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden double-exposure"
+      >
+        <div className="max-w-7xl mx-auto relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Container 1: Main Headline */}
+            <div className="lg:col-span-7 space-y-6">
+              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 ${
+                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <Sparkles className="w-4 h-4" />
+                Transforming Lives Since 2024
+              </Badge>
+              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
+                heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
+              }`}>
+                From Worthlessness to <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Purpose</span>
+              </h1>
+              
+              {/* Container 2: Subheadline */}
+              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 ${
+                heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              }`}>
+                Meeting individuals at their point of need, guiding them through comprehensive healing and transformation into authentic servant leaders.
+              </p>
+              
+              {/* Container 3-4: CTA Buttons */}
+              <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${
+                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
+                  <Link href="/contact">
+                    Start Your Journey
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
+                  <Link href="/ldi">Learn About The Leadership Development Institute</Link>
+                </Button>
+              </div>
+            </div>
+            
+            {/* Container 5-8: Hero Stats Grid */}
+            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+              <Card className={`bg-[#A92FFA] text-white hover-lift transition-all duration-700 delay-200 ${
+                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <CardHeader>
+                  <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-4xl font-bold">Projected 500+</CardTitle>
+                  <CardDescription className="text-white/80">Lives Transformed</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className={`bg-[#F28C28] text-white hover-lift transition-all duration-700 delay-300 ${
+                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <CardHeader>
+                  <CardTitle className="text-4xl font-bold">64</CardTitle>
+                  <CardDescription className="text-white/80">Week Program</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className={`bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-lift transition-all duration-700 delay-400 ${
+                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <CardHeader>
+                  <CardTitle className="text-4xl font-bold">4</CardTitle>
+                  <CardDescription className="text-white/80">Leadership Tiers</CardDescription>
+                </CardHeader>
+              </Card>
+              <Card className={`hover-lift transition-all duration-700 delay-500 ${
+                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              }`}>
+                <CardHeader>
+                  <CardTitle className="text-4xl font-bold">24/7</CardTitle>
+                  <CardDescription>Support Available</CardDescription>
+                </CardHeader>
+              </Card>
+            </div>
+          </div>
+          
+          {/* Container 9-12: Feature Badges */}
+          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 delay-600 ${
+            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+          }`}>
+            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
+              <Heart className="w-8 h-8 text-[#A92FFA]" />
+              <div>
+                <p className="font-semibold">Unconditional Love</p>
+                <p className="text-sm text-muted-foreground">Christ-Centered</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
+              <Users className="w-8 h-8 text-[#F28C28]" />
+              <div>
+                <p className="font-semibold">Community</p>
+                <p className="text-sm text-muted-foreground">Support System</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
+              <Target className="w-8 h-8 text-[#A92FFA]" />
+              <div>
+                <p className="font-semibold">Purpose-Driven</p>
+                <p className="text-sm text-muted-foreground">Goal Oriented</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
+              <Award className="w-8 h-8 text-[#F28C28]" />
+              <div>
+                <p className="font-semibold">Evidence-Based</p>
+                <p className="text-sm text-muted-foreground">Proven Methods</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
+      <section 
+        ref={missionRef}
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 ${
+          missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Section Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90">Our Mission</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Transforming Lives Through Purpose</h2>
+          </div>
+          
+          {/* Container 3-4: Main Mission Statement */}
+          <Card className="mb-8 border-2 border-[#A92FFA]/20 hover-lift">
+            <CardHeader>
+              <CardTitle className="text-2xl">Mission Statement</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-lg leading-relaxed text-muted-foreground">
+                UCon Ministries exists to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation. Our mission is to <span className="font-semibold text-[#A92FFA]">transform feelings of worthlessness and mental health struggles into enduring purpose and dignity</span> for those deeply impacted by the justice system, addiction, homelessness, and personal brokenness.
+              </p>
+            </CardContent>
+          </Card>
+          
+          {/* Container 5-6: Vision & Approach */}
+          <div className="grid md:grid-cols-2 gap-6 mb-8">
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Compass className="w-6 h-6 text-[#A92FFA]" />
+                  Our Vision
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Through unconditional connection, consistent presence, and the redemptive love of Christ, we empower individuals to discover their inherent dignity and God-given purpose.
+                </p>
+              </CardContent>
+            </Card>
+            <Card>
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Target className="w-6 h-6 text-[#F28C28]" />
+                  Our Approach
+                </CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Cultivating authentic servant leaders who drive systemic change and build a legacy of hope in their communities through evidence-based practices and biblical integration.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 7-12: Impact Promise Boxes */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
+              <h3 className="font-semibold mb-2">Immediate Support</h3>
+              <p className="text-sm text-muted-foreground">24/7 crisis intervention and practical assistance</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <CheckCircle2 className="w-8 h-8 text-[#F28C28] mb-3" />
+              <h3 className="font-semibold mb-2">Long-term Healing</h3>
+              <p className="text-sm text-muted-foreground">Comprehensive 64-week transformation program</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
+              <h3 className="font-semibold mb-2">Leadership Development</h3>
+              <p className="text-sm text-muted-foreground">Training next-generation servant leaders</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
+              <h3 className="font-semibold mb-2">Community Integration</h3>
+              <p className="text-sm text-muted-foreground">Building lasting connections and support networks</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <CheckCircle2 className="w-8 h-8 text-[#F28C28] mb-3" />
+              <h3 className="font-semibold mb-2">Systemic Change</h3>
+              <p className="text-sm text-muted-foreground">Advocating for justice and policy reform</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
+              <h3 className="font-semibold mb-2">Generational Impact</h3>
+              <p className="text-sm text-muted-foreground">Creating legacy of hope for future generations</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: CORE VALUES - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Core Values</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">What Drives Our Ministry</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Six foundational principles that guide every aspect of our work and shape our approach to transformation.
+            </p>
+          </div>
+          
+          {/* Container 3-8: Six Core Values */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Heart className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Inherent Dignity</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Upholding the intrinsic worth of every individual, irrespective of background or circumstance, is central to our service delivery.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Target className="w-6 h-6 text-[#F28C28]" />
+                </div>
+                <CardTitle>Purpose-Driven Recovery</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  We anchor sustainable healing in the discovery and cultivation of individual and communal purpose.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Unconditional Connection</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  We demonstrate radical empathy and consistent, non-judgmental presence as the foundation of engagement.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <TrendingUp className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Community Transformation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  We foster systemic change through empowered individuals who serve and inspire their communities.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
+                  <BookOpen className="w-6 h-6 text-[#F28C28]" />
+                </div>
+                <CardTitle>Biblical Integration</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  We seamlessly weave spiritual truth and principles with clinically sound, evidence-based practices.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <HandHeart className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Outreach & Accessibility</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  We proactively engage marginalized populations and eliminate barriers to access for essential services.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Value Impact Stats */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center p-6 bg-muted/50 rounded-lg">
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">100%</p>
+              <p className="text-sm text-muted-foreground">Unconditional Acceptance</p>
+            </div>
+            <div className="text-center p-6 bg-muted/50 rounded-lg">
+              <p className="text-4xl font-bold text-[#F28C28] mb-2">365</p>
+              <p className="text-sm text-muted-foreground">Days of Support</p>
+            </div>
+            <div className="text-center p-6 bg-muted/50 rounded-lg">
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">∞</p>
+              <p className="text-sm text-muted-foreground">Potential in Every Person</p>
+            </div>
+            <div className="text-center p-6 bg-muted/50 rounded-lg">
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">1</p>
+              <p className="text-sm text-muted-foreground">Community United</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 4: THREE-TRACK MODEL - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Comprehensive Care</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Three-Track Model</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Meeting individuals at every stage of their journey—from immediate crisis to long-term leadership development.
+            </p>
+          </div>
+          
+          {/* Container 3: Model Overview */}
+          <div className="mb-12 p-8 bg-card rounded-xl border-2 border-[#A92FFA]/20">
+            <h3 className="text-2xl font-bold mb-4">An Interlocking Ecosystem</h3>
+            <p className="text-lg text-muted-foreground mb-6">
+              Our three tracks are not separate silos—they form an interconnected ecosystem designed to provide comprehensive support from first contact to transformational leadership.
+            </p>
+            <div className="flex flex-wrap gap-3">
+              <Badge variant="outline" className="text-sm py-2 px-4">Crisis to Stability</Badge>
+              <Badge variant="outline" className="text-sm py-2 px-4">Healing to Growth</Badge>
+              <Badge variant="outline" className="text-sm py-2 px-4">Leadership to Legacy</Badge>
+            </div>
+          </div>
+          
+          {/* Container 4-6: Three Track Cards */}
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            <Card className="border-2 border-[#A92FFA] hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
+                  <Crown className="w-8 h-8 text-[#A92FFA]/90" />
+                </div>
+                <Badge className="w-fit mb-2">Track 1</Badge>
+                <CardTitle className="text-2xl">Leadership Development Institute</CardTitle>
+                <CardDescription className="text-base">The Commitment-Based Program</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Intensive 64-week, four-tier program transforming lives through deep personal healing and leadership development.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Requires signed commitment agreement</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Four progressive tiers: Ascension, Pinnacle, Apex, UCon</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Clinical psychology + systematic theology</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Develops authentic servant leaders</span>
+                  </li>
+                </ul>
+                <Button className="w-full" asChild>
+                  <Link href="/ldi">
+                    Explore LDI Program
+                    <ChevronRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 border-[#F28C28] hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
+                  <BookOpen className="w-8 h-8 text-[#F28C28]/90" />
+                </div>
+                <Badge className="w-fit mb-2 bg-[#F28C28]" />
+                <CardTitle className="text-2xl">Open Ministry Services</CardTitle>
+                <CardDescription className="text-base">No Commitment Required</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Accessible pathway for spiritual formation and community connection—the front door to our ministry.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Workshops: Financial literacy, communication skills</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Bible Studies: Fellowship and theological exploration</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Pastoral Services: Counseling and prayer support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Mentoring: Peer support and guidance</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="secondary" asChild>
+                  <Link href="/services">
+                    View All Services
+                    <ChevronRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-2 border-[#A92FFA] hover:shadow-xl transition-shadow">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
+                  <HandHeart className="w-8 h-8 text-[#A92FFA]/90" />
+                </div>
+                <Badge className="w-fit mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Track 3</Badge>
+                <CardTitle className="text-2xl">Outreach & Advocacy</CardTitle>
+                <CardDescription className="text-base">First Responders</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Direct engagement with immediate community needs—the heartbeat of our ministry's compassion.
+                </p>
+                <ul className="space-y-2 mb-6">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Transportation: Access to essential services</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Food Distribution: Addressing food insecurity</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Shelter & Housing: Immediate and transitional</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Advocacy: Voice for the voiceless</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="outline" asChild>
+                  <Link href="/outreach">
+                    Learn About Outreach
+                    <ChevronRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 7-12: Journey Flow */}
+          <div className="grid md:grid-cols-3 gap-4">
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">1</div>
+                <h4 className="font-semibold">First Contact</h4>
+              </div>
+              <p className="text-sm text-muted-foreground">Outreach provides immediate help—food, shelter, crisis support</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold">2</div>
+                <h4 className="font-semibold">Building Trust</h4>
+              </div>
+              <p className="text-sm text-muted-foreground">Open Services offer workshops, Bible studies, pastoral care</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">3</div>
+                <h4 className="font-semibold">Deep Transformation</h4>
+              </div>
+              <p className="text-sm text-muted-foreground">LDI commitment leads to leadership and systemic change</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">4</div>
+                <h4 className="font-semibold">Mentorship</h4>
+              </div>
+              <p className="text-sm text-muted-foreground">Graduates mentor new members, giving back to community</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold">5</div>
+                <h4 className="font-semibold">Systemic Impact</h4>
+              </div>
+              <p className="text-sm text-muted-foreground">Leaders influence organizations, policy, and culture</p>
+            </div>
+            <div className="p-6 bg-card rounded-lg border border-border">
+              <div className="flex items-center gap-3 mb-3">
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">6</div>
+                <h4 className="font-semibold">Legacy Building</h4>
+              </div>
+              <p className="text-sm text-muted-foreground">Generational change through movement-building</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 5: LDI OVERVIEW - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-slide-in-up">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Track 1</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Leadership Development Institute</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
+            </p>
+          </div>
+          
+          {/* Container 3-4: LDI Introduction */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">The Engine of Transformation</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  The LDI is our intensive, commitment-based program designed to dismantle a lifetime of worthlessness and trauma through a safe, challenging environment.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <Star className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Requires signed commitment agreement</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Star className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Therapeutic community model</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <Star className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Clinical psychology + systematic theology</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-[#A92FFA] text-white">
+              <CardHeader>
+                <CardTitle className="text-2xl">Program Outcomes</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4 text-[#A92FFA]/90">
+                  Graduates emerge as authentic servant leaders equipped to serve their communities and drive systemic change.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Mental health restoration</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Leadership and mentoring skills</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Systemic change capacity</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 5-8: Four Tiers */}
+          <div className="space-y-6">
+            <Card className="border-l-4 border-l-[#A92FFA]">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <Badge className="mb-2">Tier 1</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3">
+                      <Sparkles className="w-6 h-6 text-[#A92FFA]" />
+                      Ascension
+                    </CardTitle>
+                    <CardDescription>Foundation & Deconstruction | Weeks 1-16</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Dismantling a lifetime of worthlessness and trauma through intensive mental health restoration, sobriety skills mastery, and foundational life skills. Moving from identity disorder to sacred worth affirmation.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">Mental Health Restoration</Badge>
+                  <Badge variant="outline">Sobriety Skills</Badge>
+                  <Badge variant="outline">Life Skills Foundation</Badge>
+                  <Badge variant="outline">Identity Rebuilding</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-l-4 border-l-[#F28C28]">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <Badge className="mb-2 bg-[#F28C28]">Tier 2</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3">
+                      <Mountain className="w-6 h-6 text-[#F28C28]" />
+                      Pinnacle
+                    </CardTitle>
+                    <CardDescription>Mentorship Development | Weeks 17-32</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Moving from personal transformation to mentoring others. Training in advanced mental health principles, peer counseling mastery, and group facilitation. Transition from follower to mentor.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">Advanced Mental Health</Badge>
+                  <Badge variant="outline">Peer Counseling</Badge>
+                  <Badge variant="outline">Group Facilitation</Badge>
+                  <Badge variant="outline">Mentorship Skills</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-l-4 border-l-[#A92FFA]">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <Badge className="mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Tier 3</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3">
+                      <Building2 className="w-6 h-6 text-[#A92FFA]" />
+                      Apex
+                    </CardTitle>
+                    <CardDescription>Systemic Leadership | Weeks 33-48</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Beyond mentoring to influencing entire systems. Learning to design and manage organizational systems, community mobilization, advocacy, and executive administration. Becoming catalysts for systemic change.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">System Design</Badge>
+                  <Badge variant="outline">Community Mobilization</Badge>
+                  <Badge variant="outline">Advocacy Training</Badge>
+                  <Badge variant="outline">Executive Skills</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="border-l-4 border-l-[#A92FFA] bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5">
+              <CardHeader>
+                <div className="flex items-start justify-between">
+                  <div>
+                    <Badge className="mb-2">Tier 4</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3">
+                      <Rocket className="w-6 h-6 text-[#A92FFA]" />
+                      UCon
+                    </CardTitle>
+                    <CardDescription>Visionary Leadership | Weeks 49-64</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Becoming visionaries operating on national and international scale. Focus on movement-building, policy development, and cultural transformation. Prepared for executive roles with board governance, stakeholder relations, and succession planning.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline">Movement Building</Badge>
+                  <Badge variant="outline">Policy Development</Badge>
+                  <Badge variant="outline">Board Governance</Badge>
+                  <Badge variant="outline">Legacy Creation</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Application Process */}
+          <div className="mt-12 grid md:grid-cols-4 gap-6">
+            <div className="text-center p-6 bg-card rounded-lg border border-border">
+              <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <MessageSquare className="w-6 h-6 text-[#A92FFA]" />
+              </div>
+              <h4 className="font-semibold mb-2">1. Initial Contact</h4>
+              <p className="text-sm text-muted-foreground">Reach out through outreach or open services</p>
+            </div>
+            <div className="text-center p-6 bg-card rounded-lg border border-border">
+              <div className="w-12 h-12 bg-[#F28C28]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Users className="w-6 h-6 text-[#F28C28]" />
+              </div>
+              <h4 className="font-semibold mb-2">2. Assessment</h4>
+              <p className="text-sm text-muted-foreground">Comprehensive evaluation of needs and readiness</p>
+            </div>
+            <div className="text-center p-6 bg-card rounded-lg border border-border">
+              <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <GraduationCap className="w-6 h-6 text-[#A92FFA]" />
+              </div>
+              <h4 className="font-semibold mb-2">3. Commitment</h4>
+              <p className="text-sm text-muted-foreground">Sign agreement and begin Tier 1</p>
+            </div>
+            <div className="text-center p-6 bg-card rounded-lg border border-border">
+              <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <Rocket className="w-6 h-6 text-[#A92FFA]" />
+              </div>
+              <h4 className="font-semibold mb-2">4. Journey</h4>
+              <p className="text-sm text-muted-foreground">Progress through 64-week transformation</p>
+            </div>
+          </div>
+          
+          <div className="mt-8 text-center">
+            <Button size="lg" asChild>
+              <Link href="/ldi">
+                Learn More About LDI
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 6: TRACK 2 SERVICES - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-[#F28C28]" />
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Open Ministry Services</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Accessible programs for spiritual formation and community connection—no long-term commitment required.
+            </p>
+          </div>
+          
+          {/* Container 3-6: Four Service Categories */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
+                  <GraduationCap className="w-6 h-6 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-xl">Workshops</CardTitle>
+                <CardDescription>Skill-Based Learning</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Short-term seminars designed to build practical life skills and empower community members.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Financial literacy and budgeting</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Communication and conflict resolution</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Creative expression and arts</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Job readiness and career development</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
+                  <BookOpen className="w-6 h-6 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-xl">Bible Studies</CardTitle>
+                <CardDescription>Spiritual Growth</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Open-access gatherings for biblical literacy, fellowship, and theological exploration.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Weekly Bible study groups</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Topical scripture exploration</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Fellowship and community building</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Theological discussions and Q&A</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Heart className="w-6 h-6 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-xl">Pastoral Services</CardTitle>
+                <CardDescription>Spiritual Care & Support</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  One-on-one pastoral counseling, prayer support, and crisis intervention for the community.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Individual pastoral counseling</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>24/7 prayer support hotline</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Crisis intervention and support</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Spiritual guidance and direction</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-xl">Mentoring & Peer Support</CardTitle>
+                <CardDescription>Community Connection</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Informal connections matching LDI graduates with community members seeking guidance.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>One-on-one mentorship matching</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Peer support groups</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Accountability partnerships</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28] mt-0.5 flex-shrink-0" />
+                    <span>Bridge to deeper engagement</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 7-12: Schedule & Details */}
+          <div className="grid md:grid-cols-3 gap-6">
+            <Card>
+              <CardHeader>
+                <Calendar className="w-8 h-8 text-[#F28C28] mb-2" />
+                <CardTitle>Weekly Schedule</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex justify-between">
+                    <span className="text-muted-foreground">Monday</span>
+                    <span className="font-medium">Bible Study 7PM</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span className="text-muted-foreground">Wednesday</span>
+                    <span className="font-medium">Workshops 6PM</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span className="text-muted-foreground">Friday</span>
+                    <span className="font-medium">Fellowship 7PM</span>
+                  </li>
+                  <li className="flex justify-between">
+                    <span className="text-muted-foreground">Sunday</span>
+                    <span className="font-medium">Worship 10AM</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <MapPin className="w-8 h-8 text-[#F28C28] mb-2" />
+                <CardTitle>Location</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm">
+                <p className="text-muted-foreground mb-2">UCon Ministries Center</p>
+                <p className="mb-2">123 Hope Street</p>
+                <p className="mb-4">Community Center, CA 90210</p>
+                <Button variant="outline" size="sm" className="w-full">
+                  Get Directions
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Phone className="w-8 h-8 text-[#F28C28] mb-2" />
+                <CardTitle>Get Connected</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm space-y-3">
+                <div>
+                  <p className="text-muted-foreground mb-1">Phone</p>
+                  <p className="font-medium">(555) 555-1234</p>
+                </div>
+                <div>
+                  <p className="text-muted-foreground mb-1">Email</p>
+                  <p className="font-medium">services@ucon.org</p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="md:col-span-3 bg-[#F28C28] text-[#F28C28]/90">
+              <CardContent className="pt-6">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-4">
+                  <div>
+                    <h3 className="text-xl font-bold mb-2">Ready to Join Our Community?</h3>
+                    <p className="text-[#F28C28]/80">No commitment required—come as you are and find your place.</p>
+                  </div>
+                  <Button size="lg" variant="outline" className="bg-white text-[#F28C28] hover:bg-white/90" asChild>
+                    <Link href="/services">
+                      View All Services
+                      <ChevronRight className="ml-2 w-4 h-4" />
+                    </Link>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 7: TRACK 3 OUTREACH - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-[#A92FFA] text-[#A92FFA]/90">Track 3</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Outreach & Community Advocacy</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              The heartbeat of our ministry's compassion—extending practical help to those experiencing immediate crisis and systemic hardship.
+            </p>
+          </div>
+          
+          {/* Container 3-8: Six Outreach Services */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Truck className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Transportation Services</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Removing barriers to stability by providing transportation to essential services.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Job interviews</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Medical appointments</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Court dates</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Housing connections</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Utensils className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Food Distribution</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Addressing food insecurity as a primary step toward stability and recovery.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Weekly food drives</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Community pantry</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Hot meal service</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Food bank partnerships</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Users className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Community Involvement</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Active presence building trust and creating organic relationship opportunities.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Community clean-ups</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Non-profit collaborations</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Community festivals</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Partnership initiatives</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <MessageSquare className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Advocacy</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Giving voice to the voiceless and addressing root causes of brokenness.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Fair housing advocacy</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Criminal justice reform</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Policy engagement</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Systemic justice work</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Home className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Shelter & Housing</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Providing safe, stable environments as foundation for recovery journey.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Emergency shelter</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Transitional housing</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Housing vouchers</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Long-term solutions</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
+                  <Stethoscope className="w-6 h-6 text-[#A92FFA]" />
+                </div>
+                <CardTitle>Rehabilitation Support</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  First point of contact for addiction support with professional medical care access.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Crisis support</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Detox referrals</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Rehab connections</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Post-rehab support</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Emergency Contact & CTA */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
+              <CardHeader>
+                <CardTitle className="text-2xl">Need Immediate Help?</CardTitle>
+                <CardDescription className="text-[#A92FFA]/80">We're here 24/7 for crisis support</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <Phone className="w-6 h-6" />
+                    <div>
+                      <p className="font-semibold text-lg">(555) 555-1234</p>
+                      <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-6 h-6" />
+                    <div>
+                      <p className="font-semibold">outreach@ucon.org</p>
+                      <p className="text-sm text-[#A92FFA]/80">Emergency Email</p>
+                    </div>
+                  </div>
+                  <Button className="w-full mt-4 bg-white text-[#A92FFA] hover:bg-white/90">
+                    Request Immediate Assistance
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Volunteer With Outreach</CardTitle>
+                <CardDescription>Join us in serving the community</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  Be part of our first responder team. Whether you can give a few hours a week or want to make a deeper commitment, there's a place for you.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Food distribution volunteers</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Transportation drivers</span>
+                  </li>
+                  <li className="flex items-start gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span>Shelter support staff</span>
+                  </li>
+                </ul>
+                <Button className="w-full" asChild>
+                  <Link href="/outreach">Learn More About Outreach</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 8: TESTIMONIALS - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Stories of Hope</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Lives Transformed</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Real stories from real people who found purpose, dignity, and a new life through UCon Ministries.
+            </p>
+          </div>
+          
+          {/* Container 3-8: Six Testimonial Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
+                    M
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Marcus T.</CardTitle>
+                    <CardDescription>LDI Graduate - Tier 4</CardDescription>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "I came to UCon after 15 years in and out of prison. Today, I'm leading a team of mentors and advocating for criminal justice reform at the state level. This ministry didn't just change my life—it gave me one."
+                </p>
+                <Badge variant="outline">From Prison to Policy</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-[#F28C28] rounded-full flex items-center justify-center text-[#F28C28]/90 font-bold">
+                    S
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Sarah L.</CardTitle>
+                    <CardDescription>LDI Graduate - Tier 3</CardDescription>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "After losing everything to addiction, I found family at UCon. The LDI program taught me I had value beyond my worst moments. Now I mentor women facing what I faced, and I get to be part of their healing."
+                </p>
+                <Badge variant="outline">From Addiction to Advocate</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
+                    J
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">James K.</CardTitle>
+                    <CardDescription>Services Participant</CardDescription>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "I started coming to the Bible studies just for community. The workshops helped me get my finances together and land a stable job. UCon met me where I was without judgment."
+                </p>
+                <Badge variant="outline">Finding Community</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
+                    D
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Diana R.</CardTitle>
+                    <CardDescription>LDI Graduate - Tier 2</CardDescription>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "Homelessness made me invisible. UCon saw me. The outreach team gave me food and hope, the shelter gave me safety, and the LDI gave me purpose. I'm now training to become a peer counselor."
+                </p>
+                <Badge variant="outline">From Invisible to Invaluable</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-[#F28C28] rounded-full flex items-center justify-center text-[#F28C28]/90 font-bold">
+                    T
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Thomas P.</CardTitle>
+                    <CardDescription>Outreach Recipient → Volunteer</CardDescription>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "A year ago, I was sleeping under a bridge. UCon's outreach team brought me food and didn't leave. They kept showing up. Now I have an apartment, a job, and I volunteer with that same outreach team."
+                </p>
+                <Badge variant="outline">Full Circle Restoration</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
+                    L
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Linda M.</CardTitle>
+                    <CardDescription>Family Member</CardDescription>
+                  </div>
+                </div>
+                <div className="flex gap-1">
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
+                </div>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground italic mb-3">
+                  "My son was lost to addiction for years. UCon gave me hope when I had none. The pastoral care team supported our family, and today my son is 18 months sober and thriving in the LDI program."
+                </p>
+                <Badge variant="outline">Restored Families</Badge>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Impact Statistics */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div className="text-center p-6 bg-card rounded-lg">
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">94%</p>
+              <p className="text-sm text-muted-foreground">Program Completion Rate</p>
+            </div>
+            <div className="text-center p-6 bg-card rounded-lg">
+              <p className="text-4xl font-bold text-[#F28C28] mb-2">87%</p>
+              <p className="text-sm text-muted-foreground">Long-term Sobriety</p>
+            </div>
+            <div className="text-center p-6 bg-card rounded-lg">
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">78%</p>
+              <p className="text-sm text-muted-foreground">Secure Employment</p>
+            </div>
+            <div className="text-center p-6 bg-card rounded-lg">
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">92%</p>
+              <p className="text-sm text-muted-foreground">Stable Housing</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-slide-in-left">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-[#A92FFA]">Our Story</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Founded on Transformation</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              UCon Ministries was born from personal experience with brokenness and the redemptive power of Christ's unconditional love.
+            </p>
+          </div>
+          
+          {/* Container 3-4: Founder Story */}
+          <div className="mb-12">
+            <Card className="border-2 border-[#A92FFA]/30 hover-lift">
+              <CardHeader>
+                <div className="flex items-start gap-6">
+                  <div className="w-24 h-24 rounded-full bg-[#A92FFA]/10 flex items-center justify-center flex-shrink-0">
+                    <Quote className="w-12 h-12 text-[#A92FFA]" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-3xl mb-2">From Worthlessness to Purpose</CardTitle>
+                    <CardDescription className="text-lg">The Journey That Started It All</CardDescription>
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent className="space-y-6 text-lg">
+                <p className="text-muted-foreground leading-relaxed">
+                  UCon Ministries was founded in 2020 by individuals who intimately understood the pain of feeling worthless, 
+                  broken by the justice system, addiction, and homelessness. Our founder spent years navigating the darkness of 
+                  hopelessness, experiencing firsthand the devastating impact of mental health struggles and systemic barriers.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  The turning point came through an encounter with <span className="text-[#A92FFA] font-semibold">unconditional love</span>—
+                  people who refused to give up, who saw worth where the world saw waste. Through Christ's redemptive power and 
+                  the consistent presence of a caring community, transformation became possible.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  This experience revealed a profound truth: <span className="text-[#F28C28] font-semibold">healing happens in community</span>, 
+                  and lasting change requires more than temporary fixes. It demands comprehensive support, biblical integration, 
+                  clinical excellence, and most importantly—people who believe in your potential even when you don't.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  UCon Ministries was created to be the ministry our founder needed but couldn't find—one that meets people at 
+                  their point of deepest need and walks with them through every step of transformation, from crisis stabilization 
+                  to becoming servant leaders who change their communities.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 5-8: Mission Evolution */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <Card className="hover-lift">
+              <CardHeader>
+                <Lightbulb className="w-10 h-10 text-[#A92FFA] mb-3" />
+                <CardTitle>The Vision</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  To create a ministry that doesn't just offer services, but builds a comprehensive ecosystem of transformation 
+                  from immediate crisis response to international leadership development.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift">
+              <CardHeader>
+                <Heart className="w-10 h-10 text-[#F28C28] mb-3" fill="currentColor" />
+                <CardTitle>The Heart</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Every person carries infinite worth and God-given purpose. Our calling is to help people discover their 
+                  sacred dignity and become the servant leaders they were created to be.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift">
+              <CardHeader>
+                <Target className="w-10 h-10 text-[#A92FFA] mb-3" />
+                <CardTitle>The Method</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Combining clinical psychology, systematic theology, and lived experience into a proven model that produces 
+                  authentic transformation and equips leaders for systemic change.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Key Principles */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">What Sets Us Apart</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Lived Experience Leadership</p>
+                    <p className="text-sm text-muted-foreground">Led by those who've walked the journey from brokenness to purpose</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Comprehensive Care Ecosystem</p>
+                    <p className="text-sm text-muted-foreground">Three tracks meeting every need from crisis to leadership</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Clinical Excellence + Biblical Integration</p>
+                    <p className="text-sm text-muted-foreground">Evidence-based practices infused with Christ's transforming love</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#F28C28]/5 border-2 border-[#F28C28]/20">
+              <CardHeader>
+                <CardTitle className="text-2xl">Our Commitment</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-3">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Unconditional Acceptance</p>
+                    <p className="text-sm text-muted-foreground">Meeting people exactly where they are, no prerequisites</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Long-term Partnership</p>
+                    <p className="text-sm text-muted-foreground">Walking with individuals for years, not just weeks</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-[#F28C28] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold">Generational Impact</p>
+                    <p className="text-sm text-muted-foreground">Building leaders who transform families and communities</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* NEW SECTION: STAFF TEAM - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure animate-slide-in-right">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-[#F28C28]">Our Team</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Meet Our Leadership</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              A diverse team united by personal transformation stories and a shared calling to serve those seeking hope and purpose.
+            </p>
+          </div>
+          
+          {/* Container 3-8: Staff Members */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
+                  <UserCheck className="w-10 h-10 text-[#A92FFA]" />
+                </div>
+                <CardTitle className="text-center text-xl">Executive Director</CardTitle>
+                <CardDescription className="text-center">Visionary Leadership</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Former LDI graduate with lived experience in addiction recovery and criminal justice system. 
+                  Leads ministry vision and strategic direction.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">15+ Years Experience</Badge>
+                  <Badge variant="outline">LDI Tier 4</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-20 h-20 rounded-full bg-[#F28C28]/20 flex items-center justify-center mx-auto mb-4">
+                  <Stethoscope className="w-10 h-10 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-center text-xl">Clinical Director</CardTitle>
+                <CardDescription className="text-center">Mental Health Excellence</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Licensed clinical psychologist specializing in trauma-informed care, addiction psychology, 
+                  and evidence-based therapeutic interventions.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">Ph.D. Psychology</Badge>
+                  <Badge variant="outline">Licensed Therapist</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
+                  <BookOpen className="w-10 h-10 text-[#A92FFA]" />
+                </div>
+                <CardTitle className="text-center text-xl">Spiritual Formation Director</CardTitle>
+                <CardDescription className="text-center">Biblical Integration</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Seminary-trained theologian providing spiritual direction, biblical counseling, 
+                  and systematic theology education throughout all programs.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">M.Div. Theology</Badge>
+                  <Badge variant="outline">Biblical Counselor</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
+                  <Crown className="w-10 h-10 text-[#A92FFA]" />
+                </div>
+                <CardTitle className="text-center text-xl">LDI Program Director</CardTitle>
+                <CardDescription className="text-center">Leadership Development</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Oversees all four tiers of the Leadership Development Institute, ensuring program quality 
+                  and participant transformation success.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">LDI Graduate</Badge>
+                  <Badge variant="outline">10+ Years Ministry</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-20 h-20 rounded-full bg-[#F28C28]/20 flex items-center justify-center mx-auto mb-4">
+                  <HandHeart className="w-10 h-10 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-center text-xl">Outreach Coordinator</CardTitle>
+                <CardDescription className="text-center">Community Engagement</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate 
+                  crisis response to community needs 24/7.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">Social Work</Badge>
+                  <Badge variant="outline">Community Organizer</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
+                  <Briefcase className="w-10 h-10 text-[#A92FFA]" />
+                </div>
+                <CardTitle className="text-center text-xl">Operations Director</CardTitle>
+                <CardDescription className="text-center">Administrative Excellence</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Manages ministry operations, finances, facilities, and administrative systems 
+                  ensuring organizational sustainability and growth.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">MBA</Badge>
+                  <Badge variant="outline">Non-Profit Management</Badge>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Team Values & Volunteer CTA */}
+          <div className="grid md:grid-cols-2 gap-8">
+            <Card className="border-2 border-[#A92FFA]/30">
+              <CardHeader>
+                <CardTitle className="text-2xl">Our Team Values</CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-start gap-3">
+                  <Heart className="w-6 h-6 text-[#A92FFA] mt-1 flex-shrink-0" fill="currentColor" />
+                  <div>
+                    <p className="font-semibold mb-1">Lived Experience</p>
+                    <p className="text-sm text-muted-foreground">
+                      Many team members are LDI graduates who understand the journey from brokenness to purpose
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Users className="w-6 h-6 text-[#A92FFA] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold mb-1">Diverse Expertise</p>
+                    <p className="text-sm text-muted-foreground">
+                      Clinical psychology, theology, social work, and community organizing unified in mission
+                    </p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <Target className="w-6 h-6 text-[#A92FFA] mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="font-semibold mb-1">Continuous Learning</p>
+                    <p className="text-sm text-muted-foreground">
+                      Committed to ongoing professional development and evidence-based practice excellence
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#A92FFA]/10 border-2 border-[#F28C28]/30">
+              <CardHeader>
+                <CardTitle className="text-2xl">Join Our Team</CardTitle>
+                <CardDescription>Make a Difference Through Service</CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground">
+                  Whether you're seeking employment, internship opportunities, or volunteer positions, 
+                  there's a place for you at UCon Ministries.
+                </p>
+                <div className="space-y-2">
+                  <Button className="w-full" size="lg" asChild>
+                    <Link href="/careers">View Career Opportunities</Link>
+                  </Button>
+                  <Button className="w-full" size="lg" variant="outline" asChild>
+                    <Link href="/volunteer">Become a Volunteer</Link>
+                  </Button>
+                </div>
+                <p className="text-sm text-muted-foreground text-center pt-2">
+                  Join a team that's transforming lives and communities through unconditional love and purpose-driven service
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 9: IMPACT STATS - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Our Impact</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Measuring Transformation</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Evidence-based outcomes demonstrating the effectiveness of comprehensive, purpose-driven recovery.
+            </p>
+          </div>
+          
+          {/* Container 3-8: Major Stats Grid */}
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
+            <Card className="text-center bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
+              <CardHeader>
+                <TrendingUp className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
+                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">500+</CardTitle>
+                <CardDescription className="text-lg">Lives Transformed Since 2020</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  From crisis to stability to leadership—each person represents a ripple of hope in their community.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center bg-gradient-to-br from-[#F28C28]/10 to-[#F28C28]/5 border-2 border-[#F28C28]/20">
+              <CardHeader>
+                <Users className="w-12 h-12 text-[#F28C28] mx-auto mb-4" />
+                <CardTitle className="text-5xl font-bold text-[#F28C28] mb-2">150</CardTitle>
+                <CardDescription className="text-lg">LDI Graduates Leading</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Servant leaders now mentoring, managing programs, and advocating for systemic change.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card className="text-center bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
+              <CardHeader>
+                <HandHeart className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
+                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">25K+</CardTitle>
+                <CardDescription className="text-lg">Community Touch Points</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Meals served, rides provided, counseling sessions, and moments of unconditional connection.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Detailed Metrics */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <Card>
+              <CardHeader>
+                <Award className="w-8 h-8 text-[#A92FFA] mb-2" />
+                <CardTitle className="text-3xl font-bold">94%</CardTitle>
+                <CardDescription>Program Completion</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Industry-leading retention through unconditional support and purpose discovery.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Shield className="w-8 h-8 text-[#F28C28] mb-2" />
+                <CardTitle className="text-3xl font-bold">87%</CardTitle>
+                <CardDescription>Long-term Sobriety</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Sustained recovery rates at 12+ months post-program graduation.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <TrendingUp className="w-8 h-8 text-[#A92FFA] mb-2" />
+                <CardTitle className="text-3xl font-bold">78%</CardTitle>
+                <CardDescription>Employment Rate</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Graduates securing meaningful employment within 90 days.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Home className="w-8 h-8 text-[#A92FFA] mb-2" />
+                <CardTitle className="text-3xl font-bold">92%</CardTitle>
+                <CardDescription>Stable Housing</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Permanent housing secured and maintained for 6+ months.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Users className="w-8 h-8 text-[#F28C28] mb-2" />
+                <CardTitle className="text-3xl font-bold">65</CardTitle>
+                <CardDescription>Active Mentors</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  LDI graduates currently mentoring Tier 1 and 2 participants.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Heart className="w-8 h-8 text-[#A92FFA] mb-2" />
+                <CardTitle className="text-3xl font-bold">98%</CardTitle>
+                <CardDescription>Satisfaction Rate</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Participants reporting positive experience and growth.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Target className="w-8 h-8 text-[#A92FFA] mb-2" />
+                <CardTitle className="text-3xl font-bold">15</CardTitle>
+                <CardDescription>Partner Organizations</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Collaborative relationships amplifying community impact.
+                </p>
+              </CardContent>
+            </Card>
+            
+            <Card>
+              <CardHeader>
+                <Sparkles className="w-8 h-8 text-[#F28C28] mb-2" />
+                <CardTitle className="text-3xl font-bold">∞</CardTitle>
+                <CardDescription>Potential Unlocked</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground">
+                  Every person carries infinite worth and purpose waiting to be discovered.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 10: COMMUNITY & PARTNERSHIP - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Together We Rise</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Community & Partners</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Transformation happens in community. We're grateful for our partners, volunteers, and supporters who make this work possible.
+            </p>
+          </div>
+          
+          {/* Container 3-4: Community Impact */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-2xl">Building Community</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground mb-4">
+                  We believe lasting change happens when individuals are connected to a supportive community. Through partnerships with local organizations, businesses, and faith communities, we create a network of hope.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Faith community partnerships for spiritual support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Business collaborations for employment opportunities</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Non-profit networks for comprehensive services</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
+              <CardHeader>
+                <CardTitle className="text-2xl">Volunteer Opportunities</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="mb-4 text-[#A92FFA]/90">
+                  Whether you have an hour a week or want to make a deeper commitment, there's a place for you in our ministry.
+                </p>
+                <ul className="space-y-2">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Outreach team volunteers</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Workshop facilitators</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Administrative support</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                    <span className="text-sm">Prayer partners</span>
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 5-10: Partner Categories */}
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Building2 className="w-10 h-10 text-[#A92FFA] mb-3" />
+                <CardTitle>Faith Partners</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Local churches and faith communities providing spiritual support, volunteers, and resources.
+                </p>
+                <Badge variant="outline">12 Church Partners</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Users className="w-10 h-10 text-[#F28C28] mb-3" />
+                <CardTitle>Social Services</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Non-profit organizations collaborating to provide comprehensive wraparound services.
+                </p>
+                <Badge variant="outline">8 Service Partners</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <TrendingUp className="w-10 h-10 text-[#A92FFA] mb-3" />
+                <CardTitle>Business Partners</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Local businesses offering employment opportunities and skills training for graduates.
+                </p>
+                <Badge variant="outline">15 Employers</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Stethoscope className="w-10 h-10 text-[#A92FFA] mb-3" />
+                <CardTitle>Healthcare Partners</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Medical and mental health professionals providing clinical support and referrals.
+                </p>
+                <Badge variant="outline">6 Healthcare Providers</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Shield className="w-10 h-10 text-[#F28C28] mb-3" />
+                <CardTitle>Justice Partners</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Legal aid organizations and reentry programs supporting those impacted by the justice system.
+                </p>
+                <Badge variant="outline">4 Legal Partners</Badge>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <GraduationCap className="w-10 h-10 text-[#A92FFA] mb-3" />
+                <CardTitle>Educational Partners</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Schools and training programs offering education and vocational development.
+                </p>
+                <Badge variant="outline">5 Education Partners</Badge>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 11-12: Partnership CTA */}
+          <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#F28C28]/10 border-2 border-[#A92FFA]/20">
+            <CardContent className="pt-8">
+              <div className="text-center max-w-2xl mx-auto">
+                <h3 className="text-2xl font-bold mb-4">Become a Partner</h3>
+                <p className="text-muted-foreground mb-6">
+                  Together, we can multiply our impact and reach more people who need hope, healing, and purpose. Let's explore how your organization can join this transformational work.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" asChild>
+                    <Link href="/get-involved">Partner With Us</Link>
+                  </Button>
+                  <Button size="lg" variant="outline" asChild>
+                    <Link href="/volunteer">Volunteer Today</Link>
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      {/* SECTION 11: CALL-TO-ACTION - 12 Containers */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in">
+        <div className="max-w-7xl mx-auto">
+          {/* Container 1-2: Header */}
+          <div className="text-center mb-16">
+            <Badge className="mb-4">Get Involved</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Be Part of the Transformation</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Every person has a role to play in building a community of hope. Choose your path to get involved.
+            </p>
+          </div>
+          
+          {/* Container 3-8: Six Action Cards */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#A92FFA]">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
+                  <GraduationCap className="w-8 h-8 text-[#A92FFA]/90" />
+                </div>
+                <CardTitle className="text-xl">Apply to LDI</CardTitle>
+                <CardDescription>Begin Your Journey</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Ready to commit to transformation? Apply for our intensive 64-week Leadership Development Institute.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Free program</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Housing provided</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Full support</span>
+                  </li>
+                </ul>
+                <Button className="w-full" asChild>
+                  <Link href="/ldi">Apply Now</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#F28C28]">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
+                  <Heart className="w-8 h-8 text-[#F28C28]/90" />
+                </div>
+                <CardTitle className="text-xl">Donate</CardTitle>
+                <CardDescription>Fuel Transformation</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Your financial support directly impacts lives, providing housing, meals, and resources for healing.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28]" />
+                    <span className="text-sm">One-time gifts</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28]" />
+                    <span className="text-sm">Monthly giving</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28]" />
+                    <span className="text-sm">Legacy gifts</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="secondary" asChild>
+                  <Link href="/donate">Donate Today</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#A92FFA]">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
+                  <Users className="w-8 h-8 text-[#A92FFA]/90" />
+                </div>
+                <CardTitle className="text-xl">Volunteer</CardTitle>
+                <CardDescription>Give Your Time</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Join our team of volunteers serving in outreach, workshops, administrative support, and more.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Flexible hours</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Training provided</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Make a difference</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="outline" asChild>
+                  <Link href="/volunteer">Sign Up</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#A92FFA]">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#A92FFA]/10 rounded-xl flex items-center justify-center mb-4">
+                  <Heart className="w-8 h-8 text-[#A92FFA]" fill="currentColor" />
+                </div>
+                <CardTitle className="text-xl">Prayer Wall</CardTitle>
+                <CardDescription>Pray Together</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Join our community in prayer. Submit your prayer requests and pray for others on our interactive prayer wall.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Share requests</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Pray for others</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Track answers</span>
+                  </li>
+                </ul>
+                <Button className="w-full" asChild>
+                  <Link href="/prayer-wall">Visit Prayer Wall</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#F28C28]">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#F28C28]/10 rounded-xl flex items-center justify-center mb-4">
+                  <BookOpen className="w-8 h-8 text-[#F28C28]" />
+                </div>
+                <CardTitle className="text-xl">Attend Services</CardTitle>
+                <CardDescription>Join Community</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Experience our open ministry services—workshops, Bible studies, and fellowship gatherings. No commitment needed.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28]" />
+                    <span className="text-sm">Open to all</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28]" />
+                    <span className="text-sm">Weekly events</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#F28C28]" />
+                    <span className="text-sm">Free admission</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="secondary" asChild>
+                  <Link href="/services">View Schedule</Link>
+                </Button>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#A92FFA]">
+              <CardHeader>
+                <div className="w-16 h-16 bg-[#A92FFA]/10 rounded-xl flex items-center justify-center mb-4">
+                  <Phone className="w-8 h-8 text-[#A92FFA]" />
+                </div>
+                <CardTitle className="text-xl">Get Help Now</CardTitle>
+                <CardDescription>Crisis Support</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  In crisis? Need immediate assistance? Our outreach team is available 24/7 to help with food, shelter, and support.
+                </p>
+                <ul className="space-y-2 mb-4">
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">24/7 hotline</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">Immediate help</span>
+                  </li>
+                  <li className="flex items-center gap-2 text-sm">
+                    <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
+                    <span className="text-sm">No judgment</span>
+                  </li>
+                </ul>
+                <Button className="w-full" variant="outline" asChild>
+                  <Link href="/help">Contact Us</Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* Container 9-12: Emergency Banner */}
+          <div className="grid md:grid-cols-2 gap-6">
+            <Card className="bg-gradient-to-br from-[#A92FFA] to-[#A92FFA]/80 text-[#A92FFA]/90">
+              <CardHeader>
+                <Phone className="w-10 h-10 mb-3" />
+                <CardTitle className="text-2xl">Need Help Now?</CardTitle>
+                <CardDescription className="text-[#A92FFA]/90 text-base">24/7 Crisis Support Available</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  <div>
+                    <p className="text-sm text-[#A92FFA]/80 mb-1">Crisis Hotline</p>
+                    <p className="text-3xl font-bold">(555) 555-1234</p>
+                  </div>
+                  <div>
+                    <p className="text-sm text-[#A92FFA]/80 mb-1">Emergency Email</p>
+                    <p className="text-lg font-semibold">crisis@uconministries.org</p>
+                  </div>
+                  <p className="text-sm text-[#A92FFA]/90 pt-2">
+                    You're not alone. We're here to help, no matter what you're facing.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="bg-gradient-to-br from-[#F28C28] to-[#F28C28]/80 text-[#F28C28]/90">
+              <CardHeader>
+                <Mail className="w-10 h-10 mb-3" />
+                <CardTitle className="text-2xl">Stay Connected</CardTitle>
+                <CardDescription className="text-[#F28C28]/90 text-base">Get Updates & Stories of Hope</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-[#F28C28]/90 mb-4">
+                  Subscribe to our newsletter for inspiring stories, upcoming events, and ways to get involved.
+                </p>
+                <div className="flex flex-col gap-2">
+                  <Input 
+                    type="email" 
+                    placeholder="Enter your email"
+                    className="bg-white text-[#F28C28]"
+                  />
+                  <Button className="w-full bg-white text-[#F28C28] hover:bg-white/90">
+                    Subscribe Now
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 12: FOOTER - 12 Containers */}
+      <Footer />
+    </div>
+  );
+}
