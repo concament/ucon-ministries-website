@@ -103,8 +103,9 @@ export default function PrayerWall() {
   const filteredPrayers = prayers
     .filter(prayer => {
       const matchesCategory = selectedCategory === "all" || prayer.category === selectedCategory;
-      const matchesSearch = prayer.prayerRequest.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                           (prayer.name && prayer.name.toLowerCase().includes(searchQuery.toLowerCase()));
+      const matchesSearch = !searchQuery || 
+        (prayer.prayerRequest && prayer.prayerRequest.toLowerCase().includes(searchQuery.toLowerCase())) ||
+        (prayer.name && prayer.name.toLowerCase().includes(searchQuery.toLowerCase()));
       return matchesCategory && matchesSearch;
     })
     .sort((a, b) => {
