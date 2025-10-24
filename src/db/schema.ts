@@ -21,3 +21,12 @@ export const chatConversations = sqliteTable('chat_conversations', {
   role: text('role').notNull(),
   createdAt: text('created_at').notNull(),
 });
+
+export const chatbotKnowledge = sqliteTable('chatbot_knowledge', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  category: text('category').notNull(),
+  question: text('question').notNull(),
+  answer: text('answer').notNull(),
+  keywords: text('keywords').notNull(),
+  createdAt: text('created_at').notNull(),
+});

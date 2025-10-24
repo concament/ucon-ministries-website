@@ -1530,17 +1530,18 @@ export default function HomePage() {
             <Card className="border-2 border-[#A92FFA]/30 hover-lift">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                  <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-2xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent z-10 pointer-events-none" />
                     <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
-                      alt="Ministry Founder"
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/Screenshot_20250715_135848_Snapchat-1761324561982.jpg?width=8000&height=8000&resize=contain"
+                      alt="Ministry Founder - Troy"
                       fill
-                      className="object-cover"
+                      className="object-cover rounded-2xl"
                     />
                   </div>
                   <div className="flex-1">
                     <CardTitle className="text-3xl mb-2">From Worthlessness to Purpose</CardTitle>
-                    <CardDescription className="text-lg">The Journey That Started It All</CardDescription>
+                    <CardDescription className="text-lg">The Journey That Started It All - Troy's Story</CardDescription>
                   </div>
                 </div>
               </CardHeader>

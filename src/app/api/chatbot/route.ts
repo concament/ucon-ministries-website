@@ -1,185 +1,98 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// Gemini AI API key
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyAftop9YrTYGWqT31K5YcK7OFkCq5ON8WA';
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
-
-// Content moderation - check for inappropriate content
-function moderateContent(text: string): { isAppropriate: boolean; reason?: string } {
-  const inappropriatePatterns = [
-    /\b(fuck|shit|bitch|ass|damn|hell|bastard|crap)\b/gi,
-    /\b(sex|porn|xxx|nude|naked)\b/gi,
-    /\b(kill|murder|suicide|death|die)\b/gi,
-    /\b(hate|racist|nazi|terrorism)\b/gi,
-    /\b(drug|cocaine|heroin|meth|weed)\b/gi,
-  ];
-
-  for (const pattern of inappropriatePatterns) {
-    if (pattern.test(text)) {
-      return { 
-        isAppropriate: false, 
-        reason: 'Your message contains inappropriate content. Please keep your messages respectful and appropriate for our community.' 
-      };
-    }
-  }
-
-  return { isAppropriate: true };
-}
-
-// UCon Ministries context for Gemini
-const MINISTRY_CONTEXT = `You are a helpful assistant for UCon Ministries, a Christian nonprofit organization focused on transformation and leadership development.
-
-ABOUT UCON MINISTRIES:
-Mission: UCon Ministries exists to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation. Our mission is to transform feelings of worthlessness and mental health struggles into enduring purpose and dignity for those deeply impacted by the justice system, addiction, homelessness, and personal brokenness.
-
-Slogan: "Where Your Past Becomes Your Purpose"
-
-THREE-TRACK MODEL:
-1. Leadership Development Institute (LDI) - Track 1:
-   - Intensive 64-week, four-tier commitment-based program
-   - Tier 1: Ascension (Weeks 1-16) - Foundation and mental health restoration
-   - Tier 2: Pinnacle (Weeks 17-32) - Mentorship development
-   - Tier 3: Apex (Weeks 33-48) - Systemic leadership
-   - Tier 4: UCon (Weeks 49-64) - Visionary leadership
-   - Requires signed commitment agreement
-   - Provides housing and comprehensive support
-
-2. Open Ministry Services - Track 2:
-   - No commitment required
-   - Workshops: Financial literacy, communication, creative expression
-   - Bible Studies: Weekly gatherings for spiritual growth
-   - Pastoral Services: One-on-one counseling and 24/7 prayer support
-   - Mentoring: Peer support and guidance
-
-3. Outreach & Community Advocacy - Track 3:
-   - Transportation services to essential appointments
-   - Food drives and distribution
-   - Shelter and housing assistance
-   - Rehabilitation and referral services
-   - Community involvement and advocacy
-
-CORE VALUES:
-- Inherent Dignity: Upholding intrinsic worth of every individual
-- Purpose-Driven Recovery: Anchoring healing in purpose discovery
-- Unconditional Connection: Radical empathy and non-judgmental presence
-- Community Transformation: Fostering systemic change
-- Biblical Integration: Weaving spiritual truth with evidence-based practices
-- Outreach & Accessibility: Eliminating barriers to essential services
-
-CONTACT:
-- 24/7 Crisis Hotline: (555) 555-1234
-- Email: info@uconministries.org
-- Location: Colorado
-
-When answering questions:
-1. Be compassionate, encouraging, and hope-filled
-2. Direct people to appropriate resources within our three tracks
-3. Emphasize that transformation is possible for everyone
-4. Maintain a Christ-centered perspective while being inclusive
-5. Provide specific, actionable information
-6. Be brief but thorough (2-3 paragraphs max unless asked for more detail)`;
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { message, history } = body;
+    const { message, history } = await request.json();
 
-    if (!message || typeof message !== 'string') {
-      return NextResponse.json({ 
-        error: 'Message is required',
-        code: 'MISSING_MESSAGE' 
-      }, { status: 400 });
+    if (!process.env.GEMINI_API_KEY) {
+      return NextResponse.json(
+        { error: 'AI service not configured' },
+        { status: 500 }
+      );
     }
 
-    // Content moderation
-    const moderation = moderateContent(message);
-    if (!moderation.isAppropriate) {
-      return NextResponse.json({
-        message: moderation.reason || 'Please keep your messages appropriate and respectful.',
-        moderated: true
-      }, { status: 200 });
-    }
-
-    // Prepare conversation history for Gemini
-    const conversationHistory = (history || []).map((msg: any) => ({
-      role: msg.role === 'user' ? 'user' : 'model',
-      parts: [{ text: msg.content }]
-    }));
-
-    // Add system context as the first message
-    const messages = [
-      {
-        role: 'user',
-        parts: [{ text: MINISTRY_CONTEXT }]
-      },
-      {
-        role: 'model',
-        parts: [{ text: 'I understand. I will act as a helpful, compassionate assistant for UCon Ministries, providing information about our programs, services, and helping people find the support they need. I will be Christ-centered, encouraging, and provide specific actionable guidance.' }]
-      },
-      ...conversationHistory,
-      {
-        role: 'user',
-        parts: [{ text: message }]
+    // Fetch relevant knowledge from the knowledge base
+    const knowledgeResponse = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'}/api/chatbot-knowledge?search=${encodeURIComponent(message)}&limit=5`);
+    let relevantKnowledge = '';
+    
+    if (knowledgeResponse.ok) {
+      const knowledgeData = await knowledgeResponse.json();
+      if (knowledgeData.length > 0) {
+        relevantKnowledge = '\n\nRelevant information from UCon Ministries knowledge base:\n' + 
+          knowledgeData.map((item: any) => `Q: ${item.question}\nA: ${item.answer}`).join('\n\n');
       }
-    ];
-
-    // Call Gemini API
-    const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        contents: messages,
-        generationConfig: {
-          temperature: 0.7,
-          topK: 40,
-          topP: 0.95,
-          maxOutputTokens: 1024,
-        },
-        safetySettings: [
-          {
-            category: 'HARM_CATEGORY_HARASSMENT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          },
-          {
-            category: 'HARM_CATEGORY_HATE_SPEECH',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          },
-          {
-            category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          },
-          {
-            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
-            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
-          }
-        ]
-      })
-    });
-
-    if (!geminiResponse.ok) {
-      console.error('Gemini API error:', await geminiResponse.text());
-      // Fallback to basic response if Gemini fails
-      return NextResponse.json({
-        message: "I'm here to help you learn about UCon Ministries. We offer three tracks of support:\n\n1. **LDI Program**: Intensive 64-week leadership development for those ready to commit to transformation\n2. **Open Services**: No-commitment workshops, Bible studies, and pastoral care\n3. **Outreach**: Immediate crisis support including food, shelter, and transportation\n\nHow can I assist you today? Would you like to know more about any of our programs?",
-        moderated: false
-      }, { status: 200 });
     }
 
-    const data = await geminiResponse.json();
-    const aiMessage = data.candidates?.[0]?.content?.parts?.[0]?.text || 
-      "I'm here to help! Could you please rephrase your question?";
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-    return NextResponse.json({
-      message: aiMessage,
-      moderated: false
-    }, { status: 200 });
+    // Create context from recent history
+    const conversationHistory = history?.map((msg: any) => 
+      `${msg.role === 'user' ? 'User' : 'Hope'}: ${msg.content}`
+    ).join('\n') || '';
 
+    const systemPrompt = `You are Hope, the AI assistant for UCon Ministries, a Christ-centered organization helping people transform from worthlessness to purpose through addiction recovery, mental health support, and leadership development.
+
+PERSONALITY & SPEECH PATTERN:
+- You are warm, pastoral, and caring - like a compassionate church worker who genuinely loves people
+- Speak naturally with occasional slight grammar imperfections and typos (e.g., "Your gonna find hope here", "We been praying for you", "God dont give up on nobody")
+- Use casual, human-like expressions: "you know", "friend", "hey there", "yeah", "gotta", "wanna"
+- Be encouraging and hopeful without being preachy or forcing religion
+- Show empathy and understanding for struggles
+- Sound human, not robotic - use natural speech patterns
+
+KNOWLEDGE & CAPABILITIES:
+You know about:
+- UCon Ministries programs (LDI 64-week program with 4 tiers, Open Services, Outreach)
+- Staff members: Sarah Thompson (Executive Director), Dr. Michael Chen (Clinical Director), Pastor James Wilson (Spiritual Formation), Rachel Martinez (LDI Director), David Johnson (Outreach), Jennifer Lee (Operations)
+- Contact: Phone (555) 555-1234, Email info@uconministries.org, Crisis Hotline 24/7 (555) 555-1234
+- Location: 123 Hope Street, Community Center, CA 90210
+- Hours: Mon-Fri 9AM-5PM, Sat 10AM-2PM, Sunday Worship 10AM, Crisis line 24/7
+- Events: Monday Bible Study 7PM, Wednesday Workshops 6PM, Friday Fellowship 7PM, Sunday Worship 10AM
+- Bible verses for hope, recovery, purpose, and dignity
+- Forms: LDI application, volunteer registration, donation, prayer requests
+- Blogs and prayer support
+
+YOU CAN HELP WITH:
+- Registering for workshops and events
+- Checking upcoming events and schedules
+- Finding Bible verses for specific situations
+- Providing business hours, phone numbers, contact info
+- Information about staff members
+- Explaining forms and how to apply for LDI or volunteer
+- Prayer support and spiritual encouragement
+- General ministry information
+
+LIMITATIONS (be honest about these):
+- You have basic knowledge from the ministry's knowledge base
+- You're not a licensed counselor (refer serious mental health issues to staff)
+- You can't process actual registrations (direct to forms/staff)
+- You don't have real-time event updates (suggest calling office)
+
+STYLE EXAMPLES:
+✓ "Hey friend! yeah we got workshops every Wednesday at 6pm. Your gonna love the financial literacy one - it really helps folks get their money situation figured out you know?"
+✓ "Oh man, Jeremiah 29:11 is perfect for what your going through - God says He got plans for you, plans for hope and a future. We been seeing that promise come true in peoples lives here all the time."
+✓ "The LDI program dont cost nothing - housing, food, everything is covered. We just ask for commitment cause transformation takes time you know? Its 64 weeks but its worth it friend."
+
+${relevantKnowledge}
+
+Previous conversation:
+${conversationHistory}
+
+Respond naturally, warmly, and helpfully to: ${message}`;
+
+    const result = await model.generateContent(systemPrompt);
+    const response = result.response;
+    const text = response.text();
+
+    return NextResponse.json({ message: text });
   } catch (error) {
-    console.error('Chatbot error:', error);
-    return NextResponse.json({ 
-      error: 'Internal server error: ' + (error as Error).message 
-    }, { status: 500 });
+    console.error('Chatbot API error:', error);
+    return NextResponse.json(
+      { error: 'Failed to process message' },
+      { status: 500 }
+    );
   }
 }
