@@ -13,7 +13,6 @@ export default function BackgroundMusic() {
 
   useEffect(() => {
     // Create audio element for "Till the End of Time" by Kari Jobe
-    // Using a placeholder URL - you'll need to add the actual audio file
     audioRef.current = new Audio("https://files.ceenaija.com/wp-content/uploads/music/2022/05/Cody_Carnes_-_Til_The_End_Of_Time_Ft_Kari_Jobe_CeeNaija.com_.mp3");
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
@@ -59,7 +58,7 @@ export default function BackgroundMusic() {
   };
 
   return (
-    <Card className="fixed bottom-6 right-6 z-50 p-4 bg-background/95 backdrop-blur-sm border-2 border-[#A92FFA]/20 shadow-xl hover:shadow-2xl transition-shadow">
+    <Card className="fixed bottom-24 right-6 z-40 p-4 bg-background/95 backdrop-blur-sm border-2 border-[#A92FFA]/20 shadow-xl hover:shadow-2xl transition-shadow">
       <div className="flex items-center gap-3">
         <Button
           size="sm"

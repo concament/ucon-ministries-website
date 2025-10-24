@@ -23,6 +23,7 @@ export default function Chatbot() {
   ]);
   const [input, setInput] = useState("");
   const [loading, setLoading] = useState(false);
+  const [sessionId] = useState(() => `session-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   const scrollToBottom = () => {
@@ -32,6 +33,45 @@ export default function Chatbot() {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Load conversation history on mount
+  useEffect(() => {
+    const loadHistory = async () => {
+      try {
+        const response = await fetch(`/api/chat-conversations?sessionId=${sessionId}`);
+        if (response.ok) {
+          const history = await response.json();
+          if (history.length > 0) {
+            const loadedMessages = history.map((msg: any) => ({
+              role: msg.role,
+              content: msg.message,
+              timestamp: new Date(msg.createdAt)
+            }));
+            setMessages(loadedMessages);
+          }
+        }
+      } catch (error) {
+        console.error('Failed to load conversation history:', error);
+      }
+    };
+    loadHistory();
+  }, [sessionId]);
+
+  const saveMessage = async (role: 'user' | 'assistant', content: string) => {
+    try {
+      await fetch('/api/chat-conversations', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sessionId,
+          message: content,
+          role
+        })
+      });
+    } catch (error) {
+      console.error('Failed to save message:', error);
+    }
+  };
 
   const handleSend = async () => {
     if (!input.trim() || loading) return;
@@ -43,6 +83,7 @@ export default function Chatbot() {
     };
 
     setMessages(prev => [...prev, userMessage]);
+    saveMessage('user', input);
     setInput("");
     setLoading(true);
 
@@ -64,6 +105,7 @@ export default function Chatbot() {
           timestamp: new Date()
         };
         setMessages(prev => [...prev, assistantMessage]);
+        saveMessage('assistant', data.message);
       } else {
         throw new Error('Failed to get response');
       }
@@ -75,6 +117,7 @@ export default function Chatbot() {
         timestamp: new Date()
       };
       setMessages(prev => [...prev, errorMessage]);
+      saveMessage('assistant', errorMessage.content);
     } finally {
       setLoading(false);
     }
@@ -89,11 +132,11 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* Floating Chat Button */}
+      {/* Floating Chat Button - Positioned left of music player */}
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:scale-110 transition-transform z-50"
+          className="fixed bottom-6 right-24 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:scale-110 transition-transform z-50"
           aria-label="Open chat"
         >
           <MessageCircle className="w-6 h-6" />
