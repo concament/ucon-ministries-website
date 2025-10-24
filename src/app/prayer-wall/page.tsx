@@ -11,7 +11,8 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { 
   Heart, Search, Plus, User, Clock, Users,
-  CheckCircle2, Sparkles, MessageCircle, Loader2
+  CheckCircle2, Sparkles, MessageCircle, Loader2,
+  ChevronDown, ChevronUp, Send
 } from "lucide-react";
 
 const categories = [
@@ -57,6 +58,11 @@ export default function PrayerWall() {
   const [showSubmitForm, setShowSubmitForm] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [showNewsletterModal, setShowNewsletterModal] = useState(false);
+  const [expandedPrayer, setExpandedPrayer] = useState<number | null>(null);
+  const [prayerText, setPrayerText] = useState<{[key: number]: string}>({});
+  const [opReply, setOpReply] = useState<{[key: number]: string}>({});
+  const [submittingPrayer, setSubmittingPrayer] = useState<number | null>(null);
+  const [submittingReply, setSubmittingReply] = useState<number | null>(null);
   
   // Animation refs
   const [heroRef, heroVisible] = useIntersectionObserver();
@@ -107,23 +113,59 @@ export default function PrayerWall() {
       return 0;
     });
 
-  const handlePrayFor = async (prayerId: number, currentCount: number) => {
+  const handlePrayFor = async (prayerId: number) => {
+    if (!prayerText[prayerId]?.trim()) return;
+    
+    setSubmittingPrayer(prayerId);
     try {
       const response = await fetch(`/api/prayers?id=${prayerId}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prayerCount: currentCount + 1 })
+        body: JSON.stringify({ 
+          action: 'addPrayer',
+          prayerText: prayerText[prayerId]
+        })
       });
       
       if (response.ok) {
+        const updatedPrayer = await response.json();
         setPrayers(prayers.map(prayer => 
-          prayer.id === prayerId 
-            ? { ...prayer, prayerCount: currentCount + 1 }
-            : prayer
+          prayer.id === prayerId ? updatedPrayer : prayer
         ));
+        setPrayerText({...prayerText, [prayerId]: ''});
       }
     } catch (error) {
-      console.error('Error updating prayer count:', error);
+      console.error('Error adding prayer:', error);
+    } finally {
+      setSubmittingPrayer(null);
+    }
+  };
+
+  const handleOpReply = async (prayerId: number) => {
+    if (!opReply[prayerId]?.trim()) return;
+    
+    setSubmittingReply(prayerId);
+    try {
+      const response = await fetch(`/api/prayers?id=${prayerId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ 
+          action: 'addOpReply',
+          opReply: opReply[prayerId]
+        })
+      });
+      
+      if (response.ok) {
+        const updatedPrayer = await response.json();
+        setPrayers(prayers.map(prayer => 
+          prayer.id === prayerId ? updatedPrayer : prayer
+        ));
+        setOpReply({...opReply, [prayerId]: ''});
+      }
+    } catch (error) {
+      console.error('Error adding OP reply:', error);
+    } finally {
+      setSubmittingReply(null);
     }
   };
 
@@ -165,7 +207,7 @@ export default function PrayerWall() {
 
   // Stats
   const totalPrayers = prayers.length;
-  const totalPrayerCount = prayers.reduce((sum, p) => sum + p.prayerCount, 0);
+  const totalPrayerCount = prayers.reduce((sum, p) => sum + (p.prayers?.length || p.prayerCount || 0), 0);
   const activeCategories = new Set(prayers.map(p => p.category)).size;
 
   return (
@@ -175,12 +217,10 @@ export default function PrayerWall() {
       {/* Hero Section */}
       <section 
         ref={heroRef}
-        className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-        style={{
-          background: `linear-gradient(135deg, rgba(169, 47, 250, 0.1) 0%, rgba(242, 140, 40, 0.1) 100%)`
-        }}
+        className="pt-32 pb-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure"
       >
-        <div className="max-w-7xl mx-auto">
+        <div className="absolute inset-0 overlay-gradient opacity-50" />
+        <div className="max-w-7xl mx-auto relative z-10">
           <div className={`text-center mb-8 transition-all duration-1000 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
@@ -188,10 +228,10 @@ export default function PrayerWall() {
               <Heart className="w-4 h-4 mr-2" fill="currentColor" />
               Community Prayer
             </Badge>
-            <h1 className={`text-5xl sm:text-6xl font-bold mb-6 transition-all duration-1000 delay-100 ${
+            <h1 className={`text-5xl sm:text-6xl font-bold mb-6 transition-all duration-1000 delay-100 glow-text ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
             }`}>
-              Interactive Prayer Wall
+              Interactive <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Prayer Wall</span>
             </h1>
             <p className={`text-xl text-muted-foreground max-w-3xl mx-auto mb-8 transition-all duration-1000 delay-200 ${
               heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
@@ -393,6 +433,10 @@ export default function PrayerWall() {
               {filteredPrayers.map((prayer, index) => {
                 const category = categories.find(c => c.value === prayer.category);
                 const isFromLeft = index % 2 === 0;
+                const isExpanded = expandedPrayer === prayer.id;
+                const prayers_list = prayer.prayers || [];
+                const prayerCount = prayers_list.length;
+                
                 return (
                   <Card 
                     key={prayer.id} 
@@ -422,21 +466,111 @@ export default function PrayerWall() {
                       <p className="text-sm text-muted-foreground mb-4 flex-1">
                         {prayer.prayerRequest}
                       </p>
+                      
+                      {/* OP Reply */}
+                      {prayer.opReply && (
+                        <div className="mb-4 p-3 bg-[#A92FFA]/10 rounded-lg border border-[#A92FFA]/20">
+                          <p className="text-xs font-semibold text-[#A92FFA] mb-1">Response from {prayer.isAnonymous ? "Anonymous" : prayer.name || "OP"}:</p>
+                          <p className="text-sm">{prayer.opReply}</p>
+                        </div>
+                      )}
+                      
                       <div className="flex items-center justify-between pt-4 border-t">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Heart className="w-4 h-4" fill="currentColor" />
-                          <span>{prayer.prayerCount} prayers</span>
+                          <span>{prayerCount} prayer{prayerCount !== 1 ? 's' : ''}</span>
                         </div>
                         <Button 
                           size="sm" 
                           variant="outline"
-                          onClick={() => handlePrayFor(prayer.id, prayer.prayerCount)}
-                          className="gap-2 hover:bg-[#A92FFA] hover:text-white hover:border-[#A92FFA]"
+                          onClick={() => setExpandedPrayer(isExpanded ? null : prayer.id)}
+                          className="gap-2"
                         >
-                          <Heart className="w-4 h-4" />
-                          Pray
+                          {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
+                          {isExpanded ? 'Collapse' : 'Expand'}
                         </Button>
                       </div>
+                      
+                      {/* Expanded Content */}
+                      {isExpanded && (
+                        <div className="mt-4 pt-4 border-t space-y-4 animate-slide-in-up">
+                          {/* Display Prayers */}
+                          <div className="space-y-2 max-h-60 overflow-y-auto">
+                            <p className="text-xs font-semibold text-muted-foreground mb-2">Prayers from the community:</p>
+                            {prayers_list.length === 0 ? (
+                              <p className="text-sm text-muted-foreground italic">No prayers yet. Be the first to pray!</p>
+                            ) : (
+                              prayers_list.map((p: any, idx: number) => (
+                                <div key={idx} className="p-2 bg-muted/50 rounded text-sm">
+                                  <p className="text-xs text-muted-foreground mb-1">{new Date(p.createdAt).toLocaleString()}</p>
+                                  <p>{p.text}</p>
+                                </div>
+                              ))
+                            )}
+                          </div>
+                          
+                          {/* Add Prayer Form */}
+                          <div className="space-y-2">
+                            <Textarea
+                              placeholder="Add your prayer..."
+                              value={prayerText[prayer.id] || ''}
+                              onChange={(e) => setPrayerText({...prayerText, [prayer.id]: e.target.value})}
+                              rows={2}
+                              className="text-sm"
+                            />
+                            <Button 
+                              size="sm" 
+                              className="w-full bg-[#A92FFA] hover:bg-[#A92FFA]/90"
+                              onClick={() => handlePrayFor(prayer.id)}
+                              disabled={submittingPrayer === prayer.id || !prayerText[prayer.id]?.trim()}
+                            >
+                              {submittingPrayer === prayer.id ? (
+                                <>
+                                  <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                  Submitting...
+                                </>
+                              ) : (
+                                <>
+                                  <Send className="w-4 h-4 mr-2" />
+                                  Submit Prayer
+                                </>
+                              )}
+                            </Button>
+                          </div>
+                          
+                          {/* OP Reply Form (only if no reply yet) */}
+                          {!prayer.opReply && (
+                            <div className="space-y-2 pt-2 border-t">
+                              <p className="text-xs font-semibold text-muted-foreground">Reply to your prayer community (one time only):</p>
+                              <Textarea
+                                placeholder="Share an update or thank the community..."
+                                value={opReply[prayer.id] || ''}
+                                onChange={(e) => setOpReply({...opReply, [prayer.id]: e.target.value})}
+                                rows={2}
+                                className="text-sm"
+                              />
+                              <Button 
+                                size="sm" 
+                                className="w-full bg-[#F28C28] hover:bg-[#F28C28]/90"
+                                onClick={() => handleOpReply(prayer.id)}
+                                disabled={submittingReply === prayer.id || !opReply[prayer.id]?.trim()}
+                              >
+                                {submittingReply === prayer.id ? (
+                                  <>
+                                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                                    Submitting...
+                                  </>
+                                ) : (
+                                  <>
+                                    <Send className="w-4 h-4 mr-2" />
+                                    Post Reply
+                                  </>
+                                )}
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                      )}
                     </CardContent>
                   </Card>
                 );
@@ -466,7 +600,7 @@ export default function PrayerWall() {
               infoVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
-            <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 hover-lift">
+            <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 hover-lift hover-glow">
               <CardHeader>
                 <Sparkles className="w-10 h-10 text-[#A92FFA] mb-3" />
                 <CardTitle>The Power of Prayer</CardTitle>
@@ -478,7 +612,7 @@ export default function PrayerWall() {
               </CardContent>
             </Card>
             
-            <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#F28C28]/5 hover-lift">
+            <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#F28C28]/5 hover-lift hover-glow">
               <CardHeader>
                 <Users className="w-10 h-10 text-[#F28C28] mb-3" />
                 <CardTitle>Pray Together</CardTitle>
@@ -490,7 +624,7 @@ export default function PrayerWall() {
               </CardContent>
             </Card>
             
-            <Card className="bg-gradient-to-br from-[#A92FFA]/10 via-[#F28C28]/10 to-accent/5 hover-lift">
+            <Card className="bg-gradient-to-br from-[#A92FFA]/10 via-[#F28C28]/10 to-accent/5 hover-lift hover-glow">
               <CardHeader>
                 <CheckCircle2 className="w-10 h-10 text-accent mb-3" />
                 <CardTitle>Share Testimonies</CardTitle>
@@ -511,11 +645,9 @@ export default function PrayerWall() {
         className={`py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden transition-all duration-1000 ${
           ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}
-        style={{
-          background: `linear-gradient(135deg, rgba(169, 47, 250, 0.1) 0%, rgba(242, 140, 40, 0.1) 100%)`
-        }}
       >
-        <div className="max-w-4xl mx-auto">
+        <div className="absolute inset-0 overlay-gradient opacity-50" />
+        <div className="max-w-4xl mx-auto relative z-10">
           <Card className="bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-glow">
             <CardContent className="pt-8">
               <div className="text-center">

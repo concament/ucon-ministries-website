@@ -1,3 +1,4 @@
+/* Updated: 2025-10-24T15:11:48.349Z */
 /* Updated: 2025-10-23T22:31:13.918Z */
 /* Updated: 2025-10-23T19:14:29.384Z */
 /* Updated: 2025-10-07T03:22:01.317Z */
@@ -261,6 +262,17 @@
 .hover-glow:hover {
   box-shadow: 0 0 20px rgba(169, 47, 250, 0.5), 0 0 40px rgba(242, 140, 40, 0.3);
   transition: box-shadow 0.3s ease;
+}
+
+/* Glow text effect */
+.glow-text {
+  text-shadow: 0 0 20px rgba(169, 47, 250, 0.3),
+               0 0 40px rgba(242, 140, 40, 0.2);
+}
+
+.dark .glow-text {
+  text-shadow: 0 0 30px rgba(169, 47, 250, 0.5),
+               0 0 60px rgba(242, 140, 40, 0.3);
 }
 
 /* Hide Next.js error overlay portal */

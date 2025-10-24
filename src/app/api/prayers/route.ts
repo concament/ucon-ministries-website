@@ -169,17 +169,88 @@ export async function PUT(request: NextRequest) {
     }
 
     const body = await request.json();
-    const updates: Record<string, any> = {};
+    const { action, prayerText, opReply } = body;
 
-    // Validate and prepare updates
-    if ('prayerRequest' in body) {
-      if (!body.prayerRequest || body.prayerRequest.trim() === '') {
+    // Handle special actions
+    if (action === 'addPrayer') {
+      if (!prayerText || prayerText.trim() === '') {
         return NextResponse.json({ 
-          error: 'Prayer request cannot be empty',
-          code: 'INVALID_PRAYER_REQUEST' 
+          error: 'Prayer text is required',
+          code: 'MISSING_PRAYER_TEXT' 
         }, { status: 400 });
       }
-      updates.prayerRequest = body.prayerRequest.trim();
+
+      // Get current prayers array or initialize empty array
+      const currentPrayers = (existing[0].prayers as any[]) || [];
+      
+      // Append new prayer object
+      const newPrayer = {
+        text: prayerText.trim(),
+        createdAt: new Date().toISOString()
+      };
+      
+      const updatedPrayers = [...currentPrayers, newPrayer];
+
+      const updated = await db.update(prayers)
+        .set({
+          prayers: updatedPrayers as any,
+          prayCount: (existing[0].prayCount || 0) + 1,
+          updatedAt: new Date().toISOString()
+        })
+        .where(eq(prayers.id, parseInt(id)))
+        .returning();
+
+      return NextResponse.json(updated[0], { status: 200 });
+    }
+
+    if (action === 'addOpReply') {
+      if (!opReply || opReply.trim() === '') {
+        return NextResponse.json({ 
+          error: 'OP reply is required',
+          code: 'MISSING_OP_REPLY' 
+        }, { status: 400 });
+      }
+
+      // Check if opReply is already set
+      if (existing[0].opReply !== null && existing[0].opReply !== undefined) {
+        return NextResponse.json({ 
+          error: 'OP reply has already been set',
+          code: 'OP_REPLY_ALREADY_SET' 
+        }, { status: 400 });
+      }
+
+      const updated = await db.update(prayers)
+        .set({
+          opReply: opReply.trim(),
+          updatedAt: new Date().toISOString()
+        })
+        .where(eq(prayers.id, parseInt(id)))
+        .returning();
+
+      return NextResponse.json(updated[0], { status: 200 });
+    }
+
+    // Standard field updates (existing logic)
+    const updates: Record<string, any> = {};
+
+    if ('title' in body) {
+      if (!body.title || body.title.trim() === '') {
+        return NextResponse.json({ 
+          error: 'Title cannot be empty',
+          code: 'INVALID_TITLE' 
+        }, { status: 400 });
+      }
+      updates.title = body.title.trim();
+    }
+
+    if ('content' in body) {
+      if (!body.content || body.content.trim() === '') {
+        return NextResponse.json({ 
+          error: 'Content cannot be empty',
+          code: 'INVALID_CONTENT' 
+        }, { status: 400 });
+      }
+      updates.content = body.content.trim();
     }
 
     if ('category' in body) {
@@ -192,30 +263,35 @@ export async function PUT(request: NextRequest) {
       updates.category = body.category.trim();
     }
 
-    if ('name' in body) {
-      updates.name = body.name ? body.name.trim() : null;
+    if ('authorName' in body) {
+      updates.authorName = body.authorName ? body.authorName.trim() : null;
+    }
+
+    if ('authorEmail' in body) {
+      updates.authorEmail = body.authorEmail ? body.authorEmail.trim() : null;
     }
 
     if ('isAnonymous' in body) {
       updates.isAnonymous = body.isAnonymous === true;
       if (updates.isAnonymous) {
-        updates.name = null;
+        updates.authorName = null;
+        updates.authorEmail = null;
       }
     }
 
-    if ('prayerCount' in body) {
-      const count = parseInt(body.prayerCount);
+    if ('prayCount' in body) {
+      const count = parseInt(body.prayCount);
       if (isNaN(count) || count < 0) {
         return NextResponse.json({ 
           error: 'Prayer count must be a valid non-negative integer',
           code: 'INVALID_PRAYER_COUNT' 
         }, { status: 400 });
       }
-      updates.prayerCount = count;
+      updates.prayCount = count;
     }
 
-    if ('isAnswered' in body) {
-      updates.isAnswered = body.isAnswered === true;
+    if ('isApproved' in body) {
+      updates.isApproved = body.isApproved === true;
     }
 
     // Always update timestamp
