@@ -132,11 +132,11 @@ export default function Chatbot() {
 
   return (
     <>
-      {/* Floating Chat Button - Positioned left of music player */}
+      {/* Floating Chat Button - Positioned above music player */}
       {!isOpen && (
         <Button
           onClick={() => setIsOpen(true)}
-          className="fixed bottom-6 right-24 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:scale-110 transition-transform z-50"
+          className="fixed bottom-44 right-6 h-14 w-14 rounded-full shadow-lg bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:scale-110 transition-transform z-50"
           aria-label="Open chat"
         >
           <MessageCircle className="w-6 h-6" />
