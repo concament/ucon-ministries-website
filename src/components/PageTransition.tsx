@@ -14,14 +14,14 @@ export default function PageTransition({ children }: { children: React.ReactNode
     // After a short delay, fade back in
     const timer = setTimeout(() => {
       setIsTransitioning(false);
-    }, 400);
+    }, 150);
 
     return () => clearTimeout(timer);
   }, [pathname]);
 
   return (
     <div
-      className={`transition-opacity duration-1000 ${
+      className={`transition-opacity duration-300 ${
         isTransitioning ? "opacity-0" : "opacity-100"
       }`}
     >

@@ -1,9 +1,8 @@
 "use client"
 
 import Link from "next/link";
-import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Sun, Moon } from "lucide-react";
+import { Menu, X, Heart, Sun, Moon } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/components/ThemeProvider";
 
@@ -16,13 +15,8 @@ export default function Navigation() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center space-x-3">
-            <div className="w-12 h-12 relative">
-              <Image
-                src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1000021808-1761324530149.png?width=8000&height=8000&resize=contain"
-                alt="UCon Ministries Logo"
-                fill
-                className="object-contain"
-              />
+            <div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center">
+              <Heart className="w-6 h-6 text-primary-foreground" fill="currentColor" />
             </div>
             <div>
               <h1 className="text-2xl font-bold text-foreground">UCon Ministries</h1>
@@ -41,11 +35,17 @@ export default function Navigation() {
             <Link href="/ldi" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
               LDI
             </Link>
+            <Link href="/ldi-waitlist" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
+              LDI Waitlist
+            </Link>
             <Link href="/services" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
               Services
             </Link>
             <Link href="/outreach" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
               Outreach
+            </Link>
+            <Link href="/community-coalition" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
+              Community Coalition
             </Link>
             <Link href="/prayer-wall" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
               Prayer
@@ -53,8 +53,8 @@ export default function Navigation() {
             <Link href="/resources" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
               Resources
             </Link>
-            <Link href="/donations" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
-              Donate
+            <Link href="/faq" className="text-foreground hover:text-primary transition-colors font-medium text-sm">
+              FAQ
             </Link>
             
             {/* Theme Toggle */}
@@ -113,11 +113,17 @@ export default function Navigation() {
             <Link href="/ldi" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
               LDI Program
             </Link>
+            <Link href="/ldi-waitlist" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
+              LDI Waitlist
+            </Link>
             <Link href="/services" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
               Services
             </Link>
             <Link href="/outreach" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
               Outreach
+            </Link>
+            <Link href="/community-coalition" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
+              Community Coalition
             </Link>
             <Link href="/prayer-wall" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
               Prayer Wall
@@ -125,8 +131,8 @@ export default function Navigation() {
             <Link href="/resources" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
               Resource Hub
             </Link>
-            <Link href="/donations" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
-              Donate
+            <Link href="/faq" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
+              FAQ
             </Link>
             <Button asChild className="w-full bg-[#F28C28] hover:bg-[#F28C28]/90">
               <Link href="/contact">Contact Us</Link>
