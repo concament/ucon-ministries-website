@@ -6,7 +6,7 @@ import { Volume2, VolumeX, Pause, Play } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 export default function BackgroundMusic() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(0.3);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -14,7 +14,7 @@ export default function BackgroundMusic() {
   useEffect(() => {
     // Create audio element for "Till the End of Time" by Kari Jobe
     // Using a placeholder URL - you'll need to add the actual audio file
-    audioRef.current = new Audio("/audio/till-the-end-of-time.mp3");
+    audioRef.current = new Audio("https://files.ceenaija.com/wp-content/uploads/music/2022/05/Cody_Carnes_-_Til_The_End_Of_Time_Ft_Kari_Jobe_CeeNaija.com_.mp3");
     audioRef.current.loop = true;
     audioRef.current.volume = volume;
 
