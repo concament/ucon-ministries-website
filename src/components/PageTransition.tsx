@@ -14,7 +14,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
     // After a short delay, fade back in
     const timer = setTimeout(() => {
       setIsTransitioning(false);
-    }, 150);
+    }, 400);
 
     return () => clearTimeout(timer);
   }, [pathname]);
