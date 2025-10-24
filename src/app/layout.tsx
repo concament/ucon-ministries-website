@@ -3,7 +3,10 @@ import "./globals.css";
 import VisualEditsMessenger from "../visual-edits/VisualEditsMessenger";
 import ErrorReporter from "@/components/ErrorReporter";
 import Chatbot from "@/components/Chatbot";
+import BackgroundMusic from "@/components/BackgroundMusic";
+import PageTransition from "@/components/PageTransition";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { Toaster } from "@/components/ui/sonner";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -31,8 +34,12 @@ export default function RootLayout({
             data-debug="true"
             data-custom-data='{"appName": "YourApp", "version": "1.0.0", "greeting": "hi"}'
           />
-          {children}
+          <PageTransition>
+            {children}
+          </PageTransition>
           <Chatbot />
+          <BackgroundMusic />
+          <Toaster />
           <VisualEditsMessenger />
         </ThemeProvider>
       </body>

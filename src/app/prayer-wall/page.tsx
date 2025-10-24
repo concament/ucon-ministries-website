@@ -14,6 +14,7 @@ import {
   CheckCircle2, Sparkles, MessageCircle, Loader2,
   ChevronDown, ChevronUp, Send
 } from "lucide-react";
+import { toast } from "sonner";
 
 const categories = [
   { value: "all", label: "All Prayers", color: "bg-primary" },
@@ -94,23 +95,31 @@ export default function PrayerWall() {
       }
     } catch (error) {
       console.error('Error fetching prayers:', error);
+      toast.error('Failed to load prayers');
     } finally {
       setLoading(false);
     }
   };
 
-  // Filter prayers
+  // Filter prayers with proper null checks
   const filteredPrayers = prayers
     .filter(prayer => {
       const matchesCategory = selectedCategory === "all" || prayer.category === selectedCategory;
+      const searchLower = searchQuery?.toLowerCase() || "";
+      const prayerRequestLower = (prayer.prayerRequest || "").toLowerCase();
+      const nameLower = (prayer.name || "").toLowerCase();
       const matchesSearch = !searchQuery || 
-        (prayer.prayerRequest && prayer.prayerRequest.toLowerCase().includes(searchQuery.toLowerCase())) ||
-        (prayer.name && prayer.name.toLowerCase().includes(searchQuery.toLowerCase()));
+        prayerRequestLower.includes(searchLower) ||
+        nameLower.includes(searchLower);
       return matchesCategory && matchesSearch;
     })
     .sort((a, b) => {
       if (sortBy === "recent") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-      if (sortBy === "popular") return b.prayerCount - a.prayerCount;
+      if (sortBy === "popular") {
+        const aCount = (a.prayers?.length || a.prayerCount || 0);
+        const bCount = (b.prayers?.length || b.prayerCount || 0);
+        return bCount - aCount;
+      }
       return 0;
     });
 
@@ -134,9 +143,13 @@ export default function PrayerWall() {
           prayer.id === prayerId ? updatedPrayer : prayer
         ));
         setPrayerText({...prayerText, [prayerId]: ''});
+        toast.success('Prayer added successfully!');
+      } else {
+        toast.error('Failed to add prayer');
       }
     } catch (error) {
       console.error('Error adding prayer:', error);
+      toast.error('Failed to add prayer');
     } finally {
       setSubmittingPrayer(null);
     }
@@ -162,9 +175,13 @@ export default function PrayerWall() {
           prayer.id === prayerId ? updatedPrayer : prayer
         ));
         setOpReply({...opReply, [prayerId]: ''});
+        toast.success('Reply posted successfully!');
+      } else {
+        toast.error('Failed to post reply');
       }
     } catch (error) {
       console.error('Error adding OP reply:', error);
+      toast.error('Failed to post reply');
     } finally {
       setSubmittingReply(null);
     }
@@ -188,6 +205,7 @@ export default function PrayerWall() {
       
       if (response.ok) {
         const newPrayer = await response.json();
+        // Update the prayers list immediately
         setPrayers([newPrayer, ...prayers]);
         setFormData({
           name: "",
@@ -196,20 +214,26 @@ export default function PrayerWall() {
           prayerRequest: ""
         });
         setShowSubmitForm(false);
+        toast.success('Prayer request submitted successfully!');
         // Show newsletter modal after successful submission
-        setShowNewsletterModal(true);
+        setTimeout(() => {
+          setShowNewsletterModal(true);
+        }, 500);
+      } else {
+        toast.error('Failed to submit prayer request');
       }
     } catch (error) {
       console.error('Error submitting prayer:', error);
+      toast.error('Failed to submit prayer request');
     } finally {
       setSubmitting(false);
     }
   };
 
-  // Stats
+  // Stats with null safety
   const totalPrayers = prayers.length;
-  const totalPrayerCount = prayers.reduce((sum, p) => sum + (p.prayers?.length || p.prayerCount || 0), 0);
-  const activeCategories = new Set(prayers.map(p => p.category)).size;
+  const totalPrayerCount = prayers.reduce((sum, p) => sum + ((p.prayers?.length || p.prayerCount) || 0), 0);
+  const activeCategories = new Set(prayers.map(p => p.category).filter(Boolean)).size;
 
   return (
     <div className="min-h-screen bg-background">

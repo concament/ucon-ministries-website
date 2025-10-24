@@ -54,11 +54,8 @@ export default function LDIPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* SECTION 1: HERO - 12 Containers */}
-      <section 
-        ref={heroRef}
-        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/10 via-[#F28C28]/5 to-[#A92FFA]/10"
-      >
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             {/* Container 1-2: Main Content */}
@@ -69,9 +66,7 @@ export default function LDIPage() {
                 <Crown className="w-4 h-4" />
                 Track 1 - Commitment-Based Program
               </Badge>
-              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
-                heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-              }`}>
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 glow-text">
                 Leadership Development <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Institute</span>
               </h1>
               <p className={`text-xl text-muted-foreground transition-all duration-700 delay-200 ${
@@ -181,10 +176,10 @@ export default function LDIPage() {
         }`}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#F28C28]">Program Foundation</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">The Engine of Transformation</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">
+              The Engine of Transformation
+            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The LDI is designed to dismantle a lifetime of worthlessness and trauma through a safe, challenging therapeutic community that integrates evidence-based practices with biblical truth.
             </p>
@@ -344,14 +339,13 @@ export default function LDIPage() {
       {/* SECTION 3: TIER 1 - ASCENSION - 12 Containers */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary/5 to-primary/10">
         <div className="max-w-7xl mx-auto">
-          {/* Container 1-2: Tier Header */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center">
               <Sparkles className="w-8 h-8 text-[#A92FFA] text-primary-foreground" />
             </div>
             <div>
               <Badge className="mb-2 bg-[#A92FFA] text-[#A92FFA]">Tier 1 | Weeks 1-16</Badge>
-              <h2 className="text-4xl font-bold">Ascension</h2>
+              <h2 className="text-4xl font-bold glow-text">Ascension</h2>
               <p className="text-lg text-muted-foreground">Foundation Demolition & Reconstruction</p>
             </div>
           </div>
@@ -608,14 +602,13 @@ export default function LDIPage() {
       {/* SECTION 4: TIER 2 - PINNACLE - 12 Containers */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Container 1-2: Tier Header */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center">
               <Mountain className="w-8 h-8 text-[#F28C28] text-secondary-foreground" />
             </div>
             <div>
               <Badge className="mb-2 bg-[#F28C28]">Tier 2 | Weeks 17-32</Badge>
-              <h2 className="text-4xl font-bold">Pinnacle</h2>
+              <h2 className="text-4xl font-bold glow-text">Pinnacle</h2>
               <p className="text-lg text-muted-foreground">Mentorship Development</p>
             </div>
           </div>
@@ -872,14 +865,13 @@ export default function LDIPage() {
       {/* SECTION 5: TIER 3 - APEX - 12 Containers */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent/5 to-accent/10">
         <div className="max-w-7xl mx-auto">
-          {/* Container 1-2: Tier Header */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center">
               <Building2 className="w-8 h-8 text-[#A92FFA] text-accent-foreground" />
             </div>
             <div>
               <Badge className="mb-2 bg-[#A92FFA] text-[#A92FFA]">Tier 3 | Weeks 33-48</Badge>
-              <h2 className="text-4xl font-bold">Apex</h2>
+              <h2 className="text-4xl font-bold glow-text">Apex</h2>
               <p className="text-lg text-muted-foreground">Systemic Leadership</p>
             </div>
           </div>
@@ -1136,14 +1128,13 @@ export default function LDIPage() {
       {/* SECTION 6: TIER 4 - UCON - 12 Containers */}
       <section className="py-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Container 1-2: Tier Header */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-[#A92FFA] to-[#F28C28] rounded-xl flex items-center justify-center">
               <Rocket className="w-8 h-8 text-[#A92FFA] text-primary-foreground" />
             </div>
             <div>
               <Badge className="mb-2 bg-gradient-to-r from-[#A92FFA] to-[#F28C28]">Tier 4 | Weeks 49-64</Badge>
-              <h2 className="text-4xl font-bold">UCon</h2>
+              <h2 className="text-4xl font-bold glow-text">UCon</h2>
               <p className="text-lg text-muted-foreground">Visionary Leadership & National Impact</p>
             </div>
           </div>
@@ -1405,10 +1396,10 @@ export default function LDIPage() {
         }`}
       >
         <div className="max-w-7xl mx-auto">
-          {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Begin Your Journey</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Application Process</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">
+              Application Process
+            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Ready to commit to transformation? Here's how to apply to the Leadership Development Institute.
             </p>
@@ -1609,7 +1600,9 @@ export default function LDIPage() {
             <CardContent className="pt-12 pb-12">
               <div className="text-center">
                 <Crown className="w-16 h-16 mx-auto mb-6" />
-                <h2 className="text-4xl sm:text-5xl font-bold mb-6">Ready to Begin Your Transformation?</h2>
+                <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">
+                  Ready to Begin Your Transformation?
+                </h2>
                 <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
                   The journey from worthlessness to purpose starts with a single step. Our team is ready to walk with you through every stage of transformation.
                 </p>
@@ -1626,7 +1619,7 @@ export default function LDIPage() {
                 </div>
                 
                 <div className="pt-8 border-t border-white/20">
-                  <h3 className="text-xl font-semibold mb-4">Contact Our Admissions Team</h3>
+                  <h3 className="text-xl font-semibold mb-4 glow-text">Contact Our Admissions Team</h3>
                   <div className="grid md:grid-cols-3 gap-6 text-left">
                     <div className="flex items-start gap-3">
                       <Phone className="w-5 h-5 mt-1" />

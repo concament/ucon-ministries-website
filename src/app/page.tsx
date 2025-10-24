@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -61,8 +62,20 @@ export default function HomePage() {
       {/* SECTION 1: HERO - 12 Containers */}
       <section 
         ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden double-exposure"
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
+        {/* Hero Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/warm-and-inviting-hero-image-for-christi-81884a25-20251024154212.jpg"
+            alt="Community in prayer"
+            fill
+            className="object-cover opacity-20"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        </div>
+        
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Container 1: Main Headline */}
@@ -1496,26 +1509,36 @@ export default function HomePage() {
       </section>
 
       {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-slide-in-left">
+      <section 
+        ref={founderRef}
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 ${
+          founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA]">Our Story</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Founded on Transformation</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Founded on Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               UCon Ministries was born from personal experience with brokenness and the redemptive power of Christ's unconditional love.
             </p>
           </div>
           
-          {/* Container 3-4: Founder Story */}
+          {/* Container 3-4: Founder Story with Image */}
           <div className="mb-12">
             <Card className="border-2 border-[#A92FFA]/30 hover-lift">
               <CardHeader>
-                <div className="flex items-start gap-6">
-                  <div className="w-24 h-24 rounded-full bg-[#A92FFA]/10 flex items-center justify-center flex-shrink-0">
-                    <Quote className="w-12 h-12 text-[#A92FFA]" />
+                <div className="flex flex-col md:flex-row items-start gap-6">
+                  <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
+                      alt="Ministry Founder"
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                  <div>
+                  <div className="flex-1">
                     <CardTitle className="text-3xl mb-2">From Worthlessness to Purpose</CardTitle>
                     <CardDescription className="text-lg">The Journey That Started It All</CardDescription>
                   </div>
@@ -1652,23 +1675,33 @@ export default function HomePage() {
       </section>
 
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure animate-slide-in-right">
+      <section 
+        ref={staffRef}
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure transition-all duration-1000 ${
+          staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#F28C28]">Our Team</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Meet Our Leadership</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Meet Our Leadership</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A diverse team united by personal transformation stories and a shared calling to serve those seeking hope and purpose.
             </p>
           </div>
           
-          {/* Container 3-8: Staff Members */}
+          {/* Container 3-8: Staff Members with Images */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="hover-lift hover-glow">
               <CardHeader>
-                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
-                  <UserCheck className="w-10 h-10 text-[#A92FFA]" />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
+                    alt="Executive Director"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <CardTitle className="text-center text-xl">Executive Director</CardTitle>
                 <CardDescription className="text-center">Visionary Leadership</CardDescription>
@@ -1687,8 +1720,13 @@ export default function HomePage() {
             
             <Card className="hover-lift hover-glow">
               <CardHeader>
-                <div className="w-20 h-20 rounded-full bg-[#F28C28]/20 flex items-center justify-center mx-auto mb-4">
-                  <Stethoscope className="w-10 h-10 text-[#F28C28]" />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-bfa700ab-20251024154213.jpg"
+                    alt="Clinical Director"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <CardTitle className="text-center text-xl">Clinical Director</CardTitle>
                 <CardDescription className="text-center">Mental Health Excellence</CardDescription>
@@ -1707,8 +1745,13 @@ export default function HomePage() {
             
             <Card className="hover-lift hover-glow">
               <CardHeader>
-                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
-                  <BookOpen className="w-10 h-10 text-[#A92FFA]" />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-wi-1cf5d0ff-20251024154207.jpg"
+                    alt="Spiritual Formation Director"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <CardTitle className="text-center text-xl">Spiritual Formation Director</CardTitle>
                 <CardDescription className="text-center">Biblical Integration</CardDescription>
@@ -1727,8 +1770,13 @@ export default function HomePage() {
             
             <Card className="hover-lift hover-glow">
               <CardHeader>
-                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
-                  <Crown className="w-10 h-10 text-[#A92FFA]" />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-e-629884fa-20251024154212.jpg"
+                    alt="LDI Program Director"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <CardTitle className="text-center text-xl">LDI Program Director</CardTitle>
                 <CardDescription className="text-center">Leadership Development</CardDescription>
@@ -1747,8 +1795,13 @@ export default function HomePage() {
             
             <Card className="hover-lift hover-glow">
               <CardHeader>
-                <div className="w-20 h-20 rounded-full bg-[#F28C28]/20 flex items-center justify-center mx-auto mb-4">
-                  <HandHeart className="w-10 h-10 text-[#F28C28]" />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-de-2b7802ad-20251024154212.jpg"
+                    alt="Outreach Coordinator"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <CardTitle className="text-center text-xl">Outreach Coordinator</CardTitle>
                 <CardDescription className="text-center">Community Engagement</CardDescription>
@@ -1767,8 +1820,13 @@ export default function HomePage() {
             
             <Card className="hover-lift hover-glow">
               <CardHeader>
-                <div className="w-20 h-20 rounded-full bg-[#A92FFA]/20 flex items-center justify-center mx-auto mb-4">
-                  <Briefcase className="w-10 h-10 text-[#A92FFA]" />
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-a4f1640e-20251024154211.jpg"
+                    alt="Operations Director"
+                    fill
+                    className="object-cover"
+                  />
                 </div>
                 <CardTitle className="text-center text-xl">Operations Director</CardTitle>
                 <CardDescription className="text-center">Administrative Excellence</CardDescription>

@@ -41,8 +41,8 @@ export default function ServicesPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* SECTION 1: HERO - 12 Containers */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-secondary/10 via-primary/5 to-accent/10">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             {/* Container 1-2: Main Content */}
@@ -51,7 +51,7 @@ export default function ServicesPage() {
                 <BookOpen className="w-4 h-4" />
                 Track 2 - No Commitment Required
               </Badge>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 glow-text">
                 Open Ministry <span className="text-secondary">Services</span>
               </h1>
               <p className="text-xl text-muted-foreground">
@@ -127,8 +127,9 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-secondary">Four Pathways to Growth</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Our Service Categories</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">
+              Our Service Categories
+            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Choose the path that fits your current needs. All services are free, open to everyone, and designed to support your journey.
             </p>
@@ -380,7 +381,7 @@ export default function ServicesPage() {
                 <GraduationCap className="w-6 h-6 text-secondary-foreground" />
               </div>
               <div>
-                <h2 className="text-4xl font-bold">Workshops</h2>
+                <h2 className="text-4xl font-bold glow-text">Workshops</h2>
                 <p className="text-lg text-muted-foreground">Building Practical Life Skills</p>
               </div>
             </div>
@@ -681,7 +682,7 @@ export default function ServicesPage() {
                 <BookOpen className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h2 className="text-4xl font-bold">Bible Studies</h2>
+                <h2 className="text-4xl font-bold glow-text">Bible Studies</h2>
                 <p className="text-lg text-muted-foreground">Growing Together in Faith</p>
               </div>
             </div>
@@ -906,7 +907,7 @@ export default function ServicesPage() {
                 <Heart className="w-6 h-6 text-accent-foreground" />
               </div>
               <div>
-                <h2 className="text-4xl font-bold">Pastoral Services</h2>
+                <h2 className="text-4xl font-bold glow-text">Pastoral Services</h2>
                 <p className="text-lg text-muted-foreground">Spiritual Care When You Need It</p>
               </div>
             </div>
@@ -1145,7 +1146,7 @@ export default function ServicesPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-secondary">Get Connected</Badge>
-            <h2 className="text-4xl font-bold mb-6">Ready to Join Us?</h2>
+            <h2 className="text-4xl font-bold mb-6 glow-text">Ready to Join Us?</h2>
             <p className="text-xl text-muted-foreground">
               Fill out this form and we'll help you find the right service for your needs.
             </p>
@@ -1234,7 +1235,7 @@ export default function ServicesPage() {
       <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-secondary/10 to-primary/10">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold mb-4">Visit Us</h2>
+            <h2 className="text-4xl font-bold mb-4 glow-text">Visit Us</h2>
             <p className="text-xl text-muted-foreground">All are welcome at UCon Ministries</p>
           </div>
           

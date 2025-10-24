@@ -40,8 +40,8 @@ export default function OutreachPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* SECTION 1: HERO - 12 Containers */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-accent/10 via-primary/5 to-secondary/10">
+      {/* Hero Section */}
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             {/* Container 1-2: Main Content */}
@@ -50,7 +50,7 @@ export default function OutreachPage() {
                 <HandHeart className="w-4 h-4" />
                 Track 3 - First Responders
               </Badge>
-              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight">
+              <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 glow-text">
                 Outreach & Community <span className="text-accent">Advocacy</span>
               </h1>
               <p className="text-xl text-muted-foreground">
@@ -127,8 +127,9 @@ export default function OutreachPage() {
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-accent text-accent-foreground">Six Essential Services</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">How We Serve Our Community</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">
+              Six Essential Services
+            </h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Meeting immediate needs with dignity and compassion. Every service removes barriers and creates pathways to stability.
             </p>
@@ -414,7 +415,7 @@ export default function OutreachPage() {
                 <Truck className="w-6 h-6 text-accent-foreground" />
               </div>
               <div>
-                <h2 className="text-4xl font-bold">Transportation Services</h2>
+                <h2 className="text-4xl font-bold glow-text">Transportation Services</h2>
                 <p className="text-lg text-muted-foreground">Breaking Down Mobility Barriers</p>
               </div>
             </div>
@@ -516,7 +517,7 @@ export default function OutreachPage() {
                 <Utensils className="w-6 h-6 text-primary-foreground" />
               </div>
               <div>
-                <h2 className="text-4xl font-bold">Food Distribution</h2>
+                <h2 className="text-4xl font-bold glow-text">Food Distribution</h2>
                 <p className="text-lg text-muted-foreground">No One Goes Hungry</p>
               </div>
             </div>
@@ -628,7 +629,7 @@ export default function OutreachPage() {
                 <Home className="w-6 h-6 text-secondary-foreground" />
               </div>
               <div>
-                <h2 className="text-4xl font-bold">Shelter & Housing Assistance</h2>
+                <h2 className="text-4xl font-bold glow-text">Shelter & Housing Assistance</h2>
                 <p className="text-lg text-muted-foreground">A Safe Place for Everyone</p>
               </div>
             </div>
@@ -773,7 +774,7 @@ export default function OutreachPage() {
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-accent text-accent-foreground">Need Help Now?</Badge>
-            <h2 className="text-4xl font-bold mb-6">Emergency Assistance Request</h2>
+            <h2 className="text-4xl font-bold mb-6 glow-text">Emergency Assistance Request</h2>
             <p className="text-xl text-muted-foreground">
               Submit this form for immediate help or call our 24/7 hotline at <strong>(555) 555-HELP</strong>
             </p>
@@ -865,7 +866,7 @@ export default function OutreachPage() {
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <Badge className="mb-4">Join Our Team</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Volunteer With Outreach</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Volunteer With Outreach</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Be part of our first responder team. Whether you can give a few hours a week or want to make a deeper commitment, there's a place for you.
             </p>

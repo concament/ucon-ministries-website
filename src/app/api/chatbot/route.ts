@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 
+// Gemini AI API key
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || 'AIzaSyAftop9YrTYGWqT31K5YcK7OFkCq5ON8WA';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+
 // Content moderation - check for inappropriate content
 function moderateContent(text: string): { isAppropriate: boolean; reason?: string } {
   const inappropriatePatterns = [
@@ -22,133 +26,58 @@ function moderateContent(text: string): { isAppropriate: boolean; reason?: strin
   return { isAppropriate: true };
 }
 
-// UCon Ministries knowledge base
-const knowledgeBase = {
-  greeting: [
-    "Hello! Welcome to UCon Ministries. How can I assist you today?",
-    "Hi there! I'm here to help you learn about UCon Ministries and our programs.",
-    "Welcome! Feel free to ask me about our LDI program, services, or how to get involved."
-  ],
-  about: `UCon Ministries exists to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation. Our mission is to transform feelings of worthlessness and mental health struggles into enduring purpose and dignity for those deeply impacted by the justice system, addiction, homelessness, and personal brokenness.
+// UCon Ministries context for Gemini
+const MINISTRY_CONTEXT = `You are a helpful assistant for UCon Ministries, a Christian nonprofit organization focused on transformation and leadership development.
 
-Our slogan is "Where Your Past Becomes Your Purpose" - emphasizing that we believe everyone has the potential to transform their past struggles into a powerful purpose.`,
-  
-  ldi: `The Leadership Development Institute (LDI) is our intensive, 64-week, four-tier program focused on deep personal transformation and leadership development. 
+ABOUT UCON MINISTRIES:
+Mission: UCon Ministries exists to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation. Our mission is to transform feelings of worthlessness and mental health struggles into enduring purpose and dignity for those deeply impacted by the justice system, addiction, homelessness, and personal brokenness.
 
-The four tiers are:
-- **Tier 1: Ascension** - Foundational intensive tier for mental health restoration and life skills
-- **Tier 2: Pinnacle** - Moving from personal transformation to mentoring others
-- **Tier 3: Apex** - Influencing entire systems and community mobilization
-- **Tier 4: Ucon** - National/international scale movement-building and policy development
+Slogan: "Where Your Past Becomes Your Purpose"
 
-The LDI requires a signed commitment agreement and provides housing, support, and comprehensive training.`,
-  
-  services: `UCon Ministries operates on a three-track model:
+THREE-TRACK MODEL:
+1. Leadership Development Institute (LDI) - Track 1:
+   - Intensive 64-week, four-tier commitment-based program
+   - Tier 1: Ascension (Weeks 1-16) - Foundation and mental health restoration
+   - Tier 2: Pinnacle (Weeks 17-32) - Mentorship development
+   - Tier 3: Apex (Weeks 33-48) - Systemic leadership
+   - Tier 4: UCon (Weeks 49-64) - Visionary leadership
+   - Requires signed commitment agreement
+   - Provides housing and comprehensive support
 
-**Track 1: LDI Program** - Commitment-based intensive leadership development
-**Track 2: Open Services** - No commitment required, including workshops, Bible studies, pastoral services, and mentoring
-**Track 3: Outreach & Advocacy** - Transportation services, food drives, shelter assistance, and rehabilitation referrals
+2. Open Ministry Services - Track 2:
+   - No commitment required
+   - Workshops: Financial literacy, communication, creative expression
+   - Bible Studies: Weekly gatherings for spiritual growth
+   - Pastoral Services: One-on-one counseling and 24/7 prayer support
+   - Mentoring: Peer support and guidance
 
-All services are designed to meet people where they are in their journey.`,
-  
-  prayer: `Our Interactive Prayer Wall allows community members to share prayer requests and pray for one another. You can submit prayer requests anonymously or with your name, and others in the community can lift up prayers for you. We believe in the power of unified prayer and community support.`,
-  
-  contact: `You can reach UCon Ministries through:
-- Our Contact page on the website
-- Email us with your questions
-- Call our main office during business hours
-- Submit a prayer request on our Prayer Wall
-- Visit us in person - we're located in Colorado
+3. Outreach & Community Advocacy - Track 3:
+   - Transportation services to essential appointments
+   - Food drives and distribution
+   - Shelter and housing assistance
+   - Rehabilitation and referral services
+   - Community involvement and advocacy
 
-For immediate assistance or emergency support, please use our 24/7 prayer support line.`,
-  
-  registration: `To register for our programs:
+CORE VALUES:
+- Inherent Dignity: Upholding intrinsic worth of every individual
+- Purpose-Driven Recovery: Anchoring healing in purpose discovery
+- Unconditional Connection: Radical empathy and non-judgmental presence
+- Community Transformation: Fostering systemic change
+- Biblical Integration: Weaving spiritual truth with evidence-based practices
+- Outreach & Accessibility: Eliminating barriers to essential services
 
-**LDI Program**: Visit our LDI waiting list page to submit your interest. Our team will review your application and contact you about the next steps. The LDI requires commitment and housing is provided.
+CONTACT:
+- 24/7 Crisis Hotline: (555) 555-1234
+- Email: info@uconministries.org
+- Location: Colorado
 
-**Open Services**: No registration needed! Simply attend any of our workshops, Bible studies, or connect with our pastoral team.
-
-**Newsletter**: You can sign up for our newsletter to stay updated on events and programs.`,
-  
-  volunteer: `We welcome volunteers! Here's how you can get involved:
-- Serve in our outreach programs
-- Assist with food drives and distribution
-- Mentor LDI participants
-- Help with administrative tasks
-- Join our prayer team
-
-Contact us through our Contact page to learn more about volunteer opportunities.`,
-  
-  donation: `Your donations help transform lives! We accept:
-- One-time donations
-- Monthly recurring donations
-- In-kind donations (food, clothing, supplies)
-
-Visit our Donations page to contribute. All donations are tax-deductible and go directly to supporting our programs and the individuals we serve.`
-};
-
-function generateResponse(message: string, history: any[]): string {
-  const lowerMessage = message.toLowerCase();
-  
-  // Greeting patterns
-  if (/^(hi|hello|hey|greetings|good morning|good afternoon|good evening)/.test(lowerMessage)) {
-    return knowledgeBase.greeting[Math.floor(Math.random() * knowledgeBase.greeting.length)];
-  }
-  
-  // About UCon
-  if (/(about|who are|what is|tell me about|mission|purpose|slogan)/i.test(lowerMessage) && 
-      /(ucon|ministry|ministries|organization)/i.test(lowerMessage)) {
-    return knowledgeBase.about;
-  }
-  
-  // LDI Program
-  if (/(ldi|leadership development|program|tier|ascension|pinnacle|apex)/i.test(lowerMessage)) {
-    return knowledgeBase.ldi;
-  }
-  
-  // Services
-  if (/(service|services|track|help|support|what do you offer)/i.test(lowerMessage)) {
-    return knowledgeBase.services;
-  }
-  
-  // Prayer Wall
-  if (/(prayer|pray|prayer wall|prayer request)/i.test(lowerMessage)) {
-    return knowledgeBase.prayer;
-  }
-  
-  // Contact
-  if (/(contact|reach|call|email|phone|location|address|where are you)/i.test(lowerMessage)) {
-    return knowledgeBase.contact;
-  }
-  
-  // Registration
-  if (/(register|registration|sign up|join|enroll|apply|application)/i.test(lowerMessage)) {
-    return knowledgeBase.registration;
-  }
-  
-  // Volunteer
-  if (/(volunteer|help out|get involved|serve)/i.test(lowerMessage)) {
-    return knowledgeBase.volunteer;
-  }
-  
-  // Donations
-  if (/(donate|donation|give|contribute|support financially)/i.test(lowerMessage)) {
-    return knowledgeBase.donation;
-  }
-  
-  // Default response
-  return `I'd be happy to help! I can provide information about:
-
-- UCon Ministries and our mission
-- The Leadership Development Institute (LDI) program
-- Our services and how we can help
-- Prayer wall and community support
-- How to register or get involved
-- Volunteer opportunities
-- Making a donation
-
-What would you like to know more about?`;
-}
+When answering questions:
+1. Be compassionate, encouraging, and hope-filled
+2. Direct people to appropriate resources within our three tracks
+3. Emphasize that transformation is possible for everyone
+4. Maintain a Christ-centered perspective while being inclusive
+5. Provide specific, actionable information
+6. Be brief but thorough (2-3 paragraphs max unless asked for more detail)`;
 
 export async function POST(request: NextRequest) {
   try {
@@ -171,11 +100,79 @@ export async function POST(request: NextRequest) {
       }, { status: 200 });
     }
 
-    // Generate response
-    const response = generateResponse(message, history || []);
+    // Prepare conversation history for Gemini
+    const conversationHistory = (history || []).map((msg: any) => ({
+      role: msg.role === 'user' ? 'user' : 'model',
+      parts: [{ text: msg.content }]
+    }));
+
+    // Add system context as the first message
+    const messages = [
+      {
+        role: 'user',
+        parts: [{ text: MINISTRY_CONTEXT }]
+      },
+      {
+        role: 'model',
+        parts: [{ text: 'I understand. I will act as a helpful, compassionate assistant for UCon Ministries, providing information about our programs, services, and helping people find the support they need. I will be Christ-centered, encouraging, and provide specific actionable guidance.' }]
+      },
+      ...conversationHistory,
+      {
+        role: 'user',
+        parts: [{ text: message }]
+      }
+    ];
+
+    // Call Gemini API
+    const geminiResponse = await fetch(`${GEMINI_API_URL}?key=${GEMINI_API_KEY}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        contents: messages,
+        generationConfig: {
+          temperature: 0.7,
+          topK: 40,
+          topP: 0.95,
+          maxOutputTokens: 1024,
+        },
+        safetySettings: [
+          {
+            category: 'HARM_CATEGORY_HARASSMENT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          },
+          {
+            category: 'HARM_CATEGORY_HATE_SPEECH',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          },
+          {
+            category: 'HARM_CATEGORY_SEXUALLY_EXPLICIT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          },
+          {
+            category: 'HARM_CATEGORY_DANGEROUS_CONTENT',
+            threshold: 'BLOCK_MEDIUM_AND_ABOVE'
+          }
+        ]
+      })
+    });
+
+    if (!geminiResponse.ok) {
+      console.error('Gemini API error:', await geminiResponse.text());
+      // Fallback to basic response if Gemini fails
+      return NextResponse.json({
+        message: "I'm here to help you learn about UCon Ministries. We offer three tracks of support:\n\n1. **LDI Program**: Intensive 64-week leadership development for those ready to commit to transformation\n2. **Open Services**: No-commitment workshops, Bible studies, and pastoral care\n3. **Outreach**: Immediate crisis support including food, shelter, and transportation\n\nHow can I assist you today? Would you like to know more about any of our programs?",
+        moderated: false
+      }, { status: 200 });
+    }
+
+    const data = await geminiResponse.json();
+    const aiMessage = data.candidates?.[0]?.content?.parts?.[0]?.text || 
+      "I'm here to help! Could you please rephrase your question?";
 
     return NextResponse.json({
-      message: response,
+      message: aiMessage,
       moderated: false
     }, { status: 200 });
 
