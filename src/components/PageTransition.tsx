@@ -21,7 +21,7 @@ export default function PageTransition({ children }: { children: React.ReactNode
 
   return (
     <div
-      className={`transition-opacity duration-300 ${
+      className={`transition-opacity duration-1000 ${
         isTransitioning ? "opacity-0" : "opacity-100"
       }`}
     >
