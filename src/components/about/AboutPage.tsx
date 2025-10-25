@@ -177,6 +177,15 @@ export default function AboutPage() {
         className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure"
       >
         <div className="max-w-7xl mx-auto">
+          <div className="mb-12 relative h-96 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/heartwarming-photo-of-diverse-group-of-p-601c42f7-20251025022559.jpg"
+              alt="Community celebrating together"
+              fill
+              className="object-cover"
+            />
+          </div>
+          
           <div className={`text-center transition-all duration-700 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>

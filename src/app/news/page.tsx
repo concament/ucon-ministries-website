@@ -91,6 +91,15 @@ export default function NewsPage() {
       {/* Hero Section */}
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/10 to-[#F28C28]/10 fade-in">
         <div className="max-w-7xl mx-auto text-center">
+          <div className="mb-12 relative h-96 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/heartwarming-photo-of-diverse-group-of-p-601c42f7-20251025022559.jpg"
+              alt="Stories of transformation"
+              fill
+              className="object-cover"
+            />
+          </div>
+          
           <Badge className="mb-4 bg-[#A92FFA]">News & Blog</Badge>
           <h1 className="text-5xl sm:text-6xl font-bold mb-6">
             Stories of Transformation

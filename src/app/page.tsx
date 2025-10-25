@@ -62,7 +62,7 @@ export default function HomePage() {
       {/* SECTION 1: HERO - 12 Containers */}
       <section 
         ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
+        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
       >
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
@@ -200,6 +200,16 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90">Our Mission</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Transforming Lives Through Purpose</h2>
+          </div>
+          
+          {/* Add Image */}
+          <div className="mb-12 relative h-96 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/heartwarming-photo-of-diverse-group-of-p-601c42f7-20251025022559.jpg"
+              alt="Community celebrating transformation"
+              fill
+              className="object-cover"
+            />
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
