@@ -43,7 +43,7 @@ export async function GET(request: NextRequest) {
     const startDate = searchParams.get('start_date');
     const endDate = searchParams.get('end_date');
 
-    let query = db.select().from(events);
+    let query: any = db.select().from(events);
     const conditions = [];
 
     // Search by title

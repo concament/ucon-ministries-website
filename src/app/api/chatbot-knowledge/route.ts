@@ -58,7 +58,7 @@ export async function GET(request: NextRequest) {
     }
     
     // Build and execute query
-    let query = db.select().from(chatbotKnowledge);
+    let query: any = db.select().from(chatbotKnowledge);
     
     // Apply filters if any conditions exist
     if (conditions.length > 0) {

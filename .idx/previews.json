@@ -1,0 +1,10 @@
+{
+  "previews": [
+    {
+      "id": "web",
+      "name": "Web",
+      "port": 3000,
+      "startCommand": "npm run dev"
+    }
+  ]
+}

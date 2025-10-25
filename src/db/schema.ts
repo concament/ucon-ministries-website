@@ -82,3 +82,14 @@ export const volunteerApplications = sqliteTable('volunteer_applications', {
   reviewedAt: text('reviewed_at'),
   notes: text('notes'),
 });
+
+export const chatbotKnowledge = sqliteTable('chatbot_knowledge', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  question: text('question').notNull(),
+  answer: text('answer').notNull(),
+  category: text('category'),
+  keywords: text('keywords'),
+  createdAt: text('created_at').notNull(),
+  updatedAt: text('updated_at').notNull(),
+});
+

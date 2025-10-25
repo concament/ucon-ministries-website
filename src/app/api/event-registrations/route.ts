@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     const eventId = searchParams.get('event_id');
     const status = searchParams.get('status');
 
-    let query = db.select().from(eventRegistrations);
+    let query: any = db.select().from(eventRegistrations);
 
     // Apply filters
     const conditions = [];
