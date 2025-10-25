@@ -12,8 +12,10 @@ import {
   Crown, Mountain, Building2, Rocket, Sparkles, Heart, Users, Target,
   BookOpen, Brain, Shield, TrendingUp, Award, Clock, Calendar, CheckCircle2,
   ArrowRight, ChevronRight, GraduationCap, MessageSquare, FileText, Star,
-  Lightbulb, Zap, Compass, CircleDot, Phone, Mail, MapPin
+  Lightbulb, Zap, Compass, CircleDot, Phone, Mail, MapPin, Play, Pause, Volume2
 } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 // Intersection Observer Hook
 function useIntersectionObserver(options = {}) {
@@ -38,6 +40,44 @@ function useIntersectionObserver(options = {}) {
   return [ref, isVisible] as const;
 }
 
+// Background Music Player Component
+function BackgroundMusicPlayer() {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const togglePlay = () => {
+    if (!audioRef.current) {
+      audioRef.current = new Audio("/background-music.mp3");
+      audioRef.current.loop = true;
+      audioRef.current.volume = 0.3;
+    }
+
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play().catch(err => console.log("Audio play failed:", err));
+    }
+    setIsPlaying(!isPlaying);
+  };
+
+  return (
+    <div className="fixed bottom-8 right-8 z-40">
+      <Button
+        onClick={togglePlay}
+        size="lg"
+        className="rounded-full w-16 h-16 bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:opacity-90 shadow-lg hover-glow"
+        aria-label={isPlaying ? "Pause music" : "Play music"}
+      >
+        {isPlaying ? (
+          <Pause className="w-6 h-6 text-white" />
+        ) : (
+          <Play className="w-6 h-6 text-white ml-1" />
+        )}
+      </Button>
+    </div>
+  );
+}
+
 export default function LDIPage() {
   const [activeTab, setActiveTab] = useState("overview");
   
@@ -53,9 +93,10 @@ export default function LDIPage() {
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
+      <BackgroundMusicPlayer />
       
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure">
+      <section ref={heroRef} className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure">
         <div className="max-w-7xl mx-auto">
           <div className="grid lg:grid-cols-12 gap-8 items-center">
             {/* Container 1-2: Main Content */}
@@ -89,12 +130,16 @@ export default function LDIPage() {
               <div className={`flex flex-wrap gap-4 pt-4 transition-all duration-700 delay-400 ${
                 heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
               }`}>
-                <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90">
-                  Apply to LDI
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
+                  <Link href="/ldi-waitlist">
+                    Apply to LDI
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white">
-                  Download Brochure
+                <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
+                  <a href="/ldi-brochure.pdf" download>
+                    Download Brochure
+                  </a>
                 </Button>
               </div>
             </div>
@@ -183,6 +228,16 @@ export default function LDIPage() {
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The LDI is designed to dismantle a lifetime of worthlessness and trauma through a safe, challenging therapeutic community that integrates evidence-based practices with biblical truth.
             </p>
+          </div>
+
+          {/* Add Image */}
+          <div className="mb-12 relative h-96 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-diverse-group-of-people-in--d203b69c-20251025022142.jpg"
+              alt="Therapeutic community in discussion"
+              fill
+              className="object-cover"
+            />
           </div>
           
           {/* Container 3-6: Core Principles */}
@@ -341,13 +396,23 @@ export default function LDIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center">
-              <Sparkles className="w-8 h-8 text-[#A92FFA] text-primary-foreground" />
+              <Sparkles className="w-8 h-8 text-white" />
             </div>
             <div>
-              <Badge className="mb-2 bg-[#A92FFA] text-[#A92FFA]">Tier 1 | Weeks 1-16</Badge>
+              <Badge className="mb-2 bg-[#A92FFA]">Tier 1 | Weeks 1-16</Badge>
               <h2 className="text-4xl font-bold glow-text">Ascension</h2>
               <p className="text-lg text-muted-foreground">Foundation Demolition & Reconstruction</p>
             </div>
+          </div>
+          
+          {/* Add Image */}
+          <div className="mb-8 relative h-80 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/individual-person-climbing-ascending-ste-ac964634-20251025022141.jpg"
+              alt="Ascending journey of transformation"
+              fill
+              className="object-cover"
+            />
           </div>
           
           {/* Container 3-4: Overview */}
@@ -604,13 +669,23 @@ export default function LDIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center">
-              <Mountain className="w-8 h-8 text-[#F28C28] text-secondary-foreground" />
+              <Mountain className="w-8 h-8 text-white" />
             </div>
             <div>
               <Badge className="mb-2 bg-[#F28C28]">Tier 2 | Weeks 17-32</Badge>
               <h2 className="text-4xl font-bold glow-text">Pinnacle</h2>
               <p className="text-lg text-muted-foreground">Mentorship Development</p>
             </div>
+          </div>
+          
+          {/* Add Image */}
+          <div className="mb-8 relative h-80 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/mentor-and-mentee-sitting-together-in-co-e425843d-20251025022141.jpg"
+              alt="Mentor and mentee in consultation"
+              fill
+              className="object-cover"
+            />
           </div>
           
           {/* Container 3-4: Overview */}
@@ -867,13 +942,23 @@ export default function LDIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center">
-              <Building2 className="w-8 h-8 text-[#A92FFA] text-accent-foreground" />
+              <Building2 className="w-8 h-8 text-white" />
             </div>
             <div>
-              <Badge className="mb-2 bg-[#A92FFA] text-[#A92FFA]">Tier 3 | Weeks 33-48</Badge>
+              <Badge className="mb-2 bg-[#A92FFA]">Tier 3 | Weeks 33-48</Badge>
               <h2 className="text-4xl font-bold glow-text">Apex</h2>
               <p className="text-lg text-muted-foreground">Systemic Leadership</p>
             </div>
+          </div>
+          
+          {/* Add Image */}
+          <div className="mb-8 relative h-80 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/group-of-leaders-in-a-professional-meeti-6232f22b-20251025022141.jpg"
+              alt="Leaders planning community programs"
+              fill
+              className="object-cover"
+            />
           </div>
           
           {/* Container 3-4: Overview */}
@@ -1130,13 +1215,23 @@ export default function LDIPage() {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-[#A92FFA] to-[#F28C28] rounded-xl flex items-center justify-center">
-              <Rocket className="w-8 h-8 text-[#A92FFA] text-primary-foreground" />
+              <Rocket className="w-8 h-8 text-white" />
             </div>
             <div>
               <Badge className="mb-2 bg-gradient-to-r from-[#A92FFA] to-[#F28C28]">Tier 4 | Weeks 49-64</Badge>
               <h2 className="text-4xl font-bold glow-text">UCon</h2>
               <p className="text-lg text-muted-foreground">Visionary Leadership & National Impact</p>
             </div>
+          </div>
+          
+          {/* Add Image */}
+          <div className="mb-8 relative h-80 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/executive-leader-presenting-at-national--28ce3f8b-20251025022141.jpg"
+              alt="Executive leader presenting at conference"
+              fill
+              className="object-cover"
+            />
           </div>
           
           {/* Container 3-4: Overview */}
@@ -1405,6 +1500,16 @@ export default function LDIPage() {
             </p>
           </div>
           
+          {/* Add Image */}
+          <div className="mb-12 relative h-80 rounded-lg overflow-hidden">
+            <Image
+              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/diverse-group-of-people-filling-out-appl-51822d05-20251025022140.jpg"
+              alt="Applicants during intake assessment"
+              fill
+              className="object-cover"
+            />
+          </div>
+          
           {/* Container 3-8: Application Steps */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <Card className="hover:shadow-lg transition-shadow">
@@ -1418,9 +1523,11 @@ export default function LDIPage() {
                 <p className="text-sm text-muted-foreground mb-4">
                   Connect with us through outreach services, open ministry programs, or direct inquiry. Build initial relationship with our team.
                 </p>
-                <Button variant="outline" size="sm" className="w-full">
-                  <Phone className="w-4 h-4 mr-2" />
-                  Contact Us
+                <Button variant="outline" size="sm" className="w-full" asChild>
+                  <Link href="/contact">
+                    <Phone className="w-4 h-4 mr-2" />
+                    Contact Us
+                  </Link>
                 </Button>
               </CardContent>
             </Card>
