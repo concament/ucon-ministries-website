@@ -6,12 +6,14 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { 
   Heart, Target, Users, Compass, BookOpen, Church,
   Award, TrendingUp, Shield, Sparkles, ArrowRight,
-  CheckCircle2, Star, Globe, Building2, HandHeart
+  CheckCircle2, Star, Globe, Building2, HandHeart, Mail, Linkedin
 } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 // Intersection Observer Hook
 function useIntersectionObserver(options = {}) {
@@ -36,6 +38,50 @@ function useIntersectionObserver(options = {}) {
   return [ref, isVisible] as const;
 }
 
+// Staff Member Data
+const staffMembers = [
+  {
+    id: 1,
+    name: "Rev. Michael Thompson",
+    role: "Executive Director & Founder",
+    bio: "Rev. Thompson founded UCon Ministries after his own transformative journey through recovery and redemption. With over 15 years of experience in ministry and community development, he leads with vision, compassion, and unwavering commitment to those society has forgotten.",
+    expertise: ["Leadership Development", "Trauma-Informed Care", "Spiritual Formation"],
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+    email: "mthompson@uconministries.org",
+    linkedin: "#"
+  },
+  {
+    id: 2,
+    name: "Dr. Sarah Martinez",
+    role: "Clinical Director",
+    bio: "Dr. Martinez brings 12 years of clinical psychology experience specializing in addiction recovery and trauma treatment. She integrates evidence-based practices with faith-based principles to create holistic healing pathways.",
+    expertise: ["Clinical Psychology", "Addiction Treatment", "Group Therapy"],
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+    email: "smartinez@uconministries.org",
+    linkedin: "#"
+  },
+  {
+    id: 3,
+    name: "James Wilson",
+    role: "Program Coordinator",
+    bio: "James is an LDI graduate who now serves as Program Coordinator. His lived experience combined with formal training in social work makes him uniquely qualified to support participants through their transformation journey.",
+    expertise: ["Peer Support", "Case Management", "Community Outreach"],
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+    email: "jwilson@uconministries.org",
+    linkedin: "#"
+  },
+  {
+    id: 4,
+    name: "Pastor Maria Rodriguez",
+    role: "Spiritual Care Director",
+    bio: "Pastor Maria oversees all spiritual formation programs and pastoral care services. With a heart for the marginalized and a gift for teaching, she creates safe spaces for spiritual growth and biblical exploration.",
+    expertise: ["Pastoral Counseling", "Biblical Studies", "Spiritual Direction"],
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
+    email: "mrodriguez@uconministries.org",
+    linkedin: "#"
+  }
+];
+
 export default function AboutPage() {
   const [heroRef, heroVisible] = useIntersectionObserver();
   const [missionRef, missionVisible] = useIntersectionObserver();
@@ -43,8 +89,17 @@ export default function AboutPage() {
   const [ldiRef, ldiVisible] = useIntersectionObserver();
   const [differentiatorRef, differentiatorVisible] = useIntersectionObserver();
   const [visionRef, visionVisible] = useIntersectionObserver();
+  const [staffRef, staffVisible] = useIntersectionObserver();
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
+  
+  const [selectedStaff, setSelectedStaff] = useState<typeof staffMembers[0] | null>(null);
+  const [staffDialogOpen, setStaffDialogOpen] = useState(false);
+
+  const handleStaffClick = (staff: typeof staffMembers[0]) => {
+    setSelectedStaff(staff);
+    setStaffDialogOpen(true);
+  };
 
   const coreValues = [
     {
@@ -498,6 +553,61 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Staff Team Section */}
+      <section 
+        ref={staffRef}
+        className={`py-20 px-4 sm:px-6 lg:px-8 transition-all duration-700 ${
+          staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}
+      >
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90">
+              <Users className="w-4 h-4 mr-2" />
+              Our Team
+            </Badge>
+            <h2 className="text-5xl sm:text-6xl font-bold mb-6">Meet Our Staff</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Dedicated leaders committed to transforming lives and building community.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {staffMembers.map((staff, index) => (
+              <Card 
+                key={staff.id}
+                className="hover-lift cursor-pointer transition-all duration-700"
+                onClick={() => handleStaffClick(staff)}
+                style={{ 
+                  transitionDelay: `${index * 100}ms`,
+                  opacity: staffVisible ? 1 : 0,
+                  transform: staffVisible ? 'translateY(0)' : 'translateY(2rem)'
+                }}
+              >
+                <div className="relative w-full h-64">
+                  <Image
+                    src={staff.image}
+                    alt={staff.name}
+                    fill
+                    className="object-cover rounded-t-lg"
+                  />
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{staff.name}</CardTitle>
+                  <CardDescription>{staff.role}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button variant="outline" className="w-full">
+                    View Profile
+                    <ArrowRight className="ml-2 w-4 h-4" />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section 
         ref={ctaRef}
@@ -531,6 +641,67 @@ export default function AboutPage() {
           </Card>
         </div>
       </section>
+
+      {/* Staff Detail Dialog */}
+      <Dialog open={staffDialogOpen} onOpenChange={setStaffDialogOpen}>
+        <DialogContent className="sm:max-w-2xl">
+          {selectedStaff && (
+            <>
+              <DialogHeader>
+                <div className="flex items-start gap-6 mb-4">
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0">
+                    <Image
+                      src={selectedStaff.image}
+                      alt={selectedStaff.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <DialogTitle className="text-3xl mb-2">{selectedStaff.name}</DialogTitle>
+                    <DialogDescription className="text-lg">
+                      {selectedStaff.role}
+                    </DialogDescription>
+                  </div>
+                </div>
+              </DialogHeader>
+              
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">About</h3>
+                  <p className="text-muted-foreground leading-relaxed">{selectedStaff.bio}</p>
+                </div>
+                
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">Areas of Expertise</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {selectedStaff.expertise.map((item, index) => (
+                      <Badge key={index} variant="secondary">
+                        {item}
+                      </Badge>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="flex gap-4 pt-4 border-t">
+                  <Button variant="outline" className="flex-1" asChild>
+                    <a href={`mailto:${selectedStaff.email}`}>
+                      <Mail className="mr-2 w-4 h-4" />
+                      Email
+                    </a>
+                  </Button>
+                  <Button variant="outline" className="flex-1" asChild>
+                    <a href={selectedStaff.linkedin} target="_blank" rel="noopener noreferrer">
+                      <Linkedin className="mr-2 w-4 h-4" />
+                      LinkedIn
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
 
       <Footer />
     </div>

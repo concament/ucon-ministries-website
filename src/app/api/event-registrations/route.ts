@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { eventId, userName, userEmail, userPhone, notes, status } = body;
+    const { eventId, userName, userEmail, userPhone, notes, status, isMember } = body;
 
     // Validate required fields
     if (!eventId) {
@@ -131,13 +131,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Create registration
+    // Create registration with member status
     const registrationData = {
       eventId: parseInt(eventId),
       userName: userName.trim(),
       userEmail: userEmail.trim().toLowerCase(),
       userPhone: userPhone ? userPhone.trim() : null,
-      notes: notes ? notes.trim() : null,
+      notes: isMember 
+        ? `Ministry Member Registration. ${notes ? notes.trim() : ''}`.trim()
+        : (notes ? notes.trim() : null),
       status: status || 'confirmed',
       registeredAt: new Date().toISOString(),
     };
@@ -147,7 +149,10 @@ export async function POST(request: NextRequest) {
       .values(registrationData)
       .returning();
 
-    return NextResponse.json(newRegistration[0], { status: 201 });
+    return NextResponse.json({
+      ...newRegistration[0],
+      isMember: isMember === true
+    }, { status: 201 });
   } catch (error) {
     console.error('POST error:', error);
     return NextResponse.json(

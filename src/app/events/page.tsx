@@ -10,8 +10,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
-import { Calendar, MapPin, Clock, Users, Filter, CalendarDays, ChevronLeft, ChevronRight, User, Mail, Phone } from "lucide-react";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Calendar, MapPin, Clock, Users, CalendarDays, ChevronLeft, ChevronRight, User, Mail, Phone } from "lucide-react";
 import { toast } from "sonner";
 
 interface Event {
@@ -33,12 +33,14 @@ export default function EventsPage() {
   const [selectedType, setSelectedType] = useState<string>("all");
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [selectedEvent, setSelectedEvent] = useState<Event | null>(null);
+  const [eventDetailOpen, setEventDetailOpen] = useState(false);
   const [registrationOpen, setRegistrationOpen] = useState(false);
   const [registrationData, setRegistrationData] = useState({
     userName: "",
     userEmail: "",
     userPhone: "",
     notes: "",
+    isMember: false,
   });
 
   const eventTypes = [
@@ -74,13 +76,29 @@ export default function EventsPage() {
     }
   };
 
-  const handleRegister = async (event: Event) => {
-    if (event.requiresAuth) {
+  const handleDayClick = (day: number) => {
+    const dayEvents = getEventsForDay(day);
+    if (dayEvents.length === 1) {
+      setSelectedEvent(dayEvents[0]);
+      setEventDetailOpen(true);
+    } else if (dayEvents.length > 1) {
+      // Show first event and let user browse
+      setSelectedEvent(dayEvents[0]);
+      setEventDetailOpen(true);
+    }
+  };
+
+  const handleEventClick = (event: Event) => {
+    setSelectedEvent(event);
+    setEventDetailOpen(true);
+  };
+
+  const handleRegisterClick = () => {
+    if (selectedEvent?.requiresAuth) {
       toast.error("This workshop requires authentication. Please log in to register.");
       return;
     }
-
-    setSelectedEvent(event);
+    setEventDetailOpen(false);
     setRegistrationOpen(true);
   };
 
@@ -102,13 +120,16 @@ export default function EventsPage() {
           userEmail: registrationData.userEmail,
           userPhone: registrationData.userPhone,
           notes: registrationData.notes,
+          isMember: registrationData.isMember,
         }),
       });
 
       if (response.ok) {
-        toast.success("Successfully registered for event!");
+        toast.success(registrationData.isMember 
+          ? "Successfully registered as a ministry member!" 
+          : "Successfully registered for event!");
         setRegistrationOpen(false);
-        setRegistrationData({ userName: "", userEmail: "", userPhone: "", notes: "" });
+        setRegistrationData({ userName: "", userEmail: "", userPhone: "", notes: "", isMember: false });
       } else {
         const error = await response.json();
         toast.error(error.error || "Failed to register");
@@ -138,16 +159,6 @@ export default function EventsPage() {
       hour: "numeric",
       minute: "2-digit",
       hour12: true,
-    });
-  };
-
-  const getEventsForMonth = () => {
-    return events.filter(event => {
-      const eventDate = new Date(event.startDate);
-      return (
-        eventDate.getMonth() === currentMonth.getMonth() &&
-        eventDate.getFullYear() === currentMonth.getFullYear()
-      );
     });
   };
 
@@ -257,9 +268,11 @@ export default function EventsPage() {
                   return (
                     <div
                       key={index}
-                      className={`min-h-24 p-2 border rounded-lg ${
-                        day ? "bg-background hover:bg-muted cursor-pointer" : "bg-muted/50"
+                      className={`min-h-24 p-2 border ${
+                        day ? "bg-background hover:bg-muted cursor-pointer transition-colors" : "bg-muted/50"
                       }`}
+                      onClick={() => day && dayEvents.length > 0 && handleDayClick(day)}
+                      style={{ borderRadius: '8px' }}
                     >
                       {day && (
                         <>
@@ -268,8 +281,8 @@ export default function EventsPage() {
                             {dayEvents.slice(0, 2).map((event) => (
                               <div
                                 key={event.id}
-                                className={`text-xs p-1 rounded ${getEventTypeColor(event.eventType)}`}
-                                onClick={() => setSelectedEvent(event)}
+                                className={`text-xs p-1 ${getEventTypeColor(event.eventType)}`}
+                                style={{ borderRadius: '4px' }}
                               >
                                 {event.title.slice(0, 20)}
                               </div>
@@ -300,7 +313,7 @@ export default function EventsPage() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[1, 2, 3].map((i) => (
                 <Card key={i} className="animate-pulse">
-                  <div className="w-full h-48 bg-muted rounded-t-lg" />
+                  <div className="w-full h-48 bg-muted" style={{ borderRadius: '53px 53px 0 0' }} />
                   <CardHeader>
                     <div className="h-4 bg-muted rounded w-1/3 mb-2" />
                     <div className="h-6 bg-muted rounded w-full" />
@@ -319,7 +332,8 @@ export default function EventsPage() {
               {events.map((event, index) => (
                 <Card 
                   key={event.id} 
-                  className="hover-lift overflow-hidden"
+                  className="hover-lift overflow-hidden cursor-pointer"
+                  onClick={() => handleEventClick(event)}
                   style={{
                     animation: `fadeIn 0.6s ease-out ${index * 0.1}s forwards`,
                     opacity: 0
@@ -364,19 +378,6 @@ export default function EventsPage() {
                         <span className="line-clamp-2">{event.location}</span>
                       </div>
                     )}
-                    {event.maxAttendees && (
-                      <div className="flex items-start gap-2 text-sm">
-                        <Users className="w-4 h-4 mt-0.5 flex-shrink-0 text-muted-foreground" />
-                        <span>Max {event.maxAttendees} attendees</span>
-                      </div>
-                    )}
-                    
-                    <Button 
-                      className="w-full mt-4" 
-                      onClick={() => handleRegister(event)}
-                    >
-                      {event.requiresAuth ? "Login to Register" : "Register Now"}
-                    </Button>
                   </CardContent>
                 </Card>
               ))}
@@ -384,6 +385,88 @@ export default function EventsPage() {
           )}
         </div>
       </section>
+
+      {/* Event Detail Dialog */}
+      <Dialog open={eventDetailOpen} onOpenChange={setEventDetailOpen}>
+        <DialogContent className="sm:max-w-2xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl">{selectedEvent?.title}</DialogTitle>
+            <div className="flex gap-2 mt-2">
+              <Badge className={getEventTypeColor(selectedEvent?.eventType || "")}>
+                {selectedEvent?.eventType}
+              </Badge>
+            </div>
+          </DialogHeader>
+          
+          {selectedEvent && (
+            <div className="space-y-4">
+              {selectedEvent.imageUrl && (
+                <div className="relative w-full h-64">
+                  <Image
+                    src={selectedEvent.imageUrl}
+                    alt={selectedEvent.title}
+                    fill
+                    className="object-cover"
+                    style={{ borderRadius: '12px' }}
+                  />
+                </div>
+              )}
+              
+              <p className="text-muted-foreground">{selectedEvent.description}</p>
+              
+              <div className="space-y-3 pt-4 border-t">
+                <div className="flex items-start gap-3">
+                  <Calendar className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold">Date</p>
+                    <p className="text-sm text-muted-foreground">{formatDate(selectedEvent.startDate)}</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="font-semibold">Time</p>
+                    <p className="text-sm text-muted-foreground">
+                      {formatTime(selectedEvent.startDate)}
+                      {selectedEvent.endDate && ` - ${formatTime(selectedEvent.endDate)}`}
+                    </p>
+                  </div>
+                </div>
+                
+                {selectedEvent.location && (
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold">Location</p>
+                      <p className="text-sm text-muted-foreground">{selectedEvent.location}</p>
+                    </div>
+                  </div>
+                )}
+                
+                {selectedEvent.maxAttendees && (
+                  <div className="flex items-start gap-3">
+                    <Users className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-semibold">Capacity</p>
+                      <p className="text-sm text-muted-foreground">Maximum {selectedEvent.maxAttendees} attendees</p>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex gap-3 pt-4">
+                <Button variant="outline" onClick={() => setEventDetailOpen(false)} className="flex-1">
+                  Close
+                </Button>
+                <Button onClick={handleRegisterClick} className="flex-1">
+                  {selectedEvent.requiresAuth ? "Login to Register" : "Register Now"}
+                </Button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
 
       {/* Registration Dialog */}
       <Dialog open={registrationOpen} onOpenChange={setRegistrationOpen}>
@@ -436,6 +519,19 @@ export default function EventsPage() {
                 onChange={(e) => setRegistrationData({ ...registrationData, notes: e.target.value })}
                 placeholder="Any special requests or questions"
               />
+            </div>
+            
+            <div className="flex items-center space-x-2 p-4 bg-muted/50" style={{ borderRadius: '8px' }}>
+              <input
+                type="checkbox"
+                id="isMember"
+                checked={registrationData.isMember}
+                onChange={(e) => setRegistrationData({ ...registrationData, isMember: e.target.checked })}
+                className="w-4 h-4"
+              />
+              <Label htmlFor="isMember" className="text-sm font-normal cursor-pointer">
+                Register as a UCon Ministries Member (Access to role-specific features like posting testimonials)
+              </Label>
             </div>
           </div>
           
