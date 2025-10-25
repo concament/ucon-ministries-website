@@ -12,7 +12,7 @@ import {
   Crown, Mountain, Building2, Rocket, Sparkles, Heart, Users, Target,
   BookOpen, Brain, Shield, TrendingUp, Award, Clock, Calendar, CheckCircle2,
   ArrowRight, ChevronRight, GraduationCap, MessageSquare, FileText, Star,
-  Lightbulb, Zap, Compass, CircleDot, Phone, Mail, MapPin, Play, Pause, Volume2
+  Lightbulb, Zap, Compass, CircleDot, Phone, Mail, MapPin, Play, Pause
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -40,17 +40,26 @@ function useIntersectionObserver(options = {}) {
   return [ref, isVisible] as const;
 }
 
-// Background Music Player Component
+// Simplified Background Music Player
 function BackgroundMusicPlayer() {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
+  useEffect(() => {
+    audioRef.current = new Audio("https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.2;
+    
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
   const togglePlay = () => {
-    if (!audioRef.current) {
-      audioRef.current = new Audio("/background-music.mp3");
-      audioRef.current.loop = true;
-      audioRef.current.volume = 0.3;
-    }
+    if (!audioRef.current) return;
 
     if (isPlaying) {
       audioRef.current.pause();
@@ -61,20 +70,18 @@ function BackgroundMusicPlayer() {
   };
 
   return (
-    <div className="fixed bottom-8 right-8 z-40">
-      <Button
-        onClick={togglePlay}
-        size="lg"
-        className="rounded-full w-16 h-16 bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:opacity-90 shadow-lg hover-glow"
-        aria-label={isPlaying ? "Pause music" : "Play music"}
-      >
-        {isPlaying ? (
-          <Pause className="w-6 h-6 text-white" />
-        ) : (
-          <Play className="w-6 h-6 text-white ml-1" />
-        )}
-      </Button>
-    </div>
+    <button
+      onClick={togglePlay}
+      className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full bg-gradient-to-br from-[#A92FFA] to-[#F28C28] hover:scale-110 shadow-2xl flex items-center justify-center transition-all duration-300 hover:shadow-[#A92FFA]/50"
+      aria-label={isPlaying ? "Pause background music" : "Play background music"}
+      title={isPlaying ? "Pause Music" : "Play Music"}
+    >
+      {isPlaying ? (
+        <Pause className="w-6 h-6 text-white" fill="white" />
+      ) : (
+        <Play className="w-6 h-6 text-white ml-0.5" fill="white" />
+      )}
+    </button>
   );
 }
 
