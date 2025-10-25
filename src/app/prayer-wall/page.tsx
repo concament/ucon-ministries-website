@@ -15,7 +15,6 @@ import {
   ChevronDown, ChevronUp, Send
 } from "lucide-react";
 import { toast } from "sonner";
-import Image from "next/image";
 
 const categories = [
   { value: "all", label: "All Prayers", color: "bg-primary" },
@@ -247,16 +246,6 @@ export default function PrayerWall() {
       >
         <div className="absolute inset-0 overlay-gradient opacity-50" />
         <div className="max-w-7xl mx-auto relative z-10">
-          {/* Add Hero Image */}
-          <div className="mb-12 relative h-80 rounded-lg overflow-hidden">
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/warm-and-welcoming-photo-of-diverse-grou-7769b040-20251025022559.jpg"
-              alt="Community praying together"
-              fill
-              className="object-cover"
-            />
-          </div>
-          
           <div className={`text-center mb-8 transition-all duration-1000 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>

@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { 
@@ -16,9 +15,8 @@ import {
   TrendingUp, Award, CheckCircle2, ArrowRight, Star, 
   ChevronRight, MapPin, Calendar, Clock, Phone, Mail,
   Sparkles, Crown, Mountain, Rocket, GraduationCap, Building2,
-  Quote, Lightbulb, UserCheck, Briefcase, Linkedin
+  Quote, Lightbulb, UserCheck, Briefcase
 } from "lucide-react";
-import { staffMembers } from "@/data/staff";
 
 // Intersection Observer Hook for animations
 function useIntersectionObserver(options = {}) {
@@ -57,14 +55,6 @@ export default function HomePage() {
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
-  const [selectedStaff, setSelectedStaff] = useState<typeof staffMembers[0] | null>(null);
-  const [staffDialogOpen, setStaffDialogOpen] = useState(false);
-
-  const handleStaffClick = (staff: typeof staffMembers[0]) => {
-    setSelectedStaff(staff);
-    setStaffDialogOpen(true);
-  };
-
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
@@ -72,7 +62,7 @@ export default function HomePage() {
       {/* SECTION 1: HERO - 12 Containers */}
       <section 
         ref={heroRef}
-        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
       >
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
@@ -210,16 +200,6 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90">Our Mission</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Transforming Lives Through Purpose</h2>
-          </div>
-          
-          {/* Add Image */}
-          <div className="mb-12 relative h-96 rounded-lg overflow-hidden">
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/heartwarming-photo-of-diverse-group-of-p-601c42f7-20251025022559.jpg"
-              alt="Community celebrating transformation"
-              fill
-              className="object-cover"
-            />
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
@@ -1713,35 +1693,155 @@ export default function HomePage() {
           
           {/* Container 3-8: Staff Members with Images */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {staffMembers.map((staff, index) => (
-              <Card 
-                key={staff.id}
-                className="hover-lift hover-glow cursor-pointer"
-                onClick={() => handleStaffClick(staff)}
-              >
-                <CardHeader>
-                  <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                    <Image
-                      src={staff.image}
-                      alt={staff.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <CardTitle className="text-center text-xl">{staff.name}</CardTitle>
-                  <CardDescription className="text-center">{staff.role}</CardDescription>
-                </CardHeader>
-                <CardContent className="text-center">
-                  <p className="text-sm text-muted-foreground mb-3 line-clamp-3">
-                    {staff.bio}
-                  </p>
-                  <Button variant="outline" className="w-full">
-                    View Profile
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
+                    alt="Executive Director"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardTitle className="text-center text-xl">Executive Director</CardTitle>
+                <CardDescription className="text-center">Visionary Leadership</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Former LDI graduate with lived experience in addiction recovery and criminal justice system. 
+                  Leads ministry vision and strategic direction.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">15+ Years Experience</Badge>
+                  <Badge variant="outline">LDI Tier 4</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-bfa700ab-20251024154213.jpg"
+                    alt="Clinical Director"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardTitle className="text-center text-xl">Clinical Director</CardTitle>
+                <CardDescription className="text-center">Mental Health Excellence</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Licensed clinical psychologist specializing in trauma-informed care, addiction psychology, 
+                  and evidence-based therapeutic interventions.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">Ph.D. Psychology</Badge>
+                  <Badge variant="outline">Licensed Therapist</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-wi-1cf5d0ff-20251024154207.jpg"
+                    alt="Spiritual Formation Director"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardTitle className="text-center text-xl">Spiritual Formation Director</CardTitle>
+                <CardDescription className="text-center">Biblical Integration</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Seminary-trained theologian providing spiritual direction, biblical counseling, 
+                  and systematic theology education throughout all programs.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">M.Div. Theology</Badge>
+                  <Badge variant="outline">Biblical Counselor</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-e-629884fa-20251024154212.jpg"
+                    alt="LDI Program Director"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardTitle className="text-center text-xl">LDI Program Director</CardTitle>
+                <CardDescription className="text-center">Leadership Development</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Oversees all four tiers of the Leadership Development Institute, ensuring program quality 
+                  and participant transformation success.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">LDI Graduate</Badge>
+                  <Badge variant="outline">10+ Years Ministry</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-de-2b7802ad-20251024154212.jpg"
+                    alt="Outreach Coordinator"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardTitle className="text-center text-xl">Outreach Coordinator</CardTitle>
+                <CardDescription className="text-center">Community Engagement</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate 
+                  crisis response to community needs 24/7.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">Social Work</Badge>
+                  <Badge variant="outline">Community Organizer</Badge>
+                </div>
+              </CardContent>
+            </Card>
+            
+            <Card className="hover-lift hover-glow">
+              <CardHeader>
+                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-a4f1640e-20251024154211.jpg"
+                    alt="Operations Director"
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <CardTitle className="text-center text-xl">Operations Director</CardTitle>
+                <CardDescription className="text-center">Administrative Excellence</CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                <p className="text-sm text-muted-foreground mb-3">
+                  Manages ministry operations, finances, facilities, and administrative systems 
+                  ensuring organizational sustainability and growth.
+                </p>
+                <div className="flex flex-wrap gap-2 justify-center">
+                  <Badge variant="outline">MBA</Badge>
+                  <Badge variant="outline">Non-Profit Management</Badge>
+                </div>
+              </CardContent>
+            </Card>
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
@@ -1793,7 +1893,7 @@ export default function HomePage() {
                 </p>
                 <div className="space-y-2">
                   <Button className="w-full" size="lg" asChild>
-                    <Link href="/contact">View Career Opportunities</Link>
+                    <Link href="/careers">View Career Opportunities</Link>
                   </Button>
                   <Button className="w-full" size="lg" variant="outline" asChild>
                     <Link href="/volunteer">Become a Volunteer</Link>
@@ -1807,67 +1907,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Staff Detail Dialog */}
-      <Dialog open={staffDialogOpen} onOpenChange={setStaffDialogOpen}>
-        <DialogContent className="sm:max-w-2xl">
-          {selectedStaff && (
-            <>
-              <DialogHeader>
-                <div className="flex items-start gap-6 mb-4">
-                  <div className="relative w-24 h-24 rounded-full overflow-hidden flex-shrink-0">
-                    <Image
-                      src={selectedStaff.image}
-                      alt={selectedStaff.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <DialogTitle className="text-3xl mb-2">{selectedStaff.name}</DialogTitle>
-                    <DialogDescription className="text-lg">
-                      {selectedStaff.role}
-                    </DialogDescription>
-                  </div>
-                </div>
-              </DialogHeader>
-              
-              <div className="space-y-6">
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">About</h3>
-                  <p className="text-muted-foreground leading-relaxed">{selectedStaff.bio}</p>
-                </div>
-                
-                <div>
-                  <h3 className="text-lg font-semibold mb-2">Areas of Expertise</h3>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedStaff.expertise.map((item, index) => (
-                      <Badge key={index} variant="secondary">
-                        {item}
-                      </Badge>
-                    ))}
-                  </div>
-                </div>
-                
-                <div className="flex gap-4 pt-4 border-t">
-                  <Button variant="outline" className="flex-1" asChild>
-                    <a href={`mailto:${selectedStaff.email}`}>
-                      <Mail className="mr-2 w-4 h-4" />
-                      Email
-                    </a>
-                  </Button>
-                  <Button variant="outline" className="flex-1" asChild>
-                    <a href={selectedStaff.linkedin} target="_blank" rel="noopener noreferrer">
-                      <Linkedin className="mr-2 w-4 h-4" />
-                      LinkedIn
-                    </a>
-                  </Button>
-                </div>
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
 
       {/* SECTION 9: IMPACT STATS - 12 Containers */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow">

@@ -15,7 +15,6 @@ import {
   Linkedin, ArrowRight
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 
 // Intersection Observer Hook
 function useIntersectionObserver(options = {}) {
@@ -166,16 +165,6 @@ export default function ContactPage() {
         className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure"
       >
         <div className="max-w-7xl mx-auto">
-          {/* Add Hero Image */}
-          <div className="mb-12 relative h-80 rounded-lg overflow-hidden">
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-photograph-of-modern-commun-bda84c9e-20251025022559.jpg"
-              alt="UCon Ministries community center"
-              fill
-              className="object-cover"
-            />
-          </div>
-          
           <div className={`text-center transition-all duration-700 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>

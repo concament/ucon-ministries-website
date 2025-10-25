@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
-import { staffMembers } from "@/data/staff";
 
 // Intersection Observer Hook
 function useIntersectionObserver(options = {}) {
@@ -38,6 +37,50 @@ function useIntersectionObserver(options = {}) {
 
   return [ref, isVisible] as const;
 }
+
+// Staff Member Data
+const staffMembers = [
+  {
+    id: 1,
+    name: "Rev. Michael Thompson",
+    role: "Executive Director & Founder",
+    bio: "Rev. Thompson founded UCon Ministries after his own transformative journey through recovery and redemption. With over 15 years of experience in ministry and community development, he leads with vision, compassion, and unwavering commitment to those society has forgotten.",
+    expertise: ["Leadership Development", "Trauma-Informed Care", "Spiritual Formation"],
+    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
+    email: "mthompson@uconministries.org",
+    linkedin: "#"
+  },
+  {
+    id: 2,
+    name: "Dr. Sarah Martinez",
+    role: "Clinical Director",
+    bio: "Dr. Martinez brings 12 years of clinical psychology experience specializing in addiction recovery and trauma treatment. She integrates evidence-based practices with faith-based principles to create holistic healing pathways.",
+    expertise: ["Clinical Psychology", "Addiction Treatment", "Group Therapy"],
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+    email: "smartinez@uconministries.org",
+    linkedin: "#"
+  },
+  {
+    id: 3,
+    name: "James Wilson",
+    role: "Program Coordinator",
+    bio: "James is an LDI graduate who now serves as Program Coordinator. His lived experience combined with formal training in social work makes him uniquely qualified to support participants through their transformation journey.",
+    expertise: ["Peer Support", "Case Management", "Community Outreach"],
+    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
+    email: "jwilson@uconministries.org",
+    linkedin: "#"
+  },
+  {
+    id: 4,
+    name: "Pastor Maria Rodriguez",
+    role: "Spiritual Care Director",
+    bio: "Pastor Maria oversees all spiritual formation programs and pastoral care services. With a heart for the marginalized and a gift for teaching, she creates safe spaces for spiritual growth and biblical exploration.",
+    expertise: ["Pastoral Counseling", "Biblical Studies", "Spiritual Direction"],
+    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
+    email: "mrodriguez@uconministries.org",
+    linkedin: "#"
+  }
+];
 
 export default function AboutPage() {
   const [heroRef, heroVisible] = useIntersectionObserver();
@@ -134,15 +177,6 @@ export default function AboutPage() {
         className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure"
       >
         <div className="max-w-7xl mx-auto">
-          <div className="mb-12 relative h-96 rounded-lg overflow-hidden">
-            <Image
-              src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/heartwarming-photo-of-diverse-group-of-p-601c42f7-20251025022559.jpg"
-              alt="Community celebrating together"
-              fill
-              className="object-cover"
-            />
-          </div>
-          
           <div className={`text-center transition-all duration-700 ${
             heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
@@ -538,7 +572,7 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {staffMembers.map((staff, index) => (
               <Card 
                 key={staff.id}
