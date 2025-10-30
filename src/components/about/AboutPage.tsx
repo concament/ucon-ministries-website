@@ -42,12 +42,12 @@ function useIntersectionObserver(options = {}) {
 const staffMembers = [
   {
     id: 1,
-    name: "Rev. Michael Thompson",
-    role: "Executive Director & Founder",
-    bio: "Rev. Thompson founded UCon Ministries after his own transformative journey through recovery and redemption. With over 15 years of experience in ministry and community development, he leads with vision, compassion, and unwavering commitment to those society has forgotten.",
+    name: "Rev. Troy Salazar",
+    role: "Operations & Visionary Ministry Lead",
+    bio: "Rev. Salazar founded UCon Ministries after his own transformative journey through recovery and redemption, despair, and growth. With over 15 years of experience in ministry and community development, he leads with vision, compassion, and unwavering commitment to those society has forgotten.",
     expertise: ["Leadership Development", "Trauma-Informed Care", "Spiritual Formation"],
-    image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop",
-    email: "mthompson@uconministries.org",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpgw=400&h=400&fit=crop",
+    email: "tsalazar@uconministries.org",
     linkedin: "#"
   },
   {
@@ -62,22 +62,22 @@ const staffMembers = [
   },
   {
     id: 3,
-    name: "James Wilson",
-    role: "Program Coordinator",
-    bio: "James is an LDI graduate who now serves as Program Coordinator. His lived experience combined with formal training in social work makes him uniquely qualified to support participants through their transformation journey.",
+    name: "Brittany 'Twin' Joseph",
+    role: "Ministry Programs & Multiplication Director",
+    bio: "Brittany is an LDI graduate who now serves as Program Coordinator. His lived experience combined with formal training in social work makes him uniquely qualified to support participants through their transformation journey.",
     expertise: ["Peer Support", "Case Management", "Community Outreach"],
-    image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&h=400&fit=crop",
-    email: "jwilson@uconministries.org",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpgw=400&h=400&fit=crop",
+    email: "bjoseph@uconministries.org",
     linkedin: "#"
   },
   {
     id: 4,
-    name: "Pastor Maria Rodriguez",
+    name: "Pastor Cassie Adams",
     role: "Spiritual Care Director",
-    bio: "Pastor Maria oversees all spiritual formation programs and pastoral care services. With a heart for the marginalized and a gift for teaching, she creates safe spaces for spiritual growth and biblical exploration.",
-    expertise: ["Pastoral Counseling", "Biblical Studies", "Spiritual Direction"],
-    image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop",
-    email: "mrodriguez@uconministries.org",
+    bio: "Pastor Cassie oversees all spiritual formation programs and pastoral care services. With a heart for the marginalized and a gift for teaching, she creates safe spaces for spiritual growth and biblical exploration.",
+    expertise: ["Subject Matter", "Pastoral Counseling", "Biblical Studies", "Spiritual Direction"],
+    image: "https://od.lk/d/NzNfMTEwMDI2OTg4Xw/XJ62-7qN_1761716441989_raw.jpg?w=400&h=400&fit=crop",
+    email: "cadams@uconministries.org",
     linkedin: "#"
   }
 ];
