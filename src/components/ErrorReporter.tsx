@@ -1,5 +1,5 @@
 import React from "react";
-import { Home, RefreshCw } from "lucide-react";
+import { Home, RefreshCw, Wrench } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface ErrorReporterProps {
@@ -29,6 +29,8 @@ export default function ErrorReporter({
   const handleGoHome = () => {
     window.location.href = "/";
   };
+  
+  const showFixButton = error.message.includes("ENOENT") || error.message.includes("EADDRINUSE") || error.message.includes("Next.js");
 
   const errorMessage = "An unexpected error occurred. Please try again or contact support if the problem persists.";
 
@@ -88,6 +90,15 @@ export default function ErrorReporter({
               <Home className="w-4 h-4" />
               <span>Go Home</span>
             </Button>
+             {showFixButton && (
+                 <Button
+                 variant="destructive"
+                 className="flex items-center gap-2"
+               >
+                 <Wrench className="w-4 h-4" />
+                 <span>Fix</span>
+               </Button>
+            )}
           </div>
         </div>
       </div>
@@ -128,6 +139,15 @@ export default function ErrorReporter({
               >
                 Try again
               </button>
+            )}
+             {showFixButton && (
+                 <Button
+                 variant="destructive"
+                 className="flex items-center gap-2"
+               >
+                 <Wrench className="w-4 h-4" />
+                 <span>Fix</span>
+               </Button>
             )}
           </div>
         </div>
