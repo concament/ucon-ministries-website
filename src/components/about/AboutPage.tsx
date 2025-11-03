@@ -4,6 +4,7 @@
 import { useState, useEffect, useRef, ReactNode } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Hero from "./Hero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -119,7 +120,6 @@ const volunteers = [
 type TeamMember = typeof coreLeadership[0] & { team?: string };
 
 export default function AboutPage() {
-  const [heroRef, heroVisible] = useIntersectionObserver();
   const [missionRef, missionVisible] = useIntersectionObserver();
   const [valuesRef, valuesVisible] = useIntersectionObserver();
   const [ldiRef, ldiVisible] = useIntersectionObserver();
@@ -188,25 +188,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      <AnimatedSection hookResult={[heroRef, heroVisible]}>
-        {/* Hero Section Content */}
-        <div className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure">
-            <div className="max-w-7xl mx-auto">
-              <div className={`text-center`}>
-                <Badge className="mb-6 bg-[#A92FFA] hover:bg-[#A92FFA]/90 text-lg px-6 py-2">
-                  <Heart className="w-5 h-5 mr-2" fill="currentColor" />
-                  About UCon Ministries
-                </Badge>
-                <h1 className={`text-6xl sm:text-7xl lg:text-8xl font-bold mb-8`}>
-                  Transforming Lives <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Through Purpose</span>
-                </h1>
-                <p className={`text-xl sm:text-2xl text-muted-foreground max-w-4xl mx-auto mb-10`}>
-                  We exist to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation.
-                </p>
-              </div>
-            </div>
-        </div>
-      </AnimatedSection>
+      <Hero />
 
       <AnimatedSection hookResult={[missionRef, missionVisible]}>
         <div className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient">

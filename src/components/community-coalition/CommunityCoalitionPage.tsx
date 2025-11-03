@@ -1,8 +1,9 @@
-"use client"
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Hero from "./Hero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -38,7 +39,6 @@ function useIntersectionObserver(options = {}) {
 }
 
 export default function CommunityCoalitionPage() {
-  const [heroRef, heroVisible] = useIntersectionObserver();
   const [individualsRef, individualsVisible] = useIntersectionObserver();
   const [organizationsRef, organizationsVisible] = useIntersectionObserver();
   const [governmentRef, governmentVisible] = useIntersectionObserver();
@@ -186,36 +186,7 @@ export default function CommunityCoalitionPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
-      <section 
-        ref={heroRef}
-        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className={`text-center transition-all duration-700 ${
-            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <Badge className="mb-6 bg-[#A92FFA] hover:bg-[#A92FFA]/90 text-lg px-6 py-2">
-              <Users className="w-5 h-5 mr-2" />
-              Community Coalition
-            </Badge>
-            <h1 className={`text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 transition-all duration-700 delay-100 ${
-              heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-            }`}>
-              Recognizing Our
-              <br />
-              <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">
-                Community Heroes
-              </span>
-            </h1>
-            <p className={`text-xl sm:text-2xl text-muted-foreground max-w-4xl mx-auto transition-all duration-700 delay-200 ${
-              heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}>
-              Celebrating the individuals and organizations across Colorado making a lasting impact in their communities through service, advocacy, and compassion.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Individuals Making an Impact */}
       <section 

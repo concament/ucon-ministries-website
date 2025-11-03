@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react";
+import Image from "next/image";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
@@ -160,7 +161,8 @@ export default function VolunteerPage() {
       {/* Why Volunteer Section */}
       <section className="py-16 px-4 sm:px-6 lg:px-8 fade-in">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-1 gap-8">
             <Card className="text-center">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -202,10 +204,14 @@ export default function VolunteerPage() {
                 </p>
               </CardContent>
             </Card>
+            </div>
+            <div className="flex justify-center">
+              <Image src="/globe.svg" alt="Globe" width={500} height={500} />
+            </div>
           </div>
 
           {/* Application Form */}
-          <Card className="max-w-4xl mx-auto">
+          <Card className="max-w-4xl mx-auto mt-16">
             <CardHeader>
               <CardTitle className="text-3xl">Volunteer Application</CardTitle>
               <CardDescription>
