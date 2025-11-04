@@ -1531,12 +1531,12 @@ export default function HomePage() {
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
-                    <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
+      <Image src= "https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg" 
                       alt="Ministry Founder"
                       fill
                       className="object-cover"
-                    />
+                      /> 
+                      
                   </div>
                   <div className="flex-1">
                     <CardTitle className="text-3xl mb-2">From Worthlessness to Purpose</CardTitle>
@@ -1546,7 +1546,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="space-y-6 text-lg">
                 <p className="text-muted-foreground leading-relaxed">
-                  UCon Ministries was founded in 2020 by individuals who intimately understood the pain of feeling worthless, 
+                  UCon Ministries was founded in 2024 by individuals who intimately understood the pain of feeling worthless, 
                   broken by the justice system, addiction, and homelessness. Our founder spent years navigating the darkness of 
                   hopelessness, experiencing firsthand the devastating impact of mental health struggles and systemic barriers.
                 </p>
@@ -1703,7 +1703,7 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <CardTitle className="text-center text-xl">Executive Director</CardTitle>
+                <CardTitle className="text-center text-xl">Foundind VisionaryLead></CardTitle>/CardTitle>
                 <CardDescription className="text-center">Visionary Leadership</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
@@ -2329,7 +2329,7 @@ export default function HomePage() {
                 <CardTitle className="text-xl">Volunteer</CardTitle>
                 <CardDescription>Give Your Time</CardDescription>
               </CardHeader>
-              <CardContent>
+              <CardContent>9
                 <p className="text-sm text-muted-foreground mb-4">
                   Join our team of volunteers serving in outreach, workshops, administrative support, and more.
                 </p>

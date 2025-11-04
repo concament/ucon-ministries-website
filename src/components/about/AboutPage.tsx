@@ -51,7 +51,7 @@ const coreLeadership = [
     role: "Operations & Visionary Ministry Lead",
     bio: "Rev. Salazar founded UCon Ministries after his own transformative journey... With over 15 years of experience, he leads with vision, compassion, and unwavering commitment.",
     expertise: ["Leadership Development", "Trauma-Informed Care", "Spiritual Formation"],
-    image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpgw=400&h=400&fit=crop",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg?w=400&h=400&fit=crop",
     email: "tsalazar@uconministries.org",
     linkedin: "#"
   },
@@ -71,7 +71,7 @@ const coreLeadership = [
     role: "Ministry Programs & Multiplication Director",
     bio: "Brittany is an LDI graduate who now serves as Program Coordinator... His lived experience makes him uniquely qualified to support participants.",
     expertise: ["Peer Support", "Case Management", "Community Outreach"],
-    image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpgw=400&h=400&fit=crop",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg?w=400&h=400&fit=crop",
     email: "bjoseph@uconministries.org",
     linkedin: "#"
   },

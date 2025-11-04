@@ -2,11 +2,11 @@
 export const staffMembers = [
   {
     id: 1,
-    name: "Rev. Michael Thompson",
-    role: "Executive Director & Founder",
-    bio: "Rev. Thompson founded UCon Ministries after his own transformative journey through recovery and redemption. With over 15 years of experience in ministry and community development, he leads with vision, compassion, and unwavering commitment to those society has forgotten.",
+    name: "Rev. Troy Salazar",
+    role: "Founding Vision Lead",
+    bio: "Rev. Salazar founded UCon Ministries after his own transformative journey through recovery and redemption. With over 15 years of experience in ministry and community development, he leads with vision, compassion, and unwavering commitment to those society has forgotten.",
     expertise: ["Leadership Development", "Trauma-Informed Care", "Spiritual Formation"],
-    image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg",
+    image: "https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg",
     email: "mthompson@uconministries.org",
     linkedin: "#"
   },

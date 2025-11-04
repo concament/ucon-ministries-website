@@ -1,8 +1,8 @@
-"use client"
-
+'use client';
 import { useState, useEffect, useRef } from "react";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import Hero from "./Hero";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -40,7 +40,6 @@ function useIntersectionObserver(options = {}) {
 }
 
 export default function ContactPage() {
-  const [heroRef, heroVisible] = useIntersectionObserver();
   const [formRef, formVisible] = useIntersectionObserver();
   const [infoRef, infoVisible] = useIntersectionObserver();
   const [waysRef, waysVisible] = useIntersectionObserver();
@@ -159,36 +158,7 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* Hero Section */}
-      <section 
-        ref={heroRef}
-        className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden double-exposure"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className={`text-center transition-all duration-700 ${
-            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
-            <Badge className="mb-6 bg-[#A92FFA] hover:bg-[#A92FFA]/90 text-lg px-6 py-2">
-              <MessageCircle className="w-5 h-5 mr-2" />
-              Get in Touch
-            </Badge>
-            <h1 className={`text-6xl sm:text-7xl lg:text-8xl font-bold mb-8 transition-all duration-700 delay-100 ${
-              heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-            }`}>
-              Contact
-              <br />
-              <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">
-                UCon Ministries
-              </span>
-            </h1>
-            <p className={`text-xl sm:text-2xl text-muted-foreground max-w-4xl mx-auto transition-all duration-700 delay-200 ${
-              heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-            }`}>
-              We're here to listen, support, and connect with you. Reach out anytime—we'd love to hear from you.
-            </p>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Contact Methods */}
       <section 
