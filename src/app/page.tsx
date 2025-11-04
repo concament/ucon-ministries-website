@@ -1697,13 +1697,13 @@ export default function HomePage() {
               <CardHeader>
                 <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                   <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
-                    alt="Executive Director"
+                    src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
+                    alt="Founding Visionary Lead"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <CardTitle className="text-center text-xl">Foundind VisionaryLead></CardTitle>/CardTitle>
+                <CardTitle className="text-center text-xl">Founding Visionary Lead</CardTitle>
                 <CardDescription className="text-center">Visionary Leadership</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
@@ -1712,8 +1712,8 @@ export default function HomePage() {
                   Leads ministry vision and strategic direction.
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">15+ Years Experience</Badge>
-                  <Badge variant="outline">LDI Tier 4</Badge>
+                  <Badge variant="outline">Formerly Incarcerated</Badge>
+                  <Badge variant="outline">8 Years Experience</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -1778,8 +1778,8 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <CardTitle className="text-center text-xl">LDI Program Director</CardTitle>
-                <CardDescription className="text-center">Leadership Development</CardDescription>
+                <CardTitle className="text-center text-xl">Multiplication Director</CardTitle>
+                <CardDescription className="text-center">Programs Cooridonator</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-sm text-muted-foreground mb-3">
@@ -1787,8 +1787,8 @@ export default function HomePage() {
                   and participant transformation success.
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">LDI Graduate</Badge>
-                  <Badge variant="outline">10+ Years Ministry</Badge>
+                  <Badge variant="outline">Developmental Specialist</Badge>
+                  <Badge variant="outline">Lived Experience</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -1837,7 +1837,7 @@ export default function HomePage() {
                   ensuring organizational sustainability and growth.
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">MBA</Badge>
+                  <Badge variant="outline">*Arts and Passion</Badge>
                   <Badge variant="outline">Non-Profit Management</Badge>
                 </div>
               </CardContent>
