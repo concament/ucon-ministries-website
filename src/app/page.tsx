@@ -52,7 +52,7 @@ export default function HomePage() {
   const [outreachRef, outreachVisible] = useIntersectionObserver();
   const [testimonialsRef, testimonialsVisible] = useIntersectionObserver();
   const [founderRef, founderVisible] = useIntersectionObserver();
-  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.5 });
+  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.3 });
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
