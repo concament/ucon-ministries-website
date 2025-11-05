@@ -79,7 +79,7 @@ export default function HomePage() {
     role: "Visionary Leadership",
     image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg",
     description: "Former LDI graduate with lived experience in addiction recovery and criminal justice system. Leads ministry vision and strategic direction.",
-    badges: ["8 Years Biblical Experience", "LDI Tier 4"]
+    badges: ["8 Years Biblical Experience", "Peer Equal"]
   },
   {
     name: "Spiritual Formation Director",
@@ -1890,7 +1890,7 @@ export default function HomePage() {
                         <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                         <div className="flex flex-wrap gap-2 justify-center">
                           {member.badges.map((badge) =>
-                      <Badge key={badge} variant="outline" className="!whitespace-pre-line">
+                      <Badge key={badge} variant="outline" className="!whitespace-pre-line !whitespace-pre-line">
                               {badge}
                             </Badge>
                       )}
