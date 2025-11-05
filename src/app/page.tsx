@@ -1880,7 +1880,7 @@ export default function HomePage() {
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover" />
+                        className="object-cover !w-full !h-[184px] !max-w-full" />
 
                         </div>
                         <CardTitle className="text-center text-xl">{member.name}</CardTitle>
