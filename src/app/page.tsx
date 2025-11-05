@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
+import { motion, AnimatePresence } from "framer-motion";
 import { 
   Heart, Users, Target, Compass, BookOpen, HandHeart, 
   Home, Truck, Utensils, MessageSquare, Shield, Stethoscope,
@@ -54,6 +55,66 @@ export default function HomePage() {
   const [staffRef, staffVisible] = useIntersectionObserver();
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
+
+  // Staff animation state
+  const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading'>('idle');
+
+  useEffect(() => {
+    if (staffVisible && staffAnimationPhase === 'idle') {
+      // Start stacking animation
+      setStaffAnimationPhase('stacking');
+      
+      // After stacking completes (6 members * 0.3s delay + 1s buffer), spread them out
+      setTimeout(() => {
+        setStaffAnimationPhase('spreading');
+      }, 2800);
+    }
+  }, [staffVisible, staffAnimationPhase]);
+
+  const teamMembers = [
+    {
+      name: "Executive Director",
+      role: "Visionary Leadership",
+      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg",
+      description: "Former LDI graduate with lived experience in addiction recovery and criminal justice system. Leads ministry vision and strategic direction.",
+      badges: ["15+ Years Experience", "LDI Tier 4"]
+    },
+    {
+      name: "Clinical Director",
+      role: "Mental Health Excellence",
+      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-bfa700ab-20251024154213.jpg",
+      description: "Licensed clinical psychologist specializing in trauma-informed care, addiction psychology, and evidence-based therapeutic interventions.",
+      badges: ["Ph.D. Psychology", "Licensed Therapist"]
+    },
+    {
+      name: "Spiritual Formation Director",
+      role: "Biblical Integration",
+      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-wi-1cf5d0ff-20251024154207.jpg",
+      description: "Seminary-trained theologian providing spiritual direction, biblical counseling, and systematic theology education throughout all programs.",
+      badges: ["M.Div. Theology", "Biblical Counselor"]
+    },
+    {
+      name: "LDI Program Director",
+      role: "Leadership Development",
+      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-e-629884fa-20251024154212.jpg",
+      description: "Oversees all four tiers of the Leadership Development Institute, ensuring program quality and participant transformation success.",
+      badges: ["LDI Graduate", "10+ Years Ministry"]
+    },
+    {
+      name: "Outreach Coordinator",
+      role: "Community Engagement",
+      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-de-2b7802ad-20251024154212.jpg",
+      description: "Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate crisis response to community needs 24/7.",
+      badges: ["Social Work", "Community Organizer"]
+    },
+    {
+      name: "Operations Director",
+      role: "Administrative Excellence",
+      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-a4f1640e-20251024154211.jpg",
+      description: "Manages ministry operations, finances, facilities, and administrative systems ensuring organizational sustainability and growth.",
+      badges: ["MBA", "Non-Profit Management"]
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-background">
@@ -1721,161 +1782,119 @@ export default function HomePage() {
             </p>
           </div>
           
-          {/* Container 3-8: Staff Members with Images */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            <Card className="hover-lift hover-glow">
-              <CardHeader>
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
-                    alt="Executive Director"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-center text-xl">Executive Director</CardTitle>
-                <CardDescription className="text-center">Visionary Leadership</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Former LDI graduate with lived experience in addiction recovery and criminal justice system. 
-                  Leads ministry vision and strategic direction.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">15+ Years Experience</Badge>
-                  <Badge variant="outline">LDI Tier 4</Badge>
-                </div>
-              </CardContent>
-            </Card>
+          {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
+          <div className="relative">
+            {staffAnimationPhase !== 'spreading' && (
+              <div className="relative min-h-[600px]">
+                {teamMembers.map((member, index) => {
+                  const isStacking = staffAnimationPhase === 'stacking';
+                  
+                  return (
+                    <motion.div
+                      key={member.name}
+                      initial={{ opacity: 0, scale: 0.8, y: 100 }}
+                      animate={{
+                        opacity: 1,
+                        scale: 1,
+                        y: 0,
+                        x: 0,
+                      }}
+                      transition={{
+                        delay: index * 0.3,
+                        duration: 0.8,
+                        type: 'spring',
+                        stiffness: 100,
+                      }}
+                      className="absolute top-1/2 left-1/2"
+                      style={{
+                        transform: 'translate(-50%, -50%)',
+                        width: '100%',
+                        maxWidth: '400px',
+                        zIndex: 50 - index,
+                      }}
+                    >
+                      <Card className="hover-lift hover-glow">
+                        <CardHeader>
+                          <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                            <Image
+                              src={member.image}
+                              alt={member.name}
+                              fill
+                              className="object-cover"
+                            />
+                          </div>
+                          <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                          <CardDescription className="text-center">{member.role}</CardDescription>
+                        </CardHeader>
+                        <CardContent className="text-center">
+                          <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
+                          <div className="flex flex-wrap gap-2 justify-center">
+                            {member.badges.map((badge) => (
+                              <Badge key={badge} variant="outline">
+                                {badge}
+                              </Badge>
+                            ))}
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
             
-            <Card className="hover-lift hover-glow">
-              <CardHeader>
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-bfa700ab-20251024154213.jpg"
-                    alt="Clinical Director"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-center text-xl">Clinical Director</CardTitle>
-                <CardDescription className="text-center">Mental Health Excellence</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Licensed clinical psychologist specializing in trauma-informed care, addiction psychology, 
-                  and evidence-based therapeutic interventions.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">Ph.D. Psychology</Badge>
-                  <Badge variant="outline">Licensed Therapist</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover-lift hover-glow">
-              <CardHeader>
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-wi-1cf5d0ff-20251024154207.jpg"
-                    alt="Spiritual Formation Director"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-center text-xl">Spiritual Formation Director</CardTitle>
-                <CardDescription className="text-center">Biblical Integration</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Seminary-trained theologian providing spiritual direction, biblical counseling, 
-                  and systematic theology education throughout all programs.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">M.Div. Theology</Badge>
-                  <Badge variant="outline">Biblical Counselor</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover-lift hover-glow">
-              <CardHeader>
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-e-629884fa-20251024154212.jpg"
-                    alt="LDI Program Director"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-center text-xl">LDI Program Director</CardTitle>
-                <CardDescription className="text-center">Leadership Development</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Oversees all four tiers of the Leadership Development Institute, ensuring program quality 
-                  and participant transformation success.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">LDI Graduate</Badge>
-                  <Badge variant="outline">10+ Years Ministry</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover-lift hover-glow">
-              <CardHeader>
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-de-2b7802ad-20251024154212.jpg"
-                    alt="Outreach Coordinator"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-center text-xl">Outreach Coordinator</CardTitle>
-                <CardDescription className="text-center">Community Engagement</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate 
-                  crisis response to community needs 24/7.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">Social Work</Badge>
-                  <Badge variant="outline">Community Organizer</Badge>
-                </div>
-              </CardContent>
-            </Card>
-            
-            <Card className="hover-lift hover-glow">
-              <CardHeader>
-                <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                  <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-a4f1640e-20251024154211.jpg"
-                    alt="Operations Director"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
-                <CardTitle className="text-center text-xl">Operations Director</CardTitle>
-                <CardDescription className="text-center">Administrative Excellence</CardDescription>
-              </CardHeader>
-              <CardContent className="text-center">
-                <p className="text-sm text-muted-foreground mb-3">
-                  Manages ministry operations, finances, facilities, and administrative systems 
-                  ensuring organizational sustainability and growth.
-                </p>
-                <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">MBA</Badge>
-                  <Badge variant="outline">Non-Profit Management</Badge>
-                </div>
-              </CardContent>
-            </Card>
+            {/* Grid layout - spreads out after stacking */}
+            {staffAnimationPhase === 'spreading' && (
+              <motion.div 
+                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
+              >
+                {teamMembers.map((member, index) => (
+                  <motion.div
+                    key={member.name}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{
+                      delay: index * 0.1,
+                      duration: 0.6,
+                      type: 'spring',
+                      stiffness: 120,
+                    }}
+                  >
+                    <Card className="hover-lift hover-glow h-full">
+                      <CardHeader>
+                        <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                        <CardDescription className="text-center">{member.role}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="text-center">
+                        <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {member.badges.map((badge) => (
+                            <Badge key={badge} variant="outline">
+                              {badge}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </motion.div>
+            )}
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 mt-12">
             <Card className="border-2 border-[#A92FFA]/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Our Team Values</CardTitle>
