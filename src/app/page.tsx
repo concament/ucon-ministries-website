@@ -1315,9 +1315,9 @@ export default function HomePage() {
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4">Stories of Hope</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Lives Transformed</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">Lives Being Transformed</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Real stories from real people who found purpose, dignity, and a new life through UCon Ministries.
+              Real stories from real people experiencing hope, community, and the beginning of transformation through UCon Ministries.
             </p>
           </div>
           
@@ -1336,7 +1336,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">Marcus T.</CardTitle>
-                    <CardDescription>LDI Graduate - Tier 4</CardDescription>
+                    <CardDescription>Outreach Recipient</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1349,9 +1349,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "I came to UCon after 15 years in and out of prison. Today, I'm leading a team of mentors and advocating for criminal justice reform at the state level. This ministry didn't just change my life—it gave me one."
+                  "When I was living on the streets, UCon's outreach team found me. They didn't just give me a meal—they sat with me, listened to my story, and treated me like I mattered. Now I'm on the waitlist for the LDI program, and for the first time in years, I have real hope."
                 </p>
-                <Badge variant="outline">From Prison to Policy</Badge>
+                <Badge variant="outline">From Streets to Hope</Badge>
               </CardContent>
             </Card>
             
@@ -1368,7 +1368,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">Sarah L.</CardTitle>
-                    <CardDescription>LDI Graduate - Tier 3</CardDescription>
+                    <CardDescription>Services Participant</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1381,9 +1381,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "After losing everything to addiction, I found family at UCon. The LDI program taught me I had value beyond my worst moments. Now I mentor women facing what I faced, and I get to be part of their healing."
+                  "I started attending the Bible studies just looking for community after rehab. The workshops on financial literacy and the pastoral support have been life-changing. I'm excited about what UCon is building—I've never seen a ministry approach recovery this comprehensively."
                 </p>
-                <Badge variant="outline">From Addiction to Advocate</Badge>
+                <Badge variant="outline">Building Foundation</Badge>
               </CardContent>
             </Card>
             
@@ -1400,7 +1400,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">James K.</CardTitle>
-                    <CardDescription>Services Participant</CardDescription>
+                    <CardDescription>Volunteer</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1413,9 +1413,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "I started coming to the Bible studies just for community. The workshops helped me get my finances together and land a stable job. UCon met me where I was without judgment."
+                  "As someone who went through addiction myself years ago, I'm blown away by UCon's vision. The three-track model and the LDI program design are exactly what this community needs. I volunteer every week because I believe in this mission completely."
                 </p>
-                <Badge variant="outline">Finding Community</Badge>
+                <Badge variant="outline">Giving Back</Badge>
               </CardContent>
             </Card>
             
@@ -1432,7 +1432,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">Diana R.</CardTitle>
-                    <CardDescription>LDI Graduate - Tier 2</CardDescription>
+                    <CardDescription>Shelter Resident</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1445,9 +1445,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "Homelessness made me invisible. UCon saw me. The outreach team gave me food and hope, the shelter gave me safety, and the LDI gave me purpose. I'm now training to become a peer counselor."
+                  "The shelter gave me more than a bed—it gave me a place where people actually care. The staff here don't see me as homeless; they see me as someone with potential. I'm working with my case manager to get into stable housing and eventually apply for the leadership program."
                 </p>
-                <Badge variant="outline">From Invisible to Invaluable</Badge>
+                <Badge variant="outline">Path to Stability</Badge>
               </CardContent>
             </Card>
             
@@ -1464,7 +1464,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">Thomas P.</CardTitle>
-                    <CardDescription>Outreach Recipient → Volunteer</CardDescription>
+                    <CardDescription>Early LDI Candidate</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1477,9 +1477,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "A year ago, I was sleeping under a bridge. UCon's outreach team brought me food and didn't leave. They kept showing up. Now I have an apartment, a job, and I volunteer with that same outreach team."
+                  "I've been clean for 6 months and working with UCon's pastoral team. When they told me about the 64-week LDI program, I knew that's what I need. Not just recovery, but real transformation and purpose. I've completed my application and can't wait to start."
                 </p>
-                <Badge variant="outline">Full Circle Restoration</Badge>
+                <Badge variant="outline">Ready for Change</Badge>
               </CardContent>
             </Card>
             
@@ -1496,7 +1496,7 @@ export default function HomePage() {
                   </div>
                   <div>
                     <CardTitle className="text-lg">Linda M.</CardTitle>
-                    <CardDescription>Family Member</CardDescription>
+                    <CardDescription>Community Partner</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1509,9 +1509,9 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
-                  "My son was lost to addiction for years. UCon gave me hope when I had none. The pastoral care team supported our family, and today my son is 18 months sober and thriving in the LDI program."
+                  "As a local business owner, I've partnered with UCon to provide employment opportunities. What impresses me most is their holistic vision—they're not just helping people survive, they're building leaders who will transform this entire community. I'm excited to see what's ahead."
                 </p>
-                <Badge variant="outline">Restored Families</Badge>
+                <Badge variant="outline">Community Support</Badge>
               </CardContent>
             </Card>
           </div>
@@ -1519,20 +1519,20 @@ export default function HomePage() {
           {/* Container 9-12: Impact Statistics */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-card rounded-lg">
-              <p className="text-4xl font-bold text-[#A92FFA] mb-2">94%</p>
-              <p className="text-sm text-muted-foreground">Program Completion Rate</p>
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">150+</p>
+              <p className="text-sm text-muted-foreground">People Served Monthly</p>
             </div>
             <div className="text-center p-6 bg-card rounded-lg">
-              <p className="text-4xl font-bold text-[#F28C28] mb-2">87%</p>
-              <p className="text-sm text-muted-foreground">Long-term Sobriety</p>
+              <p className="text-4xl font-bold text-[#F28C28] mb-2">200+</p>
+              <p className="text-sm text-muted-foreground">Meals Distributed Weekly</p>
             </div>
             <div className="text-center p-6 bg-card rounded-lg">
-              <p className="text-4xl font-bold text-[#A92FFA] mb-2">78%</p>
-              <p className="text-sm text-muted-foreground">Secure Employment</p>
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">45</p>
+              <p className="text-sm text-muted-foreground">LDI Applicants</p>
             </div>
             <div className="text-center p-6 bg-card rounded-lg">
-              <p className="text-4xl font-bold text-[#A92FFA] mb-2">92%</p>
-              <p className="text-sm text-muted-foreground">Stable Housing</p>
+              <p className="text-4xl font-bold text-[#A92FFA] mb-2">100%</p>
+              <p className="text-sm text-muted-foreground">Commitment to Transform</p>
             </div>
           </div>
         </div>
