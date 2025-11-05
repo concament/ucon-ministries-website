@@ -1326,8 +1326,13 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
-                    M
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-ad96e433-20251105190507.jpg"
+                      alt="Marcus T."
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <CardTitle className="text-lg">Marcus T.</CardTitle>
@@ -1353,8 +1358,13 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[#F28C28] rounded-full flex items-center justify-center text-[#F28C28]/90 font-bold">
-                    S
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-1968c28a-20251105190507.jpg"
+                      alt="Sarah L."
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <CardTitle className="text-lg">Sarah L.</CardTitle>
@@ -1380,8 +1390,13 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
-                    J
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-9838c09e-20251105190507.jpg"
+                      alt="James K."
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <CardTitle className="text-lg">James K.</CardTitle>
@@ -1407,8 +1422,13 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
-                    D
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-7e4425ed-20251105190506.jpg"
+                      alt="Diana R."
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <CardTitle className="text-lg">Diana R.</CardTitle>
@@ -1434,8 +1454,13 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[#F28C28] rounded-full flex items-center justify-center text-[#F28C28]/90 font-bold">
-                    T
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-d4c3c200-20251105190506.jpg"
+                      alt="Thomas P."
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <CardTitle className="text-lg">Thomas P.</CardTitle>
@@ -1461,8 +1486,13 @@ export default function HomePage() {
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 bg-[#A92FFA] rounded-full flex items-center justify-center text-[#A92FFA]/90 font-bold">
-                    L
+                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-82743e11-20251105190506.jpg"
+                      alt="Linda M."
+                      fill
+                      className="object-cover"
+                    />
                   </div>
                   <div>
                     <CardTitle className="text-lg">Linda M.</CardTitle>
@@ -1531,12 +1561,12 @@ export default function HomePage() {
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
-      <Image src= "https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg" 
+                    <Image
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
                       alt="Ministry Founder"
                       fill
                       className="object-cover"
-                      /> 
-                      
+                    />
                   </div>
                   <div className="flex-1">
                     <CardTitle className="text-3xl mb-2">From Worthlessness to Purpose</CardTitle>
@@ -1546,7 +1576,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent className="space-y-6 text-lg">
                 <p className="text-muted-foreground leading-relaxed">
-                  Ucon Ministries was founded in 2024 by individuals who intimately understood the pain of feeling worthless, 
+                  UCon Ministries was founded in 2020 by individuals who intimately understood the pain of feeling worthless, 
                   broken by the justice system, addiction, and homelessness. Our founder spent years navigating the darkness of 
                   hopelessness, experiencing firsthand the devastating impact of mental health struggles and systemic barriers.
                 </p>
@@ -1684,7 +1714,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#F28C28]">Upper Chair</Badge>
+            <Badge className="mb-4 bg-[#F28C28]">Our Team</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Meet Our Leadership</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A diverse team united by personal transformation stories and a shared calling to serve those seeking hope and purpose.
@@ -1697,13 +1727,13 @@ export default function HomePage() {
               <CardHeader>
                 <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                   <Image
-                    src="https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg"
-                    alt="Founding Visionary Lead"
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
+                    alt="Executive Director"
                     fill
                     className="object-cover"
                   />
                 </div>
-                <CardTitle className="text-center text-xl">Founding Visionary Lead</CardTitle>
+                <CardTitle className="text-center text-xl">Executive Director</CardTitle>
                 <CardDescription className="text-center">Visionary Leadership</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
@@ -1712,8 +1742,8 @@ export default function HomePage() {
                   Leads ministry vision and strategic direction.
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">Formerly Incarcerated</Badge>
-                  <Badge variant="outline">8 Years Experience</Badge>
+                  <Badge variant="outline">15+ Years Experience</Badge>
+                  <Badge variant="outline">LDI Tier 4</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -1747,7 +1777,7 @@ export default function HomePage() {
               <CardHeader>
                 <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                   <Image
-                    src="https://od.lk/d/NzNfMTEwOTYzMjc2Xw/penup_20251103_174057.jpg"
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-wi-1cf5d0ff-20251024154207.jpg"
                     alt="Spiritual Formation Director"
                     fill
                     className="object-cover"
@@ -1778,8 +1808,8 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <CardTitle className="text-center text-xl">Multiplication Director</CardTitle>
-                <CardDescription className="text-center">Programs Cooridonator</CardDescription>
+                <CardTitle className="text-center text-xl">LDI Program Director</CardTitle>
+                <CardDescription className="text-center">Leadership Development</CardDescription>
               </CardHeader>
               <CardContent className="text-center">
                 <p className="text-sm text-muted-foreground mb-3">
@@ -1787,8 +1817,8 @@ export default function HomePage() {
                   and participant transformation success.
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">Developmental Specialist</Badge>
-                  <Badge variant="outline">Lived Experience</Badge>
+                  <Badge variant="outline">LDI Graduate</Badge>
+                  <Badge variant="outline">10+ Years Ministry</Badge>
                 </div>
               </CardContent>
             </Card>
@@ -1837,7 +1867,7 @@ export default function HomePage() {
                   ensuring organizational sustainability and growth.
                 </p>
                 <div className="flex flex-wrap gap-2 justify-center">
-                  <Badge variant="outline">*Arts and Passion</Badge>
+                  <Badge variant="outline">MBA</Badge>
                   <Badge variant="outline">Non-Profit Management</Badge>
                 </div>
               </CardContent>
@@ -1856,7 +1886,7 @@ export default function HomePage() {
                   <div>
                     <p className="font-semibold mb-1">Lived Experience</p>
                     <p className="text-sm text-muted-foreground">
-                      Many team members are understand the journey from brokenness to purpose with experience.
+                      Many team members are LDI graduates who understand the journey from brokenness to purpose
                     </p>
                   </div>
                 </div>
@@ -1865,7 +1895,7 @@ export default function HomePage() {
                   <div>
                     <p className="font-semibold mb-1">Diverse Expertise</p>
                     <p className="text-sm text-muted-foreground">
-                      Clinical psychology, systematic theology, social work, and community organizing unified in mission
+                      Clinical psychology, theology, social work, and community organizing unified in mission
                     </p>
                   </div>
                 </div>
@@ -1874,7 +1904,7 @@ export default function HomePage() {
                   <div>
                     <p className="font-semibold mb-1">Continuous Learning</p>
                     <p className="text-sm text-muted-foreground">
-                      Committed to ongoing professional development and evidence-based practice excellence.
+                      Committed to ongoing professional development and evidence-based practice excellence
                     </p>
                   </div>
                 </div>
@@ -1883,13 +1913,13 @@ export default function HomePage() {
             
             <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#A92FFA]/10 border-2 border-[#F28C28]/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Convict</CardTitle>
+                <CardTitle className="text-2xl">Join Our Team</CardTitle>
                 <CardDescription>Make a Difference Through Service</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
                   Whether you're seeking employment, internship opportunities, or volunteer positions, 
-                  there's a place for you at Ucon Ministries.
+                  there's a place for you at UCon Ministries.
                 </p>
                 <div className="space-y-2">
                   <Button className="w-full" size="lg" asChild>
@@ -2133,10 +2163,6 @@ export default function HomePage() {
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Pastoral Tend</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">Prayer partners</span>
                   </li>
                 </ul>
@@ -2168,7 +2194,7 @@ export default function HomePage() {
                 <p className="text-sm text-muted-foreground mb-3">
                   Non-profit organizations collaborating to provide comprehensive wraparound services.
                 </p>
-                <Badge variant="outline"> Service Partners</Badge>
+                <Badge variant="outline">8 Service Partners</Badge>
               </CardContent>
             </Card>
             
@@ -2179,7 +2205,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-3">
-                  Local businesses offering employment opportunities and skills training for graduates or just providing a helping Hand in the community with your neighbors
+                  Local businesses offering employment opportunities and skills training for graduates.
                 </p>
                 <Badge variant="outline">15 Employers</Badge>
               </CardContent>
@@ -2192,7 +2218,7 @@ export default function HomePage() {
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-3">
-                 Seeking Medical and mental health professionals providing clinical support and referrals.
+                  Medical and mental health professionals providing clinical support and referrals.
                 </p>
                 <Badge variant="outline">6 Healthcare Providers</Badge>
               </CardContent>
@@ -2252,10 +2278,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Become A Convict<li className="flex items-start gap-2">
-                    <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Administrative support</span>
-                  </li></Badge>
+            <Badge className="mb-4">Get Involved</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Be Part of the Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Every person has a role to play in building a community of hope. Choose your path to get involved.
@@ -2336,7 +2359,7 @@ export default function HomePage() {
                 <CardTitle className="text-xl">Volunteer</CardTitle>
                 <CardDescription>Give Your Time</CardDescription>
               </CardHeader>
-              <CardContent>9
+              <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
                   Join our team of volunteers serving in outreach, workshops, administrative support, and more.
                 </p>
