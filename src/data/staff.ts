@@ -59,5 +59,15 @@ export const staffMembers = [
     image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-de-2b7802ad-20251024154212.jpg",
     email: "awilliams@uconministries.org",
     linkedin: "#"
+  },
+  {
+    id: 7,
+    name: "Shandale Spiller",
+    role: "Brand Ambassador",
+    bio: "Shandale is the vibrant voice and passionate advocate for Ucon Ministries. Her infectious energy and compelling storytelling amplify our mission, connecting with a broader audience and building a community of supporters. She shares the transformative stories of our participants, inspiring action and fostering a network of hope and generosity. Shandale's dedication to our cause makes her an invaluable bridge between our ministry and the world.",
+    expertise: ["Public Speaking", "Community Engagement", "Social Media"],
+    image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
+    email: "sspiller@uconministries.org",
+    linkedin: "#"
   }
 ];
