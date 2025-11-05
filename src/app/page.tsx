@@ -1868,9 +1868,8 @@ export default function HomePage() {
                       delay: index * 0.15,
                       duration: 0.8,
                       times: [0, 0.6, 1],
-                      type: 'spring',
-                      stiffness: 200,
-                      damping: 15,
+                      type: 'tween',
+                      ease: 'easeOut',
                     }}
                   >
                     <Card className="hover-lift hover-glow h-full">
