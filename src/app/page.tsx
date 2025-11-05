@@ -64,10 +64,10 @@ export default function HomePage() {
       // Start stacking animation
       setStaffAnimationPhase('stacking');
       
-      // After stacking completes (6 members * 1s delay + 3s buffer), spread them out
+      // After stacking completes (6 members * 2s delay + 4s buffer), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
-      }, 9000);
+      }, 16000);
     }
   }, [staffVisible, staffAnimationPhase]);
 
@@ -1860,12 +1860,17 @@ export default function HomePage() {
                   <motion.div
                     key={member.name}
                     initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    animate={{ 
+                      opacity: 1, 
+                      scale: [0.8, 1.1, 1],
+                    }}
                     transition={{
-                      delay: index * 0.1,
-                      duration: 0.6,
+                      delay: index * 0.15,
+                      duration: 0.8,
+                      times: [0, 0.6, 1],
                       type: 'spring',
-                      stiffness: 120,
+                      stiffness: 200,
+                      damping: 15,
                     }}
                   >
                     <Card className="hover-lift hover-glow h-full">
