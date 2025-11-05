@@ -58,10 +58,12 @@ export default function HomePage() {
 
   // Staff animation state
   const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading'>('idle');
+  const [startStaffAnimation, setStartStaffAnimation] = useState(false);
 
   useEffect(() => {
-    if (staffVisible && staffAnimationPhase === 'idle') {
-      // Start stacking animation
+    if (staffVisible && !startStaffAnimation) {
+      // Trigger the start of animation
+      setStartStaffAnimation(true);
       setStaffAnimationPhase('stacking');
       
       // After stacking completes, spread them out - total 8 seconds
@@ -69,7 +71,7 @@ export default function HomePage() {
         setStaffAnimationPhase('spreading');
       }, 8000);
     }
-  }, [staffVisible, staffAnimationPhase]);
+  }, [staffVisible, startStaffAnimation]);
 
   const teamMembers = [
     {
@@ -1784,7 +1786,7 @@ export default function HomePage() {
           
           {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
           <div className="relative">
-            {staffAnimationPhase !== 'spreading' && (
+            {startStaffAnimation && staffAnimationPhase !== 'spreading' && (
               <div className="relative min-h-[600px]">
                 {teamMembers.map((member, index) => {
                   const isFromLeft = index % 2 === 0;
@@ -1849,7 +1851,7 @@ export default function HomePage() {
             )}
             
             {/* Grid layout - spreads out after stacking */}
-            {staffAnimationPhase === 'spreading' && (
+            {startStaffAnimation && staffAnimationPhase === 'spreading' && (
               <motion.div 
                 className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
                 initial={{ opacity: 0 }}
@@ -1899,6 +1901,21 @@ export default function HomePage() {
                   </motion.div>
                 ))}
               </motion.div>
+            )}
+            
+            {/* Placeholder when animation hasn't started */}
+            {!startStaffAnimation && (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0">
+                {teamMembers.map((member) => (
+                  <Card key={member.name} className="h-full">
+                    <CardHeader>
+                      <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative bg-muted" />
+                      <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                      <CardDescription className="text-center">{member.role}</CardDescription>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
             )}
           </div>
           
