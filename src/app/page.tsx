@@ -64,7 +64,7 @@ export default function HomePage() {
       // Start stacking animation
       setStaffAnimationPhase('stacking');
       
-      // After stacking completes (6 members * 1.5s delay + 5s buffer), spread them out
+      // After stacking completes (6 members * 1s delay + 10s buffer), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
       }, 16000);
