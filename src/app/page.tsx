@@ -89,6 +89,13 @@ export default function HomePage() {
       badges: ["M.Div. Theology", "Biblical Counselor"]
     },
     {
+      name: "Clinical Director",
+      role: "Mental Health & Clinical Excellence",
+      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+      description: "Licensed clinical psychologist specializing in addiction recovery and trauma treatment, integrating evidence-based practices with faith-based principles.",
+      badges: ["Clinical Psychology", "Trauma-Informed Care"]
+    },
+    {
       name: "Ministry Programs Multiplication Director",
       role: "Leadership Development",
       image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg",
@@ -1618,7 +1625,7 @@ export default function HomePage() {
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
                     <Image
-                      src="https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg"
+                      src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
                       alt="Ministry Founder"
                       fill
                       className="object-cover"
