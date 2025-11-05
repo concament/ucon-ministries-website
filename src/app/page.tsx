@@ -64,10 +64,10 @@ export default function HomePage() {
       // Start stacking animation
       setStaffAnimationPhase('stacking');
       
-      // After stacking completes (6 members * 1s delay + 10s buffer), spread them out
+      // After stacking completes, spread them out - total 8 seconds
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
-      }, 16000);
+      }, 8000);
     }
   }, [staffVisible, staffAnimationPhase]);
 
