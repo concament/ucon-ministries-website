@@ -1787,7 +1787,7 @@ export default function HomePage() {
           {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
           <div className="relative">
             {startStaffAnimation && staffAnimationPhase !== 'spreading' && (
-              <div className="relative min-h-[600px]">
+              <div className="relative min-h-[600px] flex items-start justify-center pt-12">
                 {teamMembers.map((member, index) => {
                   const isFromLeft = index % 2 === 0;
                   
@@ -1803,8 +1803,8 @@ export default function HomePage() {
                       animate={{
                         opacity: 1,
                         scale: 0.9,
-                        x: index * 60, // Horizontal stacking with 60px offset
-                        y: 0,
+                        x: index * 20, // Reduced horizontal offset for tighter stack
+                        y: index * 15, // Small vertical offset for depth
                       }}
                       transition={{
                         delay: index * 1, // 1 second delay between each card
@@ -1812,12 +1812,11 @@ export default function HomePage() {
                         type: 'spring',
                         stiffness: 60,
                       }}
-                      className="absolute top-1/2 left-1/2"
+                      className="absolute"
                       style={{
-                        transform: 'translate(-50%, -50%)',
                         width: '100%',
                         maxWidth: '400px',
-                        zIndex: 50 - index,
+                        zIndex: index, // Later cards stack ON TOP
                       }}
                     >
                       <Card className="hover-lift hover-glow">
