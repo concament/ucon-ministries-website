@@ -52,7 +52,7 @@ export default function HomePage() {
   const [outreachRef, outreachVisible] = useIntersectionObserver();
   const [testimonialsRef, testimonialsVisible] = useIntersectionObserver();
   const [founderRef, founderVisible] = useIntersectionObserver();
-  const [staffRef, staffVisible] = useIntersectionObserver();
+  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.5 });
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
@@ -64,7 +64,7 @@ export default function HomePage() {
       // Start stacking animation
       setStaffAnimationPhase('stacking');
       
-      // After stacking completes (6 members * 2s delay + 4s buffer), spread them out
+      // After stacking completes (6 members * 1.5s delay + 5s buffer), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
       }, 16000);
