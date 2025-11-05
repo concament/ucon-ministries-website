@@ -75,46 +75,39 @@ export default function HomePage() {
 
   const teamMembers = [
     {
-      name: "Executive Director",
+      name: "Founding Visionary Lead",
       role: "Visionary Leadership",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg",
+      image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg",
       description: "Former LDI graduate with lived experience in addiction recovery and criminal justice system. Leads ministry vision and strategic direction.",
       badges: ["15+ Years Experience", "LDI Tier 4"]
     },
     {
-      name: "Clinical Director",
-      role: "Mental Health Excellence",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-bfa700ab-20251024154213.jpg",
-      description: "Licensed clinical psychologist specializing in trauma-informed care, addiction psychology, and evidence-based therapeutic interventions.",
-      badges: ["Ph.D. Psychology", "Licensed Therapist"]
-    },
-    {
       name: "Spiritual Formation Director",
       role: "Biblical Integration",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-wi-1cf5d0ff-20251024154207.jpg",
+      image: "https://od.lk/d/NzNfMTEwOTYyMzY3Xw/20251103_171543.jpg",
       description: "Seminary-trained theologian providing spiritual direction, biblical counseling, and systematic theology education throughout all programs.",
       badges: ["M.Div. Theology", "Biblical Counselor"]
     },
     {
-      name: "LDI Program Director",
+      name: "Ministry Programs Multiplication Director",
       role: "Leadership Development",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-e-629884fa-20251024154212.jpg",
-      description: "Oversees all four tiers of the Leadership Development Institute, ensuring program quality and participant transformation success.",
+      image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg",
+      description: "Oversees multiplication of ministry programs across all tiers, ensuring program quality, participant transformation success, and scalable impact.",
       badges: ["LDI Graduate", "10+ Years Ministry"]
     },
     {
       name: "Outreach Coordinator",
       role: "Community Engagement",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-de-2b7802ad-20251024154212.jpg",
+      image: "https://od.lk/d/NzNfMTEwMDI4NDE0Xw/Screenshot_20251029_062837_Gallery.jpg",
       description: "Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate crisis response to community needs 24/7.",
       badges: ["Social Work", "Community Organizer"]
     },
     {
-      name: "Operations Director",
-      role: "Administrative Excellence",
-      image: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-a-co-a4f1640e-20251024154211.jpg",
-      description: "Manages ministry operations, finances, facilities, and administrative systems ensuring organizational sustainability and growth.",
-      badges: ["MBA", "Non-Profit Management"]
+      name: "Brand Ambassador",
+      role: "Strategic Communications",
+      image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
+      description: "Champions ministry vision and brand identity, building strategic partnerships and amplifying the transformative impact of UCon Ministries.",
+      badges: ["Marketing", "Partnership Development"]
     }
   ];
 
@@ -1625,7 +1618,7 @@ export default function HomePage() {
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
                     <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-portrait-photograph-of-an-i-62963a2c-20251024154211.jpg"
+                      src="https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg"
                       alt="Ministry Founder"
                       fill
                       className="object-cover"
