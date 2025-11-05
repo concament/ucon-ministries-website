@@ -64,10 +64,10 @@ export default function HomePage() {
       // Start stacking animation
       setStaffAnimationPhase('stacking');
       
-      // After stacking completes (6 members * 0.3s delay + 1s buffer), spread them out
+      // After stacking completes (6 members * 1s delay + 3s buffer), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
-      }, 2800);
+      }, 9000);
     }
   }, [staffVisible, staffAnimationPhase]);
 
@@ -1795,20 +1795,20 @@ export default function HomePage() {
                       initial={{ 
                         opacity: 0, 
                         scale: 0.8, 
-                        x: isFromLeft ? -200 : 200,
+                        x: isFromLeft ? -300 : 300,
                         y: 0
                       }}
                       animate={{
                         opacity: 1,
                         scale: 0.9,
-                        x: 0,
-                        y: index * 40, // Ladder stacking with 40px offset
+                        x: index * 60, // Horizontal stacking with 60px offset
+                        y: 0,
                       }}
                       transition={{
-                        delay: index * 0.3,
-                        duration: 0.8,
+                        delay: index * 1, // 1 second delay between each card
+                        duration: 1.5,
                         type: 'spring',
-                        stiffness: 100,
+                        stiffness: 60,
                       }}
                       className="absolute top-1/2 left-1/2"
                       style={{
