@@ -77,14 +77,14 @@ export default function HomePage() {
     {
       name: "Founding Visionary Lead",
       role: "Visionary Leadership",
-      image: "https://od.lk/s/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg",
+      image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg",
       description: "Former LDI graduate with lived experience in addiction recovery and criminal justice system. Leads ministry vision and strategic direction.",
       badges: ["15+ Years Experience", "LDI Tier 4"]
     },
     {
       name: "Spiritual Formation Director",
       role: "Biblical Integration",
-      image: "https://od.lk/s/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
+      image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
       description: "Seminary-trained theologian providing spiritual direction, biblical counseling, and systematic theology education throughout all programs.",
       badges: ["M.Div. Theology", "Biblical Counselor"]
     },
@@ -98,21 +98,21 @@ export default function HomePage() {
     {
       name: "Ministry Programs Multiplication Director",
       role: "Leadership Development",
-      image: "https://od.lk/s/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg",
+      image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg",
       description: "Oversees multiplication of ministry programs across all tiers, ensuring program quality, participant transformation success, and scalable impact.",
       badges: ["LDI Graduate", "10+ Years Ministry"]
     },
     {
       name: "Outreach Coordinator",
       role: "Community Engagement",
-      image: "https://od.lk/s/NzNfMTEwMDI4NDE0Xw/Screenshot_20251029_062837_Gallery.jpg",
+      image: "https://od.lk/d/NzNfMTEwMDI4NDE0Xw/Screenshot_20251029_062837_Gallery.jpg",
       description: "Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate crisis response to community needs 24/7.",
       badges: ["Social Work", "Community Organizer"]
     },
     {
       name: "Brand Ambassador",
       role: "Strategic Communications",
-      image: "https://od.lk/s/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
+      image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
       description: "Champions ministry vision and brand identity, building strategic partnerships and amplifying the transformative impact of UCon Ministries.",
       badges: ["Marketing", "Partnership Development"]
     }
