@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -10,14 +10,14 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
-import { 
-  Heart, Users, Target, Compass, BookOpen, HandHeart, 
+import {
+  Heart, Users, Target, Compass, BookOpen, HandHeart,
   Home, Truck, Utensils, MessageSquare, Shield, Stethoscope,
-  TrendingUp, Award, CheckCircle2, ArrowRight, Star, 
+  TrendingUp, Award, CheckCircle2, ArrowRight, Star,
   ChevronRight, MapPin, Calendar, Clock, Phone, Mail,
   Sparkles, Crown, Mountain, Rocket, GraduationCap, Building2,
-  Quote, Lightbulb, UserCheck, Briefcase
-} from "lucide-react";
+  Quote, Lightbulb, UserCheck, Briefcase } from
+"lucide-react";
 
 // Intersection Observer Hook for animations
 function useIntersectionObserver(options = {}) {
@@ -65,7 +65,7 @@ export default function HomePage() {
       // Trigger the start of animation
       setStartStaffAnimation(true);
       setStaffAnimationPhase('stacking');
-      
+
       // After stacking completes, spread them out - total 8 seconds
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
@@ -74,59 +74,59 @@ export default function HomePage() {
   }, [staffVisible, startStaffAnimation]);
 
   const teamMembers = [
-    {
-      name: "Founding Visionary Lead",
-      role: "Visionary Leadership",
-      image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg",
-      description: "Former LDI graduate with lived experience in addiction recovery and criminal justice system. Leads ministry vision and strategic direction.",
-      badges: ["15+ Years Experience", "LDI Tier 4"]
-    },
-    {
-      name: "Spiritual Formation Director",
-      role: "Biblical Integration",
-      image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
-      description: "Seminary-trained theologian providing spiritual direction, biblical counseling, and systematic theology education throughout all programs.",
-      badges: ["M.Div. Theology", "Biblical Counselor"]
-    },
-    {
-      name: "Clinical Director",
-      role: "Mental Health & Clinical Excellence",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
-      description: "Licensed clinical psychologist specializing in addiction recovery and trauma treatment, integrating evidence-based practices with faith-based principles.",
-      badges: ["Clinical Psychology", "Trauma-Informed Care"]
-    },
-    {
-      name: "Ministry Programs Multiplication Director",
-      role: "Leadership Development",
-      image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg",
-      description: "Oversees multiplication of ministry programs across all tiers, ensuring program quality, participant transformation success, and scalable impact.",
-      badges: ["LDI Graduate", "10+ Years Ministry"]
-    },
-    {
-      name: "Outreach Coordinator",
-      role: "Community Engagement",
-      image: "https://od.lk/d/NzNfMTEwMDI4NDE0Xw/Screenshot_20251029_062837_Gallery.jpg",
-      description: "Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate crisis response to community needs 24/7.",
-      badges: ["Social Work", "Community Organizer"]
-    },
-    {
-      name: "Brand Ambassador",
-      role: "Strategic Communications",
-      image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
-      description: "Champions ministry vision and brand identity, building strategic partnerships and amplifying the transformative impact of UCon Ministries.",
-      badges: ["Marketing", "Partnership Development"]
-    }
-  ];
+  {
+    name: "Founding Visionary Lead",
+    role: "Visionary Leadership",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE3Xw/20250713_161156.jpg",
+    description: "Former LDI graduate with lived experience in addiction recovery and criminal justice system. Leads ministry vision and strategic direction.",
+    badges: ["8 Years Biblical Experience", "LDI Tier 4"]
+  },
+  {
+    name: "Spiritual Formation Director",
+    role: "Biblical Integration",
+    image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
+    description: "Seminary-trained theologian providing spiritual direction, biblical counseling, and systematic theology education throughout all programs.",
+    badges: ["M.Div. Theology", "Biblical Counselor"]
+  },
+  {
+    name: "Clinical Director",
+    role: "Mental Health & Clinical Excellence",
+    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+    description: "Licensed clinical psychologist specializing in addiction recovery and trauma treatment, integrating evidence-based practices with faith-based principles.",
+    badges: ["Clinical Psychology", "Trauma-Informed Care"]
+  },
+  {
+    name: "Ministry Programs Multiplication Director",
+    role: "Leadership Development",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE1Xw/1753625802155.jpg",
+    description: "Oversees multiplication of ministry programs across all tiers, ensuring program quality, participant transformation success, and scalable impact.",
+    badges: ["LDI Graduate", "10+ Years Ministry"]
+  },
+  {
+    name: "Outreach Coordinator",
+    role: "Community Engagement",
+    image: "https://od.lk/d/NzNfMTEwMDI4NDE0Xw/Screenshot_20251029_062837_Gallery.jpg",
+    description: "Leads Track 3 outreach initiatives, coordinating volunteers and ensuring immediate crisis response to community needs 24/7.",
+    badges: ["Social Work", "Community Organizer"]
+  },
+  {
+    name: "Brand Ambassador",
+    role: "Strategic Communications",
+    image: "https://od.lk/d/NzNfMTEwOTg5MTEzXw/bh3zmtbh3zmtbhd.png",
+    description: "Champions ministry vision and brand identity, building strategic partnerships and amplifying the transformative impact of UCon Ministries.",
+    badges: ["Marketing", "Partnership Development"]
+  }];
+
 
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* SECTION 1: HERO - 12 Containers */}
-      <section 
+      <section
         ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden"
-      >
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -134,8 +134,8 @@ export default function HomePage() {
             alt="Community in prayer"
             fill
             className="object-cover opacity-20"
-            priority
-          />
+            priority />
+
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
         </div>
         
@@ -144,28 +144,28 @@ export default function HomePage() {
             {/* Container 1: Main Headline */}
             <div className="lg:col-span-7 space-y-6">
               <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 ${
-                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              }>
                 <Sparkles className="w-4 h-4" />
                 Transforming Lives Since 2024
               </Badge>
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
-                heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'
-              }`}>
+              heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
+              }>
                 From Worthlessness to <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Purpose</span>
               </h1>
               
               {/* Container 2: Subheadline */}
               <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 ${
-                heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`
+              }>
                 Meeting individuals at their point of need, guiding them through comprehensive healing and transformation into authentic servant leaders.
               </p>
               
               {/* Container 3-4: CTA Buttons */}
               <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${
-                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              }>
                 <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
                   <Link href="/contact">
                     Start Your Journey
@@ -181,32 +181,32 @@ export default function HomePage() {
             {/* Container 5-8: Hero Stats Grid */}
             <div className="lg:col-span-5 grid grid-cols-2 gap-4">
               <Card className={`bg-[#A92FFA] text-white hover-lift transition-all duration-700 delay-200 ${
-                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              }>
                 <CardHeader>
                   <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-4xl font-bold">Projected 500+</CardTitle>
                   <CardDescription className="text-white/80">Lives Transformed</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`bg-[#F28C28] text-white hover-lift transition-all duration-700 delay-300 ${
-                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              }>
                 <CardHeader>
                   <CardTitle className="text-4xl font-bold">64</CardTitle>
                   <CardDescription className="text-white/80">Week Program</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-lift transition-all duration-700 delay-400 ${
-                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              }>
                 <CardHeader>
                   <CardTitle className="text-4xl font-bold">4</CardTitle>
                   <CardDescription className="text-white/80">Leadership Tiers</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`hover-lift transition-all duration-700 delay-500 ${
-                heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-              }`}>
+              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              }>
                 <CardHeader>
                   <CardTitle className="text-4xl font-bold">24/7</CardTitle>
                   <CardDescription>Support Available</CardDescription>
@@ -217,8 +217,8 @@ export default function HomePage() {
           
           {/* Container 9-12: Feature Badges */}
           <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 delay-600 ${
-            heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}>
+          heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+          }>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Heart className="w-8 h-8 text-[#A92FFA]" />
               <div>
@@ -252,12 +252,12 @@ export default function HomePage() {
       </section>
 
       {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
-      <section 
+      <section
         ref={missionRef}
         className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 ${
-          missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-      >
+        missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
+
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Section Header */}
           <div className="text-center mb-16">
@@ -1394,8 +1394,8 @@ export default function HomePage() {
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-ad96e433-20251105190507.jpg"
                       alt="Marcus T."
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div>
                     <CardTitle className="text-lg">Marcus T.</CardTitle>
@@ -1426,8 +1426,8 @@ export default function HomePage() {
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-1968c28a-20251105190507.jpg"
                       alt="Sarah L."
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div>
                     <CardTitle className="text-lg">Sarah L.</CardTitle>
@@ -1458,8 +1458,8 @@ export default function HomePage() {
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-9838c09e-20251105190507.jpg"
                       alt="James K."
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div>
                     <CardTitle className="text-lg">James K.</CardTitle>
@@ -1490,8 +1490,8 @@ export default function HomePage() {
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-7e4425ed-20251105190506.jpg"
                       alt="Diana R."
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div>
                     <CardTitle className="text-lg">Diana R.</CardTitle>
@@ -1522,8 +1522,8 @@ export default function HomePage() {
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-d4c3c200-20251105190506.jpg"
                       alt="Thomas P."
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div>
                     <CardTitle className="text-lg">Thomas P.</CardTitle>
@@ -1554,8 +1554,8 @@ export default function HomePage() {
                       src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-82743e11-20251105190506.jpg"
                       alt="Linda M."
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div>
                     <CardTitle className="text-lg">Linda M.</CardTitle>
@@ -1602,12 +1602,12 @@ export default function HomePage() {
       </section>
 
       {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
-      <section 
+      <section
         ref={founderRef}
         className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 ${
-          founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-      >
+        founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
+
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1628,8 +1628,8 @@ export default function HomePage() {
                       src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
                       alt="Ministry Founder"
                       fill
-                      className="object-cover"
-                    />
+                      className="object-cover" />
+
                   </div>
                   <div className="flex-1">
                     <CardTitle className="text-3xl mb-2">From Worthlessness to Purpose</CardTitle>
@@ -1768,12 +1768,12 @@ export default function HomePage() {
       </section>
 
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
-      <section 
+      <section
         ref={staffRef}
         className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure transition-all duration-1000 ${
-          staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-      >
+        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
+
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1786,48 +1786,48 @@ export default function HomePage() {
           
           {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
           <div className="relative">
-            {startStaffAnimation && staffAnimationPhase !== 'spreading' && (
-              <div className="relative min-h-[600px] flex items-start justify-center pt-12">
+            {startStaffAnimation && staffAnimationPhase !== 'spreading' &&
+            <div className="relative min-h-[600px] flex items-start justify-center pt-12">
                 {teamMembers.map((member, index) => {
-                  const isFromLeft = index % 2 === 0;
-                  
-                  return (
-                    <motion.div
-                      key={member.name}
-                      initial={{ 
-                        opacity: 0, 
-                        scale: 0.8, 
-                        x: isFromLeft ? -300 : 300,
-                        y: 0
-                      }}
-                      animate={{
-                        opacity: 1,
-                        scale: 0.9,
-                        x: index * 20, // Reduced horizontal offset for tighter stack
-                        y: index * 15, // Small vertical offset for depth
-                      }}
-                      transition={{
-                        delay: index * 1, // 1 second delay between each card
-                        duration: 1.5,
-                        type: 'spring',
-                        stiffness: 60,
-                      }}
-                      className="absolute"
-                      style={{
-                        width: '100%',
-                        maxWidth: '400px',
-                        zIndex: index, // Later cards stack ON TOP
-                      }}
-                    >
+                const isFromLeft = index % 2 === 0;
+
+                return (
+                  <motion.div
+                    key={member.name}
+                    initial={{
+                      opacity: 0,
+                      scale: 0.8,
+                      x: isFromLeft ? -300 : 300,
+                      y: 0
+                    }}
+                    animate={{
+                      opacity: 1,
+                      scale: 0.9,
+                      x: index * 20, // Reduced horizontal offset for tighter stack
+                      y: index * 15 // Small vertical offset for depth
+                    }}
+                    transition={{
+                      delay: index * 1, // 1 second delay between each card
+                      duration: 1.5,
+                      type: 'spring',
+                      stiffness: 60
+                    }}
+                    className="absolute"
+                    style={{
+                      width: '100%',
+                      maxWidth: '400px',
+                      zIndex: index // Later cards stack ON TOP
+                    }}>
+
                       <Card className="hover-lift hover-glow">
                         <CardHeader>
                           <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                             <Image
-                              src={member.image}
-                              alt={member.name}
-                              fill
-                              className="object-cover"
-                            />
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover" />
+
                           </div>
                           <CardTitle className="text-center text-xl">{member.name}</CardTitle>
                           <CardDescription className="text-center">{member.role}</CardDescription>
@@ -1835,53 +1835,53 @@ export default function HomePage() {
                         <CardContent className="text-center">
                           <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                           <div className="flex flex-wrap gap-2 justify-center">
-                            {member.badges.map((badge) => (
-                              <Badge key={badge} variant="outline">
+                            {member.badges.map((badge) =>
+                          <Badge key={badge} variant="outline">
                                 {badge}
                               </Badge>
-                            ))}
+                          )}
                           </div>
                         </CardContent>
                       </Card>
-                    </motion.div>
-                  );
-                })}
+                    </motion.div>);
+
+              })}
               </div>
-            )}
+            }
             
             {/* Grid layout - spreads out after stacking */}
-            {startStaffAnimation && staffAnimationPhase === 'spreading' && (
-              <motion.div 
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                {teamMembers.map((member, index) => (
-                  <motion.div
-                    key={member.name}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ 
-                      opacity: 1, 
-                      scale: [0.8, 1.1, 1],
-                    }}
-                    transition={{
-                      delay: index * 0.15,
-                      duration: 0.8,
-                      times: [0, 0.6, 1],
-                      type: 'tween',
-                      ease: 'easeOut',
-                    }}
-                  >
+            {startStaffAnimation && staffAnimationPhase === 'spreading' &&
+            <motion.div
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.5 }}>
+
+                {teamMembers.map((member, index) =>
+              <motion.div
+                key={member.name}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{
+                  opacity: 1,
+                  scale: [0.8, 1.1, 1]
+                }}
+                transition={{
+                  delay: index * 0.15,
+                  duration: 0.8,
+                  times: [0, 0.6, 1],
+                  type: 'tween',
+                  ease: 'easeOut'
+                }}>
+
                     <Card className="hover-lift hover-glow h-full">
                       <CardHeader>
                         <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                           <Image
-                            src={member.image}
-                            alt={member.name}
-                            fill
-                            className="object-cover"
-                          />
+                        src={member.image}
+                        alt={member.name}
+                        fill
+                        className="object-cover" />
+
                         </div>
                         <CardTitle className="text-center text-xl">{member.name}</CardTitle>
                         <CardDescription className="text-center">{member.role}</CardDescription>
@@ -1889,33 +1889,33 @@ export default function HomePage() {
                       <CardContent className="text-center">
                         <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                         <div className="flex flex-wrap gap-2 justify-center">
-                          {member.badges.map((badge) => (
-                            <Badge key={badge} variant="outline">
+                          {member.badges.map((badge) =>
+                      <Badge key={badge} variant="outline" className="!whitespace-pre-line">
                               {badge}
                             </Badge>
-                          ))}
+                      )}
                         </div>
                       </CardContent>
                     </Card>
                   </motion.div>
-                ))}
+              )}
               </motion.div>
-            )}
+            }
             
             {/* Placeholder when animation hasn't started */}
-            {!startStaffAnimation && (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0">
-                {teamMembers.map((member) => (
-                  <Card key={member.name} className="h-full">
+            {!startStaffAnimation &&
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0">
+                {teamMembers.map((member) =>
+              <Card key={member.name} className="h-full">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative bg-muted" />
                       <CardTitle className="text-center text-xl">{member.name}</CardTitle>
                       <CardDescription className="text-center">{member.role}</CardDescription>
                     </CardHeader>
                   </Card>
-                ))}
+              )}
               </div>
-            )}
+            }
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
@@ -2560,11 +2560,11 @@ export default function HomePage() {
                   Subscribe to our newsletter for inspiring stories, upcoming events, and ways to get involved.
                 </p>
                 <div className="flex flex-col gap-2">
-                  <Input 
-                    type="email" 
+                  <Input
+                    type="email"
                     placeholder="Enter your email"
-                    className="bg-white text-[#F28C28]"
-                  />
+                    className="bg-white text-[#F28C28]" />
+
                   <Button className="w-full bg-white text-[#F28C28] hover:bg-white/90">
                     Subscribe Now
                   </Button>
@@ -2577,6 +2577,6 @@ export default function HomePage() {
 
       {/* SECTION 12: FOOTER - 12 Containers */}
       <Footer />
-    </div>
-  );
+    </div>);
+
 }
