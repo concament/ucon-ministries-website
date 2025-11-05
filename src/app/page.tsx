@@ -1787,17 +1787,22 @@ export default function HomePage() {
             {staffAnimationPhase !== 'spreading' && (
               <div className="relative min-h-[600px]">
                 {teamMembers.map((member, index) => {
-                  const isStacking = staffAnimationPhase === 'stacking';
+                  const isFromLeft = index % 2 === 0;
                   
                   return (
                     <motion.div
                       key={member.name}
-                      initial={{ opacity: 0, scale: 0.8, y: 100 }}
+                      initial={{ 
+                        opacity: 0, 
+                        scale: 0.8, 
+                        x: isFromLeft ? -200 : 200,
+                        y: 0
+                      }}
                       animate={{
                         opacity: 1,
-                        scale: 1,
-                        y: 0,
+                        scale: 0.9,
                         x: 0,
+                        y: index * 40, // Ladder stacking with 40px offset
                       }}
                       transition={{
                         delay: index * 0.3,
