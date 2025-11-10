@@ -21,12 +21,12 @@ export default function Navigation() {
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1000021808-1761356032294.png"
                 alt="UCon Ministries Logo"
                 fill
-                className="object-contain !w-full !h-[69px] !max-w-full"
+                className="object-contain !w-full !h-[55px] !max-w-full"
                 priority />
 
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">Ucon Ministries</h1>
+              <h1 className="text-2xl font-bold text-foreground !whitespace-pre-line">Ucon Ministries</h1>
               <p className="text-xs text-muted-foreground">Where Your Past Becomes Your Purpose</p>
             </div>
           </Link>
