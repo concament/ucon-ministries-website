@@ -255,10 +255,10 @@ export default function HomePage() {
               </h1>
               
               {/* Container 2: Subheadline */}
-              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 ${
+              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !whitespace-pre-line ${
               heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`
-              }>
-                Meeting individuals at their point of need, guiding them through comprehensive healing and transformation into authentic servant leaders.
+              }>Welcome to Ucon Ministries
+
               </p>
               
               {/* Container 3-4: CTA Buttons */}
