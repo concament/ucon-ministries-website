@@ -197,12 +197,8 @@ export default function HomePage() {
     if (phase === 'stacking') {
       // Each card enters AFTER the previous one completes (2s per card)
       return index * 2;
-    } else if (phase === 'spreading') {
-      // Alternating corners: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
-      const cornerOrder = [0, 2, 3, 5, 1, 4];
-      const spreadIndex = cornerOrder.indexOf(index);
-      return spreadIndex >= 0 ? spreadIndex * 0.3 : 0;
     }
+    // No delay for spreading/pulsing - timing controlled by state updates
     return 0;
   };
 
@@ -1874,10 +1870,10 @@ export default function HomePage() {
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div 
-            className={`relative mb-12 ${(staffAnimationPhase === 'spreading' || staffAnimationPhase === 'pulsing') ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{ 
-              minHeight: (staffAnimationPhase === 'spreading' || staffAnimationPhase === 'pulsing') ? 'auto' : '600px',
-              display: (staffAnimationPhase === 'spreading' || staffAnimationPhase === 'pulsing') ? 'grid' : 'flex',
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
+              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center'
             }}
@@ -1885,12 +1881,19 @@ export default function HomePage() {
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
               const delay = getCardDelay(index, staffAnimationPhase);
-              const isAnimating = staffAnimationPhase !== 'spreading' && staffAnimationPhase !== 'pulsing';
+              const isAbsolutePositioned = staffAnimationPhase !== 'pulsing';
+              
+              // Z-index logic:
+              // - Stacking: newer cards on top (index + 10)
+              // - Spreading: unreleased cards (in center) on top (index + 20), released cards behind (index)
+              const zIndex = staffAnimationPhase === 'stacking' 
+                ? index + 10 
+                : (releasedCards.has(index) ? index : index + 20);
               
               return (
                 <div
                   key={member.name}
-                  style={isAnimating ? {
+                  style={isAbsolutePositioned ? {
                     position: 'absolute',
                     left: '50%',
                     top: '50%',
@@ -1899,7 +1902,7 @@ export default function HomePage() {
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
-                    zIndex: staffAnimationPhase === 'stacking' ? index + 10 : index
+                    zIndex: zIndex
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     animation: staffAnimationPhase === 'pulsing' ? `cardPulse 0.6s ease-out ${delay}s` : 'none'
