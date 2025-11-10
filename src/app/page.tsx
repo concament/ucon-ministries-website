@@ -1594,7 +1594,7 @@ ADDICTED? GUILT? HELP? 
                   </div>
                   <div>
                     <CardTitle className="text-lg">Diana R.</CardTitle>
-                    <CardDescription>Services Participant</CardDescription>
+                    <CardDescription className="!whitespace-pre-line">Services Participant</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
@@ -1641,7 +1641,7 @@ ADDICTED? GUILT? HELP? 
                 <p className="text-sm text-muted-foreground italic mb-3">
                   "I've been clean for 6 months and working with UCon's pastoral team. When they told me about the 64-week LDI program, I knew that's what I need. Not just recovery, but real transformation and purpose. I've completed my application and can't wait to start."
                 </p>
-                <Badge variant="outline">Ready for Change</Badge>
+                <Badge variant="outline" className="!whitespace-pre-line">Committed to Complete Change</Badge>
               </CardContent>
             </Card>
             
