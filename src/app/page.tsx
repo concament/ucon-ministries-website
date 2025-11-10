@@ -1253,7 +1253,7 @@ ADDICTED? GUILT? HELP? 
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
                   <Utensils className="w-6 h-6 text-[#A92FFA]" />
                 </div>
-                <CardTitle>Food Distribution</CardTitle>
+                <CardTitle className="!whitespace-pre-line">Ucon Nourish</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
