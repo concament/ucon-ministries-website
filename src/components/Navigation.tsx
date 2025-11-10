@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -21,12 +21,12 @@ export default function Navigation() {
                 src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1000021808-1761356032294.png"
                 alt="UCon Ministries Logo"
                 fill
-                className="object-contain"
-                priority
-              />
+                className="object-contain !w-full !h-[69px] !max-w-full"
+                priority />
+
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground">UCon Ministries</h1>
+              <h1 className="text-2xl font-bold text-foreground">Ucon Ministries</h1>
               <p className="text-xs text-muted-foreground">Where Your Past Becomes Your Purpose</p>
             </div>
           </Link>
@@ -55,13 +55,13 @@ export default function Navigation() {
               variant="ghost"
               size="sm"
               className="h-9 w-9 p-0"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-[#F28C28]" />
-              ) : (
-                <Moon className="w-5 h-5 text-[#A92FFA]" />
-              )}
+              aria-label="Toggle theme">
+
+              {theme === "dark" ?
+              <Sun className="w-5 h-5 text-[#F28C28]" /> :
+
+              <Moon className="w-5 h-5 text-[#A92FFA]" />
+              }
             </Button>
           </div>
 
@@ -72,26 +72,26 @@ export default function Navigation() {
               variant="ghost"
               size="sm"
               className="h-9 w-9 p-0"
-              aria-label="Toggle theme"
-            >
-              {theme === "dark" ? (
-                <Sun className="w-5 h-5 text-[#F28C28]" />
-              ) : (
-                <Moon className="w-5 h-5 text-[#A92FFA]" />
-              )}
+              aria-label="Toggle theme">
+
+              {theme === "dark" ?
+              <Sun className="w-5 h-5 text-[#F28C28]" /> :
+
+              <Moon className="w-5 h-5 text-[#A92FFA]" />
+              }
             </Button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-md text-foreground hover:bg-accent"
-            >
+              className="p-2 rounded-md text-foreground hover:bg-accent">
+
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="lg:hidden py-4 space-y-3">
+        {isMenuOpen &&
+        <div className="lg:hidden py-4 space-y-3">
             <Link href="/" className="block py-2 text-foreground hover:text-primary transition-colors font-medium">
               Home
             </Link>
@@ -108,8 +108,8 @@ export default function Navigation() {
               Contact
             </Link>
           </div>
-        )}
+        }
       </div>
-    </nav>
-  );
+    </nav>);
+
 }
