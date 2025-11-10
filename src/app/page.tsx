@@ -610,11 +610,11 @@ ADDICTED? GUILT? HELP? 
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Four progressive tiers: Ascension, Pinnacle, Apex, Ucon</span>
+                    <span className="text-sm !whitespace-pre-line">Four progressive tiers: Ascension, Pinnacle, Apex, Ucon</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Clinical psychology + systematic theology</span>
+                    <span className="text-sm">Clinical psychology + Systematic theology</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
