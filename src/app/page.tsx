@@ -1030,7 +1030,7 @@ ADDICTED? GUILT? HELP? 
                 <CardDescription>Spiritual Growth</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
+                <p className="text-muted-foreground mb-4 !w-[100.1%] !h-[413px]">
                   Open-access gatherings for biblical literacy, fellowship, and theological exploration.
                 </p>
                 <ul className="space-y-2">
