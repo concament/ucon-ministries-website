@@ -981,8 +981,8 @@ ADDICTED? GUILT? HELP? 
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#F28C28]" />
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Open Ministry Services</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Accessible programs for spiritual formation and community connection—no long-term commitment required.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">Accessible programs for spiritual formation and community connection—no commitment required
+
             </p>
           </div>
           
