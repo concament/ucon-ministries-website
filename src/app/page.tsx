@@ -861,7 +861,7 @@ ADDICTED? GUILT? HELP? 
                       <Mountain className="w-6 h-6 text-[#F28C28]" />
                       Pinnacle
                     </CardTitle>
-                    <CardDescription>Mentorship Development | Weeks 17-32</CardDescription>
+                    <CardDescription className="!whitespace-pre-line">Mentorship Development | The Climb</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -887,7 +887,7 @@ ADDICTED? GUILT? HELP? 
                       <Building2 className="w-6 h-6 text-[#A92FFA]" />
                       Apex
                     </CardTitle>
-                    <CardDescription>Systemic Leadership | Weeks 33-48</CardDescription>
+                    <CardDescription>Systemic Leadership | The Goal</CardDescription>
                   </div>
                 </div>
               </CardHeader>
