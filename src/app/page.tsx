@@ -994,7 +994,7 @@ ADDICTED? GUILT? HELP? 
                   <GraduationCap className="w-6 h-6 text-[#F28C28]" />
                 </div>
                 <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line">UCON Equip</CardTitle>
-                <CardDescription>Skill-Based Learning</CardDescription>
+                <CardDescription className="!whitespace-pre-line">Workshops</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">Our ministry workshops are an educational outreach initiative designed to provide comprehensive support and holistic development, much like programs found in community-focused organizations and recovery centers. We offer a diverse range of interactive sessions covering vital areas such as spiritual foundations and personal growth, practical life skills, sobriety and recovery support, art and skill development (including creative workshops and various trades), and career development (including job readiness and financial literacy). Through this broad and inclusive approach, we empower participants to achieve personal stability, develop vital skills, find purpose, and become contributing members of our community.
