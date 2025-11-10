@@ -1126,7 +1126,7 @@ ADDICTED? GUILT? HELP? 
             <Card>
               <CardHeader>
                 <Calendar className="w-8 h-8 text-[#F28C28] mb-2" />
-                <CardTitle>Weekly Schedule</CardTitle>
+                <CardTitle className="!whitespace-pre-line">Content Calendar</CardTitle>
               </CardHeader>
               <CardContent>
                 <ul className="space-y-2 text-sm">
