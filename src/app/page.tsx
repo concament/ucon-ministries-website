@@ -248,10 +248,10 @@ export default function HomePage() {
                 <Sparkles className="w-4 h-4" />Welcome to Ucon Ministres
 
               </Badge>
-              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
+              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 !whitespace-pre-line ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
-              }>
-                From Worthlessness to <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Purpose</span>
+              }>WORTHLESSNESS?
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">Purpose</span>
               </h1>
               
               {/* Container 2: Subheadline */}
