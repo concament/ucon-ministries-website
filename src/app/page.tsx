@@ -887,7 +887,7 @@ ADDICTED? GUILT? HELP? 
                       <Building2 className="w-6 h-6 text-[#A92FFA]" />
                       Apex
                     </CardTitle>
-                    <CardDescription>Systemic Leadership | The Goal</CardDescription>
+                    <CardDescription className="!whitespace-pre-line">Systemic Leadership | The Goal</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -913,7 +913,7 @@ ADDICTED? GUILT? HELP? 
                       <Rocket className="w-6 h-6 text-[#A92FFA]" />
                       UCon
                     </CardTitle>
-                    <CardDescription>Visionary Leadership | Weeks 49-64</CardDescription>
+                    <CardDescription>Visionary Leadership | Purpose</CardDescription>
                   </div>
                 </div>
               </CardHeader>
