@@ -1609,7 +1609,7 @@ ADDICTED? GUILT? HELP? 
                 <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"This community gave me more than church attendance—it gave me a faith that's actually mine. The teachers here don't see me as broken; they see me as someone God is transforming. I'm learning theology, practicing spiritual disciplines, and for the first time, I feel rooted in something real and lasting."
 
                 </p>
-                <Badge variant="outline" className="!whitespace-pre-line">Path to </Badge>
+                <Badge variant="outline" className="!whitespace-pre-line !whitespace-pre-line">Where Scripture Meets Life</Badge>
               </CardContent>
             </Card>
             
