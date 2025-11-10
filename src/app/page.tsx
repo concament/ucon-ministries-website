@@ -16,8 +16,8 @@ import {
   TrendingUp, Award, CheckCircle2, ArrowRight, Star,
   ChevronRight, MapPin, Calendar, Clock, Phone, Mail,
   Sparkles, Crown, Mountain, Rocket, GraduationCap, Building2,
-  Quote, Lightbulb, UserCheck, Briefcase
-} from "lucide-react";
+  Quote, Lightbulb, UserCheck, Briefcase } from
+"lucide-react";
 
 // Intersection Observer Hook for animations
 function useIntersectionObserver(options = {}) {
@@ -71,14 +71,14 @@ export default function HomePage() {
       // After stacking completes (6 cards * 2s each = 12s), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
-        
+
         // Release cards one by one to their final positions
         // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
         const cornerOrder = [0, 2, 3, 5, 1, 4];
-        
+
         cornerOrder.forEach((cardIndex, orderIndex) => {
           setTimeout(() => {
-            setReleasedCards(prev => new Set([...prev, cardIndex]));
+            setReleasedCards((prev) => new Set([...prev, cardIndex]));
           }, orderIndex * 300); // 300ms delay between each card release
         });
       }, 12000);
@@ -86,7 +86,7 @@ export default function HomePage() {
       // After spreading completes (6 cards * 0.3s = 1.8s), pulse one by one
       setTimeout(() => {
         setStaffAnimationPhase('pulsing');
-        
+
         // Pulse cards one by one in same corner order
         const cornerOrder = [0, 2, 3, 5, 1, 4];
         cornerOrder.forEach((cardIndex, orderIndex) => {
@@ -170,16 +170,16 @@ export default function HomePage() {
         const col = index % 3;
         const cardWidth = 384; // max-w-96 = 384px
         const gap = 32; // gap-8 = 32px
-        
+
         // Calculate offset from center
         const totalWidth = 3 * cardWidth + 2 * gap;
         const startX = -totalWidth / 2 + cardWidth / 2;
         const x = startX + col * (cardWidth + gap);
-        
+
         const totalHeight = 2 * 300 + gap; // approximate card height
         const startY = -totalHeight / 2 + 150;
         const y = startY + row * (300 + gap);
-        
+
         return { x, y, rotate: 0, opacity: 1 };
       } else {
         // Stay stacked in center
@@ -192,15 +192,15 @@ export default function HomePage() {
         const col = index % 3;
         const cardWidth = 384;
         const gap = 32;
-        
+
         const totalWidth = 3 * cardWidth + 2 * gap;
         const startX = -totalWidth / 2 + cardWidth / 2;
         const x = startX + col * (cardWidth + gap);
-        
+
         const totalHeight = 2 * 300 + gap;
         const startY = -totalHeight / 2 + 150;
         const y = startY + row * (300 + gap);
-        
+
         return { x, y, rotate: 0, opacity: 1 };
       }
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
@@ -242,11 +242,11 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Container 1: Main Headline */}
             <div className="lg:col-span-7 space-y-6">
-              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 ${
+              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 !whitespace-pre-line ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
-                <Sparkles className="w-4 h-4" />
-                Transforming Lives Since 2024
+                <Sparkles className="w-4 h-4" />Welcome to Ucon Ministres
+
               </Badge>
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
@@ -1870,9 +1870,9 @@ export default function HomePage() {
       <section
         ref={staffRef}
         className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
-        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}
-      >
+        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
+
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1884,27 +1884,27 @@ export default function HomePage() {
           </div>
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
-          <div 
+          <div
             className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
-            style={{ 
+            style={{
               minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
               display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center'
-            }}
-          >
+            }}>
+
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
               const delay = getCardDelay(index, staffAnimationPhase);
               const isAbsolutePositioned = staffAnimationPhase !== 'pulsing';
-              
+
               // Z-index logic:
               // - Stacking: newer cards on top (index + 10)
               // - Spreading: unreleased cards (in center) on top (index + 20), released cards behind (index)
-              const zIndex = staffAnimationPhase === 'stacking' 
-                ? index + 10 
-                : (releasedCards.has(index) ? index : index + 20);
-              
+              const zIndex = staffAnimationPhase === 'stacking' ?
+              index + 10 :
+              releasedCards.has(index) ? index : index + 20;
+
               return (
                 <div
                   key={member.name}
@@ -1920,9 +1920,9 @@ export default function HomePage() {
                     zIndex: zIndex
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
-                    animation: (staffAnimationPhase === 'pulsing' && pulsingCard === index) ? 'cardPulse 0.6s ease-out' : 'none'
-                  }}
-                >
+                    animation: staffAnimationPhase === 'pulsing' && pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
+                  }}>
+
                   <Card className="hover-lift hover-glow h-full">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
@@ -1930,8 +1930,8 @@ export default function HomePage() {
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover"
-                        />
+                          className="object-cover" />
+
                       </div>
                       <CardTitle className="text-center text-xl">{member.name}</CardTitle>
                       <CardDescription className="text-center">{member.role}</CardDescription>
@@ -1939,16 +1939,16 @@ export default function HomePage() {
                     <CardContent className="text-center">
                       <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                       <div className="flex flex-wrap gap-2 justify-center">
-                        {member.badges.map((badge) => (
-                          <Badge key={badge} variant="outline">
+                        {member.badges.map((badge) =>
+                        <Badge key={badge} variant="outline">
                             {badge}
                           </Badge>
-                        ))}
+                        )}
                       </div>
                     </CardContent>
                   </Card>
-                </div>
-              );
+                </div>);
+
             })}
           </div>
           
