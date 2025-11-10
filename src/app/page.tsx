@@ -242,16 +242,16 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Container 1: Main Headline */}
             <div className="lg:col-span-7 space-y-6">
-              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 !whitespace-pre-line ${
+              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <Sparkles className="w-4 h-4" />Welcome to Ucon Ministres
 
               </Badge>
-              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 !whitespace-pre-line !whitespace-pre-line ${
+              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
               }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !whitespace-pre-line !w-[792px] !h-[213px]">NO COMMITMENT?</span>
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">NO COMMITMENT?</span>
               </h1>
               
               {/* Container 2: Subheadline */}
