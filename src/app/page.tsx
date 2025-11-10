@@ -1510,7 +1510,7 @@ ADDICTED? GUILT? HELP? 
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground italic mb-3">"When I was living on the streets, Ucon's outreach team found me. They didn't just give me a meal—they sat with me, listened to my story, and treated me like I mattered. Now I'm on the waitlist for the LDI program, and for the first time in years, I have real hope."
+                <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"When I was living on the streets, Ucon's outreach team found me. They didn't just give me a meal—they sat with me, listened to my story, and treated me like I mattered. Now I'm on the waitlist for the LDI program, and for the first time in years, I have real hope."
 
                 </p>
                 <Badge variant="outline">From Streets to Hope</Badge>
@@ -1542,8 +1542,8 @@ ADDICTED? GUILT? HELP? 
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground italic mb-3">
-                  "I started attending the Bible studies just looking for community after rehab. The workshops on financial literacy and the pastoral support have been life-changing. I'm excited about what UCon is building—I've never seen a ministry approach recovery this comprehensively."
+                <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"I started attending the UCON Awaken and Equip just looking for community after rehab. The workshops on financial literacy and the pastoral support have been life-changing. I'm excited about what Ucon is building—I've never seen a ministry approach recovery this comprehensively."
+
                 </p>
                 <Badge variant="outline">Building Foundation</Badge>
               </CardContent>
