@@ -1,3 +1,7 @@
+/* Updated: 2025-11-10T21:02:48.054Z */
+/* Updated: 2025-11-10T21:01:13.606Z */
+/* Updated: 2025-11-10T21:00:41.128Z */
+/* Updated: 2025-11-07T07:16:16.249Z */
 /* Updated: 2025-11-05T20:07:17.805Z */
 /* Updated: 2025-11-05T19:55:20.248Z */
 /* Updated: 2025-11-05T19:26:12.452Z */
@@ -247,14 +251,14 @@
 /* Overlay effect */
 .overlay-gradient {
   position: relative;
-  background: linear-gradient(135deg, rgba(169, 47, 250, 0.1) 0%, rgba(242, 140, 40, 0.1) 100%);
+  background: transparent;
 }
 
 .overlay-gradient::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(169, 47, 250, 0.05) 0%, rgba(242, 140, 40, 0.05) 100%);
+  background: linear-gradient(135deg, rgba(169, 47, 250, 0.02) 0%, rgba(242, 140, 40, 0.02) 100%);
   pointer-events: none;
   z-index: 1;
 }
@@ -268,14 +272,15 @@
 .double-exposure {
   position: relative;
   overflow: hidden;
+  background: transparent;
 }
 
 .double-exposure::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 30% 50%, rgba(169, 47, 250, 0.15) 0%, transparent 50%),
-              radial-gradient(circle at 70% 50%, rgba(242, 140, 40, 0.15) 0%, transparent 50%);
+  background: radial-gradient(circle at 30% 50%, rgba(169, 47, 250, 0.08) 0%, transparent 50%),
+              radial-gradient(circle at 70% 50%, rgba(242, 140, 40, 0.08) 0%, transparent 50%);
   mix-blend-mode: overlay;
   pointer-events: none;
   z-index: 1;
