@@ -909,9 +909,9 @@ ADDICTED? GUILT? HELP? 
                 <div className="flex items-start justify-between">
                   <div>
                     <Badge className="mb-2">Tier 4</Badge>
-                    <CardTitle className="text-2xl flex items-center gap-3">
-                      <Rocket className="w-6 h-6 text-[#A92FFA]" />
-                      UCon
+                    <CardTitle className="text-2xl flex items-center gap-3 !whitespace-pre-line">
+                      <Rocket className="w-6 h-6 text-[#A92FFA]" />Ucon
+
                     </CardTitle>
                     <CardDescription className="!whitespace-pre-line !whitespace-pre-line">Visionary Leadership | Finding Purpose</CardDescription>
                   </div>
