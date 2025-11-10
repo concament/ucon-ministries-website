@@ -596,8 +596,8 @@ ADDICTED? GUILT? HELP? 
                   <Crown className="text-[#A92FFA]/90 !w-[60.9%] !h-[35px]" />
                 </div>
                 <Badge className="w-fit mb-2">Track 1</Badge>
-                <CardTitle className="text-2xl">Leadership Development Institute</CardTitle>
-                <CardDescription className="text-base">The Commitment-Based Program</CardDescription>
+                <CardTitle className="text-2xl !whitespace-pre-line">The Leadership Development Institute</CardTitle>
+                <CardDescription className="text-base">Our Commitment-Based Program</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
