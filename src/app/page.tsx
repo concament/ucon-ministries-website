@@ -1722,7 +1722,7 @@ ADDICTED? GUILT? HELP? 
             <Card className="border-2 border-[#A92FFA]/30 hover-lift">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="w-full md:w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                  <div className="md:w-48 flex-shrink-0 relative rounded-lg overflow-hidden !w-48 !h-48">
                     <Image
                       src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
                       alt="Ministry Founder"
@@ -1742,7 +1742,7 @@ ADDICTED? GUILT? HELP? 
 
 
                 </p>
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[75px] !h-[383px]">{`\nBut then came the choice nobody saw coming—. Not because it was easy or guaranteed, but because staying the same meant dying slowly behind those bars—the physical ones and the invisible ones built by addiction and self-hatred. Our founder recognized they needed help but that no one could do the work for them. They chose to show up. Chose the right people who wouldn't enable the lies. Chose therapy that demanded brutal honesty. Chose to open the Bible and wrestle with God about who they really were. Chose to let Jesus into the wreckage. Chose community even when shame screamed to hide.— people who refused to give up, who saw worth where the world saw waste. Through Christ's redemptive power and the consistent presence of a caring community, transformation became possible.`}
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[491px] !h-[324px]">{`\nBut then came the choice nobody saw coming—. Not because it was easy or guaranteed, but because staying the same meant dying slowly behind those bars—the physical ones and the invisible ones built by addiction and self-hatred. Our founder recognized they needed help but that no one could do the work for them. They chose to show up. Chose the right people who wouldn't enable the lies. Chose therapy that demanded brutal honesty. Chose to open the Bible and wrestle with God about who they really were. Chose to let Jesus into the wreckage. Chose community even when shame screamed to hide.— people who refused to give up, who saw worth where the world saw waste. Through Christ's redemptive power and the consistent presence of a caring community, transformation became possible.`}
                   <span className="text-[#A92FFA] font-semibold !whitespace-pre-line"></span>
 
 
