@@ -952,7 +952,7 @@ ADDICTED? GUILT? HELP? 
                 <GraduationCap className="w-6 h-6 text-[#A92FFA]" />
               </div>
               <h4 className="font-semibold mb-2">3. Commitment</h4>
-              <p className="text-sm text-muted-foreground">Sign agreement and begin Tier 1</p>
+              <p className="text-sm text-muted-foreground !whitespace-pre-line">Complete intake and begin Tier 1</p>
             </div>
             <div className="text-center p-6 bg-card rounded-lg border border-border">
               <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
