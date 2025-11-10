@@ -1026,7 +1026,7 @@ ADDICTED? GUILT? HELP? 
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <BookOpen className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl">Bible Studies</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line">Ucon Roots</CardTitle>
                 <CardDescription>Spiritual Growth</CardDescription>
               </CardHeader>
               <CardContent>
