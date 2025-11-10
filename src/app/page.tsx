@@ -1545,7 +1545,7 @@ ADDICTED? GUILT? HELP? 
                 <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"I started attending the UCON Awaken and Equip just looking for community after rehab. The workshops on financial literacy and the pastoral support have been life-changing. I'm excited about what Ucon is building—I've never seen a ministry approach recovery this comprehensively."
 
                 </p>
-                <Badge variant="outline">Building Foundation</Badge>
+                <Badge variant="outline" className="!whitespace-pre-line">Supporting Every Step Forward</Badge>
               </CardContent>
             </Card>
             
@@ -1594,7 +1594,7 @@ ADDICTED? GUILT? HELP? 
                   </div>
                   <div>
                     <CardTitle className="text-lg">Diana R.</CardTitle>
-                    <CardDescription>Shelter Resident</CardDescription>
+                    <CardDescription>Services Participant</CardDescription>
                   </div>
                 </div>
                 <div className="flex gap-1">
