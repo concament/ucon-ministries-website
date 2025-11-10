@@ -597,11 +597,11 @@ ADDICTED? GUILT? HELP? 
                 </div>
                 <Badge className="w-fit mb-2">Track 1</Badge>
                 <CardTitle className="text-2xl !whitespace-pre-line">The Leadership Development Institute</CardTitle>
-                <CardDescription className="text-base">Our Commitment-Based Program</CardDescription>
+                <CardDescription className="text-base !whitespace-pre-line">Our Commitment-Based Program</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Intensive 64-week, four-tier program transforming lives through deep personal healing and leadership development.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line">The LLDI is an Intensive 64-week, four-tier program in development for transforming lives through deep personal healing and leadership development.
+
                 </p>
                 <ul className="space-y-2 mb-6">
                   <li className="flex items-start gap-2">
@@ -610,7 +610,7 @@ ADDICTED? GUILT? HELP? 
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Four progressive tiers: Ascension, Pinnacle, Apex, UCon</span>
+                    <span className="text-sm">Four progressive tiers: Ascension, Pinnacle, Apex, Ucon</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 text-[#A92FFA] mt-0.5 flex-shrink-0" />
