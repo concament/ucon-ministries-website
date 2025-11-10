@@ -993,7 +993,7 @@ ADDICTED? GUILT? HELP? 
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <GraduationCap className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl !whitespace-pre-line">The Ucon </CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line">UCON Equip</CardTitle>
                 <CardDescription>Skill-Based Learning</CardDescription>
               </CardHeader>
               <CardContent>
