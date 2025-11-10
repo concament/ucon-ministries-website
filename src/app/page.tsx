@@ -1731,7 +1731,7 @@ ADDICTED? GUILT? HELP? 
 
                   </div>
                   <div className="flex-1">
-                    <CardTitle className="text-3xl mb-2 !whitespace-pre-line">You Were Made For More</CardTitle>
+                    <CardTitle className="text-3xl mb-2 !whitespace-pre-line !whitespace-pre-line">What If Your Darkest Moment Became Your Greatest Purpose?</CardTitle>
                     <CardDescription className="text-lg">The Journey That Started It All</CardDescription>
                   </div>
                 </div>
