@@ -75,7 +75,7 @@ export default function BackgroundMusic() {
         </Button>
 
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-semibold"></p>
+          <p className="text-xs font-semibold !whitespace-pre-line"></p>
           <p className="text-xs text-muted-foreground !whitespace-pre-line"></p>
         </div>
 
@@ -94,7 +94,7 @@ export default function BackgroundMusic() {
             size="sm"
             variant="ghost"
             onClick={toggleMute}
-            className="hover:bg-[#A92FFA]/10"
+            className="hover:bg-[#A92FFA]/10 !w-[25.4%] !h-full"
             aria-label={isMuted ? "Unmute" : "Mute"}>
 
             {isMuted || volume === 0 ?
