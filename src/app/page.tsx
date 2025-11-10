@@ -997,7 +997,7 @@ ADDICTED? GUILT? HELP? 
                 <CardDescription>Skill-Based Learning</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line">Short-term seminars and webinars designed to build practical life skills and empower community members.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line"> Interactive, structured sessions, designed to equip individuals involved in church work or spiritual service with specific knowledge, practical skills, and tools to enhance their effectiveness in serving their congregations and communitie
 
                 </p>
                 <ul className="space-y-2">
