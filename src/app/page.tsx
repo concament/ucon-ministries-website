@@ -622,8 +622,8 @@ ADDICTED? GUILT? HELP? 
                   </li>
                 </ul>
                 <Button className="w-full" asChild>
-                  <Link href="/ldi">
-                    Explore LDI Program
+                  <Link href="/ldi" className="!whitespace-pre-line">Explore The LDI
+
                     <ChevronRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
