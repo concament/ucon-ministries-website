@@ -1770,7 +1770,7 @@ export default function HomePage() {
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure transition-all duration-1000 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure transition-all duration-1000 overflow-visible ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -1785,9 +1785,9 @@ export default function HomePage() {
           </div>
           
           {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
-          <div className="relative">
+          <div className="relative overflow-visible">
             {startStaffAnimation && staffAnimationPhase !== 'spreading' &&
-            <div className="relative min-h-[600px] flex items-start justify-center pt-12">
+            <div className="relative min-h-[800px] flex items-start justify-center pt-12 overflow-visible">
                 {teamMembers.map((member, index) => {
                 const isFromLeft = index % 2 === 0;
 
@@ -1803,23 +1803,23 @@ export default function HomePage() {
                     animate={{
                       opacity: 1,
                       scale: 0.9,
-                      x: index * 20, // Reduced horizontal offset for tighter stack
-                      y: index * 15 // Small vertical offset for depth
+                      x: index * 20,
+                      y: index * 15
                     }}
                     transition={{
-                      delay: index * 1, // 1 second delay between each card
+                      delay: index * 1,
                       duration: 1.5,
                       type: 'spring',
                       stiffness: 60
                     }}
-                    className="absolute"
+                    className="absolute overflow-visible"
                     style={{
                       width: '100%',
                       maxWidth: '400px',
-                      zIndex: index // Later cards stack ON TOP
+                      zIndex: index
                     }}>
 
-                      <Card className="hover-lift hover-glow">
+                      <Card className="hover-lift hover-glow overflow-visible">
                         <CardHeader>
                           <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                             <Image
