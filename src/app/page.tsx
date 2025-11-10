@@ -1748,7 +1748,7 @@ ADDICTED? GUILT? HELP? 
 
                 </p>
                 <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !whitespace-pre-line">
-                  <span className="text-[#F28C28] font-semibold">healing happens in community</span>
+                  <span className="text-[#F28C28] font-semibold !whitespace-pre-line"></span>
 
 
                 </p>
