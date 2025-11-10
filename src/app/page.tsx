@@ -1752,10 +1752,10 @@ ADDICTED? GUILT? HELP? 
 
 
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  UCon Ministries was created to be the ministry our founder needed but couldn't find—one that meets people at 
-                  their point of deepest need and walks with them through every step of transformation, from crisis stabilization 
-                  to becoming servant leaders who change their communities.
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line">{`\n`}
+
+
+
                 </p>
               </CardContent>
             </Card>
