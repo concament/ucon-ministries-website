@@ -251,7 +251,7 @@ export default function HomePage() {
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
               }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !w-[678px] !h-[155px]">NO COMMITMENT?</span>
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !whitespace-pre-line !w-[66%] !h-[72px]">WOETHLESSNESS?NO COMMITMENT?</span>
               </h1>
               
               {/* Container 2: Subheadline */}
