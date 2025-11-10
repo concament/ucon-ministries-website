@@ -64,7 +64,7 @@ export default function BackgroundMusic() {
           size="sm"
           variant="ghost"
           onClick={togglePlay}
-          className="hover:bg-[#A92FFA]/10"
+          className="hover:bg-[#A92FFA]/10 !w-5 !h-5"
           aria-label={isPlaying ? "Pause music" : "Play music"}>
 
           {isPlaying ?
@@ -87,7 +87,7 @@ export default function BackgroundMusic() {
             step="0.01"
             value={volume}
             onChange={handleVolumeChange}
-            className="w-20 h-1 bg-muted rounded-lg appearance-none cursor-pointer accent-[#A92FFA]"
+            className="bg-muted rounded-lg appearance-none cursor-pointer accent-[#A92FFA] !w-5 !h-5"
             aria-label="Volume control" />
 
           <Button
