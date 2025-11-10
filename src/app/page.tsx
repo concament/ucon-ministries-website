@@ -997,8 +997,8 @@ ADDICTED? GUILT? HELP? 
                 <CardDescription>Skill-Based Learning</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Short-term seminars designed to build practical life skills and empower community members.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line">Short-term seminars and webinars designed to build practical life skills and empower community members.
+
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2 text-sm">
