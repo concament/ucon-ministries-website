@@ -568,7 +568,7 @@ ADDICTED? GUILT? HELP? 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Comprehensive Care</Badge>
+            <Badge className="mb-4 !whitespace-pre-line">More Than Ministry</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Three-Track Model</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Meeting individuals at every stage of their journey—from immediate crisis to long-term leadership development.
@@ -593,7 +593,7 @@ ADDICTED? GUILT? HELP? 
             <Card className="border-2 border-[#A92FFA] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
-                  <Crown className="w-8 h-8 text-[#A92FFA]/90" />
+                  <Crown className="text-[#A92FFA]/90 !w-[27px] !h-5" />
                 </div>
                 <Badge className="w-fit mb-2">Track 1</Badge>
                 <CardTitle className="text-2xl">Leadership Development Institute</CardTitle>
