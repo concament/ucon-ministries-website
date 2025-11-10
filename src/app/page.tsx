@@ -60,6 +60,7 @@ export default function HomePage() {
   const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading' | 'pulsing'>('idle');
   const [startStaffAnimation, setStartStaffAnimation] = useState(false);
   const [releasedCards, setReleasedCards] = useState<Set<number>>(new Set());
+  const [pulsingCard, setPulsingCard] = useState<number | null>(null);
 
   useEffect(() => {
     if (staffVisible && !startStaffAnimation) {
@@ -82,9 +83,23 @@ export default function HomePage() {
         });
       }, 12000);
 
-      // After spreading completes (6 cards * 0.3s = 1.8s), pulse once
+      // After spreading completes (6 cards * 0.3s = 1.8s), pulse one by one
       setTimeout(() => {
         setStaffAnimationPhase('pulsing');
+        
+        // Pulse cards one by one in same corner order
+        const cornerOrder = [0, 2, 3, 5, 1, 4];
+        cornerOrder.forEach((cardIndex, orderIndex) => {
+          setTimeout(() => {
+            setPulsingCard(cardIndex);
+            // Reset after pulse completes
+            setTimeout(() => {
+              if (orderIndex === cornerOrder.length - 1) {
+                setPulsingCard(null); // Clear after last card
+              }
+            }, 600); // Duration of pulse animation
+          }, orderIndex * 700); // 700ms delay between each pulse (600ms animation + 100ms gap)
+        });
       }, 13800);
     }
   }, [staffVisible, startStaffAnimation]);
@@ -1904,8 +1919,8 @@ export default function HomePage() {
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     zIndex: zIndex
                   } : {
-                    transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
-                    animation: staffAnimationPhase === 'pulsing' ? `cardPulse 0.6s ease-out ${delay}s` : 'none'
+                    transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
+                    animation: (staffAnimationPhase === 'pulsing' && pulsingCard === index) ? 'cardPulse 0.6s ease-out' : 'none'
                   }}
                 >
                   <Card className="hover-lift hover-glow h-full">
