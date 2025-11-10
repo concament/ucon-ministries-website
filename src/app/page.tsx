@@ -1577,7 +1577,7 @@ ADDICTED? GUILT? HELP? 
                 <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"As someone who went through addiction myself years ago, I'm blown away by Ucon's vision. The three-track model and the LDI program design are exactly what this community needs. I volunteer every week because I believe in this mission completely."
 
                 </p>
-                <Badge variant="outline">Giving Back</Badge>
+                <Badge variant="outline" className="!whitespace-pre-line">Been There. Serving Here</Badge>
               </CardContent>
             </Card>
             
