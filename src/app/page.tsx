@@ -1747,10 +1747,10 @@ ADDICTED? GUILT? HELP? 
 
 
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  This experience revealed a profound truth: <span className="text-[#F28C28] font-semibold">healing happens in community</span>, 
-                  and lasting change requires more than temporary fixes. It demands comprehensive support, biblical integration, 
-                  clinical excellence, and most importantly—people who believe in your potential even when you don't.
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line">This experience revealed a profound truth: , and lasting change requires more than temporary fixes. It demands comprehensive support, biblical integration, clinical excellence, and most importantly—people who believe in your potential even when you don't.
+                  <span className="text-[#F28C28] font-semibold">healing happens in community</span>
+
+
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   UCon Ministries was created to be the ministry our founder needed but couldn't find—one that meets people at 
