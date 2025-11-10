@@ -119,33 +119,32 @@ export default function HomePage() {
 
   // Calculate positions for stacking animation
   const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading') => {
-    const positions = {
-      idle: [
-        { top: '0%', left: '0%', rotate: -15 },
-        { top: '0%', left: '100%', rotate: 15 },
-        { top: '40%', left: '-50%', rotate: -10 },
-        { top: '40%', left: '100%', rotate: 10 },
-        { top: '80%', left: '0%', rotate: -12 },
-        { top: '80%', left: '100%', rotate: 12 },
-      ],
-      stacking: [
-        { top: '50%', left: '50%', rotate: 0 },
-        { top: '50%', left: '50%', rotate: 0 },
-        { top: '50%', left: '50%', rotate: 0 },
-        { top: '50%', left: '50%', rotate: 0 },
-        { top: '50%', left: '50%', rotate: 0 },
-        { top: '50%', left: '50%', rotate: 0 },
-      ],
-      spreading: [
-        { top: '0%', left: '0%', rotate: 0 },
-        { top: '0%', left: '33.33%', rotate: 0 },
-        { top: '0%', left: '66.66%', rotate: 0 },
-        { top: '50%', left: '0%', rotate: 0 },
-        { top: '50%', left: '33.33%', rotate: 0 },
-        { top: '50%', left: '66.66%', rotate: 0 },
-      ],
-    };
-    return positions[phase][index];
+    // All phases use the same grid positions - cards are always visible
+    const gridPositions = [
+      { row: 0, col: 0 },
+      { row: 0, col: 1 },
+      { row: 0, col: 2 },
+      { row: 1, col: 0 },
+      { row: 1, col: 1 },
+      { row: 1, col: 2 },
+    ];
+    
+    const pos = gridPositions[index];
+    
+    // Convert grid positions to percentages
+    const rowPercent = pos.row * 100; // 0 = 0%, 1 = 100%
+    const colPercent = pos.col * 50;  // 0 = 0%, 1 = 50%, 2 = 100%
+    
+    if (phase === 'idle') {
+      // Start in grid with slight rotation
+      return { top: `${rowPercent}%`, left: `${colPercent}%`, rotate: (index % 2 === 0 ? -5 : 5), scale: 1 };
+    } else if (phase === 'stacking') {
+      // Move to center and stack
+      return { top: '50%', left: '50%', rotate: 0, scale: 0.95 };
+    } else {
+      // Spread back to grid
+      return { top: `${rowPercent}%`, left: `${colPercent}%`, rotate: 0, scale: 1 };
+    }
   };
 
   return (
@@ -1815,11 +1814,9 @@ export default function HomePage() {
           </div>
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
-          <div className={`relative mb-12 transition-all duration-1000 ${
-            staffAnimationPhase === 'spreading' ? 'min-h-0' : 'min-h-[600px]'
-          }`}>
+          <div className="relative mb-12 min-h-[900px] lg:min-h-[600px]">
             <div className={`${
-              staffAnimationPhase === 'spreading' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''
+              staffAnimationPhase === 'spreading' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : 'grid md:grid-cols-2 lg:grid-cols-3 gap-8'
             }`}>
               {teamMembers.map((member, index) => {
                 const position = getCardPosition(index, staffAnimationPhase);
@@ -1828,11 +1825,13 @@ export default function HomePage() {
                 return (
                   <div
                     key={member.name}
-                    className={`${isAnimating ? 'absolute w-full max-w-sm' : ''}`}
                     style={isAnimating ? {
+                      position: 'absolute',
                       top: position.top,
                       left: position.left,
-                      transform: `translate(-50%, -50%) rotate(${position.rotate}deg)`,
+                      width: '100%',
+                      maxWidth: '384px',
+                      transform: `translate(-50%, -50%) rotate(${position.rotate}deg) scale(${position.scale})`,
                       transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)',
                       zIndex: staffAnimationPhase === 'stacking' ? 10 - index : index
                     } : {}}
