@@ -1606,8 +1606,8 @@ ADDICTED? GUILT? HELP? 
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground italic mb-3">
-                  "The shelter gave me more than a bed—it gave me a place where people actually care. The staff here don't see me as homeless; they see me as someone with potential. I'm working with my case manager to get into stable housing and eventually apply for the leadership program."
+                <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"This community gave me more than church attendance—it gave me a faith that's actually mine. The teachers here don't see me as broken; they see me as someone God is transforming. I'm learning theology, practicing spiritual disciplines, and for the first time, I feel rooted in something real and lasting."
+
                 </p>
                 <Badge variant="outline">Path to Stability</Badge>
               </CardContent>
