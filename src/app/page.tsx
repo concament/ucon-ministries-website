@@ -59,6 +59,7 @@ export default function HomePage() {
   // Staff animation state
   const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading' | 'pulsing'>('idle');
   const [startStaffAnimation, setStartStaffAnimation] = useState(false);
+  const [releasedCards, setReleasedCards] = useState<Set<number>>(new Set());
 
   useEffect(() => {
     if (staffVisible && !startStaffAnimation) {
@@ -69,6 +70,16 @@ export default function HomePage() {
       // After stacking completes (6 cards * 2s each = 12s), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
+        
+        // Release cards one by one to their final positions
+        // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
+        const cornerOrder = [0, 2, 3, 5, 1, 4];
+        
+        cornerOrder.forEach((cardIndex, orderIndex) => {
+          setTimeout(() => {
+            setReleasedCards(prev => new Set([...prev, cardIndex]));
+          }, orderIndex * 300); // 300ms delay between each card release
+        });
       }, 12000);
 
       // After spreading completes (6 cards * 0.3s = 1.8s), pulse once
@@ -137,10 +148,46 @@ export default function HomePage() {
       // Stack in center
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
     } else if (phase === 'spreading') {
-      // Spreading - let CSS Grid take over
-      return { x: 0, y: 0, rotate: 0, opacity: 1 };
+      // Check if this card has been released
+      if (releasedCards.has(index)) {
+        // Calculate grid position for released cards
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const cardWidth = 384; // max-w-96 = 384px
+        const gap = 32; // gap-8 = 32px
+        
+        // Calculate offset from center
+        const totalWidth = 3 * cardWidth + 2 * gap;
+        const startX = -totalWidth / 2 + cardWidth / 2;
+        const x = startX + col * (cardWidth + gap);
+        
+        const totalHeight = 2 * 300 + gap; // approximate card height
+        const startY = -totalHeight / 2 + 150;
+        const y = startY + row * (300 + gap);
+        
+        return { x, y, rotate: 0, opacity: 1 };
+      } else {
+        // Stay stacked in center
+        return { x: 0, y: 0, rotate: 0, opacity: 1 };
+      }
     } else {
-      // Pulsing - let CSS Grid take over
+      // Pulsing phase - maintain grid positions
+      if (releasedCards.has(index)) {
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const cardWidth = 384;
+        const gap = 32;
+        
+        const totalWidth = 3 * cardWidth + 2 * gap;
+        const startX = -totalWidth / 2 + cardWidth / 2;
+        const x = startX + col * (cardWidth + gap);
+        
+        const totalHeight = 2 * 300 + gap;
+        const startY = -totalHeight / 2 + 150;
+        const y = startY + row * (300 + gap);
+        
+        return { x, y, rotate: 0, opacity: 1 };
+      }
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
     }
   };
@@ -1852,7 +1899,7 @@ export default function HomePage() {
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
-                    zIndex: staffAnimationPhase === 'stacking' ? 10 - index : index
+                    zIndex: staffAnimationPhase === 'stacking' ? index + 10 : index
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     animation: staffAnimationPhase === 'pulsing' ? `cardPulse 0.6s ease-out ${delay}s` : 'none'
