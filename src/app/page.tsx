@@ -1253,7 +1253,7 @@ ADDICTED? GUILT? HELP? 
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
                   <Utensils className="w-6 h-6 text-[#A92FFA]" />
                 </div>
-                <CardTitle className="!whitespace-pre-line !whitespace-pre-line">UCONnourish</CardTitle>
+                <CardTitle className="!whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">UCONnourish</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
@@ -1285,7 +1285,7 @@ ADDICTED? GUILT? HELP? 
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
                   <Users className="w-6 h-6 text-[#A92FFA]" />
                 </div>
-                <CardTitle className="!whitespace-pre-line">Ucon Neighbors</CardTitle>
+                <CardTitle className="!whitespace-pre-line">UCONneighbors</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
