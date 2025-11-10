@@ -702,8 +702,8 @@ ADDICTED? GUILT? HELP? 
                   </li>
                 </ul>
                 <Button className="w-full" variant="outline" asChild>
-                  <Link href="/outreach">
-                    Learn About Outreach
+                  <Link href="/outreach" className="!whitespace-pre-line">Learn About our Outreach
+
                     <ChevronRight className="ml-2 w-4 h-4" />
                   </Link>
                 </Button>
