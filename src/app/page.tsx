@@ -1158,7 +1158,7 @@ ADDICTED? GUILT? HELP? 
               <CardContent className="text-sm">
                 <p className="text-muted-foreground mb-2">UCon Ministries Center</p>
                 <p className="mb-2 !whitespace-pre-line">2000 S Colorado Blvd T1 </p>
-                <p className="mb-4">Community Center, CA 90210</p>
+                <p className="mb-4 !whitespace-pre-line">Denver, CO 80210</p>
                 <Button variant="outline" size="sm" className="w-full">
                   Get Directions
                 </Button>
