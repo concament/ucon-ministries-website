@@ -840,8 +840,8 @@ ADDICTED? GUILT? HELP? 
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Dismantling a lifetime of worthlessness and trauma through intensive mental health restoration, sobriety skills mastery, and foundational life skills. Moving from identity disorder to sacred worth affirmation.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line">We use intensive mental health restoration, sobriety skills mastery, and foundational life skills with biblical systematic theolog that goes moving from identity disorder to sacred worth affirmation.
+
                 </p>
                 <div className="flex flex-wrap gap-2">
                   <Badge variant="outline">Mental Health Restoration</Badge>
