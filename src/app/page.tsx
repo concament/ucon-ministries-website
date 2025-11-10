@@ -1737,10 +1737,10 @@ ADDICTED? GUILT? HELP? 
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 text-lg">
-                <p className="text-muted-foreground leading-relaxed">
-                  UCon Ministries was founded in 2020 by individuals who intimately understood the pain of feeling worthless, 
-                  broken by the justice system, addiction, and homelessness. Our founder spent years navigating the darkness of 
-                  hopelessness, experiencing firsthand the devastating impact of mental health struggles and systemic barriers.
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line">Ucon Ministries was founded in 2020 by individuals who never imagined their darkest moments would become their greatest mission. Our founder spent years addicted to drugs, lost inside themselves, listening to prison bars whisper slow regrets that echoed through endless nights. Years of becoming someone they hated. Years of not recognizing the person in the mirror.
+
+
+
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   The turning point came through an encounter with <span className="text-[#A92FFA] font-semibold">unconditional love</span>—
