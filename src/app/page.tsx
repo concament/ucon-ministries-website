@@ -1770,10 +1770,10 @@ export default function HomePage() {
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 overflow-visible ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-        }`}>
-
+        }`}
+      >
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1784,138 +1784,45 @@ export default function HomePage() {
             </p>
           </div>
           
-          {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
-          <div className="relative overflow-visible">
-            {startStaffAnimation && staffAnimationPhase !== 'spreading' && (
-            <div className="relative min-h-[2400px] flex items-start justify-center pt-12 overflow-visible pb-20">
-                {teamMembers.map((member, index) => {
-                const isFromLeft = index % 2 === 0;
-
-                return (
-                  <motion.div
-                    key={member.name}
-                    initial={{
-                      opacity: 0,
-                      scale: 0.8,
-                      x: isFromLeft ? -300 : 300,
-                      y: 0
-                    }}
-                    animate={{
-                      opacity: 1,
-                      scale: 0.9,
-                      x: index * 20,
-                      y: index * 15
-                    }}
-                    transition={{
-                      delay: index * 1,
-                      duration: 1.5,
-                      type: 'spring',
-                      stiffness: 60
-                    }}
-                    className="absolute overflow-visible"
-                    style={{
-                      width: '100%',
-                      maxWidth: '400px',
-                      zIndex: index
-                    }}>
-
-                      <Card className="hover-lift hover-glow overflow-visible">
-                        <CardHeader>
-                          <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                            <Image
-                            src={member.image}
-                            alt={member.name}
-                            fill
-                            className="object-cover" />
-
-                          </div>
-                          <CardTitle className="text-center text-xl">{member.name}</CardTitle>
-                          <CardDescription className="text-center">{member.role}</CardDescription>
-                        </CardHeader>
-                        <CardContent className="text-center">
-                          <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
-                          <div className="flex flex-wrap gap-2 justify-center">
-                            {member.badges.map((badge) =>
-                          <Badge key={badge} variant="outline">
-                                {badge}
-                              </Badge>
-                          )}
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </motion.div>);
-
-              })}
-              </div>
-            )}
-            
-            {/* Grid layout - spreads out after stacking */}
-            {startStaffAnimation && staffAnimationPhase === 'spreading' && (
-            <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}>
-
-                {teamMembers.map((member, index) => (
+          {/* Container 3-8: Staff Members Grid */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{
-                  opacity: 1,
-                  scale: [0.8, 1.1, 1]
-                }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={staffVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{
-                  delay: index * 0.15,
-                  duration: 0.8,
-                  times: [0, 0.6, 1],
-                  type: 'tween',
+                  delay: index * 0.1,
+                  duration: 0.5,
                   ease: 'easeOut'
-                }}>
-
-                    <Card className="hover-lift hover-glow h-full">
-                      <CardHeader>
-                        <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                          <Image
+                }}
+              >
+                <Card className="hover-lift hover-glow h-full">
+                  <CardHeader>
+                    <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                      <Image
                         src={member.image}
                         alt={member.name}
                         fill
-                        className="object-cover !w-full !h-[184px] !max-w-full" />
-
-                        </div>
-                        <CardTitle className="text-center text-xl">{member.name}</CardTitle>
-                        <CardDescription className="text-center">{member.role}</CardDescription>
-                      </CardHeader>
-                      <CardContent className="text-center">
-                        <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
-                        <div className="flex flex-wrap gap-2 justify-center">
-                          {member.badges.map((badge) => (
-                      <Badge key={badge} variant="outline">
-                              {badge}
-                            </Badge>
+                        className="object-cover"
+                      />
+                    </div>
+                    <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                    <CardDescription className="text-center">{member.role}</CardDescription>
+                  </CardHeader>
+                  <CardContent className="text-center">
+                    <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
+                    <div className="flex flex-wrap gap-2 justify-center">
+                      {member.badges.map((badge) => (
+                        <Badge key={badge} variant="outline">
+                          {badge}
+                        </Badge>
                       ))}
-                        </div>
-                      </CardContent>
-                    </Card>
-                  </motion.div>
-              ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </motion.div>
-            )}
-            
-            {/* Placeholder when animation hasn't started */}
-            {!startStaffAnimation && (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0">
-                {teamMembers.map((member) => (
-              <Card key={member.name} className="h-full">
-                    <CardHeader>
-                      <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative bg-muted" />
-                      <CardTitle className="text-center text-xl">{member.name}</CardTitle>
-                      <CardDescription className="text-center">{member.role}</CardDescription>
-                    </CardHeader>
-                  </Card>
-              ))}
-              </div>
-            )}
+            ))}
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
