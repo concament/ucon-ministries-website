@@ -1270,7 +1270,7 @@ ADDICTED? GUILT? HELP? 
                   </li>
                   <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
-                    <span>Hot meal service</span>
+                    <span className="!whitespace-pre-line">upcoming Hot meal service</span>
                   </li>
                   <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA] mt-0.5 flex-shrink-0" />
