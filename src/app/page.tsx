@@ -1673,7 +1673,7 @@ ADDICTED? GUILT? HELP? 
                 <p className="text-sm text-muted-foreground italic mb-3">
                   "As a local business owner, I've partnered with UCon to provide employment opportunities. What impresses me most is their holistic vision—they're not just helping people survive, they're building leaders who will transform this entire community. I'm excited to see what's ahead."
                 </p>
-                <Badge variant="outline">Community Support</Badge>
+                <Badge variant="outline" className="!whitespace-pre-line">Leaders Who Give Back</Badge>
               </CardContent>
             </Card>
           </div>
