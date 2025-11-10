@@ -997,7 +997,7 @@ ADDICTED? GUILT? HELP? 
                 <CardDescription>Skill-Based Learning</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line"> Interactive, structured sessions, designed to equip individuals involved in church work or spiritual service with specific knowledge, practical skills, and tools to enhance their effectiveness in serving their congregations and communitie
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">Our ministry workshops are an educational outreach initiative designed to provide comprehensive support and holistic development, much like programs found in community-focused organizations and recovery centers. We offer a diverse range of interactive sessions covering vital areas such as spiritual foundations and personal growth, practical life skills, sobriety and recovery support, art and skill development (including creative workshops and various trades), and career development (including job readiness and financial literacy). Through this broad and inclusive approach, we empower participants to achieve personal stability, develop vital skills, find purpose, and become contributing members of our community.
 
                 </p>
                 <ul className="space-y-2">
