@@ -120,23 +120,30 @@ export default function HomePage() {
   // Calculate positions for stacking animation
   const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading') => {
     if (phase === 'idle') {
-      // Start scattered around the edges
-      const positions = [
-        { x: -300, y: -200, rotate: -15 },
-        { x: 0, y: -250, rotate: 10 },
-        { x: 300, y: -200, rotate: -10 },
-        { x: -300, y: 200, rotate: 15 },
-        { x: 0, y: 250, rotate: -5 },
-        { x: 300, y: 200, rotate: 10 },
-      ];
-      return positions[index];
+      // Start off-screen: alternating left and right
+      const isEven = index % 2 === 0;
+      return {
+        x: isEven ? -800 : 800, // Far left or far right off-screen
+        y: 0,
+        rotate: 0,
+        opacity: 0
+      };
     } else if (phase === 'stacking') {
       // Stack in center
-      return { x: 0, y: 0, rotate: 0 };
+      return { x: 0, y: 0, rotate: 0, opacity: 1 };
     } else {
       // Spreading - let CSS Grid take over
-      return { x: 0, y: 0, rotate: 0 };
+      return { x: 0, y: 0, rotate: 0, opacity: 1 };
     }
+  };
+
+  // Calculate delay for staggered entrance
+  const getCardDelay = (index: number, phase: 'idle' | 'stacking' | 'spreading') => {
+    if (phase === 'stacking') {
+      // Each card enters 0.3s after the previous one
+      return index * 0.3;
+    }
+    return 0;
   };
 
   return (
@@ -1817,6 +1824,7 @@ export default function HomePage() {
           >
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
+              const delay = getCardDelay(index, staffAnimationPhase);
               const isAnimating = staffAnimationPhase !== 'spreading';
               
               return (
@@ -1829,7 +1837,8 @@ export default function HomePage() {
                     width: '100%',
                     maxWidth: '384px',
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
-                    transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)',
+                    opacity: position.opacity,
+                    transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     zIndex: staffAnimationPhase === 'stacking' ? 10 - index : index
                   } : {}}
                 >
