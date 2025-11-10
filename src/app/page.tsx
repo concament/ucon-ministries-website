@@ -117,6 +117,36 @@ export default function HomePage() {
     badges: ["Marketing", "Partnership Development"]
   }];
 
+  // Calculate positions for stacking animation
+  const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading') => {
+    const positions = {
+      idle: [
+        { top: '0%', left: '0%', rotate: -15 },
+        { top: '0%', left: '100%', rotate: 15 },
+        { top: '40%', left: '-50%', rotate: -10 },
+        { top: '40%', left: '100%', rotate: 10 },
+        { top: '80%', left: '0%', rotate: -12 },
+        { top: '80%', left: '100%', rotate: 12 },
+      ],
+      stacking: [
+        { top: '50%', left: '50%', rotate: 0 },
+        { top: '50%', left: '50%', rotate: 0 },
+        { top: '50%', left: '50%', rotate: 0 },
+        { top: '50%', left: '50%', rotate: 0 },
+        { top: '50%', left: '50%', rotate: 0 },
+        { top: '50%', left: '50%', rotate: 0 },
+      ],
+      spreading: [
+        { top: '0%', left: '0%', rotate: 0 },
+        { top: '0%', left: '33.33%', rotate: 0 },
+        { top: '0%', left: '66.66%', rotate: 0 },
+        { top: '50%', left: '0%', rotate: 0 },
+        { top: '50%', left: '33.33%', rotate: 0 },
+        { top: '50%', left: '66.66%', rotate: 0 },
+      ],
+    };
+    return positions[phase][index];
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -1784,45 +1814,57 @@ export default function HomePage() {
             </p>
           </div>
           
-          {/* Container 3-8: Staff Members Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-            {teamMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                animate={staffVisible ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-                transition={{
-                  delay: index * 0.1,
-                  duration: 0.5,
-                  ease: 'easeOut'
-                }}
-              >
-                <Card className="hover-lift hover-glow h-full">
-                  <CardHeader>
-                    <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
-                      <Image
-                        src={member.image}
-                        alt={member.name}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                    <CardTitle className="text-center text-xl">{member.name}</CardTitle>
-                    <CardDescription className="text-center">{member.role}</CardDescription>
-                  </CardHeader>
-                  <CardContent className="text-center">
-                    <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
-                    <div className="flex flex-wrap gap-2 justify-center">
-                      {member.badges.map((badge) => (
-                        <Badge key={badge} variant="outline">
-                          {badge}
-                        </Badge>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            ))}
+          {/* Container 3-8: Staff Members with Stacking Animation */}
+          <div className={`relative mb-12 transition-all duration-1000 ${
+            staffAnimationPhase === 'spreading' ? 'min-h-0' : 'min-h-[600px]'
+          }`}>
+            <div className={`${
+              staffAnimationPhase === 'spreading' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''
+            }`}>
+              {teamMembers.map((member, index) => {
+                const position = getCardPosition(index, staffAnimationPhase);
+                const isAnimating = staffAnimationPhase !== 'spreading';
+                
+                return (
+                  <div
+                    key={member.name}
+                    className={`${isAnimating ? 'absolute w-full max-w-sm' : ''}`}
+                    style={isAnimating ? {
+                      top: position.top,
+                      left: position.left,
+                      transform: `translate(-50%, -50%) rotate(${position.rotate}deg)`,
+                      transition: 'all 2s cubic-bezier(0.4, 0, 0.2, 1)',
+                      zIndex: staffAnimationPhase === 'stacking' ? 10 - index : index
+                    } : {}}
+                  >
+                    <Card className="hover-lift hover-glow h-full">
+                      <CardHeader>
+                        <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                        <CardDescription className="text-center">{member.role}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="text-center">
+                        <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {member.badges.map((badge) => (
+                            <Badge key={badge} variant="outline">
+                              {badge}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              })}
+            </div>
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
