@@ -57,7 +57,7 @@ export default function HomePage() {
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
   // Staff animation state
-  const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading'>('idle');
+  const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading' | 'pulsing'>('idle');
   const [startStaffAnimation, setStartStaffAnimation] = useState(false);
 
   useEffect(() => {
@@ -66,10 +66,15 @@ export default function HomePage() {
       setStartStaffAnimation(true);
       setStaffAnimationPhase('stacking');
 
-      // After stacking completes, spread them out - total 8 seconds
+      // After stacking completes (6 cards * 2s each = 12s), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
-      }, 8000);
+      }, 12000);
+
+      // After spreading completes (6 cards * 0.3s = 1.8s), pulse once
+      setTimeout(() => {
+        setStaffAnimationPhase('pulsing');
+      }, 13800);
     }
   }, [staffVisible, startStaffAnimation]);
 
@@ -118,7 +123,7 @@ export default function HomePage() {
   }];
 
   // Calculate positions for stacking animation
-  const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading') => {
+  const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading' | 'pulsing') => {
     if (phase === 'idle') {
       // Start off-screen: alternating left and right
       const isEven = index % 2 === 0;
@@ -131,17 +136,25 @@ export default function HomePage() {
     } else if (phase === 'stacking') {
       // Stack in center
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
-    } else {
+    } else if (phase === 'spreading') {
       // Spreading - let CSS Grid take over
+      return { x: 0, y: 0, rotate: 0, opacity: 1 };
+    } else {
+      // Pulsing - let CSS Grid take over
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
     }
   };
 
   // Calculate delay for staggered entrance
-  const getCardDelay = (index: number, phase: 'idle' | 'stacking' | 'spreading') => {
+  const getCardDelay = (index: number, phase: 'idle' | 'stacking' | 'spreading' | 'pulsing') => {
     if (phase === 'stacking') {
-      // Each card enters 0.3s after the previous one
-      return index * 0.3;
+      // Each card enters AFTER the previous one completes (2s per card)
+      return index * 2;
+    } else if (phase === 'spreading') {
+      // Alternating corners: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
+      const cornerOrder = [0, 2, 3, 5, 1, 4];
+      const spreadIndex = cornerOrder.indexOf(index);
+      return spreadIndex >= 0 ? spreadIndex * 0.3 : 0;
     }
     return 0;
   };
@@ -1814,10 +1827,10 @@ export default function HomePage() {
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div 
-            className={`relative mb-12 ${staffAnimationPhase === 'spreading' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mb-12 ${(staffAnimationPhase === 'spreading' || staffAnimationPhase === 'pulsing') ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{ 
-              minHeight: staffAnimationPhase === 'spreading' ? 'auto' : '600px',
-              display: staffAnimationPhase === 'spreading' ? 'grid' : 'flex',
+              minHeight: (staffAnimationPhase === 'spreading' || staffAnimationPhase === 'pulsing') ? 'auto' : '600px',
+              display: (staffAnimationPhase === 'spreading' || staffAnimationPhase === 'pulsing') ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center'
             }}
@@ -1825,7 +1838,7 @@ export default function HomePage() {
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
               const delay = getCardDelay(index, staffAnimationPhase);
-              const isAnimating = staffAnimationPhase !== 'spreading';
+              const isAnimating = staffAnimationPhase !== 'spreading' && staffAnimationPhase !== 'pulsing';
               
               return (
                 <div
@@ -1840,7 +1853,10 @@ export default function HomePage() {
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     zIndex: staffAnimationPhase === 'stacking' ? 10 - index : index
-                  } : {}}
+                  } : {
+                    transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
+                    animation: staffAnimationPhase === 'pulsing' ? `cardPulse 0.6s ease-out ${delay}s` : 'none'
+                  }}
                 >
                   <Card className="hover-lift hover-glow h-full">
                     <CardHeader>
