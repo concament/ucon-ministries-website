@@ -16,8 +16,8 @@ import {
   TrendingUp, Award, CheckCircle2, ArrowRight, Star,
   ChevronRight, MapPin, Calendar, Clock, Phone, Mail,
   Sparkles, Crown, Mountain, Rocket, GraduationCap, Building2,
-  Quote, Lightbulb, UserCheck, Briefcase } from
-"lucide-react";
+  Quote, Lightbulb, UserCheck, Briefcase
+} from "lucide-react";
 
 // Intersection Observer Hook for animations
 function useIntersectionObserver(options = {}) {
@@ -1770,15 +1770,15 @@ export default function HomePage() {
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure transition-all duration-1000 overflow-visible ${
-        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 overflow-visible ${
+        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+        }`}>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#F28C28]">Our Team</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Meet Our Leadership</h2>
+            <Badge className="mb-4 bg-[#F28C28] text-white">Our Team</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-foreground">Meet Our Leadership</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A diverse team united by personal transformation stories and a shared calling to serve those seeking hope and purpose.
             </p>
@@ -1786,8 +1786,8 @@ export default function HomePage() {
           
           {/* Container 3-8: Staff Members with Animated Stacking and Spreading */}
           <div className="relative overflow-visible">
-            {startStaffAnimation && staffAnimationPhase !== 'spreading' &&
-            <div className="relative min-h-[800px] flex items-start justify-center pt-12 overflow-visible">
+            {startStaffAnimation && staffAnimationPhase !== 'spreading' && (
+            <div className="relative min-h-[2400px] flex items-start justify-center pt-12 overflow-visible pb-20">
                 {teamMembers.map((member, index) => {
                 const isFromLeft = index % 2 === 0;
 
@@ -1847,17 +1847,17 @@ export default function HomePage() {
 
               })}
               </div>
-            }
+            )}
             
             {/* Grid layout - spreads out after stacking */}
-            {startStaffAnimation && staffAnimationPhase === 'spreading' &&
+            {startStaffAnimation && staffAnimationPhase === 'spreading' && (
             <motion.div
               className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.5 }}>
 
-                {teamMembers.map((member, index) =>
+                {teamMembers.map((member, index) => (
               <motion.div
                 key={member.name}
                 initial={{ opacity: 0, scale: 0.8 }}
@@ -1889,23 +1889,23 @@ export default function HomePage() {
                       <CardContent className="text-center">
                         <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                         <div className="flex flex-wrap gap-2 justify-center">
-                          {member.badges.map((badge) =>
-                      <Badge key={badge} variant="outline" className="!whitespace-pre-line !whitespace-pre-line">
+                          {member.badges.map((badge) => (
+                      <Badge key={badge} variant="outline">
                               {badge}
                             </Badge>
-                      )}
+                      ))}
                         </div>
                       </CardContent>
                     </Card>
                   </motion.div>
-              )}
+              ))}
               </motion.div>
-            }
+            )}
             
             {/* Placeholder when animation hasn't started */}
-            {!startStaffAnimation &&
+            {!startStaffAnimation && (
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 opacity-0">
-                {teamMembers.map((member) =>
+                {teamMembers.map((member) => (
               <Card key={member.name} className="h-full">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative bg-muted" />
@@ -1913,9 +1913,9 @@ export default function HomePage() {
                       <CardDescription className="text-center">{member.role}</CardDescription>
                     </CardHeader>
                   </Card>
-              )}
+              ))}
               </div>
-            }
+            )}
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
