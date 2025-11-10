@@ -1442,7 +1442,7 @@ ADDICTED? GUILT? HELP? 
             <Card>
               <CardHeader>
                 <CardTitle className="text-2xl !whitespace-pre-line">UCON Frontline</CardTitle>
-                <CardDescription>Join us in serving the community</CardDescription>
+                <CardDescription className="!whitespace-pre-line">Volunteer in our outreach. Join us in serving the community</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
@@ -1510,8 +1510,8 @@ ADDICTED? GUILT? HELP? 
                 </div>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground italic mb-3">
-                  "When I was living on the streets, UCon's outreach team found me. They didn't just give me a meal—they sat with me, listened to my story, and treated me like I mattered. Now I'm on the waitlist for the LDI program, and for the first time in years, I have real hope."
+                <p className="text-sm text-muted-foreground italic mb-3">"When I was living on the streets, Ucon's outreach team found me. They didn't just give me a meal—they sat with me, listened to my story, and treated me like I mattered. Now I'm on the waitlist for the LDI program, and for the first time in years, I have real hope."
+
                 </p>
                 <Badge variant="outline">From Streets to Hope</Badge>
               </CardContent>
