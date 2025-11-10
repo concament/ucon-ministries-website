@@ -246,20 +246,18 @@ export default function HomePage() {
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <Sparkles className="w-4 h-4" />Welcome to Ucon Ministres
-
               </Badge>
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
               }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !whitespace-pre-line !whitespace-pre-line !w-[772px] !h-[230px] whitespace-pre-line !whitespace-pre-line whitespace-pre-line !whitespace-pre-line">{`WORTHLESSNESS?
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">{`WORTHLESSNESS?
 NO PURPOSE? BROKEN?
-ADDICTED? GUILT? HELP? 
+ADDICTED? GUILT? HELP? 
 `}</span>
               </h1>
               
               {/* Container 2: Subheadline */}
-              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !whitespace-pre-line !whitespace-pre-line ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
-
+              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
               </p>
               
               {/* Container 3-4: CTA Buttons */}
@@ -887,7 +885,7 @@ ADDICTED? GUILT? HELP? 
                       <Building2 className="w-6 h-6 text-[#A92FFA]" />
                       Apex
                     </CardTitle>
-                    <CardDescription className="!whitespace-pre-line !whitespace-pre-line">Systemic Leadership | Pathway</CardDescription>
+                    <CardDescription className=" !whitespace-pre-line">Systemic Leadership | Pathway</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -1093,10 +1091,10 @@ ADDICTED? GUILT? HELP? 
                   <Users className="w-6 h-6 text-[#F28C28]" />
                 </div>
                 <CardTitle className="text-xl !whitespace-pre-line">Ucon Bridge</CardTitle>
-                <CardDescription className="!whitespace-pre-line">Mentorship and Peer Support</CardDescription>
+                <CardDescription>Mentorship and Peer Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line !w-[100.1%] !h-[358px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[358px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
 
                 </p>
                 <ul className="space-y-2">
@@ -1157,7 +1155,7 @@ ADDICTED? GUILT? HELP? 
               </CardHeader>
               <CardContent className="text-sm">
                 <p className="text-muted-foreground mb-2">UCon Ministries Center</p>
-                <p className="mb-2 !whitespace-pre-line">2000 S Colorado Blvd T1 </p>
+                <p className="mb-2 !whitespace-pre-line">2000 S Colorado Blvd T1 </p>
                 <p className="mb-4 !whitespace-pre-line">Denver, CO 80210</p>
                 <Button variant="outline" size="sm" className="w-full">
                   Get Directions
@@ -1442,7 +1440,7 @@ ADDICTED? GUILT? HELP? 
             <Card>
               <CardHeader>
                 <CardTitle className="text-2xl !whitespace-pre-line">UCON Frontline</CardTitle>
-                <CardDescription className="!whitespace-pre-line">Volunteer in our outreach. Join us in serving the community</CardDescription>
+                <CardDescription>Volunteer in our outreach. Join us in serving the community</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
@@ -1583,27 +1581,16 @@ ADDICTED? GUILT? HELP? 
             
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
-                    <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-7e4425ed-20251105190506.jpg"
-                      alt="Diana R."
-                      fill
-                      className="object-cover" />
+                <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-7e4425ed-20251105190506.jpg"
+                    alt="Diana R."
+                    fill
+                    className="object-cover" />
 
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Diana R.</CardTitle>
-                    <CardDescription className="!whitespace-pre-line">Services Participant</CardDescription>
-                  </div>
                 </div>
-                <div className="flex gap-1">
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                </div>
+                <CardTitle className="text-lg">Diana R.</CardTitle>
+                <CardDescription>Services Participant</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"This community gave me more than church attendance—it gave me a faith that's actually mine. The teachers here don't see me as broken; they see me as someone God is transforming. I'm learning theology, practicing spiritual disciplines, and for the first time, I feel rooted in something real and lasting."
@@ -1615,27 +1602,16 @@ ADDICTED? GUILT? HELP? 
             
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
-                    <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-d4c3c200-20251105190506.jpg"
-                      alt="Thomas P."
-                      fill
-                      className="object-cover" />
+                <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-d4c3c200-20251105190506.jpg"
+                    alt="Thomas P."
+                    fill
+                    className="object-cover" />
 
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Thomas P.</CardTitle>
-                    <CardDescription>Early LDI Candidate</CardDescription>
-                  </div>
                 </div>
-                <div className="flex gap-1">
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                </div>
+                <CardTitle className="text-lg">Thomas P.</CardTitle>
+                <CardDescription>Early LDI Candidate</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
@@ -1647,27 +1623,16 @@ ADDICTED? GUILT? HELP? 
             
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
-                    <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-82743e11-20251105190506.jpg"
-                      alt="Linda M."
-                      fill
-                      className="object-cover" />
+                <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
+                  <Image
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-82743e11-20251105190506.jpg"
+                    alt="Linda M."
+                    fill
+                    className="object-cover" />
 
-                  </div>
-                  <div>
-                    <CardTitle className="text-lg">Linda M.</CardTitle>
-                    <CardDescription>Community Partner</CardDescription>
-                  </div>
                 </div>
-                <div className="flex gap-1">
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                  <Star className="w-4 h-4 fill-[#A92FFA] text-[#A92FFA]" />
-                </div>
+                <CardTitle className="text-lg">Linda M.</CardTitle>
+                <CardDescription>Community Partner</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground italic mb-3">
@@ -1982,7 +1947,7 @@ ADDICTED? GUILT? HELP? 
                   <div>
                     <p className="font-semibold mb-1">Continuous Learning</p>
                     <p className="text-sm text-muted-foreground">
-                      Committed to ongoing professional development and evidence-based practice excellence
+                      Conmited to ongoing professional development and evidence-based practice excellence
                     </p>
                   </div>
                 </div>
@@ -2442,15 +2407,15 @@ ADDICTED? GUILT? HELP? 
                   Join our team of volunteers serving in outreach, workshops, administrative support, and more.
                 </p>
                 <ul className="space-y-2 mb-4">
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Flexible hours</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Training provided</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Make a difference</span>
                   </li>
@@ -2474,15 +2439,15 @@ ADDICTED? GUILT? HELP? 
                   Join our community in prayer. Submit your prayer requests and pray for others on our interactive prayer wall.
                 </p>
                 <ul className="space-y-2 mb-4">
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Share requests</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Pray for others</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Track answers</span>
                   </li>
@@ -2538,15 +2503,15 @@ ADDICTED? GUILT? HELP? 
                   In crisis? Need immediate assistance? Our outreach team is available 24/7 to help with food, shelter, and support.
                 </p>
                 <ul className="space-y-2 mb-4">
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">24/7 hotline</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">Immediate help</span>
                   </li>
-                  <li className="flex items-center gap-2 text-sm">
+                  <li className="flex items-start gap-2 text-sm">
                     <CheckCircle2 className="w-4 h-4 text-[#A92FFA]" />
                     <span className="text-sm">No judgment</span>
                   </li>
@@ -2611,6 +2576,6 @@ ADDICTED? GUILT? HELP? 
 
       {/* SECTION 12: FOOTER - 12 Containers */}
       <Footer />
-    </div>);
-
+    </div>
+  );
 }
