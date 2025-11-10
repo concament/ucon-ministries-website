@@ -835,7 +835,7 @@ ADDICTED? GUILT? HELP? 
                       <Sparkles className="w-6 h-6 text-[#A92FFA]" />
                       Ascension
                     </CardTitle>
-                    <CardDescription>Foundation & Deconstruction | Weeks 1-16</CardDescription>
+                    <CardDescription className="!whitespace-pre-line">Foundation & Deconstruction | The Rise</CardDescription>
                   </div>
                 </div>
               </CardHeader>
