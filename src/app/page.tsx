@@ -1092,7 +1092,7 @@ ADDICTED? GUILT? HELP? 
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <Users className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl">Mentoring & Peer Support</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line">Ucon Bridge</CardTitle>
                 <CardDescription>Community Connection</CardDescription>
               </CardHeader>
               <CardContent>
