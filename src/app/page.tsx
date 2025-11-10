@@ -766,8 +766,8 @@ ADDICTED? GUILT? HELP? 
           <div className="text-center mb-16">
             <Badge className="mb-4 !whitespace-pre-line">Our upcoming Track</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Leadership Development Institute</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">the LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
+
             </p>
           </div>
           
