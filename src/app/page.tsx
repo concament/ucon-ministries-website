@@ -251,14 +251,14 @@ export default function HomePage() {
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
               }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !whitespace-pre-line !whitespace-pre-line !w-[772px] !h-[230px] whitespace-pre-line !whitespace-pre-line">{`WORTHLESSNESS?
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !whitespace-pre-line !whitespace-pre-line !w-[772px] !h-[230px] whitespace-pre-line !whitespace-pre-line whitespace-pre-line !whitespace-pre-line">{`WORTHLESSNESS?
 NO PURPOSE? BROKEN?
-ADDICTION? GUILT? 
+ADDICTED? GUILT? HELP? 
 `}</span>
               </h1>
               
               {/* Container 2: Subheadline */}
-              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !whitespace-pre-line ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
+              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !whitespace-pre-line !whitespace-pre-line ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
 
               </p>
               
