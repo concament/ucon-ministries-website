@@ -1513,7 +1513,7 @@ ADDICTED? GUILT? HELP? 
                 <p className="text-sm text-muted-foreground italic mb-3 !whitespace-pre-line">"When I was living on the streets, Ucon's outreach team found me. They didn't just give me a meal—they sat with me, listened to my story, and treated me like I mattered. Now I'm on the waitlist for the LDI program, and for the first time in years, I have real hope."
 
                 </p>
-                <Badge variant="outline">From Streets to Hope</Badge>
+                <Badge variant="outline" className="!whitespace-pre-line">Seen. Heard. Valued.</Badge>
               </CardContent>
             </Card>
             
