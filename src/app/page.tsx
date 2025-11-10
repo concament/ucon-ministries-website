@@ -1441,7 +1441,7 @@ ADDICTED? GUILT? HELP? 
             
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">Volunteer With Outreach</CardTitle>
+                <CardTitle className="text-2xl !whitespace-pre-line">UCON Frontline</CardTitle>
                 <CardDescription>Join us in serving the community</CardDescription>
               </CardHeader>
               <CardContent>
