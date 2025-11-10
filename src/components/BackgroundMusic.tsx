@@ -87,7 +87,7 @@ export default function BackgroundMusic() {
             step="0.01"
             value={volume}
             onChange={handleVolumeChange}
-            className="bg-muted rounded-lg appearance-none cursor-pointer accent-[#A92FFA] !w-5 !h-5"
+            className="bg-muted rounded-lg appearance-none cursor-pointer accent-[#A92FFA] !w-[42px] !h-5"
             aria-label="Volume control" />
 
           <Button
