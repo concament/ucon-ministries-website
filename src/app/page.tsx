@@ -1742,10 +1742,10 @@ ADDICTED? GUILT? HELP? 
 
 
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
-                  The turning point came through an encounter with <span className="text-[#A92FFA] font-semibold">unconditional love</span>—
-                  people who refused to give up, who saw worth where the world saw waste. Through Christ's redemptive power and 
-                  the consistent presence of a caring community, transformation became possible.
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line">{`\nBut then came the choice nobody saw coming—. Not because it was easy or guaranteed, but because staying the same meant dying slowly behind those bars—the physical ones and the invisible ones built by addiction and self-hatred. Our founder recognized they needed help but that no one could do the work for them. They chose to show up. Chose the right people who wouldn't enable the lies. Chose therapy that demanded brutal honesty. Chose to open the Bible and wrestle with God about who they really were. Chose to let Jesus into the wreckage. Chose community even when shame screamed to hide.— people who refused to give up, who saw worth where the world saw waste. Through Christ's redemptive power and the consistent presence of a caring community, transformation became possible.`}
+                  <span className="text-[#A92FFA] font-semibold">unconditional love</span>
+
+
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
                   This experience revealed a profound truth: <span className="text-[#F28C28] font-semibold">healing happens in community</span>, 
