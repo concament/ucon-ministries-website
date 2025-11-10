@@ -1096,8 +1096,8 @@ ADDICTED? GUILT? HELP? 
                 <CardDescription>Community Connection</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4">
-                  Informal connections matching LDI graduates with community members seeking guidance.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line">connects individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. We facilitate meaningful one-on-one mentorship relationships, group accountability circles, and peer-led support sessions where participants can share experiences, celebrate victories, and navigate setbacks together in a safe and non-judgmental environment. Whether you're seeking guidance from someone who has walked a similar path, looking to build authentic friendships rooted in mutual encouragement, or hoping to give back by mentoring others, our program fosters genuine relationships that inspire growth and lasting change. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation and breaking cycles of isolation.
+
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2 text-sm">
