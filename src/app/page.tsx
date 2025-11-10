@@ -272,7 +272,7 @@ ADDICTED? GUILT? HELP? 
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
-                  <Link href="/ldi">Learn About The Leadership Development Institute</Link>
+                  <Link href="/ldi" className="!whitespace-pre-line">The Leadership Development Institute</Link>
                 </Button>
               </div>
             </div>
