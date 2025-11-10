@@ -1177,7 +1177,7 @@ ADDICTED? GUILT? HELP? 
                 </div>
                 <div>
                   <p className="text-muted-foreground mb-1">Email</p>
-                  <p className="font-medium">services@ucon.org</p>
+                  <p className="font-medium !whitespace-pre-line">services@uconministries.org</p>
                 </div>
               </CardContent>
             </Card>
