@@ -368,8 +368,8 @@ ADDICTED? GUILT? HELP?
               <CardTitle className="text-2xl">Mission Statement</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-lg leading-relaxed text-muted-foreground">
-                UCon Ministries exists to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation. Our mission is to <span className="font-semibold text-[#A92FFA]">transform feelings of worthlessness and mental health struggles into enduring purpose and dignity</span> for those deeply impacted by the justice system, addiction, homelessness, and personal brokenness.
+              <p className="text-lg leading-relaxed text-muted-foreground !whitespace-pre-line">Ucon Ministries exists to meet individuals at their point of need, offering immediate practical assistance and guiding them through a comprehensive journey of healing and transformation. Our mission is to  for those deeply impacted by the justice system, addiction, homelessness, and personal brokenness.
+                <span className="font-semibold text-[#A92FFA]">transform feelings of worthlessness and mental health struggles into enduring purpose and dignity</span>
               </p>
             </CardContent>
           </Card>
@@ -673,7 +673,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
                   <HandHeart className="w-8 h-8 !text-white" />
                 </div>
-                <Badge className="w-fit mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Track 3</Badge>
+                <Badge className="w-fit mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Tracfffk 3</Badge>
                 <CardTitle className="text-2xl">Outreach & Advocacy</CardTitle>
                 <CardDescription className="text-base">First Responders</CardDescription>
               </CardHeader>
