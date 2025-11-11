@@ -1701,7 +1701,7 @@ ADDICTED? GUILT? HELP?
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-6 text-lg !w-[495px] !h-[1022px]">
+              <CardContent className="space-y-6 text-lg !w-[641px] !h-[1022px]">
                 <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[180px]">Ucon Ministries was founded in 2020 by individuals who never imagined their darkest moments would become their greatest mission. Our founder spent years addicted to drugs, lost inside themselves, listening to prison bars whisper slow regrets that echoed through endless nights. Years of becoming someone they hated. Years of not recognizing the person in the mirror.
 
 
@@ -1717,7 +1717,7 @@ ADDICTED? GUILT? HELP?
 
 
                 </p>
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line">{`\n`}
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[134%] !h-[29px]">{`\n`}
 
 
 
