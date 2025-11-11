@@ -1424,10 +1424,10 @@ ADDICTED? GUILT? HELP?
                     </div>
                   </div>
                   <div className="flex items-center gap-3 !text-white">
-                    <Mail className="w-6 h-6" />
+                    <Mail className="!w-[4%] !h-[27px]" />
                     <div>
                       <p className="font-semibold !whitespace-pre-line !text-center">outreach@uconministries.org</p>
-                      <p className="text-sm text-[#A92FFA]/80">Emergency Email</p>
+                      <p className="text-sm !text-white">Emergency Email</p>
                     </div>
                   </div>
                   <Button className="w-full mt-4 bg-white text-[#A92FFA] hover:bg-white/90">
