@@ -2316,7 +2316,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Get Involved</Badge>
+            <Badge className="mb-4 !whitespace-pre-line">GET INVOLVED </Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Be Part of the Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Every person has a role to play in building a community of hope. Choose your path to get involved.
