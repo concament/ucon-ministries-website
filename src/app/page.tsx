@@ -981,7 +981,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <GraduationCap className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON EQUIP</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON EQUIP</CardTitle>
                 <CardDescription className="!whitespace-pre-line">Workshops</CardDescription>
               </CardHeader>
               <CardContent>
@@ -1047,7 +1047,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <Heart className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON SHEPHERD</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON SHEPHERD</CardTitle>
                 <CardDescription>Spiritual Care & Support</CardDescription>
               </CardHeader>
               <CardContent>
@@ -1860,10 +1860,11 @@ What started as one person's slow death became a resurrection that changes every
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
-                    zIndex: zIndex
+                    zIndex: zIndex,
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
-                    animation: staffAnimationPhase === 'pulsing' && pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
                   }}>
 
                   <Card className="hover-lift hover-glow h-full">
