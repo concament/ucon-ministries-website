@@ -631,7 +631,7 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#F28C28] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
-                  <BookOpen className="w-8 h-8 text-[#F28C28]/90" />
+                  <BookOpen className="w-8 h-8 !text-purple-500" />
                 </div>
                 <Badge className="w-fit mb-2 bg-[#F28C28]" />
                 <CardTitle className="text-2xl">Open Ministry Services</CardTitle>
