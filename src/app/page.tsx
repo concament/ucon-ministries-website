@@ -854,8 +854,8 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
-                    <Badge className="mb-2 bg-[#F28C28]">Tier 2</Badge>
-                    <CardTitle className="text-2xl flex items-center gap-3">
+                    <Badge className="mb-2 bg-[#F28C28] !tracking-[10px]">Tier 2</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3 !tracking-[10px]">
                       <Mountain className="w-6 h-6 text-[#F28C28]" />
                       Pinnacle
                     </CardTitle>
