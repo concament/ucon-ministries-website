@@ -242,7 +242,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Container 1: Main Headline */}
             <div className="lg:col-span-7 space-y-6">
-              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 ${
+              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 !tracking-[10px] ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <Sparkles className="w-4 h-4" />Welcome to Ucon Ministres
@@ -671,7 +671,7 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#A92FFA] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
-                  <HandHeart className="w-8 h-8 text-[#A92FFA]/90" />
+                  <HandHeart className="w-8 h-8 !text-white" />
                 </div>
                 <Badge className="w-fit mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Track 3</Badge>
                 <CardTitle className="text-2xl">Outreach & Advocacy</CardTitle>
