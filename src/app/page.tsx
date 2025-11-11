@@ -1684,7 +1684,7 @@ ADDICTED? GUILT? HELP?
           
           {/* Container 3-4: Founder Story with Image */}
           <div className="mb-12 !w-full !h-[1443px]">
-            <Card className="border-2 border-[#A92FFA]/30 hover-lift !w-[152.1%] !h-[1351px]">
+            <Card className="hover-lift !w-[152.1%] !h-[1351px] !border-[20px]">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="md:w-48 flex-shrink-0 relative rounded-lg overflow-hidden !w-48 !h-48">
@@ -1702,7 +1702,18 @@ ADDICTED? GUILT? HELP?
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 text-lg !w-[495px] !h-[1022px]">
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[1043px] !whitespace-pre-line">{`\n\n\n\n\n\n`}
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[1043px] !whitespace-pre-line whitespace-pre-line">{`
+
+
+
+
+
+ 
+
+
+
+
+`}
 
 
 
@@ -1832,11 +1843,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
-      <section
-        ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
-        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section ref={staffRef} className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
@@ -1849,14 +1856,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
-          <div
-            className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
-            style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
-              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+          <div className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`} style={{ minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px', display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex', alignItems: 'center', justifyContent: 'center' }}>
 
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
