@@ -1086,7 +1086,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Mentorship and Peer Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[293px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[293px] !text-justify">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
 
                 </p>
                 <ul className="space-y-2">
