@@ -264,13 +264,13 @@ ADDICTED? GUILT? HELP?
               <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
-                  <Link href="/contact">
+                  <Link href="/contact" className="!text-center">
                     Start Your Journey
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
-                  <Link href="/ldi" className="!whitespace-pre-line">The Leadership Development Institute</Link>
+                  <Link href="/ldi" className="!whitespace-pre-line !text-center">The Leadership Development Institute</Link>
                 </Button>
               </div>
             </div>
