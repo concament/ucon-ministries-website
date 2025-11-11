@@ -1916,7 +1916,7 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-8 mt-32">
             <Card className="border-2 border-[#A92FFA]/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Our Team Values</CardTitle>
+                <CardTitle className="text-2xl !text-center">Our Team Values</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-start gap-3">
@@ -1951,7 +1951,7 @@ ADDICTED? GUILT? HELP?
             
             <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#A92FFA]/10 border-2 border-[#F28C28]/30">
               <CardHeader>
-                <CardTitle className="text-2xl">Join Our Team</CardTitle>
+                <CardTitle className="text-2xl !text-center">Join Our Team</CardTitle>
                 <CardDescription>Make a Difference Through Service</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
