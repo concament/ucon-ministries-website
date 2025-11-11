@@ -1419,7 +1419,7 @@ ADDICTED? GUILT? HELP?
                   <div className="flex items-center gap-3 !text-white">
                     <Phone className="w-6 h-6" />
                     <div>
-                      <p className="font-semibold text-lg">(555) 555-1234</p>
+                      <p className="font-semibold text-lg !whitespace-pre-line">720.663.9243</p>
                       <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
                     </div>
                   </div>
