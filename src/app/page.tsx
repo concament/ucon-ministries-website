@@ -1660,7 +1660,7 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
       <section
         ref={founderRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 mb-16 ${
+        className={`px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 mb-16 !py-0 ${
         founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -1694,7 +1694,7 @@ ADDICTED? GUILT? HELP?
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 text-lg">
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed !text-justify">
                   Ucon Ministries was founded in 2024 by one man and other individuals who never imagined their darkest moments would become their greatest mission. Our founder spent years trapped in a cycle of worthlessness—broken by the justice system, consumed by addiction, crushed by homelessness, and drowning in mental health struggles that seemed impossible to overcome.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
