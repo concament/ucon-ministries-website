@@ -408,7 +408,7 @@ ADDICTED? GUILT? HELP?
               <h3 className="font-semibold mb-2">Long-term Healing</h3>
               <p className="text-sm text-muted-foreground">Comprehensive 64-week transformation program</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border !border-indigo-700">
+            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600">
               <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
               <h3 className="font-semibold mb-2">Leadership Development</h3>
               <p className="text-sm text-muted-foreground">Training next-generation servant leaders</p>
