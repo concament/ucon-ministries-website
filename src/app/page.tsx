@@ -1683,7 +1683,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 3-4: Founder Story with Image */}
-          <div className="mb-12 !w-full !h-[1443px]">
+          <div className="mb-12 !w-[975px] !h-[1412px]">
             <Card className="hover-lift !w-[152.1%] !h-[1351px] !border-[20px]">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
@@ -1702,7 +1702,7 @@ ADDICTED? GUILT? HELP?
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 text-lg !w-[495px] !h-[1022px]">
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[1043px] !whitespace-pre-line whitespace-pre-line">{`
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[1043px] !whitespace-pre-line whitespace-pre-line !whitespace-pre-line">{`
 
 
 
