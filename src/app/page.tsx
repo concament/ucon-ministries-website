@@ -591,7 +591,7 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#A92FFA] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
-                  <Crown className="text-[#A92FFA]/90 !w-[60.9%] !h-[35px]" />
+                  <Crown className="!w-[60.9%] !h-[35px] !text-orange-400" />
                 </div>
                 <Badge className="w-fit mb-2">Track 1</Badge>
                 <CardTitle className="text-2xl !whitespace-pre-line">The Leadership Development Institute</CardTitle>
