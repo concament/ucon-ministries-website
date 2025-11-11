@@ -585,7 +585,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
                   <Crown className="!w-[60.9%] !h-[35px] !text-white" />
                 </div>
-                <Badge className="w-fit mb-2 !tracking-[10px]">Track 1</Badge>
+                <Badge className="w-fit mb-2 !tracking-[10px] !whitespace-pre-line">TRACK 1</Badge>
                 <CardTitle className="text-2xl !whitespace-pre-line">The Leadership Development Institute</CardTitle>
                 <CardDescription className="text-base !whitespace-pre-line">Our Commitment-Based Program</CardDescription>
               </CardHeader>
@@ -665,7 +665,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
                   <HandHeart className="w-8 h-8 !text-white" />
                 </div>
-                <Badge className="w-fit mb-2 bg-[#A92FFA] !whitespace-pre-line !text-white !tracking-[10px]">Track 3</Badge>
+                <Badge className="w-fit mb-2 bg-[#A92FFA] !whitespace-pre-line !text-white !tracking-[10px]">TRACK 3</Badge>
                 <CardTitle className="text-2xl">Outreach & Advocacy</CardTitle>
                 <CardDescription className="text-base">First Responders</CardDescription>
               </CardHeader>
