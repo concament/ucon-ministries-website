@@ -713,14 +713,14 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-3 gap-4">
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">1</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">1</div>
                 <h4 className="font-semibold">First Contact</h4>
               </div>
               <p className="text-sm text-muted-foreground">Outreach provides immediate help—food, shelter, crisis support</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold">2</div>
+                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold !text-[40px]">2</div>
                 <h4 className="font-semibold">Building Trust</h4>
               </div>
               <p className="text-sm text-muted-foreground">Open Services offer workshops, Bible studies, pastoral care</p>
