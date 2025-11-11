@@ -2219,7 +2219,7 @@ ADDICTED? GUILT? HELP?
                 <p className="text-sm text-muted-foreground mb-3">
                   Local churches and faith communities providing spiritual support, volunteers, and resources.
                 </p>
-                <Badge variant="outline">12 Religious Partners</Badge>
+                <Badge variant="outline" className="!whitespace-pre-line">12 Religious Partners</Badge>
               </CardContent>
             </Card>
             
@@ -2293,7 +2293,7 @@ ADDICTED? GUILT? HELP?
           <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#F28C28]/10 border-2 border-[#A92FFA]/20">
             <CardContent className="pt-8">
               <div className="text-center max-w-2xl mx-auto">
-                <h3 className="text-2xl font-bold mb-4">Become a Partner</h3>
+                <h3 className="text-2xl font-bold mb-4">Become a Convict</h3>
                 <p className="text-muted-foreground mb-6">
                   Together, we can multiply our impact and reach more people who need hope, healing, and purpose. Let's explore how your organization can join this transformational work.
                 </p>
