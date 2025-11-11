@@ -880,8 +880,8 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
-                    <Badge className="mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Tier 3</Badge>
-                    <CardTitle className="text-2xl flex items-center gap-3">
+                    <Badge className="mb-2 bg-[#A92FFA] !tracking-[11px] !text-white">Tier 3</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3 !tracking-[10px]">
                       <Building2 className="w-6 h-6 text-[#A92FFA]" />
                       Apex
                     </CardTitle>
