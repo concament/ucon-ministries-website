@@ -80,10 +80,10 @@ export default function HomePage() {
           setTimeout(() => {
             // Release card to final position
             setReleasedCards((prev) => new Set([...prev, cardIndex]));
-            
+
             // Pulse at the same time the card spreads
             setPulsingCard(cardIndex);
-            
+
             // Clear pulse after animation completes
             setTimeout(() => {
               setPulsingCard(null);
@@ -1981,7 +1981,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Our Impact</Badge>
+            <Badge className="mb-4 !tracking-[10px]">Our Impact</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Measuring Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Evidence-based outcomes demonstrating the effectiveness of comprehensive, purpose-driven recovery.
