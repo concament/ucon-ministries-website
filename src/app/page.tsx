@@ -1020,7 +1020,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Spiritual Growth</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !w-[100.1%] !h-[294px] !text-justify">Our ministry provides a robust schedule of engaging Bible studies and faith-strengthening courses designed to deepen your relationship with God and foster meaningful connections within our community. We offer everything from intensive scriptural explorations and foundational theology courses to practical workshops on prayer, spiritual disciplines, and relationship-building seminars. Through these interactive sessions, individuals can grow in their understanding of the Bible, enrich their personal faith journey, and strengthen supportive bonds with others, all within a welcoming and nurturing environment
+                <p className="text-muted-foreground mb-4 !w-[100.1%] !h-[294px] !text-justify !py-0">Our ministry provides a robust schedule of engaging Bible studies and faith-strengthening courses designed to deepen your relationship with God and foster meaningful connections within our community. We offer everything from intensive scriptural explorations and foundational theology courses to practical workshops on prayer, spiritual disciplines, and relationship-building seminars. Through these interactive sessions, individuals can grow in their understanding of the Bible, enrich their personal faith journey, and strengthen supportive bonds with others, all within a welcoming and nurturing environment
 
                 </p>
                 <ul className="space-y-2">
