@@ -1684,7 +1684,7 @@ ADDICTED? GUILT? HELP?
                       src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
                       alt="Ministry Founder"
                       fill
-                      className="object-cover !w-full !h-[190px] !max-w-full" />
+                      className="object-cover !w-full !h-[190px] !max-w-full !text-center !mx-0 !px-0" />
 
                   </div>
                   <div className="flex-1">
