@@ -1416,14 +1416,14 @@ ADDICTED? GUILT? HELP?
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 !text-white">
                     <Phone className="w-6 h-6" />
                     <div>
                       <p className="font-semibold text-lg">(555) 555-1234</p>
                       <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 !text-white">
                     <Mail className="w-6 h-6" />
                     <div>
                       <p className="font-semibold">outreach@ucon.org</p>
