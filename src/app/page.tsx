@@ -1181,11 +1181,11 @@ ADDICTED? GUILT? HELP?
             </Card>
             
             <Card className="md:col-span-3 bg-[#F28C28] text-[#F28C28]/90">
-              <CardContent className="pt-6">
+              <CardContent className="pt-6 !text-white">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                   <div>
                     <h3 className="text-xl font-bold mb-2">Ready to Join Our Community?</h3>
-                    <p className="text-[#F28C28]/80">No commitment required—come as you are and find your place.</p>
+                    <p className="!text-white">No commitment required—come as you are and find your place.</p>
                   </div>
                   <Button size="lg" variant="outline" className="bg-white text-[#F28C28] hover:bg-white/90" asChild>
                     <Link href="/services">
