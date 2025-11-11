@@ -2036,7 +2036,7 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <Award className="w-8 h-8 text-[#A92FFA] mb-2" />
                 <CardTitle className="text-3xl font-bold">94%</CardTitle>
-                <CardDescription>Program Completion</CardDescription>
+                <CardDescription className="!whitespace-pre-line">PService and Workshop Completion</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
