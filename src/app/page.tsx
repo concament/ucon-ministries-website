@@ -297,8 +297,8 @@ ADDICTED? GUILT? HELP?
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold">4</CardTitle>
-                  <CardDescription className="text-white/80">Leadership Tiers</CardDescription>
+                  <CardTitle className="text-4xl font-bold !text-center">4</CardTitle>
+                  <CardDescription className="text-white/80 !text-center">Leadership Tiers</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`hover-lift transition-all duration-700 delay-500 ${
