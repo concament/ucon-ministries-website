@@ -75,8 +75,6 @@ export default function BackgroundMusic() {
         </Button>
 
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-semibold !whitespace-pre-line"></p>
-          <p className="text-xs text-muted-foreground !whitespace-pre-line"></p>
         </div>
 
         <div className="flex items-center gap-2">

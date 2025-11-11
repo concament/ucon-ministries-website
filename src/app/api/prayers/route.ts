@@ -39,7 +39,7 @@ export async function GET(request: NextRequest) {
     }
 
     // List prayers with filters
-    let query: any = db.select().from(prayers);
+    let query = db.select().from(prayers);
     const conditions = [];
 
     // Category filter

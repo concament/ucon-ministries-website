@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     const category = searchParams.get('category');
     const publishedParam = searchParams.get('published');
 
-    let query: any = db.select().from(blogPosts);
+    let query = db.select().from(blogPosts);
     const conditions = [];
 
     // Filter by category

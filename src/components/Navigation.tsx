@@ -26,7 +26,7 @@ export default function Navigation() {
 
             </div>
             <div>
-              <h1 className="text-2xl font-bold text-foreground !whitespace-pre-line !w-full !h-8">Ucon Ministries</h1>
+              <h1 className="text-2xl font-bold text-foreground">Ucon Ministries</h1>
               <p className="text-xs text-muted-foreground">Where Your Past Becomes Your Purpose</p>
             </div>
           </Link>

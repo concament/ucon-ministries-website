@@ -1,109 +1,98 @@
-import React from "react";
-import { Home, RefreshCw, Wrench } from "lucide-react";
-import { Button } from "@/components/ui/button";
+"use client";
 
-interface ErrorReporterProps {
-  error: Error & { digest?: string };
+import { useEffect, useRef } from "react";
+
+type ReporterProps = {
+  /*  ⎯⎯ props are only provided on the global-error page ⎯⎯ */
+  error?: Error & { digest?: string };
   reset?: () => void;
-  layout?: 'page' | 'global';
-}
+};
 
-/**
- * A shared error component for catching and displaying errors.
- * Renders either a full-page error or an inline error within a component.
- */
-export default function ErrorReporter({
-  error,
-  reset,
-  layout = "page",
-}: ErrorReporterProps) {
-  React.useEffect(() => {
-    // Log the error to an error reporting service
-    console.error(error);
+export default function ErrorReporter({ error, reset }: ReporterProps) {
+  /* ─ instrumentation shared by every route ─ */
+  const lastOverlayMsg = useRef("");
+  const pollRef = useRef<NodeJS.Timeout>();
+
+  useEffect(() => {
+    const inIframe = window.parent !== window;
+    if (!inIframe) return;
+
+    const send = (payload: unknown) => window.parent.postMessage(payload, "*");
+
+    const onError = (e: ErrorEvent) =>
+      send({
+        type: "ERROR_CAPTURED",
+        error: {
+          message: e.message,
+          stack: e.error?.stack,
+          filename: e.filename,
+          lineno: e.lineno,
+          colno: e.colno,
+          source: "window.onerror",
+        },
+        timestamp: Date.now(),
+      });
+
+    const onReject = (e: PromiseRejectionEvent) =>
+      send({
+        type: "ERROR_CAPTURED",
+        error: {
+          message: e.reason?.message ?? String(e.reason),
+          stack: e.reason?.stack,
+          source: "unhandledrejection",
+        },
+        timestamp: Date.now(),
+      });
+
+    const pollOverlay = () => {
+      const overlay = document.querySelector("[data-nextjs-dialog-overlay]");
+      const node =
+        overlay?.querySelector(
+          "h1, h2, .error-message, [data-nextjs-dialog-body]"
+        ) ?? null;
+      const txt = node?.textContent ?? node?.innerHTML ?? "";
+      if (txt && txt !== lastOverlayMsg.current) {
+        lastOverlayMsg.current = txt;
+        send({
+          type: "ERROR_CAPTURED",
+          error: { message: txt, source: "nextjs-dev-overlay" },
+          timestamp: Date.now(),
+        });
+      }
+    };
+
+    window.addEventListener("error", onError);
+    window.addEventListener("unhandledrejection", onReject);
+    pollRef.current = setInterval(pollOverlay, 1000);
+
+    return () => {
+      window.removeEventListener("error", onError);
+      window.removeEventListener("unhandledrejection", onReject);
+      pollRef.current && clearInterval(pollRef.current);
+    };
+  }, []);
+
+  /* ─ extra postMessage when on the global-error route ─ */
+  useEffect(() => {
+    if (!error) return;
+    window.parent.postMessage(
+      {
+        type: "global-error-reset",
+        error: {
+          message: error.message,
+          stack: error.stack,
+          digest: error.digest,
+          name: error.name,
+        },
+        timestamp: Date.now(),
+        userAgent: navigator.userAgent,
+      },
+      "*"
+    );
   }, [error]);
 
-  const handleRefresh = () => {
-    window.location.reload();
-  };
-
-  const handleGoHome = () => {
-    window.location.href = "/";
-  };
-  
-  const showFixButton = error.message.includes("ENOENT") || error.message.includes("EADDRINUSE") || error.message.includes("Next.js");
-
-  const errorMessage = "An unexpected error occurred. Please try again or contact support if the problem persists.";
-
-  /* ─ page-level UI ─ */
-  if (layout === "page") {
-    return (
-      <div className="min-h-screen bg-background text-foreground flex items-center justify-center p-4">
-        <div className="max-w-lg w-full text-center space-y-6 bg-card p-8 rounded-lg shadow-lg">
-          <div className="space-y-3">
-            <h1 className="text-3xl font-bold text-destructive">
-              Oops! Something went wrong.
-            </h1>
-            <p className="text-muted-foreground">{errorMessage}</p>
-          </div>
-
-          {process.env.NODE_ENV === "development" && (
-            <details className="mt-4 text-left bg-muted p-3 rounded-md">
-              <summary className="cursor-pointer text-sm text-muted-foreground hover:text-foreground">
-                Error Details
-              </summary>
-              <pre className="mt-2 text-xs text-destructive-foreground bg-destructive p-2 rounded overflow-auto whitespace-pre-wrap">
-                {error.message}
-              </pre>
-              {error.digest && (
-                <pre className="mt-2 text-xs text-muted-foreground/80">
-                  Digest: {error.digest}
-                </pre>
-              )}
-            </details>
-          )}
-
-          <div className="flex justify-center gap-4 mt-6">
-            {reset && (
-              <Button
-                variant="outline"
-                onClick={reset}
-                className="flex items-center gap-2"
-              >
-                <RefreshCw className="w-4 h-4" />
-                <span>Try Again</span>
-              </Button>
-            )}
-            {!reset && (
-              <Button
-                variant="outline"
-                onClick={handleRefresh}
-                className="flex items-center gap-2"
-              >
-                <RefreshCw className="w-4 h-4" />
-                <span>Refresh Page</span>
-              </Button>
-            )}
-            <Button
-              onClick={handleGoHome}
-              className="flex items-center gap-2"
-            >
-              <Home className="w-4 h-4" />
-              <span>Go Home</span>
-            </Button>
-             {showFixButton && (
-                 <Button
-                 variant="destructive"
-                 className="flex items-center gap-2"
-               >
-                 <Wrench className="w-4 h-4" />
-                 <span>Fix</span>
-               </Button>
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
+  /* ─ ordinary pages render nothing ─ */
+  if (!error) return null;
 
   /* ─ global-error UI ─ */
   return (
@@ -115,7 +104,7 @@ export default function ErrorReporter({
               Something went wrong!
             </h1>
             <p className="text-muted-foreground">
-              An unexpected error occurred. Please try again fixing with Orchids.app
+              An unexpected error occurred. Please try again fixing with Orchids
             </p>
           </div>
           <div className="space-y-2">
@@ -126,28 +115,18 @@ export default function ErrorReporter({
                 </summary>
                 <pre className="mt-2 text-xs bg-muted p-2 rounded overflow-auto">
                   {error.message}
-                  {error.digest && `\nDigest: ${error.digest}`}
+                  {error.stack && (
+                    <div className="mt-2 text-muted-foreground">
+                      {error.stack}
+                    </div>
+                  )}
+                  {error.digest && (
+                    <div className="mt-2 text-muted-foreground">
+                      Digest: {error.digest}
+                    </div>
+                  )}
                 </pre>
               </details>
-            )}
-          </div>
-          <div className="flex justify-center gap-4">
-            {reset && (
-              <button
-                onClick={reset}
-                className="px-4 py-2 text-sm font-medium rounded-md text-foreground bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2"
-              >
-                Try again
-              </button>
-            )}
-             {showFixButton && (
-                 <Button
-                 variant="destructive"
-                 className="flex items-center gap-2"
-               >
-                 <Wrench className="w-4 h-4" />
-                 <span>Fix</span>
-               </Button>
             )}
           </div>
         </div>

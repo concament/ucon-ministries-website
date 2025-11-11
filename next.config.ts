@@ -16,9 +16,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   outputFileTracingRoot: path.resolve(__dirname, '../../'),
   turbopack: {
     rules: {
@@ -30,4 +27,4 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-// Orchids restart: 1761322025213
+// Orchids restart: 1762818854045

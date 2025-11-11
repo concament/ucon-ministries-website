@@ -250,27 +250,27 @@ export default function HomePage() {
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
               }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !shadow-[0_2px_4px_0_rgba(0,0,0,0.15)] !text-7xl !text-center !w-[975px] !h-[252px]">{`WORTHLESSNESS?
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">{`WORTHLESSNESS?
 NO PURPOSE? BROKEN?
 ADDICTED? GUILT? HELP? 
 `}</span>
               </h1>
               
               {/* Container 2: Subheadline */}
-              <p className={`text-xl text-muted-foreground transition-all duration-700 delay-200 !shadow-none !text-center !w-[672px] !h-[73px] !max-w-2xl ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
+              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
               </p>
               
               {/* Container 3-4: CTA Buttons */}
               <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
-                  <Link href="/contact" className="!text-center">
+                  <Link href="/contact">
                     Start Your Journey
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
-                  <Link href="/ldi" className="!whitespace-pre-line !text-center">The Leadership Development Institute</Link>
+                  <Link href="/ldi" className="!whitespace-pre-line">The Leadership Development Institute</Link>
                 </Button>
               </div>
             </div>
@@ -281,32 +281,32 @@ ADDICTED? GUILT? HELP?
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-4xl font-bold !text-center">Projected 500+</CardTitle>
-                  <CardDescription className="text-white/80 !text-center">Lives Transformed</CardDescription>
+                  <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-4xl font-bold">Projected 500+</CardTitle>
+                  <CardDescription className="text-white/80">Lives Transformed</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`bg-[#F28C28] text-white hover-lift transition-all duration-700 delay-300 ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold !text-center">64</CardTitle>
-                  <CardDescription className="text-white/80 !text-center">Week Program</CardDescription>
+                  <CardTitle className="text-4xl font-bold">64</CardTitle>
+                  <CardDescription className="text-white/80">Week Program</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-lift transition-all duration-700 delay-400 ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold !text-center">4</CardTitle>
-                  <CardDescription className="text-white/80 !text-center">Leadership Tiers</CardDescription>
+                  <CardTitle className="text-4xl font-bold">4</CardTitle>
+                  <CardDescription className="text-white/80">Leadership Tiers</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`hover-lift transition-all duration-700 delay-500 ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold !text-center">24/7</CardTitle>
-                  <CardDescription className="!text-center">Support Available</CardDescription>
+                  <CardTitle className="text-4xl font-bold">24/7</CardTitle>
+                  <CardDescription>Support Available</CardDescription>
                 </CardHeader>
               </Card>
             </div>
@@ -319,29 +319,29 @@ ADDICTED? GUILT? HELP?
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Heart className="w-8 h-8 text-[#A92FFA]" />
               <div>
-                <p className="font-semibold !text-center">Unconditional Love</p>
-                <p className="text-sm text-muted-foreground !text-center">Christ-Centered</p>
+                <p className="font-semibold">Unconditional Love</p>
+                <p className="text-sm text-muted-foreground">Christ-Centered</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Users className="w-8 h-8 text-[#F28C28]" />
               <div>
-                <p className="font-semibold !text-center">Community</p>
-                <p className="text-sm text-muted-foreground !text-center">Support System</p>
+                <p className="font-semibold">Community</p>
+                <p className="text-sm text-muted-foreground">Support System</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Target className="w-8 h-8 text-[#A92FFA]" />
               <div>
-                <p className="font-semibold !text-center">Purpose-Driven</p>
-                <p className="text-sm text-muted-foreground !text-center">Goal Oriented</p>
+                <p className="font-semibold">Purpose-Driven</p>
+                <p className="text-sm text-muted-foreground">Goal Oriented</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Award className="w-8 h-8 text-[#F28C28]" />
               <div>
-                <p className="font-semibold !text-center">Evidence-Based</p>
-                <p className="text-sm text-muted-foreground !text-center">Proven Methods</p>
+                <p className="font-semibold">Evidence-Based</p>
+                <p className="text-sm text-muted-foreground">Proven Methods</p>
               </div>
             </div>
           </div>
@@ -358,8 +358,8 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Section Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line !tracking-[20px]">ABOUT US</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line sm:!text-white !tracking-[57px] sm:!text-center !w-[681px] !h-12">UCON</h2>
+            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line">ABOUT US</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line">UCON</h2>
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
@@ -591,7 +591,7 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#A92FFA] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
-                  <Crown className="!w-[60.9%] !h-[35px] !text-orange-400" />
+                  <Crown className="text-[#A92FFA]/90 !w-[60.9%] !h-[35px]" />
                 </div>
                 <Badge className="w-fit mb-2">Track 1</Badge>
                 <CardTitle className="text-2xl !whitespace-pre-line">The Leadership Development Institute</CardTitle>
@@ -631,9 +631,9 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#F28C28] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
-                  <BookOpen className="w-8 h-8 !text-purple-500" />
+                  <BookOpen className="w-8 h-8 text-[#F28C28]/90" />
                 </div>
-                <Badge className="mb-2 bg-[#F28C28] !w-16 !h-5" />
+                <Badge className="w-fit mb-2 bg-[#F28C28]" />
                 <CardTitle className="text-2xl">Open Ministry Services</CardTitle>
                 <CardDescription className="text-base">No Commitment Required</CardDescription>
               </CardHeader>
@@ -713,42 +713,42 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-3 gap-4">
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">1</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">1</div>
                 <h4 className="font-semibold">First Contact</h4>
               </div>
               <p className="text-sm text-muted-foreground">Outreach provides immediate help—food, shelter, crisis support</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold !text-[40px]">2</div>
+                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold">2</div>
                 <h4 className="font-semibold">Building Trust</h4>
               </div>
               <p className="text-sm text-muted-foreground">Open Services offer workshops, Bible studies, pastoral care</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">3</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">3</div>
                 <h4 className="font-semibold">Deep Transformation</h4>
               </div>
               <p className="text-sm text-muted-foreground">LDI commitment leads to leadership and systemic change</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">4</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">4</div>
                 <h4 className="font-semibold">Mentorship</h4>
               </div>
               <p className="text-sm text-muted-foreground">Graduates mentor new members, giving back to community</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold !text-[40px]">5</div>
+                <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold">5</div>
                 <h4 className="font-semibold">Systemic Impact</h4>
               </div>
               <p className="text-sm text-muted-foreground">Leaders influence organizations, policy, and culture</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">6</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">6</div>
                 <h4 className="font-semibold">Legacy Building</h4>
               </div>
               <p className="text-sm text-muted-foreground">Generational change through movement-building</p>
@@ -762,7 +762,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 !whitespace-pre-line !tracking-[4px]">Our upcoming Track</Badge>
+            <Badge className="mb-4 !whitespace-pre-line">Our upcoming Track</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Leadership Development Institute</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">the LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
 
@@ -801,7 +801,7 @@ ADDICTED? GUILT? HELP?
                 <CardTitle className="text-2xl">Program Outcomes</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="mb-4 !text-white">
+                <p className="mb-4 text-[#A92FFA]/90">
                   Graduates emerge as authentic servant leaders equipped to serve their communities and drive systemic change.
                 </p>
                 <ul className="space-y-2">
@@ -935,7 +935,7 @@ ADDICTED? GUILT? HELP?
               <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="w-6 h-6 text-[#A92FFA]" />
               </div>
-              <h4 className="font-semibold mb-2 !text-base">1. Initial Contact</h4>
+              <h4 className="font-semibold mb-2">1. Initial Contact</h4>
               <p className="text-sm text-muted-foreground">Reach out through outreach or open services</p>
             </div>
             <div className="text-center p-6 bg-card rounded-lg border border-border">
@@ -1028,7 +1028,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Spiritual Growth</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !w-full !h-[226px]">Our ministry provides a robust schedule of engaging Bible studies and faith-strengthening courses designed to deepen your relationship with God and foster meaningful connections within our community. We offer everything from intensive scriptural explorations and foundational theology courses to practical workshops on prayer, spiritual disciplines, and relationship-building seminars. Through these interactive sessions, individuals can grow in their understanding of the Bible, enrich their personal faith journey, and strengthen supportive bonds with others, all within a welcoming and nurturing environment
+                <p className="text-muted-foreground mb-4 !w-[100.1%] !h-[430px]">Our ministry provides a robust schedule of engaging Bible studies and faith-strengthening courses designed to deepen your relationship with God and foster meaningful connections within our community. We offer everything from intensive scriptural explorations and foundational theology courses to practical workshops on prayer, spiritual disciplines, and relationship-building seminars. Through these interactive sessions, individuals can grow in their understanding of the Bible, enrich their personal faith journey, and strengthen supportive bonds with others, all within a welcoming and nurturing environment
 
                 </p>
                 <ul className="space-y-2">
@@ -1061,7 +1061,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Spiritual Care & Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-full !h-[139px]">We provide compassionate spiritual care and personalized guidance for individuals navigating life's challenges, transitions, and moments of crisis.  Our pastoral team is committed to walking alongside you with empathy, biblical insight, and practical care. Through these deeply personal connections, we help individuals find hope, experience God's presence in tangible ways, and discover renewed strength to move forward with faith and resilience.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-3/4">We provide compassionate spiritual care and personalized guidance for individuals navigating life's challenges, transitions, and moments of crisis.  Our pastoral team is committed to walking alongside you with empathy, biblical insight, and practical care. Through these deeply personal connections, we help individuals find hope, experience God's presence in tangible ways, and discover renewed strength to move forward with faith and resilience.
 
                 </p>
                 <ul className="space-y-2">
@@ -1094,7 +1094,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Mentorship and Peer Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-full !h-[197px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[358px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
 
                 </p>
                 <ul className="space-y-2">
@@ -1181,14 +1181,14 @@ ADDICTED? GUILT? HELP?
             </Card>
             
             <Card className="md:col-span-3 bg-[#F28C28] text-[#F28C28]/90">
-              <CardContent className="pt-6 !text-white">
+              <CardContent className="pt-6">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-4">
                   <div>
                     <h3 className="text-xl font-bold mb-2">Ready to Join Our Community?</h3>
-                    <p className="!text-white">No commitment required—come as you are and find your place.</p>
+                    <p className="text-[#F28C28]/80">No commitment required—come as you are and find your place.</p>
                   </div>
                   <Button size="lg" variant="outline" className="bg-white text-[#F28C28] hover:bg-white/90" asChild>
-                    <Link href="/services" className="!text-white">
+                    <Link href="/services">
                       View All Services
                       <ChevronRight className="ml-2 w-4 h-4" />
                     </Link>
@@ -1411,23 +1411,23 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
-                <CardTitle className="text-2xl !text-orange-400">Need Immediate Help?</CardTitle>
-                <CardDescription className="!text-white">We're here 24/7 for crisis support</CardDescription>
+                <CardTitle className="text-2xl">Need Immediate Help?</CardTitle>
+                <CardDescription className="text-[#A92FFA]/80">We're here 24/7 for crisis support</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4 !text-white">
-                  <div className="flex items-center gap-3 !text-white">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
                     <Phone className="w-6 h-6" />
                     <div>
-                      <p className="font-semibold text-lg !whitespace-pre-line">720.663.9243</p>
-                      <p className="text-sm !text-white">Crisis Hotline</p>
+                      <p className="font-semibold text-lg">(555) 555-1234</p>
+                      <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-3 !text-white">
-                    <Mail className="!w-[4%] !h-[27px]" />
+                  <div className="flex items-center gap-3">
+                    <Mail className="w-6 h-6" />
                     <div>
-                      <p className="font-semibold !whitespace-pre-line !text-center">outreach@uconministries.org</p>
-                      <p className="text-sm !text-white">Emergency Email</p>
+                      <p className="font-semibold">outreach@ucon.org</p>
+                      <p className="text-sm text-[#A92FFA]/80">Emergency Email</p>
                     </div>
                   </div>
                   <Button className="w-full mt-4 bg-white text-[#A92FFA] hover:bg-white/90">
@@ -1676,15 +1676,15 @@ ADDICTED? GUILT? HELP?
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA]">Our Story</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text !shadow-[0_16px_24px_-4px_rgba(255,255,255,0.25),0_8px_16px_-4px_rgba(255,255,255,0.15)] !border-0 !shadow-none !shadow-none">Founded on Transformation</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Founded on Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
 
             </p>
           </div>
           
           {/* Container 3-4: Founder Story with Image */}
-          <div className="mb-12 !w-[975px] !h-[1412px]">
-            <Card className="hover-lift !w-[152.1%] !h-[1351px] !border-[20px]">
+          <div className="mb-12">
+            <Card className="border-2 border-[#A92FFA]/30 hover-lift">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="md:w-48 flex-shrink-0 relative rounded-lg overflow-hidden !w-48 !h-48">
@@ -1702,18 +1702,7 @@ ADDICTED? GUILT? HELP?
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 text-lg !w-[495px] !h-[1022px]">
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[1043px] !whitespace-pre-line whitespace-pre-line !whitespace-pre-line">{`
-
-
-
-
-
- 
-
-
-
-
-`}
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[180px]">Ucon Ministries was founded in 2020 by individuals who never imagined their darkest moments would become their greatest mission. Our founder spent years addicted to drugs, lost inside themselves, listening to prison bars whisper slow regrets that echoed through endless nights. Years of becoming someone they hated. Years of not recognizing the person in the mirror.
 
 
 
@@ -1843,7 +1832,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
-      <section ref={staffRef} className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+      <section
+        ref={staffRef}
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
+        staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
@@ -1856,7 +1849,14 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
-          <div className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`} style={{ minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px', display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div
+            className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            style={{
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
+              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
 
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
@@ -2576,6 +2576,6 @@ ADDICTED? GUILT? HELP?
 
       {/* SECTION 12: FOOTER - 12 Containers */}
       <Footer />
-    </div>);
-
+    </div>
+  );
 }

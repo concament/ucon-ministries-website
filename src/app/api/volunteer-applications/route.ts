@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
     const search = searchParams.get('search');
     const status = searchParams.get('status');
 
-    let query: any = db.select().from(volunteerApplications);
+    let query = db.select().from(volunteerApplications);
 
     const conditions = [];
 
