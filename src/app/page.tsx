@@ -319,8 +319,8 @@ ADDICTED? GUILT? HELP?
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Heart className="w-8 h-8 text-[#A92FFA]" />
               <div>
-                <p className="font-semibold">Unconditional Love</p>
-                <p className="text-sm text-muted-foreground">Christ-Centered</p>
+                <p className="font-semibold !text-center">Unconditional Love</p>
+                <p className="text-sm text-muted-foreground !text-center">Christ-Centered</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
