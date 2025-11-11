@@ -1411,7 +1411,7 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
-                <CardTitle className="text-2xl">Need Immediate Help?</CardTitle>
+                <CardTitle className="text-2xl !text-orange-400">Need Immediate Help?</CardTitle>
                 <CardDescription className="!text-white">We're here 24/7 for crisis support</CardDescription>
               </CardHeader>
               <CardContent>
