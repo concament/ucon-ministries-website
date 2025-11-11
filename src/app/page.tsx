@@ -2524,12 +2524,12 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <Phone className="w-10 h-10 mb-3 !text-white" />
                 <CardTitle className="text-2xl !text-white">Need Help Now?</CardTitle>
-                <CardDescription className="text-[#A92FFA]/90 text-base">24/7 Crisis Support Available</CardDescription>
+                <CardDescription className="text-base !text-white">24/7 Crisis Support Available</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="space-y-3">
                   <div>
-                    <p className="text-sm text-[#A92FFA]/80 mb-1">Crisis Hotline</p>
+                    <p className="text-sm mb-1 !text-white">Crisis Hotline</p>
                     <p className="text-3xl font-bold">(555) 555-1234</p>
                   </div>
                   <div>
