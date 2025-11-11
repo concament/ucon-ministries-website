@@ -253,10 +253,10 @@ ADDICTED? GUILT? HELP?
               </p>
               
               {/* Container 3-4: CTA Buttons */}
-              <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+              <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 !text-center ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
-                  <Link href="/contact">
+                  <Link href="/contact" className="!text-center">
                     Start Your Journey
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
