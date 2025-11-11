@@ -1049,11 +1049,11 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <Heart className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON SHEPHERD</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px] !text-center">UCON SHEPHERD</CardTitle>
                 <CardDescription>Spiritual Care & Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-3/4">We provide compassionate spiritual care and personalized guidance for individuals navigating life's challenges, transitions, and moments of crisis.  Our pastoral team is committed to walking alongside you with empathy, biblical insight, and practical care. Through these deeply personal connections, we help individuals find hope, experience God's presence in tangible ways, and discover renewed strength to move forward with faith and resilience.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-3/4 !no-underline !text-justify">We provide compassionate spiritual care and personalized guidance for individuals navigating life's challenges, transitions, and moments of crisis.  Our pastoral team is committed to walking alongside you with empathy, biblical insight, and practical care. Through these deeply personal connections, we help individuals find hope, experience God's presence in tangible ways, and discover renewed strength to move forward with faith and resilience.
 
                 </p>
                 <ul className="space-y-2">
