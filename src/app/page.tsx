@@ -1765,7 +1765,7 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
               <CardHeader>
-                <CardTitle className="text-2xl">What Sets Us Apart</CardTitle>
+                <CardTitle className="text-2xl !text-center">What Sets Us Apart</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-start gap-3">
@@ -1794,7 +1794,7 @@ ADDICTED? GUILT? HELP?
             
             <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#F28C28]/5 border-2 border-[#F28C28]/20">
               <CardHeader>
-                <CardTitle className="text-2xl">Our Commitment</CardTitle>
+                <CardTitle className="text-2xl !text-center">Our Commitment</CardTitle>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-start gap-3">
