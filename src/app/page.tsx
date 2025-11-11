@@ -935,7 +935,7 @@ ADDICTED? GUILT? HELP?
               <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="w-6 h-6 text-[#A92FFA]" />
               </div>
-              <h4 className="font-semibold mb-2">1. Initial Contact</h4>
+              <h4 className="font-semibold mb-2 !text-base">1. Initial Contact</h4>
               <p className="text-sm text-muted-foreground">Reach out through outreach or open services</p>
             </div>
             <div className="text-center p-6 bg-card rounded-lg border border-border">
