@@ -413,12 +413,12 @@ ADDICTED? GUILT? HELP?
               <h3 className="font-semibold mb-2">Leadership Development</h3>
               <p className="text-sm text-muted-foreground">Training next-generation servant leaders</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border">
+            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600">
               <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
               <h3 className="font-semibold mb-2">Community Integration</h3>
               <p className="text-sm text-muted-foreground">Building lasting connections and support networks</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border">
+            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600">
               <CheckCircle2 className="w-8 h-8 text-[#F28C28] mb-3" />
               <h3 className="font-semibold mb-2">Systemic Change</h3>
               <p className="text-sm text-muted-foreground">Advocating for justice and policy reform</p>
