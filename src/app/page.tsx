@@ -52,7 +52,7 @@ export default function HomePage() {
   const [outreachRef, outreachVisible] = useIntersectionObserver();
   const [testimonialsRef, testimonialsVisible] = useIntersectionObserver();
   const [founderRef, founderVisible] = useIntersectionObserver();
-  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.3 });
+  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.1 });
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
@@ -64,12 +64,14 @@ export default function HomePage() {
 
   useEffect(() => {
     if (staffVisible && !startStaffAnimation) {
+      console.log('Staff section visible, starting animation');
       // Trigger the start of animation
       setStartStaffAnimation(true);
       setStaffAnimationPhase('stacking');
 
       // After stacking completes (6 cards * 2s each = 12s), spread them out
       setTimeout(() => {
+        console.log('Starting spreading phase');
         setStaffAnimationPhase('spreading');
 
         // Release cards one by one to their final positions AND pulse at the same time
@@ -208,7 +210,7 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       <Navigation />
       
       {/* SECTION 1: HERO - 12 Containers */}
@@ -1812,11 +1814,11 @@ What started as one person's slow death became a resurrection that changes every
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
+        className={`py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-visible transition-all duration-1000 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto overflow-visible">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#F28C28] text-white hover:bg-[#F28C28]">Our Team</Badge>
@@ -1828,7 +1830,7 @@ What started as one person's slow death became a resurrection that changes every
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div
-            className={`relative mb-16 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mb-16 overflow-visible ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{
               minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '1000px',
               display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
@@ -1863,13 +1865,14 @@ What started as one person's slow death became a resurrection that changes every
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     zIndex: zIndex,
-                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none',
+                    visibility: 'visible'
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
                     animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
                   }}>
 
-                  <Card className="hover-lift hover-glow h-full">
+                  <Card className="hover-lift hover-glow h-full bg-card">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                         <Image
