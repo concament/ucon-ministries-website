@@ -2007,11 +2007,11 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <Users className="w-12 h-12 text-[#F28C28] mx-auto mb-4" />
                 <CardTitle className="text-5xl font-bold text-[#F28C28] mb-2">150</CardTitle>
-                <CardDescription className="text-lg">LDI Applicants</CardDescription>
+                <CardDescription className="text-lg !whitespace-pre-line">LDI Applicants</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground">
-                  Servant leaders now mentoring, managing programs, and advocating for systemic change.
+                <p className="text-sm text-muted-foreground !whitespace-pre-line">Future servant leaders equipped to mentor others, manage programs, and advocate for systemic change.
+
                 </p>
               </CardContent>
             </Card>
