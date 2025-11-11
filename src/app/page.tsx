@@ -987,7 +987,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription className="!whitespace-pre-line">Workshops</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">Our ministry workshops are an educational outreach initiative designed to provide comprehensive support and holistic development, much like programs found in community-focused organizations and recovery centers. We offer a diverse range of interactive sessions covering vital areas such as spiritual foundations and personal growth, practical life skills, sobriety and recovery support, art and skill development (including creative workshops and various trades), and career development (including job readiness and financial literacy). Through this broad and inclusive approach, we empower participants to achieve personal stability, develop vital skills, find purpose, and become contributing members of our community.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !text-justify">Our ministry workshops are an educational outreach initiative designed to provide comprehensive support and holistic development, much like programs found in community-focused organizations and recovery centers. We offer a diverse range of interactive sessions covering vital areas such as spiritual foundations and personal growth, practical life skills, sobriety and recovery support, art and skill development (including creative workshops and various trades), and career development (including job readiness and financial literacy). Through this broad and inclusive approach, we empower participants to achieve personal stability, develop vital skills, find purpose, and become contributing members of our community.
 
                 </p>
                 <ul className="space-y-2">
@@ -1211,7 +1211,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
                   <Truck className="w-6 h-6 text-[#A92FFA]" />
                 </div>
-                <CardTitle className="!whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON TRANSIT</CardTitle>
+                <CardTitle className="!whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px] !text-center">UCON TRANSIT</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
