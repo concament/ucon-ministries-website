@@ -2187,13 +2187,13 @@ ADDICTED? GUILT? HELP?
                   Whether you have an hour a week or want to make a deeper commitment, there's a place for you in our ministry.
                 </p>
                 <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-2 !text-white">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
                     <span className="text-sm !text-white">Outreach team volunteers</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Workshop facilitators</span>
+                    <span className="text-sm !text-white">Workshop facilitators</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
