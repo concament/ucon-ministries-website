@@ -2522,8 +2522,8 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-gradient-to-br from-[#A92FFA] to-[#A92FFA]/80 text-[#A92FFA]/90">
               <CardHeader>
-                <Phone className="w-10 h-10 mb-3" />
-                <CardTitle className="text-2xl">Need Help Now?</CardTitle>
+                <Phone className="w-10 h-10 mb-3 !text-white" />
+                <CardTitle className="text-2xl !text-white">Need Help Now?</CardTitle>
                 <CardDescription className="text-[#A92FFA]/90 text-base">24/7 Crisis Support Available</CardDescription>
               </CardHeader>
               <CardContent>
