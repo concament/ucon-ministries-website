@@ -598,7 +598,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription className="text-base !whitespace-pre-line">Our Commitment-Based Program</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line">The LLDI is an Intensive 64-week, four-tier program in development for transforming lives through deep personal healing and leadership development.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !whitespace-pre-line">The LDI is an Intensive 64-week, four-tier program in development for transforming lives through deep personal healing and leadership development.
 
                 </p>
                 <ul className="space-y-2 mb-6">
@@ -631,7 +631,7 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#F28C28] hover:shadow-xl transition-shadow">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
-                  <BookOpen className="w-8 h-8 text-[#F28C28]/90" />
+                  <BookOpen className="w-8 h-8 !text-white" />
                 </div>
                 <Badge className="w-fit mb-2 bg-[#F28C28]" />
                 <CardTitle className="text-2xl">Open Ministry Services</CardTitle>
