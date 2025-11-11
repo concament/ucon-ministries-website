@@ -437,7 +437,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px]">Our Core Values</Badge>
+            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px] !whitespace-pre-line">OUR CORE VALUES</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">What Drives Our Ministry</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Six foundational principles that guide every aspect of our work and shape our approach to transformation.
