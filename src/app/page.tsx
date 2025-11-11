@@ -828,8 +828,8 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
-                    <Badge className="mb-2">Tier 1</Badge>
-                    <CardTitle className="text-2xl flex items-center gap-3">
+                    <Badge className="mb-2 !tracking-[10px]">Tier 1</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3 !tracking-[10px]">
                       <Sparkles className="w-6 h-6 text-[#A92FFA]" />
                       Ascension
                     </CardTitle>
