@@ -1415,11 +1415,11 @@ ADDICTED? GUILT? HELP?
                 <CardDescription className="!text-white">We're here 24/7 for crisis support</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-4 !text-white">
                   <div className="flex items-center gap-3">
                     <Phone className="w-6 h-6" />
                     <div>
-                      <p className="font-semibold text-lg">(555) 555-1234</p>
+                      <p className="font-semibold text-lg !text-white">(555) 555-1234</p>
                       <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
                     </div>
                   </div>
