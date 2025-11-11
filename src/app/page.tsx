@@ -250,7 +250,7 @@ export default function HomePage() {
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
               }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent">{`WORTHLESSNESS?
+                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !shadow-[0_2px_4px_0_rgba(0,0,0,0.15)]">{`WORTHLESSNESS?
 NO PURPOSE? BROKEN?
 ADDICTED? GUILT? HELP? 
 `}</span>
@@ -2576,6 +2576,6 @@ ADDICTED? GUILT? HELP?
 
       {/* SECTION 12: FOOTER - 12 Containers */}
       <Footer />
-    </div>
-  );
+    </div>);
+
 }
