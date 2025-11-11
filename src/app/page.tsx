@@ -1724,10 +1724,10 @@ ADDICTED? GUILT? HELP?
             <Card className="hover-lift">
               <CardHeader>
                 <Lightbulb className="w-10 h-10 text-[#A92FFA] mb-3" />
-                <CardTitle className="!tracking-[10px]">The Vision</CardTitle>
+                <CardTitle className="!tracking-[10px] !text-center">The Vision</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">
+                <p className="text-muted-foreground !text-center">
                   To create a ministry that doesn't just offer services, but builds a comprehensive ecosystem of transformation 
                   from immediate crisis response to international leadership development.
                 </p>
