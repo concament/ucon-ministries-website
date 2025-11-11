@@ -2550,7 +2550,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription className="text-base !text-white">Get Updates & Stories of Hope</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-[#F28C28]/90 mb-4">
+                <p className="mb-4 !text-white">
                   Subscribe to our newsletter for inspiring stories, upcoming events, and ways to get involved.
                 </p>
                 <div className="flex flex-col gap-2">
