@@ -1983,8 +1983,8 @@ ADDICTED? GUILT? HELP?
           <div className="text-center mb-16">
             <Badge className="mb-4 !tracking-[10px]">Our Impact</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Measuring Transformation</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Evidence-based outcomes demonstrating the effectiveness of comprehensive, purpose-driven recovery.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">We have live milestones so you can follow or impact and transformational journey
+
             </p>
           </div>
           
@@ -1994,7 +1994,7 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <TrendingUp className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
                 <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">500+</CardTitle>
-                <CardDescription className="text-lg">Lives Transformed Since 2020</CardDescription>
+                <CardDescription className="text-lg">Lives Transformed Since 2024</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
