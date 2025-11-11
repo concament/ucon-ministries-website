@@ -2534,9 +2534,9 @@ ADDICTED? GUILT? HELP?
                   </div>
                   <div>
                     <p className="text-sm mb-1 !text-white">Emergency Email</p>
-                    <p className="text-lg font-semibold">crisis@uconministries.org</p>
+                    <p className="text-lg font-semibold !text-white">crisis@uconministries.org</p>
                   </div>
-                  <p className="text-sm text-[#A92FFA]/90 pt-2">
+                  <p className="text-sm pt-2 !text-white">
                     You're not alone. We're here to help, no matter what you're facing.
                   </p>
                 </div>
