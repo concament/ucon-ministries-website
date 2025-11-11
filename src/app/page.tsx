@@ -727,14 +727,14 @@ ADDICTED? GUILT? HELP?
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">3</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">3</div>
                 <h4 className="font-semibold">Deep Transformation</h4>
               </div>
               <p className="text-sm text-muted-foreground">LDI commitment leads to leadership and systemic change</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">4</div>
+                <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold !text-[40px]">4</div>
                 <h4 className="font-semibold">Mentorship</h4>
               </div>
               <p className="text-sm text-muted-foreground">Graduates mentor new members, giving back to community</p>
