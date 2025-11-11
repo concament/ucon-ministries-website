@@ -2360,7 +2360,7 @@ ADDICTED? GUILT? HELP?
             <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#F28C28]">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
-                  <Heart className="w-8 h-8 text-[#F28C28]/90" />
+                  <Heart className="w-8 h-8 !text-white" />
                 </div>
                 <CardTitle className="text-xl">Donate</CardTitle>
                 <CardDescription>Fuel Transformation</CardDescription>
@@ -2392,7 +2392,7 @@ ADDICTED? GUILT? HELP?
             <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#A92FFA]">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
-                  <Users className="w-8 h-8 text-[#A92FFA]/90" />
+                  <Users className="w-8 h-8 !text-white" />
                 </div>
                 <CardTitle className="text-xl">Volunteer</CardTitle>
                 <CardDescription>Give Your Time</CardDescription>
