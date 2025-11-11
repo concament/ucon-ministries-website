@@ -1420,7 +1420,7 @@ ADDICTED? GUILT? HELP?
                     <Phone className="w-6 h-6" />
                     <div>
                       <p className="font-semibold text-lg !whitespace-pre-line">720.663.9243</p>
-                      <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
+                      <p className="text-sm !text-white">Crisis Hotline</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 !text-white">
@@ -1676,7 +1676,7 @@ ADDICTED? GUILT? HELP?
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA]">Our Story</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Founded on Transformation</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text !shadow-[0_16px_24px_-4px_rgba(255,255,255,0.25),0_8px_16px_-4px_rgba(255,255,255,0.15)] !border-0">Founded on Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
 
             </p>
