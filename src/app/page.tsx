@@ -1061,7 +1061,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Spiritual Care & Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-3/4">We provide compassionate spiritual care and personalized guidance for individuals navigating life's challenges, transitions, and moments of crisis.  Our pastoral team is committed to walking alongside you with empathy, biblical insight, and practical care. Through these deeply personal connections, we help individuals find hope, experience God's presence in tangible ways, and discover renewed strength to move forward with faith and resilience.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-full !h-[139px]">We provide compassionate spiritual care and personalized guidance for individuals navigating life's challenges, transitions, and moments of crisis.  Our pastoral team is committed to walking alongside you with empathy, biblical insight, and practical care. Through these deeply personal connections, we help individuals find hope, experience God's presence in tangible ways, and discover renewed strength to move forward with faith and resilience.
 
                 </p>
                 <ul className="space-y-2">
@@ -1094,7 +1094,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Mentorship and Peer Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[358px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-full !h-[197px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
 
                 </p>
                 <ul className="space-y-2">
