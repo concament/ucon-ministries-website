@@ -1952,7 +1952,7 @@ ADDICTED? GUILT? HELP?
             <Card className="bg-gradient-to-br from-[#F28C28]/10 to-[#A92FFA]/10 border-2 border-[#F28C28]/30">
               <CardHeader>
                 <CardTitle className="text-2xl !text-center">Join Our Team</CardTitle>
-                <CardDescription>Make a Difference Through Service</CardDescription>
+                <CardDescription className="!text-center">Make a Difference Through Service</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
                 <p className="text-muted-foreground">
@@ -1977,7 +1977,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 9: IMPACT STATS - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow mb-16">
+      <section className="px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow mb-16 !py-0">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
