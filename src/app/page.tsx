@@ -764,7 +764,7 @@ ADDICTED? GUILT? HELP?
           <div className="text-center mb-16">
             <Badge className="mb-4 !whitespace-pre-line !tracking-[10px] !whitespace-pre-line">Our Upcoming Track</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Leadership Development Institute</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">The LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line !whitespace-pre-line">The LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
 
             </p>
           </div>
@@ -801,7 +801,7 @@ ADDICTED? GUILT? HELP?
                 <CardTitle className="text-2xl">Program Outcomes</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="mb-4 text-[#A92FFA]/90">
+                <p className="mb-4 !text-white">
                   Graduates emerge as authentic servant leaders equipped to serve their communities and drive systemic change.
                 </p>
                 <ul className="space-y-2">
