@@ -1684,7 +1684,7 @@ ADDICTED? GUILT? HELP?
           
           {/* Container 3-4: Founder Story with Image */}
           <div className="mb-12 !w-full !h-[1443px]">
-            <Card className="border-2 border-[#A92FFA]/30 hover-lift !w-[152.1%] !h-[1439px]">
+            <Card className="border-2 border-[#A92FFA]/30 hover-lift !w-[152.1%] !h-[1351px]">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
                   <div className="md:w-48 flex-shrink-0 relative rounded-lg overflow-hidden !w-48 !h-48">
