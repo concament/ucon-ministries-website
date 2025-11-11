@@ -1688,8 +1688,8 @@ ADDICTED? GUILT? HELP?
 
                   </div>
                   <div className="flex-1">
-                    <CardTitle className="text-3xl mb-2">The Journey Nobody Expected</CardTitle>
-                    <CardDescription className="text-lg">From Brokenness to Purpose</CardDescription>
+                    <CardTitle className="text-3xl mb-2">What If Your Darkest Moment Became Your Greatest Purpose</CardTitle>
+                    <CardDescription className="text-lg">The Journey Nobody Expected to Change Everything</CardDescription>
                   </div>
                 </div>
               </CardHeader>
