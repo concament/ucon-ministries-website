@@ -257,7 +257,7 @@ ADDICTED? GUILT? HELP?
               </h1>
               
               {/* Container 2: Subheadline */}
-              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !shadow-none ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
+              <p className={`text-xl text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !shadow-none !text-center ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
               </p>
               
               {/* Container 3-4: CTA Buttons */}
