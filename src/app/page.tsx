@@ -359,7 +359,7 @@ ADDICTED? GUILT? HELP?
           {/* Container 1-2: Section Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line !tracking-[20px]">ABOUT US</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line !w-[652px] !h-12 sm:!text-white !tracking-[57px] sm:!text-center">UCON</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line sm:!text-white !tracking-[57px] sm:!text-center !w-[100.5%] !h-12">UCON</h2>
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
