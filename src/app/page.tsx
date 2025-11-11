@@ -1676,7 +1676,7 @@ ADDICTED? GUILT? HELP?
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#A92FFA]">Our Story</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text !shadow-[0_16px_24px_-4px_rgba(255,255,255,0.25),0_8px_16px_-4px_rgba(255,255,255,0.15)] !border-0 !shadow-none">Founded on Transformation</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text !shadow-[0_16px_24px_-4px_rgba(255,255,255,0.25),0_8px_16px_-4px_rgba(255,255,255,0.15)] !border-0 !shadow-none !shadow-none">Founded on Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
 
             </p>
