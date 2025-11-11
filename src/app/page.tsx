@@ -965,7 +965,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 6: TRACK 2 SERVICES - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient mb-16">
+      <section className="px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient mb-16 !py-0">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1462,7 +1462,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 8: TESTIMONIALS - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16">
+      <section className="px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16 !py-0">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
