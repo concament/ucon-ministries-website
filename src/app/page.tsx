@@ -433,7 +433,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 3: CORE VALUES - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
+      <section className="px-4 sm:px-6 lg:px-8 animate-fade-in mb-16 !py-0">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
