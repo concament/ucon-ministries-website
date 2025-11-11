@@ -1512,7 +1512,7 @@ ADDICTED? GUILT? HELP?
                 <div className="flex items-center gap-3 mb-3">
                   <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
                     <Image
-                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-1968c28a-20251105190507.jpg"
+                      src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/visual-edit-uploads/1762834895212-1rziiuwy9se.jpg"
                       alt="Sarah L."
                       fill
                       className="object-cover" />
