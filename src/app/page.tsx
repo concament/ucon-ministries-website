@@ -144,7 +144,7 @@ export default function HomePage() {
       // Start off-screen: alternating left and right
       const isEven = index % 2 === 0;
       return {
-        x: isEven ? -800 : 800,
+        x: isEven ? -800 : 800, // Far left or far right off-screen
         y: 0,
         rotate: 0,
         opacity: 0
@@ -155,21 +155,20 @@ export default function HomePage() {
     } else if (phase === 'spreading') {
       // Check if this card has been released
       if (releasedCards.has(index)) {
-        // Calculate grid position for released cards (3 columns, 2 rows)
+        // Calculate grid position for released cards
         const row = Math.floor(index / 3);
         const col = index % 3;
-        const cardWidth = 450; // More spacing
-        const gap = 80; // Larger gap
+        const cardWidth = 384; // max-w-96 = 384px
+        const gap = 32; // gap-8 = 32px
 
         // Calculate offset from center
         const totalWidth = 3 * cardWidth + 2 * gap;
         const startX = -totalWidth / 2 + cardWidth / 2;
         const x = startX + col * (cardWidth + gap);
 
-        const cardHeight = 520; // More vertical spacing
-        const totalHeight = 2 * cardHeight + gap;
-        const startY = -totalHeight / 2 + cardHeight / 2;
-        const y = startY + row * (cardHeight + gap);
+        const totalHeight = 2 * 300 + gap; // approximate card height
+        const startY = -totalHeight / 2 + 150;
+        const y = startY + row * (300 + gap);
 
         return { x, y, rotate: 0, opacity: 1 };
       } else {
@@ -181,17 +180,16 @@ export default function HomePage() {
       if (releasedCards.has(index)) {
         const row = Math.floor(index / 3);
         const col = index % 3;
-        const cardWidth = 450;
-        const gap = 80;
+        const cardWidth = 384;
+        const gap = 32;
 
         const totalWidth = 3 * cardWidth + 2 * gap;
         const startX = -totalWidth / 2 + cardWidth / 2;
         const x = startX + col * (cardWidth + gap);
 
-        const cardHeight = 520;
-        const totalHeight = 2 * cardHeight + gap;
-        const startY = -totalHeight / 2 + cardHeight / 2;
-        const y = startY + row * (cardHeight + gap);
+        const totalHeight = 2 * 300 + gap;
+        const startY = -totalHeight / 2 + 150;
+        const y = startY + row * (300 + gap);
 
         return { x, y, rotate: 0, opacity: 1 };
       }
@@ -1832,12 +1830,12 @@ What started as one person's slow death became a resurrection that changes every
           <div
             className={`relative mb-16 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '1600px',
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '1000px',
               display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              paddingTop: staffAnimationPhase !== 'pulsing' ? '100px' : '0',
-              paddingBottom: staffAnimationPhase !== 'pulsing' ? '100px' : '0'
+              paddingTop: staffAnimationPhase !== 'pulsing' ? '80px' : '0',
+              paddingBottom: staffAnimationPhase !== 'pulsing' ? '80px' : '0'
             }}>
 
             {teamMembers.map((member, index) => {
