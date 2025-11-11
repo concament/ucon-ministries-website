@@ -305,8 +305,8 @@ ADDICTED? GUILT? HELP?
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold">24/7</CardTitle>
-                  <CardDescription>Support Available</CardDescription>
+                  <CardTitle className="text-4xl font-bold !text-center">24/7</CardTitle>
+                  <CardDescription className="!text-center">Support Available</CardDescription>
                 </CardHeader>
               </Card>
             </div>
