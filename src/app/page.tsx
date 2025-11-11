@@ -2140,7 +2140,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 10: COMMUNITY & PARTNERSHIP - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure mb-16">
+      <section className="px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure mb-16 !py-0">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2155,7 +2155,7 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">Building Community</CardTitle>
+                <CardTitle className="text-2xl !text-center">Building Community</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4">
