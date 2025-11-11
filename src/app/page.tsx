@@ -403,7 +403,7 @@ ADDICTED? GUILT? HELP?
               <h3 className="font-semibold mb-2">Immediate Support</h3>
               <p className="text-sm text-muted-foreground">24/7 crisis intervention and practical assistance</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border">
+            <div className="p-6 bg-card rounded-lg border border-border !border-indigo-800">
               <CheckCircle2 className="w-8 h-8 text-[#F28C28] mb-3" />
               <h3 className="font-semibold mb-2">Long-term Healing</h3>
               <p className="text-sm text-muted-foreground">Comprehensive 64-week transformation program</p>
