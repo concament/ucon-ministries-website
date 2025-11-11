@@ -333,8 +333,8 @@ ADDICTED? GUILT? HELP?
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
               <Target className="w-8 h-8 text-[#A92FFA]" />
               <div>
-                <p className="font-semibold">Purpose-Driven</p>
-                <p className="text-sm text-muted-foreground">Goal Oriented</p>
+                <p className="font-semibold !text-center">Purpose-Driven</p>
+                <p className="text-sm text-muted-foreground !text-center">Goal Oriented</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
