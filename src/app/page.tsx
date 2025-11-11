@@ -633,7 +633,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-16 h-16 bg-[#F28C28] rounded-xl flex items-center justify-center mb-4">
                   <BookOpen className="w-8 h-8 !text-white" />
                 </div>
-                <Badge className="w-fit mb-2 bg-[#F28C28]" />
+                <Badge className="w-fit mb-2 bg-[#F28C28] !text-lg !tracking-[10px]" />
                 <CardTitle className="text-2xl">Open Ministry Services</CardTitle>
                 <CardDescription className="text-base">No Commitment Required</CardDescription>
               </CardHeader>
@@ -714,7 +714,7 @@ ADDICTED? GUILT? HELP?
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">1</div>
-                <h4 className="font-semibold">First Contact</h4>
+                <h4 className="font-semibold !tracking-[10px]">First Contact</h4>
               </div>
               <p className="text-sm text-muted-foreground">Outreach provides immediate help—food, shelter, crisis support</p>
             </div>
