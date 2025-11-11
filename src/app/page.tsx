@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { Play, Pause } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 import {
   Heart, Users, Target, Compass, BookOpen, HandHeart,
   Home, Truck, Utensils, MessageSquare, Shield, Stethoscope,
@@ -52,79 +52,47 @@ export default function HomePage() {
   const [outreachRef, outreachVisible] = useIntersectionObserver();
   const [testimonialsRef, testimonialsVisible] = useIntersectionObserver();
   const [founderRef, founderVisible] = useIntersectionObserver();
-  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.3 });
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
-  const [communityRef, communityVisible] = useIntersectionObserver();
 
-  // Background music state
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
-
-  useEffect(() => {
-    // Initialize audio element
-    audioRef.current = new Audio("https://od.lk/d/NzNfMTEwMDI1MTgyXw/Lord%2C%20Im%20Not%20Okay%20%281%29.mp3");
-    audioRef.current.volume = 0.1; // 10% volume
-    audioRef.current.loop = true;
-
-    return () => {
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
-  const toggleMusic = () => {
-    if (audioRef.current) {
-      if (isPlaying) {
-        audioRef.current.pause();
-      } else {
-        audioRef.current.play();
-      }
-      setIsPlaying(!isPlaying);
-    }
-  };
-
-  // Staff animation - simplified responsive approach
-  const [stackedCards, setStackedCards] = useState<number[]>([]);
+  // Staff animation state
+  const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading' | 'pulsing'>('idle');
+  const [startStaffAnimation, setStartStaffAnimation] = useState(false);
   const [releasedCards, setReleasedCards] = useState<Set<number>>(new Set());
   const [pulsingCard, setPulsingCard] = useState<number | null>(null);
 
   useEffect(() => {
-    if (staffVisible && stackedCards.length === 0) {
-      // Stack cards one by one
-      const stackingIntervals: NodeJS.Timeout[] = [];
-      
-      [0, 1, 2, 3, 4, 5].forEach((cardIndex, i) => {
-        const timeout = setTimeout(() => {
-          setStackedCards(prev => [...prev, cardIndex]);
-        }, i * 2000); // 2s per card
-        stackingIntervals.push(timeout);
-      });
+    if (staffVisible && !startStaffAnimation) {
+      // Trigger the start of animation
+      setStartStaffAnimation(true);
+      setStaffAnimationPhase('stacking');
 
-      // After all cards are stacked (12s), release them one by one
-      const releaseTimeout = setTimeout(() => {
-        const cornerOrder = [0, 2, 3, 5, 1, 4]; // Alternating corners
-        
+      // After stacking completes (6 cards * 2s each = 12s), spread them out
+      setTimeout(() => {
+        setStaffAnimationPhase('spreading');
+
+        // Release cards one by one to their final positions AND pulse at the same time
+        // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
+        const cornerOrder = [0, 2, 3, 5, 1, 4];
+
         cornerOrder.forEach((cardIndex, orderIndex) => {
           setTimeout(() => {
-            setReleasedCards(prev => new Set([...prev, cardIndex]));
+            // Release card to final position
+            setReleasedCards((prev) => new Set([...prev, cardIndex]));
+            
+            // Pulse at the same time the card spreads
             setPulsingCard(cardIndex);
             
+            // Clear pulse after animation completes
             setTimeout(() => {
               setPulsingCard(null);
-            }, 600);
-          }, orderIndex * 300);
+            }, 600); // Duration of pulse animation
+          }, orderIndex * 300); // 300ms delay between each card release
         });
       }, 12000);
-
-      return () => {
-        stackingIntervals.forEach(clearTimeout);
-        clearTimeout(releaseTimeout);
-      };
     }
-  }, [staffVisible, stackedCards.length]);
+  }, [staffVisible, startStaffAnimation]);
 
   const teamMembers = [
   {
@@ -170,23 +138,85 @@ export default function HomePage() {
     badges: ["Marketing", "Partnership Development"]
   }];
 
+  // Calculate positions for stacking animation
+  const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading' | 'pulsing') => {
+    if (phase === 'idle') {
+      // Start off-screen: alternating left and right
+      const isEven = index % 2 === 0;
+      return {
+        x: isEven ? -800 : 800,
+        y: 0,
+        rotate: 0,
+        opacity: 0
+      };
+    } else if (phase === 'stacking') {
+      // Stack in center
+      return { x: 0, y: 0, rotate: 0, opacity: 1 };
+    } else if (phase === 'spreading') {
+      // Check if this card has been released
+      if (releasedCards.has(index)) {
+        // Calculate grid position for released cards - use smaller dimensions
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const cardWidth = 300; // Reduced for safer fit
+        const gap = 20; // Reduced gap
+
+        // Calculate offset from center - constrained spread
+        const totalWidth = 3 * cardWidth + 2 * gap;
+        const startX = -totalWidth / 2 + cardWidth / 2;
+        const x = startX + col * (cardWidth + gap);
+
+        const cardHeight = 280; // Approximate card height
+        const totalHeight = 2 * cardHeight + gap;
+        const startY = -totalHeight / 2 + cardHeight / 2;
+        const y = startY + row * (cardHeight + gap);
+
+        return { x, y, rotate: 0, opacity: 1 };
+      } else {
+        // Stay stacked in center
+        return { x: 0, y: 0, rotate: 0, opacity: 1 };
+      }
+    } else {
+      // Pulsing phase - maintain grid positions
+      if (releasedCards.has(index)) {
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const cardWidth = 300;
+        const gap = 20;
+
+        const totalWidth = 3 * cardWidth + 2 * gap;
+        const startX = -totalWidth / 2 + cardWidth / 2;
+        const x = startX + col * (cardWidth + gap);
+
+        const cardHeight = 280;
+        const totalHeight = 2 * cardHeight + gap;
+        const startY = -totalHeight / 2 + cardHeight / 2;
+        const y = startY + row * (cardHeight + gap);
+
+        return { x, y, rotate: 0, opacity: 1 };
+      }
+      return { x: 0, y: 0, rotate: 0, opacity: 1 };
+    }
+  };
+
+  // Calculate delay for staggered entrance
+  const getCardDelay = (index: number, phase: 'idle' | 'stacking' | 'spreading' | 'pulsing') => {
+    if (phase === 'stacking') {
+      // Each card enters AFTER the previous one completes (2s per card)
+      return index * 2;
+    }
+    // No delay for spreading/pulsing - timing controlled by state updates
+    return 0;
+  };
+
   return (
     <div className="min-h-screen bg-background">
       <Navigation />
-
-      {/* Background Music Player */}
-      <button
-        onClick={toggleMusic}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-primary hover:bg-primary/90 text-primary-foreground rounded-full flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110"
-        aria-label={isPlaying ? "Pause music" : "Play music"}
-      >
-        {isPlaying ? <Pause className="w-6 h-6" /> : <Play className="w-6 h-6 ml-1" />}
-      </button>
       
       {/* SECTION 1: HERO - 12 Containers */}
       <section
         ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden mb-24">
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden mb-16">
 
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
@@ -313,7 +343,7 @@ ADDICTED? GUILT? HELP?
       {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
       <section
         ref={missionRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 mb-24 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 mb-16 ${
         missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -403,11 +433,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 3: CORE VALUES - 12 Containers */}
-      <section 
-        ref={valuesRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 mb-24 transition-all duration-700 ${
-        valuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -528,11 +554,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 4: THREE-TRACK MODEL - 12 Containers */}
-      <section 
-        ref={tracksRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-24 transition-all duration-700 ${
-        tracksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -728,11 +750,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 5: LDI OVERVIEW - 12 Containers */}
-      <section 
-        ref={ldiRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 mb-24 transition-all duration-700 ${
-        ldiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-slide-in-up mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -947,11 +965,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 6: TRACK 2 SERVICES - 12 Containers */}
-      <section 
-        ref={servicesRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient mb-24 transition-all duration-700 ${
-        servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1179,11 +1193,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 7: TRACK 3 OUTREACH - 12 Containers */}
-      <section 
-        ref={outreachRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 mb-24 transition-all duration-700 ${
-        outreachVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1452,11 +1462,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 8: TESTIMONIALS - 12 Containers */}
-      <section 
-        ref={testimonialsRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-24 transition-all duration-700 ${
-        testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1654,7 +1660,7 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
       <section
         ref={founderRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 mb-24 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 mb-16 ${
         founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -1821,15 +1827,13 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-24 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-hidden ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
-          <div className={`text-center mb-16 transition-all duration-700 ${
-            staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-          }>
+          <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#F28C28] text-white">Our Team</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-foreground">Meet Our Leadership</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -1837,29 +1841,48 @@ ADDICTED? GUILT? HELP?
             </p>
           </div>
           
-          {/* Container 3-8: Staff Members - Responsive Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {/* Container 3-8: Staff Members with Stacking Animation */}
+          <div
+            className={`relative mx-auto ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            style={{
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '700px',
+              maxWidth: staffAnimationPhase === 'pulsing' ? '100%' : '1200px',
+              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}>
+
             {teamMembers.map((member, index) => {
-              const isStacked = stackedCards.includes(index);
-              const isReleased = releasedCards.has(index);
-              const isPulsing = pulsingCard === index;
-              
-              // Card is visible once it's been stacked
-              const cardVisible = isStacked;
-              
+              const position = getCardPosition(index, staffAnimationPhase);
+              const delay = getCardDelay(index, staffAnimationPhase);
+              const isAbsolutePositioned = staffAnimationPhase !== 'pulsing';
+
+              // Z-index logic:
+              // - Stacking: newer cards on top (index + 10)
+              // - Spreading: unreleased cards (in center) on top (index + 20), released cards behind (index)
+              const zIndex = staffAnimationPhase === 'stacking' ?
+              index + 10 :
+              releasedCards.has(index) ? index : index + 20;
+
               return (
                 <div
                   key={member.name}
-                  className={`transition-all duration-1000 ease-out ${
-                    !cardVisible ? 'opacity-0 scale-50' :
-                    !isReleased ? 'opacity-100 scale-75 -translate-y-32' :
-                    'opacity-100 scale-100 translate-y-0'
-                  }`}
-                  style={{
-                    animation: isPulsing ? 'cardPulse 0.6s ease-out' : 'none',
-                    transitionDelay: !cardVisible ? '0s' : '0s'
-                  }}
-                >
+                  style={isAbsolutePositioned ? {
+                    position: 'absolute',
+                    left: '50%',
+                    top: '50%',
+                    width: '100%',
+                    maxWidth: '340px',
+                    transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
+                    opacity: position.opacity,
+                    transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
+                    zIndex: zIndex,
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
+                  } : {
+                    transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
+                  }}>
+
                   <Card className="hover-lift hover-glow h-full">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
@@ -1867,8 +1890,8 @@ ADDICTED? GUILT? HELP?
                           src={member.image}
                           alt={member.name}
                           fill
-                          className="object-cover"
-                        />
+                          className="object-cover" />
+
                       </div>
                       <CardTitle className="text-center text-xl">{member.name}</CardTitle>
                       <CardDescription className="text-center">{member.role}</CardDescription>
@@ -1876,23 +1899,21 @@ ADDICTED? GUILT? HELP?
                     <CardContent className="text-center">
                       <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                       <div className="flex flex-wrap gap-2 justify-center">
-                        {member.badges.map((badge) => (
-                          <Badge key={badge} variant="outline">
+                        {member.badges.map((badge) =>
+                        <Badge key={badge} variant="outline">
                             {badge}
                           </Badge>
-                        ))}
+                        )}
                       </div>
                     </CardContent>
                   </Card>
-                </div>
-              );
+                </div>);
+
             })}
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
-          <div className={`grid md:grid-cols-2 gap-8 transition-all duration-700 delay-300 ${
-            staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-          }>
+          <div className="grid md:grid-cols-2 gap-8 mt-32">
             <Card className="border-2 border-[#A92FFA]/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Our Team Values</CardTitle>
@@ -1956,11 +1977,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 9: IMPACT STATS - 12 Containers */}
-      <section 
-        ref={impactRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient mb-24 transition-all duration-700 ${
-        impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2123,11 +2140,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 10: COMMUNITY & PARTNERSHIP - 12 Containers */}
-      <section 
-        ref={communityRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure mb-24 transition-all duration-700 ${
-        communityVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2299,11 +2312,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 11: CALL-TO-ACTION - 12 Containers */}
-      <section 
-        ref={ctaRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 mb-24 transition-all duration-700 ${
-        ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-        }>
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
