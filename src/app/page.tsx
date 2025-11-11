@@ -52,7 +52,7 @@ export default function HomePage() {
   const [outreachRef, outreachVisible] = useIntersectionObserver();
   const [testimonialsRef, testimonialsVisible] = useIntersectionObserver();
   const [founderRef, founderVisible] = useIntersectionObserver();
-  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.1 });
+  const [staffRef, staffVisible] = useIntersectionObserver({ threshold: 0.3 });
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
@@ -64,34 +64,32 @@ export default function HomePage() {
 
   useEffect(() => {
     if (staffVisible && !startStaffAnimation) {
-      console.log('Staff section visible, starting animation');
+      // Trigger the start of animation
       setStartStaffAnimation(true);
       setStaffAnimationPhase('stacking');
 
       // After stacking completes (6 cards * 2s each = 12s), spread them out
       setTimeout(() => {
-        console.log('Starting spreading phase');
         setStaffAnimationPhase('spreading');
 
-        // Release cards one by one to their final positions
+        // Release cards one by one to their final positions AND pulse at the same time
+        // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
         const cornerOrder = [0, 2, 3, 5, 1, 4];
 
         cornerOrder.forEach((cardIndex, orderIndex) => {
           setTimeout(() => {
+            // Release card to final position
             setReleasedCards((prev) => new Set([...prev, cardIndex]));
+            
+            // Pulse at the same time the card spreads
             setPulsingCard(cardIndex);
             
+            // Clear pulse after animation completes
             setTimeout(() => {
               setPulsingCard(null);
-            }, 600);
-          }, orderIndex * 300);
+            }, 600); // Duration of pulse animation
+          }, orderIndex * 300); // 300ms delay between each card release
         });
-
-        // After all cards are released, switch to pulsing phase (grid layout)
-        setTimeout(() => {
-          console.log('Switching to pulsing phase (grid layout)');
-          setStaffAnimationPhase('pulsing');
-        }, cornerOrder.length * 300 + 500);
       }, 12000);
     }
   }, [staffVisible, startStaffAnimation]);
@@ -143,17 +141,58 @@ export default function HomePage() {
   // Calculate positions for stacking animation
   const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading' | 'pulsing') => {
     if (phase === 'idle') {
+      // Start off-screen: alternating left and right
       const isEven = index % 2 === 0;
       return {
-        x: isEven ? -400 : 400,
+        x: isEven ? -800 : 800, // Far left or far right off-screen
         y: 0,
         rotate: 0,
         opacity: 0
       };
     } else if (phase === 'stacking') {
+      // Stack in center
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
+    } else if (phase === 'spreading') {
+      // Check if this card has been released
+      if (releasedCards.has(index)) {
+        // Calculate grid position for released cards
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const cardWidth = 384; // max-w-96 = 384px
+        const gap = 32; // gap-8 = 32px
+
+        // Calculate offset from center
+        const totalWidth = 3 * cardWidth + 2 * gap;
+        const startX = -totalWidth / 2 + cardWidth / 2;
+        const x = startX + col * (cardWidth + gap);
+
+        const totalHeight = 2 * 300 + gap; // approximate card height
+        const startY = -totalHeight / 2 + 150;
+        const y = startY + row * (300 + gap);
+
+        return { x, y, rotate: 0, opacity: 1 };
+      } else {
+        // Stay stacked in center
+        return { x: 0, y: 0, rotate: 0, opacity: 1 };
+      }
     } else {
-      // For spreading and pulsing, return neutral position
+      // Pulsing phase - maintain grid positions
+      if (releasedCards.has(index)) {
+        const row = Math.floor(index / 3);
+        const col = index % 3;
+        const cardWidth = 384;
+        const gap = 32;
+
+        const totalWidth = 3 * cardWidth + 2 * gap;
+        const startX = -totalWidth / 2 + cardWidth / 2;
+        const x = startX + col * (cardWidth + gap);
+
+        const totalHeight = 2 * 300 + gap;
+        const startY = -totalHeight / 2 + 150;
+        const y = startY + row * (300 + gap);
+
+        return { x, y, rotate: 0, opacity: 1 };
+      }
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
     }
   };
@@ -169,13 +208,13 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background overflow-x-hidden">
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* SECTION 1: HERO - 12 Containers */}
       <section
         ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden mb-16">
 
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
@@ -227,7 +266,7 @@ ADDICTED? GUILT? HELP?
             </div>
             
             {/* Container 5-8: Hero Stats Grid */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-6">
+            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
               <Card className={`bg-[#A92FFA] text-white hover-lift transition-all duration-700 delay-200 ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
@@ -264,7 +303,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Feature Badges */}
-          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-700 delay-600 ${
+          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 delay-600 ${
           heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
           }>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
@@ -302,15 +341,15 @@ ADDICTED? GUILT? HELP?
       {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
       <section
         ref={missionRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 overflow-x-hidden ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 mb-16 ${
         missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Section Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90">ABOUT US</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6">UCON</h2>
+            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line !tracking-[10px]">ABOUT US</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line !tracking-[50px]">UCON</h2>
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
@@ -392,7 +431,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 3: CORE VALUES - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -491,7 +530,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Value Impact Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-muted/50 rounded-lg">
               <p className="text-4xl font-bold text-[#A92FFA] mb-2">100%</p>
               <p className="text-sm text-muted-foreground">Unconditional Acceptance</p>
@@ -513,7 +552,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 4: THREE-TRACK MODEL - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -661,7 +700,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 7-12: Journey Flow */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-4">
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">1</div>
@@ -709,7 +748,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 5: LDI OVERVIEW - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-slide-in-up">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-slide-in-up mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -881,7 +920,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Application Process */}
-          <div className="mt-12 grid md:grid-cols-4 gap-8">
+          <div className="mt-12 grid md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-card rounded-lg border border-border">
               <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="w-6 h-6 text-[#A92FFA]" />
@@ -924,7 +963,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 6: TRACK 2 SERVICES - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1071,7 +1110,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 7-12: Schedule & Details */}
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-6">
             <Card>
               <CardHeader>
                 <Calendar className="w-8 h-8 text-[#F28C28] mb-2" />
@@ -1152,7 +1191,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 7: TRACK 3 OUTREACH - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1164,7 +1203,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 3-8: Six Outreach Services */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
@@ -1359,7 +1398,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Emergency Contact & CTA */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
                 <CardTitle className="text-2xl !text-white">Need Immediate Help?</CardTitle>
@@ -1421,7 +1460,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 8: TESTIMONIALS - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1595,7 +1634,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Impact Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div className="text-center p-6 bg-card rounded-lg">
               <p className="text-4xl font-bold text-[#A92FFA] mb-2">150+</p>
               <p className="text-sm text-muted-foreground">People Served Monthly</p>
@@ -1619,17 +1658,17 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
       <section
         ref={founderRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 overflow-x-hidden ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 mb-16 ${
         founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA]">OUR STORY</Badge>
+            <Badge className="mb-4 bg-[#A92FFA] !tracking-[10px] !whitespace-pre-line">OUR STORY</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Founded on Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
+              From rock bottom to redemptive purpose—the journey that built Ucon Ministries.
             </p>
           </div>
           
@@ -1638,40 +1677,41 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#A92FFA]/30 hover-lift">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
+                  <div className="md:w-48 flex-shrink-0 relative rounded-lg overflow-hidden !w-48 !h-48">
                     <Image
                       src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
                       alt="Ministry Founder"
                       fill
-                      className="object-cover" />
+                      className="object-cover !w-full !h-[190px] !max-w-full" />
+
                   </div>
                   <div className="flex-1">
-                    <CardTitle className="text-2xl md:text-3xl mb-2">What If Your Darkest Moment Became Your Greatest Purpose?</CardTitle>
-                    <CardDescription className="text-base md:text-lg">The Journey Nobody Expected to Change Everything</CardDescription>
+                    <CardTitle className="text-3xl mb-2">The Journey Nobody Expected</CardTitle>
+                    <CardDescription className="text-lg">From Brokenness to Purpose</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6 text-lg">
                 <p className="text-muted-foreground leading-relaxed">
-                  UCON Ministries was founded in 2020 by individuals who had looked death in the eyes and felt it staring back from the mirror. Our founder didn't just hit rock bottom—they shattered against it. Destroyed by a justice system that crushes souls. Possessed by addiction that devours everything. Stripped of humanity on streets where you become invisible, then forgotten, then nothing.
+                  Ucon Ministries was founded in 2024 by one man and other individuals who never imagined their darkest moments would become their greatest mission. Our founder spent years trapped in a cycle of worthlessness—broken by the justice system, consumed by addiction, crushed by homelessness, and drowning in mental health struggles that seemed impossible to overcome.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  This wasn't struggle. This was slow death while still breathing.
+                  Rock bottom felt permanent. Hope felt like a cruel joke. Purpose felt like something meant for other people.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  Every glance in the mirror showed a ghost. Every sunrise meant surviving another day you didn't ask for. The court system branded them criminal. Addiction made them a slave. Homelessness erased their name. Mental illness whispered that death would be mercy. And the crushing weight of it all? The world agreed they were worthless—and they believed it.
+                  But then came the choice nobody saw coming—the decision to do the work. Not just any work, but the brutal, honest work of facing the truth. Our founder recognized they couldn't do it alone, but also couldn't be saved by someone else's effort. They chose to show up. Chose the right people who wouldn't enable but would empower. Chose therapy that demanded honesty. Chose to open the Bible and actually wrestle with God. Chose to let Jesus into the mess. Chose community even when isolation felt safer.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  But in that pit of absolute despair—where hope dies and purpose becomes a cruel joke—something impossible happened. People appeared who refused to see waste where the world saw garbage. They didn't preach from a distance or offer shallow fixes. Through Christ's scandalous grace and a community that wouldn't abandon the broken, transformation clawed its way from the grave.
+                  Through Christ's redemptive power—accepted and pursued—combined with professional therapy, biblical truth, personal accountability, and a community that walked alongside without carrying the load, transformation became possible. Not handed down from above. Not magically fixed. But fought for. Chosen. Built one hard decision at a time.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  This brutal resurrection revealed a searing truth: real transformation requires more than band-aids on bullet wounds. It demands comprehensive support, biblical truth that confronts darkness, clinical excellence, and most critically—people who believe you're worth fighting for when you've already given up.
+                  This hard-won journey revealed a profound truth: real transformation requires more than temporary fixes. It demands comprehensive support, biblical integration, clinical excellence, personal commitment to do the work, and most importantly—choosing the right people who believe in your potential while you build your own.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
-                  UCON Ministries was born from that fire—the ministry our founder was dying for but couldn't find. One that meets people in the pit and refuses to leave. We walk every brutal step of transformation: from crisis when death feels like relief, to discovering you're not the monster they said you were, to becoming the servant leader who reaches back into hell for the next dying soul.
+                  Ucon Ministries was born from that revelation. We became the ministry our founder desperately needed but couldn't find—one that meets people at their point of deepest need and provides the tools, truth, and support while they do the transformative work themselves. We walk with them through every step: from crisis stabilization to discovering dignity, from learning practical skills to finding lasting purpose, from being served to becoming servant leaders who transform entire communities.
                 </p>
                 <p className="text-muted-foreground leading-relaxed font-semibold">
-                  What started as one person's slow death became a resurrection that changes everything.
+                  What started as one person's choice to fight for their own life has become a movement of restoration. That's the journey nobody expected to change everything—but it did.
                 </p>
               </CardContent>
             </Card>
@@ -1785,14 +1825,14 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-x-hidden transition-all duration-1000 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#F28C28] text-white hover:bg-[#F28C28]">Our Team</Badge>
+            <Badge className="mb-4 bg-[#F28C28] text-white">Our Team</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-foreground">Meet Our Leadership</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A diverse team united by personal transformation stories and a shared calling to serve those seeking hope and purpose.
@@ -1801,45 +1841,46 @@ ADDICTED? GUILT? HELP?
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div
-            className={`relative mb-16 w-full transition-all duration-1000 ${
-              staffAnimationPhase === 'pulsing' 
-                ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-6' 
-                : 'flex items-center justify-center'
-            }`}
+            className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{
               minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
+              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
+              alignItems: 'center',
+              justifyContent: 'center'
             }}>
 
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
               const delay = getCardDelay(index, staffAnimationPhase);
-              
-              // Use absolute positioning only during idle, stacking, and spreading phases
-              const useAbsolutePosition = staffAnimationPhase !== 'pulsing';
-              
-              const zIndex = staffAnimationPhase === 'stacking' ? index + 10 : index;
+              const isAbsolutePositioned = staffAnimationPhase !== 'pulsing';
+
+              // Z-index logic:
+              // - Stacking: newer cards on top (index + 10)
+              // - Spreading: unreleased cards (in center) on top (index + 20), released cards behind (index)
+              const zIndex = staffAnimationPhase === 'stacking' ?
+              index + 10 :
+              releasedCards.has(index) ? index : index + 20;
 
               return (
                 <div
                   key={member.name}
-                  className={staffAnimationPhase === 'pulsing' ? 'w-full' : ''}
-                  style={useAbsolutePosition ? {
+                  style={isAbsolutePositioned ? {
                     position: 'absolute',
                     left: '50%',
                     top: '50%',
-                    width: '85%',
-                    maxWidth: '340px',
+                    width: '100%',
+                    maxWidth: '384px',
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     zIndex: zIndex,
-                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none',
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
-                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none',
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
                   }}>
 
-                  <Card className="hover-lift hover-glow h-full bg-card border border-border">
+                  <Card className="hover-lift hover-glow h-full">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                         <Image
@@ -1847,15 +1888,16 @@ ADDICTED? GUILT? HELP?
                           alt={member.name}
                           fill
                           className="object-cover" />
+
                       </div>
-                      <CardTitle className="text-center text-lg">{member.name}</CardTitle>
-                      <CardDescription className="text-center text-sm">{member.role}</CardDescription>
+                      <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                      <CardDescription className="text-center">{member.role}</CardDescription>
                     </CardHeader>
                     <CardContent className="text-center">
-                      <p className="text-sm text-muted-foreground mb-3 line-clamp-3">{member.description}</p>
+                      <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
                       <div className="flex flex-wrap gap-2 justify-center">
                         {member.badges.map((badge) =>
-                        <Badge key={badge} variant="outline" className="text-xs">
+                        <Badge key={badge} variant="outline">
                             {badge}
                           </Badge>
                         )}
@@ -1863,6 +1905,7 @@ ADDICTED? GUILT? HELP?
                     </CardContent>
                   </Card>
                 </div>);
+
             })}
           </div>
           
@@ -1931,7 +1974,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 9: IMPACT STATS - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1985,7 +2028,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Detailed Metrics */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card>
               <CardHeader>
                 <Award className="w-8 h-8 text-[#A92FFA] mb-2" />
@@ -2094,7 +2137,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 10: COMMUNITY & PARTNERSHIP - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2163,7 +2206,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 5-10: Partner Categories */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Building2 className="w-10 h-10 text-[#A92FFA] mb-3" />
@@ -2266,7 +2309,7 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 11: CALL-TO-ACTION - 12 Containers */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 animate-fade-in mb-16">
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2473,7 +2516,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Emergency Banner */}
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6">
             <Card className="bg-gradient-to-br from-[#A92FFA] to-[#A92FFA]/80 text-[#A92FFA]/90">
               <CardHeader>
                 <Phone className="w-10 h-10 mb-3" />

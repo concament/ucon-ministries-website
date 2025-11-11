@@ -10,10 +10,10 @@ export default function BackgroundMusic() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Create audio element with new music link
+    // Create audio element with 10% volume
     audioRef.current = new Audio("https://od.lk/d/NzNfMTEwMDI1MTgyXw/Lord%2C%20Im%20Not%20Okay%20%281%29.mp3");
     audioRef.current.loop = true;
-    audioRef.current.volume = 0.3;
+    audioRef.current.volume = 0.1; // 10% volume
 
     // Clean up
     return () => {
