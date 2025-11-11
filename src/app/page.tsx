@@ -72,24 +72,22 @@ export default function HomePage() {
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
 
-        // Release cards one by one to their final positions
+        // Release cards one by one to their final positions AND pulse at the same time
         // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
         const cornerOrder = [0, 2, 3, 5, 1, 4];
 
         cornerOrder.forEach((cardIndex, orderIndex) => {
-          // Release card to final position
           setTimeout(() => {
+            // Release card to final position
             setReleasedCards((prev) => new Set([...prev, cardIndex]));
             
-            // Pulse RIGHT when the card arrives (exactly 2s travel time to sync with transition)
+            // Pulse at the same time the card spreads
+            setPulsingCard(cardIndex);
+            
+            // Clear pulse after animation completes
             setTimeout(() => {
-              setPulsingCard(cardIndex);
-              
-              // Clear pulse after animation completes
-              setTimeout(() => {
-                setPulsingCard(null);
-              }, 600); // Duration of pulse animation
-            }, 2000); // Exactly matches the 2s transition duration
+              setPulsingCard(null);
+            }, 600); // Duration of pulse animation
           }, orderIndex * 300); // 300ms delay between each card release
         });
       }, 12000);
