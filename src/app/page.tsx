@@ -358,8 +358,8 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Section Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line">ABOUT US</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line">UCON</h2>
+            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line !tracking-[10px]">ABOUT US</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line !tracking-[50px]">UCON</h2>
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
