@@ -991,7 +991,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <GraduationCap className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">UCON EQUIP</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON EQUIP</CardTitle>
                 <CardDescription className="!whitespace-pre-line">Workshops</CardDescription>
               </CardHeader>
               <CardContent>
