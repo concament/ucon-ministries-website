@@ -1812,14 +1812,14 @@ What started as one person's slow death became a resurrection that changes every
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
+        className={`py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 transition-all duration-1000 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#F28C28] text-white">Our Team</Badge>
+            <Badge className="mb-4 bg-[#F28C28] text-white hover:bg-[#F28C28]">Our Team</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 text-foreground">Meet Our Leadership</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               A diverse team united by personal transformation stories and a shared calling to serve those seeking hope and purpose.
