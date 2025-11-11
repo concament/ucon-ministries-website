@@ -1689,7 +1689,7 @@ ADDICTED? GUILT? HELP?
                   </div>
                   <div className="flex-1">
                     <CardTitle className="text-3xl mb-2">What If Your Darkest Moment Became Your Greatest Purpose</CardTitle>
-                    <CardDescription className="text-lg">The Journey Nobody Expected to Change Everything</CardDescription>
+                    <CardDescription className="text-lg !text-center">The Journey Nobody Expected to Change Everything</CardDescription>
                   </div>
                 </div>
               </CardHeader>
@@ -1712,7 +1712,7 @@ ADDICTED? GUILT? HELP?
                 <p className="text-muted-foreground leading-relaxed !text-justify">
                   Ucon Ministries was born from that revelation. We became the ministry our founder desperately needed but couldn't find—one that meets people at their point of deepest need and provides the tools, truth, and support while they do the transformative work themselves. We walk with them through every step: from crisis stabilization to discovering dignity, from learning practical skills to finding lasting purpose, from being served to becoming servant leaders who transform entire communities.
                 </p>
-                <p className="text-muted-foreground leading-relaxed font-semibold">
+                <p className="text-muted-foreground leading-relaxed font-semibold !text-justify">
                   What started as one person's choice to fight for their own life has become a movement of restoration. That's the journey nobody expected to change everything—but it did.
                 </p>
               </CardContent>
