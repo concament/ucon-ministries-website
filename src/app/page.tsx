@@ -1474,7 +1474,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Stories of Hope</Badge>
+            <Badge className="mb-4 !tracking-[10px]">Stories of Hope</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Lives Being Transformed</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Real stories from real people experiencing hope, community, and the beginning of transformation through UCon Ministries.
@@ -1675,7 +1675,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA]">Our Story</Badge>
+            <Badge className="mb-4 bg-[#A92FFA] !tracking-[10px]">Our Story</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Founded on Transformation</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
 
