@@ -1439,7 +1439,7 @@ ADDICTED? GUILT? HELP?
             
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl !whitespace-pre-line">UCON Frontline</CardTitle>
+                <CardTitle className="text-2xl !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON FRONTLINE</CardTitle>
                 <CardDescription>Volunteer in our outreach. Join us in serving the community</CardDescription>
               </CardHeader>
               <CardContent>
