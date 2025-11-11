@@ -2144,7 +2144,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4">Together We Rise</Badge>
+            <Badge className="mb-4 !tracking-[10px]">Together We Rise</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Community & Partners</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Transformation happens in community. We're grateful for our partners, volunteers, and supporters who make this work possible.
@@ -2183,7 +2183,7 @@ ADDICTED? GUILT? HELP?
                 <CardTitle className="text-2xl">Volunteer Opportunities</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="mb-4 text-[#A92FFA]/90">
+                <p className="mb-4 !text-white">
                   Whether you have an hour a week or want to make a deeper commitment, there's a place for you in our ministry.
                 </p>
                 <ul className="space-y-2">
