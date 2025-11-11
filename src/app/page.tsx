@@ -907,8 +907,8 @@ ADDICTED? GUILT? HELP?
                 <div className="flex items-start justify-between">
                   <div>
                     <Badge className="mb-2 !tracking-[10px]">Tier 4</Badge>
-                    <CardTitle className="text-2xl flex items-center gap-3 !whitespace-pre-line !tracking-[10px]">
-                      <Rocket className="w-6 h-6 text-[#A92FFA]" />Ucon
+                    <CardTitle className="text-2xl flex items-center gap-3 !whitespace-pre-line !tracking-[10px] !whitespace-pre-line">
+                      <Rocket className="w-6 h-6 text-[#A92FFA]" />UCON
 
                     </CardTitle>
                     <CardDescription className="!whitespace-pre-line !whitespace-pre-line">Visionary Leadership | Finding Purpose</CardDescription>
@@ -991,7 +991,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#F28C28]/10 rounded-lg flex items-center justify-center mb-4">
                   <GraduationCap className="w-6 h-6 text-[#F28C28]" />
                 </div>
-                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">Ucon Equip</CardTitle>
+                <CardTitle className="text-xl !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">UCON EQUIP</CardTitle>
                 <CardDescription className="!whitespace-pre-line">Workshops</CardDescription>
               </CardHeader>
               <CardContent>
