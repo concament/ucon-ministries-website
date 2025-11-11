@@ -1028,7 +1028,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Spiritual Growth</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !w-[100.1%] !h-[355px]">Our ministry provides a robust schedule of engaging Bible studies and faith-strengthening courses designed to deepen your relationship with God and foster meaningful connections within our community. We offer everything from intensive scriptural explorations and foundational theology courses to practical workshops on prayer, spiritual disciplines, and relationship-building seminars. Through these interactive sessions, individuals can grow in their understanding of the Bible, enrich their personal faith journey, and strengthen supportive bonds with others, all within a welcoming and nurturing environment
+                <p className="text-muted-foreground mb-4 !w-[100.1%] !h-[294px]">Our ministry provides a robust schedule of engaging Bible studies and faith-strengthening courses designed to deepen your relationship with God and foster meaningful connections within our community. We offer everything from intensive scriptural explorations and foundational theology courses to practical workshops on prayer, spiritual disciplines, and relationship-building seminars. Through these interactive sessions, individuals can grow in their understanding of the Bible, enrich their personal faith journey, and strengthen supportive bonds with others, all within a welcoming and nurturing environment
 
                 </p>
                 <ul className="space-y-2">
@@ -1094,7 +1094,7 @@ ADDICTED? GUILT? HELP?
                 <CardDescription>Mentorship and Peer Support</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[358px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
+                <p className="text-muted-foreground mb-4 !whitespace-pre-line !w-[100.1%] !h-[293px]">We connect individuals with experienced guides and supportive community members who understand the unique challenges of transformation and recovery. Our mentoring program fosters meaningful one-on-one relationships, group accountability circles, and peer-led support sessions where participants can share experiences and navigate challenges together in a safe environment. Through consistent connection, shared wisdom, and compassionate accountability, participants develop the resilience, confidence, and community bonds essential for sustaining positive life transformation.
 
                 </p>
                 <ul className="space-y-2">
