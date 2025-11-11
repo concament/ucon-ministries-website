@@ -1744,7 +1744,7 @@ ADDICTED? GUILT? HELP?
             <Card className="hover-lift">
               <CardHeader>
                 <Heart className="w-10 h-10 text-[#F28C28] mb-3" fill="currentColor" />
-                <CardTitle>The Heart</CardTitle>
+                <CardTitle className="!tracking-[10px]">The Heart</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
@@ -1757,7 +1757,7 @@ ADDICTED? GUILT? HELP?
             <Card className="hover-lift">
               <CardHeader>
                 <Target className="w-10 h-10 text-[#A92FFA] mb-3" />
-                <CardTitle>The Method</CardTitle>
+                <CardTitle className="!tracking-[10px]">The Method</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
