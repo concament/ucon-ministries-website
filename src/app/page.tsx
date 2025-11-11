@@ -2180,7 +2180,7 @@ ADDICTED? GUILT? HELP?
             
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
-                <CardTitle className="text-2xl">Volunteer Opportunities</CardTitle>
+                <CardTitle className="text-2xl !text-white">Volunteer Opportunities</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="mb-4 !text-white">
@@ -2189,7 +2189,7 @@ ADDICTED? GUILT? HELP?
                 <ul className="space-y-2">
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
-                    <span className="text-sm">Outreach team volunteers</span>
+                    <span className="text-sm !text-white">Outreach team volunteers</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
