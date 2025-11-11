@@ -2530,7 +2530,7 @@ ADDICTED? GUILT? HELP?
                 <div className="space-y-3">
                   <div>
                     <p className="text-sm mb-1 !text-white">Crisis Hotline</p>
-                    <p className="text-3xl font-bold !text-white">(555) 555-1234</p>
+                    <p className="text-3xl font-bold !text-white !whitespace-pre-line">720.663.9243</p>
                   </div>
                   <div>
                     <p className="text-sm mb-1 !text-white">Emergency Email</p>
@@ -2545,7 +2545,7 @@ ADDICTED? GUILT? HELP?
             
             <Card className="bg-gradient-to-br from-[#F28C28] to-[#F28C28]/80 text-[#F28C28]/90">
               <CardHeader>
-                <Mail className="w-10 h-10 mb-3" />
+                <Mail className="w-10 h-10 mb-3 !text-white" />
                 <CardTitle className="text-2xl">Stay Connected</CardTitle>
                 <CardDescription className="text-[#F28C28]/90 text-base">Get Updates & Stories of Hope</CardDescription>
               </CardHeader>
