@@ -44,7 +44,7 @@ export default function Footer() {
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="YouTube">
+                <a href="#" aria-label="YouTube" className="!text-orange-500">
                   <Youtube className="w-4 h-4" />
                 </a>
               </Button>
@@ -153,8 +153,8 @@ export default function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="flex items-center space-x-3">
               <MapPin className="w-5 h-5 text-primary flex-shrink-0" />
-              <span className="text-sm text-muted-foreground">
-                123 Hope Street, Community Center, CA 90210
+              <span className="text-sm text-muted-foreground">2000 South Colorado Blvd Tower 1 
+
               </span>
             </div>
             <div className="flex items-center space-x-3">
