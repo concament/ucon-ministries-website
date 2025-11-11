@@ -1701,7 +1701,7 @@ ADDICTED? GUILT? HELP?
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-6 text-lg !w-[641px] !h-[905px]">
+              <CardContent className="space-y-6 text-lg !w-[641px] !h-[804px]">
                 <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[180px] !whitespace-pre-line">{`\n\n\n\n\n\n`}
 
 
@@ -1731,7 +1731,7 @@ ADDICTED? GUILT? HELP?
             <Card className="hover-lift">
               <CardHeader>
                 <Lightbulb className="w-10 h-10 text-[#A92FFA] mb-3" />
-                <CardTitle>The Vision</CardTitle>
+                <CardTitle className="!tracking-[10px]">The Vision</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
