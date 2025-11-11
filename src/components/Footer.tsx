@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
@@ -19,17 +19,17 @@ export default function Footer() {
                   src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1000021808-1761356032294.png"
                   alt="UCon Ministries Logo"
                   fill
-                  className="object-contain"
-                />
+                  className="object-contain" />
+
               </div>
-              <h3 className="text-xl font-bold">UCon Ministries</h3>
+              <h3 className="text-xl font-bold !whitespace-pre-line">United Convict Ministries Inc.</h3>
             </div>
             <p className="text-sm text-muted-foreground">
               Transforming feelings of worthlessness into enduring purpose and dignity through unconditional connection and Christ's love.
             </p>
             <div className="flex space-x-3">
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Facebook">
+                <a href="#" aria-label="Facebook" className="!text-orange-500">
                   <Facebook className="w-4 h-4" />
                 </a>
               </Button>
@@ -179,6 +179,6 @@ export default function Footer() {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>);
+
 }
