@@ -790,7 +790,7 @@ ADDICTED? GUILT? HELP?
             
             <Card className="bg-[#A92FFA] text-white">
               <CardHeader>
-                <CardTitle className="text-2xl">Program Outcomes</CardTitle>
+                <CardTitle className="text-2xl !text-center">Program Outcomes</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="mb-4 !text-white">
