@@ -2546,8 +2546,8 @@ ADDICTED? GUILT? HELP?
             <Card className="bg-gradient-to-br from-[#F28C28] to-[#F28C28]/80 text-[#F28C28]/90">
               <CardHeader>
                 <Mail className="w-10 h-10 mb-3 !text-white" />
-                <CardTitle className="text-2xl">Stay Connected</CardTitle>
-                <CardDescription className="text-[#F28C28]/90 text-base">Get Updates & Stories of Hope</CardDescription>
+                <CardTitle className="text-2xl !text-white">Stay Connected</CardTitle>
+                <CardDescription className="text-base !text-white">Get Updates & Stories of Hope</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-[#F28C28]/90 mb-4">
