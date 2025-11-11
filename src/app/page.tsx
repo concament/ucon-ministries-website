@@ -1702,17 +1702,14 @@ ADDICTED? GUILT? HELP?
                 </div>
               </CardHeader>
               <CardContent className="space-y-6 text-lg !w-[641px] !h-[804px]">
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[180px] !whitespace-pre-line">UCON Ministries was founded in 2020 by individuals who had looked death in the eyes and felt it staring back from the mirror. Our founder didn't just hit rock bottom—they shattered against it. Destroyed by a justice system that crushes souls. Possessed by addiction that devours everything. Stripped of humanity on streets where you become invisible, then forgotten, then nothing.
+                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[180px]">UCON Ministries was founded in 2020 by individuals who had looked death in the eyes and felt it staring back from the mirror. Our founder didn't just hit rock bottom—they shattered against it. Destroyed by a justice system that crushes souls. Possessed by addiction that devours everything. Stripped of humanity on streets where you become invisible, then forgotten, then nothing.
 This wasn't struggle. This was slow death while still breathing.
 Every glance in the mirror showed a ghost. Every sunrise meant surviving another day you didn't ask for. The court system branded them criminal. Addiction made them a slave. Homelessness erased their name. Mental illness whispered that death would be mercy. And the crushing weight of it all? The world agreed they were worthless—and they believed it.
 But in that pit of absolute despair—where hope dies and purpose becomes a cruel joke—something impossible happened. People appeared who refused to see waste where the world saw garbage. They didn't preach from a distance or offer shallow fixes. Through Christ's scandalous grace and a community that wouldn't abandon the broken, transformation clawed its way from the grave.
 This brutal resurrection revealed a searing truth: real transformation requires more than band-aids on bullet wounds. It demands comprehensive support, biblical truth that confronts darkness, clinical excellence, and most critically—people who believe you're worth fighting for when you've already given up.
 UCON Ministries was born from that fire—the ministry our founder was dying for but couldn't find. One that meets people in the pit and refuses to leave. We walk every brutal step of transformation: from crisis when death feels like relief, to discovering you're not the monster they said you were, to becoming the servant leader who reaches back into hell for the next dying soul.
 What started as one person's slow death became a resurrection that changes everything.
-
-
-
-        
+                </p>
               </CardContent>
             </Card>
           </div>
