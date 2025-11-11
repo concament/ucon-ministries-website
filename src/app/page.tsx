@@ -144,7 +144,7 @@ export default function HomePage() {
       // Start off-screen: alternating left and right
       const isEven = index % 2 === 0;
       return {
-        x: isEven ? -800 : 800, // Far left or far right off-screen
+        x: isEven ? -800 : 800,
         y: 0,
         rotate: 0,
         opacity: 0
@@ -155,20 +155,21 @@ export default function HomePage() {
     } else if (phase === 'spreading') {
       // Check if this card has been released
       if (releasedCards.has(index)) {
-        // Calculate grid position for released cards
+        // Calculate grid position for released cards - use smaller dimensions
         const row = Math.floor(index / 3);
         const col = index % 3;
-        const cardWidth = 384; // max-w-96 = 384px
-        const gap = 32; // gap-8 = 32px
+        const cardWidth = 300; // Reduced for safer fit
+        const gap = 20; // Reduced gap
 
-        // Calculate offset from center
+        // Calculate offset from center - constrained spread
         const totalWidth = 3 * cardWidth + 2 * gap;
         const startX = -totalWidth / 2 + cardWidth / 2;
         const x = startX + col * (cardWidth + gap);
 
-        const totalHeight = 2 * 300 + gap; // approximate card height
-        const startY = -totalHeight / 2 + 150;
-        const y = startY + row * (300 + gap);
+        const cardHeight = 280; // Approximate card height
+        const totalHeight = 2 * cardHeight + gap;
+        const startY = -totalHeight / 2 + cardHeight / 2;
+        const y = startY + row * (cardHeight + gap);
 
         return { x, y, rotate: 0, opacity: 1 };
       } else {
@@ -180,16 +181,17 @@ export default function HomePage() {
       if (releasedCards.has(index)) {
         const row = Math.floor(index / 3);
         const col = index % 3;
-        const cardWidth = 384;
-        const gap = 32;
+        const cardWidth = 300;
+        const gap = 20;
 
         const totalWidth = 3 * cardWidth + 2 * gap;
         const startX = -totalWidth / 2 + cardWidth / 2;
         const x = startX + col * (cardWidth + gap);
 
-        const totalHeight = 2 * 300 + gap;
-        const startY = -totalHeight / 2 + 150;
-        const y = startY + row * (300 + gap);
+        const cardHeight = 280;
+        const totalHeight = 2 * cardHeight + gap;
+        const startY = -totalHeight / 2 + cardHeight / 2;
+        const y = startY + row * (cardHeight + gap);
 
         return { x, y, rotate: 0, opacity: 1 };
       }
@@ -1825,7 +1827,7 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-hidden ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -1841,9 +1843,10 @@ ADDICTED? GUILT? HELP?
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div
-            className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mx-auto ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '700px',
+              maxWidth: staffAnimationPhase === 'pulsing' ? '100%' : '1200px',
               display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center'
@@ -1869,7 +1872,7 @@ ADDICTED? GUILT? HELP?
                     left: '50%',
                     top: '50%',
                     width: '100%',
-                    maxWidth: '384px',
+                    maxWidth: '340px',
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
@@ -1910,7 +1913,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Team Values & Volunteer CTA */}
-          <div className="grid md:grid-cols-2 gap-8 mt-12">
+          <div className="grid md:grid-cols-2 gap-8 mt-32">
             <Card className="border-2 border-[#A92FFA]/30">
               <CardHeader>
                 <CardTitle className="text-2xl">Our Team Values</CardTitle>
