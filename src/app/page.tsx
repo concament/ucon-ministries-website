@@ -2180,7 +2180,7 @@ ADDICTED? GUILT? HELP?
             
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
-                <CardTitle className="text-2xl !text-white">Volunteer Opportunities</CardTitle>
+                <CardTitle className="text-2xl !text-white !text-center">Volunteer Opportunities</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="mb-4 !text-white">
