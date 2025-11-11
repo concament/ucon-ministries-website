@@ -398,7 +398,7 @@ ADDICTED? GUILT? HELP?
           
           {/* Container 7-12: Impact Promise Boxes */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            <div className="p-6 bg-card rounded-lg border border-border">
+            <div className="p-6 bg-card rounded-lg border border-border !border-indigo-500">
               <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
               <h3 className="font-semibold mb-2">Immediate Support</h3>
               <p className="text-sm text-muted-foreground">24/7 crisis intervention and practical assistance</p>
