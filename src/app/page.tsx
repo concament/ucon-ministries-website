@@ -1700,10 +1700,10 @@ ADDICTED? GUILT? HELP?
                 <p className="text-muted-foreground leading-relaxed !text-justify">
                   Rock bottom felt permanent. Hope felt like a cruel joke. Purpose felt like something meant for other people.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed !text-justify">
                   But then came the choice nobody saw coming—the decision to do the work. Not just any work, but the brutal, honest work of facing the truth. Our founder recognized they couldn't do it alone, but also couldn't be saved by someone else's effort. They chose to show up. Chose the right people who wouldn't enable but would empower. Chose therapy that demanded honesty. Chose to open the Bible and actually wrestle with God. Chose to let Jesus into the mess. Chose community even when isolation felt safer.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed !text-justify">
                   Through Christ's redemptive power—accepted and pursued—combined with professional therapy, biblical truth, personal accountability, and a community that walked alongside without carrying the load, transformation became possible. Not handed down from above. Not magically fixed. But fought for. Chosen. Built one hard decision at a time.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
