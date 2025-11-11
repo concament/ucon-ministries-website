@@ -266,7 +266,7 @@ ADDICTED? GUILT? HELP?
             </div>
             
             {/* Container 5-8: Hero Stats Grid */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
+            <div className="lg:col-span-5 grid grid-cols-2 gap-6">
               <Card className={`bg-[#A92FFA] text-white hover-lift transition-all duration-700 delay-200 ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
@@ -303,7 +303,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Feature Badges */}
-          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 delay-600 ${
+          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 transition-all duration-700 delay-600 ${
           heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
           }>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
@@ -530,7 +530,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Value Impact Stats */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center p-6 bg-muted/50 rounded-lg">
               <p className="text-4xl font-bold text-[#A92FFA] mb-2">100%</p>
               <p className="text-sm text-muted-foreground">Unconditional Acceptance</p>
@@ -700,7 +700,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 7-12: Journey Flow */}
-          <div className="grid md:grid-cols-3 gap-4">
+          <div className="grid md:grid-cols-3 gap-8">
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">1</div>
@@ -920,7 +920,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Application Process */}
-          <div className="mt-12 grid md:grid-cols-4 gap-6">
+          <div className="mt-12 grid md:grid-cols-4 gap-8">
             <div className="text-center p-6 bg-card rounded-lg border border-border">
               <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <MessageSquare className="w-6 h-6 text-[#A92FFA]" />
@@ -1110,7 +1110,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 7-12: Schedule & Details */}
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-8">
             <Card>
               <CardHeader>
                 <Calendar className="w-8 h-8 text-[#F28C28] mb-2" />
@@ -1203,7 +1203,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 3-8: Six Outreach Services */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
@@ -1398,7 +1398,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Emergency Contact & CTA */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
                 <CardTitle className="text-2xl !text-white">Need Immediate Help?</CardTitle>
@@ -1634,7 +1634,7 @@ ADDICTED? GUILT? HELP?
           </div>
           
           {/* Container 9-12: Impact Statistics */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center p-6 bg-card rounded-lg">
               <p className="text-4xl font-bold text-[#A92FFA] mb-2">150+</p>
               <p className="text-sm text-muted-foreground">People Served Monthly</p>
@@ -2017,7 +2017,7 @@ What started as one person's slow death became a resurrection that changes every
           </div>
           
           {/* Container 9-12: Detailed Metrics */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             <Card>
               <CardHeader>
                 <Award className="w-8 h-8 text-[#A92FFA] mb-2" />
@@ -2195,7 +2195,7 @@ What started as one person's slow death became a resurrection that changes every
           </div>
           
           {/* Container 5-10: Partner Categories */}
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="hover:shadow-lg transition-shadow">
               <CardHeader>
                 <Building2 className="w-10 h-10 text-[#A92FFA] mb-3" />
@@ -2505,7 +2505,7 @@ What started as one person's slow death became a resurrection that changes every
           </div>
           
           {/* Container 9-12: Emergency Banner */}
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             <Card className="bg-gradient-to-br from-[#A92FFA] to-[#A92FFA]/80 text-[#A92FFA]/90">
               <CardHeader>
                 <Phone className="w-10 h-10 mb-3" />
