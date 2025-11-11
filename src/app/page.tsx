@@ -81,7 +81,7 @@ export default function HomePage() {
           setTimeout(() => {
             setReleasedCards((prev) => new Set([...prev, cardIndex]));
             
-            // Pulse AFTER the card arrives (2s travel time + small buffer)
+            // Pulse AFTER the card arrives (2s travel time + 50ms buffer for transition to complete)
             setTimeout(() => {
               setPulsingCard(cardIndex);
               
@@ -89,7 +89,7 @@ export default function HomePage() {
               setTimeout(() => {
                 setPulsingCard(null);
               }, 600); // Duration of pulse animation
-            }, 2100); // Wait for card to arrive at position (2s transition + 100ms buffer)
+            }, 2050); // Wait for card to fully arrive and settle (2s transition + 50ms buffer)
           }, orderIndex * 300); // 300ms delay between each card release
         });
       }, 12000);
