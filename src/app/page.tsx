@@ -1420,14 +1420,14 @@ ADDICTED? GUILT? HELP?
                     <Phone className="w-6 h-6" />
                     <div>
                       <p className="font-semibold text-lg !text-white">(555) 555-1234</p>
-                      <p className="text-sm text-[#A92FFA]/80">Crisis Hotline</p>
+                      <p className="text-sm !text-white">Crisis Hotline</p>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-6 h-6" />
                     <div>
                       <p className="font-semibold">outreach@ucon.org</p>
-                      <p className="text-sm text-[#A92FFA]/80">Emergency Email</p>
+                      <p className="text-sm !text-white">Emergency Email</p>
                     </div>
                   </div>
                   <Button className="w-full mt-4 bg-white text-[#A92FFA] hover:bg-white/90">
