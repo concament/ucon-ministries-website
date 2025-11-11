@@ -2199,7 +2199,7 @@ ADDICTED? GUILT? HELP?
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">Administrative support</span>
                   </li>
-                  <li className="flex items-start gap-2">
+                  <li className="flex items-start gap-2 !text-white">
                     <CheckCircle2 className="w-5 h-5 mt-0.5 flex-shrink-0" />
                     <span className="text-sm">Prayer partners</span>
                   </li>
@@ -2219,7 +2219,7 @@ ADDICTED? GUILT? HELP?
                 <p className="text-sm text-muted-foreground mb-3">
                   Local churches and faith communities providing spiritual support, volunteers, and resources.
                 </p>
-                <Badge variant="outline">12 Church Partners</Badge>
+                <Badge variant="outline">12 Religious Partners</Badge>
               </CardContent>
             </Card>
             
