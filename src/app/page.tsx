@@ -749,7 +749,7 @@ ADDICTED? GUILT? HELP?
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">6</div>
-                <h4 className="font-semibold">Legacy Building</h4>
+                <h4 className="font-semibold !tracking-[10px]">Legacy Building</h4>
               </div>
               <p className="text-sm text-muted-foreground">Generational change through movement-building</p>
             </div>
@@ -762,7 +762,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 !whitespace-pre-line">Our upcoming Track</Badge>
+            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px]">Our upcoming Track</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Leadership Development Institute</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">the LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
 
