@@ -343,7 +343,7 @@ ADDICTED? GUILT? HELP?
       {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
       <section
         ref={missionRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 mb-16 ${
+        className={`px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 mb-16 !py-0 ${
         missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
