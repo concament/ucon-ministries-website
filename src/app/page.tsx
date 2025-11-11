@@ -558,7 +558,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px]">More Than Ministry</Badge>
+            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px] !whitespace-pre-line">MORE THAN MINISTRY</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Three-Track Model</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               Meeting individuals at every stage of their journey—from immediate crisis to long-term leadership development.
