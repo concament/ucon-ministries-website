@@ -1575,7 +1575,7 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <div className="w-16 h-16 rounded-full overflow-hidden relative flex-shrink-0">
                   <Image
-                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/generated_images/professional-headshot-portrait-photograp-7e4425ed-20251105190506.jpg"
+                    src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/project-uploads/3b399b69-78b1-47ea-a46d-f78b0232d98b/visual-edit-uploads/1762836294042-v39uhxc78x.png"
                     alt="Diana R."
                     fill
                     className="object-cover" />
