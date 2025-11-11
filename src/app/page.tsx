@@ -906,8 +906,8 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <div className="flex items-start justify-between">
                   <div>
-                    <Badge className="mb-2">Tier 4</Badge>
-                    <CardTitle className="text-2xl flex items-center gap-3 !whitespace-pre-line">
+                    <Badge className="mb-2 !tracking-[10px]">Tier 4</Badge>
+                    <CardTitle className="text-2xl flex items-center gap-3 !whitespace-pre-line !tracking-[10px]">
                       <Rocket className="w-6 h-6 text-[#A92FFA]" />Ucon
 
                     </CardTitle>
