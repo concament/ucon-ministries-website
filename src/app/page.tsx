@@ -1827,7 +1827,7 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-hidden ${
+        className={`px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-hidden !py-0 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
