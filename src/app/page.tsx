@@ -735,14 +735,14 @@ ADDICTED? GUILT? HELP?
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#A92FFA]/10 flex items-center justify-center text-[#A92FFA] font-bold">4</div>
-                <h4 className="font-semibold">Mentorship</h4>
+                <h4 className="font-semibold !tracking-[10px]">Mentorship</h4>
               </div>
               <p className="text-sm text-muted-foreground">Graduates mentor new members, giving back to community</p>
             </div>
             <div className="p-6 bg-card rounded-lg border border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-8 h-8 rounded-full bg-[#F28C28]/10 flex items-center justify-center text-[#F28C28] font-bold">5</div>
-                <h4 className="font-semibold">Systemic Impact</h4>
+                <h4 className="font-semibold !tracking-[10px]">Systemic Impact</h4>
               </div>
               <p className="text-sm text-muted-foreground">Leaders influence organizations, policy, and culture</p>
             </div>
