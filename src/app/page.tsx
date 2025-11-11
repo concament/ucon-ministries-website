@@ -423,7 +423,7 @@ ADDICTED? GUILT? HELP?
               <h3 className="font-semibold mb-2">Systemic Change</h3>
               <p className="text-sm text-muted-foreground">Advocating for justice and policy reform</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border">
+            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600">
               <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
               <h3 className="font-semibold mb-2">Generational Impact</h3>
               <p className="text-sm text-muted-foreground">Creating legacy of hope for future generations</p>
