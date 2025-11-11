@@ -1426,7 +1426,7 @@ ADDICTED? GUILT? HELP?
                   <div className="flex items-center gap-3 !text-white">
                     <Mail className="w-6 h-6" />
                     <div>
-                      <p className="font-semibold">outreach@ucon.org</p>
+                      <p className="font-semibold !whitespace-pre-line !text-center">outreach@uconministries.org</p>
                       <p className="text-sm text-[#A92FFA]/80">Emergency Email</p>
                     </div>
                   </div>
