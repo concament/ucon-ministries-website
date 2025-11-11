@@ -1812,7 +1812,7 @@ What started as one person's slow death became a resurrection that changes every
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
+        className={`py-32 px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -1828,12 +1828,14 @@ What started as one person's slow death became a resurrection that changes every
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div
-            className={`relative mb-12 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mb-16 ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '1000px',
               display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent: 'center',
+              paddingTop: staffAnimationPhase !== 'pulsing' ? '80px' : '0',
+              paddingBottom: staffAnimationPhase !== 'pulsing' ? '80px' : '0'
             }}>
 
             {teamMembers.map((member, index) => {
