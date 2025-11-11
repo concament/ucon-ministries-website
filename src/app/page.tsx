@@ -673,7 +673,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
                   <HandHeart className="w-8 h-8 !text-white" />
                 </div>
-                <Badge className="w-fit mb-2 bg-[#A92FFA] text-[#A92FFA]/90">Tracfffk 3</Badge>
+                <Badge className="w-fit mb-2 bg-[#A92FFA] !whitespace-pre-line !text-white">Tracfffk 3</Badge>
                 <CardTitle className="text-2xl">Outreach & Advocacy</CardTitle>
                 <CardDescription className="text-base">First Responders</CardDescription>
               </CardHeader>
