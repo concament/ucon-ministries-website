@@ -765,7 +765,7 @@ ADDICTED? GUILT? HELP?
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             <Card>
               <CardHeader>
-                <CardTitle className="text-2xl">The Engine of Transformation</CardTitle>
+                <CardTitle className="text-2xl !text-center">The Engine of Transformation</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground mb-4 !whitespace-pre-line">The LDI is our intensive, commitment-based program designed to dismantle a lifetime, or  immediate sense of worthlessness and trauma through a safe, challenging, fun environment.
