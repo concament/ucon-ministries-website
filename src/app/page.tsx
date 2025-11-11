@@ -1188,7 +1188,7 @@ ADDICTED? GUILT? HELP?
                     <p className="!text-white">No commitment required—come as you are and find your place.</p>
                   </div>
                   <Button size="lg" variant="outline" className="bg-white text-[#F28C28] hover:bg-white/90" asChild>
-                    <Link href="/services">
+                    <Link href="/services" className="!text-white">
                       View All Services
                       <ChevronRight className="ml-2 w-4 h-4" />
                     </Link>
