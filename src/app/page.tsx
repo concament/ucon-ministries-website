@@ -1412,10 +1412,10 @@ ADDICTED? GUILT? HELP?
             <Card className="bg-[#A92FFA] text-[#A92FFA]/90">
               <CardHeader>
                 <CardTitle className="text-2xl">Need Immediate Help?</CardTitle>
-                <CardDescription className="text-[#A92FFA]/80">We're here 24/7 for crisis support</CardDescription>
+                <CardDescription className="!text-white">We're here 24/7 for crisis support</CardDescription>
               </CardHeader>
               <CardContent>
-                <div className="space-y-4">
+                <div className="space-y-4 !text-white">
                   <div className="flex items-center gap-3 !text-white">
                     <Phone className="w-6 h-6" />
                     <div>
