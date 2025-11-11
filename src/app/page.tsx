@@ -273,7 +273,7 @@ ADDICTED? GUILT? HELP?
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-4xl font-bold !text-center">Projected 500+</CardTitle>
+                  <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text font-bold !text-center !text-[28px]">Projected 500+</CardTitle>
                   <CardDescription className="text-white/80 !text-center">Lives Transformed</CardDescription>
                 </CardHeader>
               </Card>
