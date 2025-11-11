@@ -327,7 +327,7 @@ ADDICTED? GUILT? HELP?
               <Users className="w-8 h-8 text-[#F28C28]" />
               <div>
                 <p className="font-semibold">Community</p>
-                <p className="text-sm text-muted-foreground">Support System</p>
+                <p className="text-sm text-muted-foreground !text-center">Support System</p>
               </div>
             </div>
             <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
@@ -341,7 +341,7 @@ ADDICTED? GUILT? HELP?
               <Award className="w-8 h-8 text-[#F28C28]" />
               <div>
                 <p className="font-semibold">Evidence-Based</p>
-                <p className="text-sm text-muted-foreground">Proven Methods</p>
+                <p className="text-sm text-muted-foreground !text-center">Proven Methods</p>
               </div>
             </div>
           </div>
