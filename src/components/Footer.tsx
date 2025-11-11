@@ -34,12 +34,12 @@ export default function Footer() {
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Instagram">
+                <a href="#" aria-label="Instagram" className="!text-orange-500">
                   <Instagram className="w-4 h-4" />
                 </a>
               </Button>
               <Button variant="outline" size="icon" asChild>
-                <a href="#" aria-label="Twitter">
+                <a href="#" aria-label="Twitter" className="!text-orange-500">
                   <Twitter className="w-4 h-4" />
                 </a>
               </Button>
