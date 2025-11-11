@@ -1197,7 +1197,7 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA] !tracking-[10.5px] !text-white">Track 3</Badge>
+            <Badge className="mb-4 bg-[#A92FFA] !tracking-[10.5px] !text-white !whitespace-pre-line">TRACK 3</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Outreach & Community Advocacy</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
               The heartbeat of our ministry's compassion—extending practical help to those experiencing immediate crisis and systemic hardship.
