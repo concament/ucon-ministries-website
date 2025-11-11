@@ -2530,10 +2530,10 @@ ADDICTED? GUILT? HELP?
                 <div className="space-y-3">
                   <div>
                     <p className="text-sm mb-1 !text-white">Crisis Hotline</p>
-                    <p className="text-3xl font-bold">(555) 555-1234</p>
+                    <p className="text-3xl font-bold !text-white">(555) 555-1234</p>
                   </div>
                   <div>
-                    <p className="text-sm text-[#A92FFA]/80 mb-1">Emergency Email</p>
+                    <p className="text-sm mb-1 !text-white">Emergency Email</p>
                     <p className="text-lg font-semibold">crisis@uconministries.org</p>
                   </div>
                   <p className="text-sm text-[#A92FFA]/90 pt-2">
