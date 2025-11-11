@@ -65,7 +65,6 @@ export default function HomePage() {
   useEffect(() => {
     if (staffVisible && !startStaffAnimation) {
       console.log('Staff section visible, starting animation');
-      // Trigger the start of animation
       setStartStaffAnimation(true);
       setStaffAnimationPhase('stacking');
 
@@ -74,24 +73,25 @@ export default function HomePage() {
         console.log('Starting spreading phase');
         setStaffAnimationPhase('spreading');
 
-        // Release cards one by one to their final positions AND pulse at the same time
-        // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
+        // Release cards one by one to their final positions
         const cornerOrder = [0, 2, 3, 5, 1, 4];
 
         cornerOrder.forEach((cardIndex, orderIndex) => {
           setTimeout(() => {
-            // Release card to final position
             setReleasedCards((prev) => new Set([...prev, cardIndex]));
-            
-            // Pulse at the same time the card spreads
             setPulsingCard(cardIndex);
             
-            // Clear pulse after animation completes
             setTimeout(() => {
               setPulsingCard(null);
-            }, 600); // Duration of pulse animation
-          }, orderIndex * 300); // 300ms delay between each card release
+            }, 600);
+          }, orderIndex * 300);
         });
+
+        // After all cards are released, switch to pulsing phase (grid layout)
+        setTimeout(() => {
+          console.log('Switching to pulsing phase (grid layout)');
+          setStaffAnimationPhase('pulsing');
+        }, cornerOrder.length * 300 + 500);
       }, 12000);
     }
   }, [staffVisible, startStaffAnimation]);
@@ -143,58 +143,17 @@ export default function HomePage() {
   // Calculate positions for stacking animation
   const getCardPosition = (index: number, phase: 'idle' | 'stacking' | 'spreading' | 'pulsing') => {
     if (phase === 'idle') {
-      // Start off-screen: alternating left and right
       const isEven = index % 2 === 0;
       return {
-        x: isEven ? -800 : 800, // Far left or far right off-screen
+        x: isEven ? -400 : 400,
         y: 0,
         rotate: 0,
         opacity: 0
       };
     } else if (phase === 'stacking') {
-      // Stack in center
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
-    } else if (phase === 'spreading') {
-      // Check if this card has been released
-      if (releasedCards.has(index)) {
-        // Calculate grid position for released cards
-        const row = Math.floor(index / 3);
-        const col = index % 3;
-        const cardWidth = 384; // max-w-96 = 384px
-        const gap = 32; // gap-8 = 32px
-
-        // Calculate offset from center
-        const totalWidth = 3 * cardWidth + 2 * gap;
-        const startX = -totalWidth / 2 + cardWidth / 2;
-        const x = startX + col * (cardWidth + gap);
-
-        const totalHeight = 2 * 300 + gap; // approximate card height
-        const startY = -totalHeight / 2 + 150;
-        const y = startY + row * (300 + gap);
-
-        return { x, y, rotate: 0, opacity: 1 };
-      } else {
-        // Stay stacked in center
-        return { x: 0, y: 0, rotate: 0, opacity: 1 };
-      }
     } else {
-      // Pulsing phase - maintain grid positions
-      if (releasedCards.has(index)) {
-        const row = Math.floor(index / 3);
-        const col = index % 3;
-        const cardWidth = 384;
-        const gap = 32;
-
-        const totalWidth = 3 * cardWidth + 2 * gap;
-        const startX = -totalWidth / 2 + cardWidth / 2;
-        const x = startX + col * (cardWidth + gap);
-
-        const totalHeight = 2 * 300 + gap;
-        const startY = -totalHeight / 2 + 150;
-        const y = startY + row * (300 + gap);
-
-        return { x, y, rotate: 0, opacity: 1 };
-      }
+      // For spreading and pulsing, return neutral position
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
     }
   };
@@ -343,15 +302,15 @@ ADDICTED? GUILT? HELP?
       {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
       <section
         ref={missionRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 overflow-x-hidden ${
         missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Section Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90 !whitespace-pre-line !tracking-[10px]">ABOUT US</Badge>
-            <h2 className="text-4xl sm:text-5xl font-bold mb-6 !whitespace-pre-line !tracking-[50px]">UCON</h2>
+            <Badge className="mb-4 bg-[#A92FFA] hover:bg-[#A92FFA]/90">ABOUT US</Badge>
+            <h2 className="text-4xl sm:text-5xl font-bold mb-6">UCON</h2>
           </div>
           
           {/* Container 3-4: Main Mission Statement */}
@@ -1660,17 +1619,17 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: FOUNDER STORY - 12 Containers */}
       <section
         ref={founderRef}
-        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 ${
+        className={`py-20 px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-1000 overflow-x-hidden ${
         founderVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 bg-[#A92FFA] !tracking-[10px] !whitespace-pre-line">OUR STORY</Badge>
+            <Badge className="mb-4 bg-[#A92FFA]">OUR STORY</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6 glow-text">Founded on Transformation</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
-
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Ucon Ministries was born from personal experience with brokenness, addiction, homelessness and the redemptive power of Christ's unconditional love.
             </p>
           </div>
           
@@ -1679,28 +1638,40 @@ ADDICTED? GUILT? HELP?
             <Card className="border-2 border-[#A92FFA]/30 hover-lift">
               <CardHeader>
                 <div className="flex flex-col md:flex-row items-start gap-6">
-                  <div className="md:w-48 flex-shrink-0 relative rounded-lg overflow-hidden !w-48 !h-48">
+                  <div className="w-48 h-48 flex-shrink-0 relative rounded-lg overflow-hidden">
                     <Image
                       src="https://od.lk/d/NzNfMTEwMDI2OTkyXw/Founder.jpg"
                       alt="Ministry Founder"
                       fill
-                      className="object-cover !w-full !h-[190px] !max-w-full" />
-
+                      className="object-cover" />
                   </div>
                   <div className="flex-1">
-                    <CardTitle className="text-3xl mb-2 !whitespace-pre-line !whitespace-pre-line">What If Your Darkest Moment Became Your Greatest Purpose?</CardTitle>
-                    <CardDescription className="text-lg !whitespace-pre-line">The Journey Nobody Expected to Change Everything</CardDescription>
+                    <CardTitle className="text-2xl md:text-3xl mb-2">What If Your Darkest Moment Became Your Greatest Purpose?</CardTitle>
+                    <CardDescription className="text-base md:text-lg">The Journey Nobody Expected to Change Everything</CardDescription>
                   </div>
                 </div>
               </CardHeader>
-              <CardContent className="space-y-6 text-lg !w-[641px] !h-[804px]">
-                <p className="text-muted-foreground leading-relaxed !whitespace-pre-line !w-[918px] !h-[180px]">UCON Ministries was founded in 2020 by individuals who had looked death in the eyes and felt it staring back from the mirror. Our founder didn't just hit rock bottom—they shattered against it. Destroyed by a justice system that crushes souls. Possessed by addiction that devours everything. Stripped of humanity on streets where you become invisible, then forgotten, then nothing.
-This wasn't struggle. This was slow death while still breathing.
-Every glance in the mirror showed a ghost. Every sunrise meant surviving another day you didn't ask for. The court system branded them criminal. Addiction made them a slave. Homelessness erased their name. Mental illness whispered that death would be mercy. And the crushing weight of it all? The world agreed they were worthless—and they believed it.
-But in that pit of absolute despair—where hope dies and purpose becomes a cruel joke—something impossible happened. People appeared who refused to see waste where the world saw garbage. They didn't preach from a distance or offer shallow fixes. Through Christ's scandalous grace and a community that wouldn't abandon the broken, transformation clawed its way from the grave.
-This brutal resurrection revealed a searing truth: real transformation requires more than band-aids on bullet wounds. It demands comprehensive support, biblical truth that confronts darkness, clinical excellence, and most critically—people who believe you're worth fighting for when you've already given up.
-UCON Ministries was born from that fire—the ministry our founder was dying for but couldn't find. One that meets people in the pit and refuses to leave. We walk every brutal step of transformation: from crisis when death feels like relief, to discovering you're not the monster they said you were, to becoming the servant leader who reaches back into hell for the next dying soul.
-What started as one person's slow death became a resurrection that changes everything.
+              <CardContent className="space-y-4">
+                <p className="text-muted-foreground leading-relaxed">
+                  UCON Ministries was founded in 2020 by individuals who had looked death in the eyes and felt it staring back from the mirror. Our founder didn't just hit rock bottom—they shattered against it. Destroyed by a justice system that crushes souls. Possessed by addiction that devours everything. Stripped of humanity on streets where you become invisible, then forgotten, then nothing.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  This wasn't struggle. This was slow death while still breathing.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  Every glance in the mirror showed a ghost. Every sunrise meant surviving another day you didn't ask for. The court system branded them criminal. Addiction made them a slave. Homelessness erased their name. Mental illness whispered that death would be mercy. And the crushing weight of it all? The world agreed they were worthless—and they believed it.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  But in that pit of absolute despair—where hope dies and purpose becomes a cruel joke—something impossible happened. People appeared who refused to see waste where the world saw garbage. They didn't preach from a distance or offer shallow fixes. Through Christ's scandalous grace and a community that wouldn't abandon the broken, transformation clawed its way from the grave.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  This brutal resurrection revealed a searing truth: real transformation requires more than band-aids on bullet wounds. It demands comprehensive support, biblical truth that confronts darkness, clinical excellence, and most critically—people who believe you're worth fighting for when you've already given up.
+                </p>
+                <p className="text-muted-foreground leading-relaxed">
+                  UCON Ministries was born from that fire—the ministry our founder was dying for but couldn't find. One that meets people in the pit and refuses to leave. We walk every brutal step of transformation: from crisis when death feels like relief, to discovering you're not the monster they said you were, to becoming the servant leader who reaches back into hell for the next dying soul.
+                </p>
+                <p className="text-muted-foreground leading-relaxed font-semibold">
+                  What started as one person's slow death became a resurrection that changes everything.
                 </p>
               </CardContent>
             </Card>
@@ -1814,11 +1785,11 @@ What started as one person's slow death became a resurrection that changes every
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-visible transition-all duration-1000 ${
+        className={`py-32 px-4 sm:px-6 lg:px-8 bg-muted/30 overflow-x-hidden transition-all duration-1000 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
-        <div className="max-w-7xl mx-auto overflow-visible">
+        <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
             <Badge className="mb-4 bg-[#F28C28] text-white hover:bg-[#F28C28]">Our Team</Badge>
@@ -1830,49 +1801,45 @@ What started as one person's slow death became a resurrection that changes every
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div
-            className={`relative mb-16 overflow-visible ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mb-16 w-full transition-all duration-1000 ${
+              staffAnimationPhase === 'pulsing' 
+                ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-6' 
+                : 'flex items-center justify-center'
+            }`}
             style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '1000px',
-              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              paddingTop: staffAnimationPhase !== 'pulsing' ? '80px' : '0',
-              paddingBottom: staffAnimationPhase !== 'pulsing' ? '80px' : '0'
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '600px',
             }}>
 
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
               const delay = getCardDelay(index, staffAnimationPhase);
-              const isAbsolutePositioned = staffAnimationPhase !== 'pulsing';
-
-              // Z-index logic:
-              // - Stacking: newer cards on top (index + 10)
-              // - Spreading: unreleased cards (in center) on top (index + 20), released cards behind (index)
-              const zIndex = staffAnimationPhase === 'stacking' ?
-              index + 10 :
-              releasedCards.has(index) ? index : index + 20;
+              
+              // Use absolute positioning only during idle, stacking, and spreading phases
+              const useAbsolutePosition = staffAnimationPhase !== 'pulsing';
+              
+              const zIndex = staffAnimationPhase === 'stacking' ? index + 10 : index;
 
               return (
                 <div
                   key={member.name}
-                  style={isAbsolutePositioned ? {
+                  className={staffAnimationPhase === 'pulsing' ? 'w-full' : ''}
+                  style={useAbsolutePosition ? {
                     position: 'absolute',
                     left: '50%',
                     top: '50%',
-                    width: '100%',
-                    maxWidth: '384px',
+                    width: '85%',
+                    maxWidth: '340px',
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
                     zIndex: zIndex,
                     animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none',
-                    visibility: 'visible'
                   } : {
                     transition: `all 0.5s cubic-bezier(0.4, 0, 0.2, 1)`,
-                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none'
+                    animation: pulsingCard === index ? 'cardPulse 0.6s ease-out' : 'none',
                   }}>
 
-                  <Card className="hover-lift hover-glow h-full bg-card">
+                  <Card className="hover-lift hover-glow h-full bg-card border border-border">
                     <CardHeader>
                       <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
                         <Image
@@ -1880,16 +1847,15 @@ What started as one person's slow death became a resurrection that changes every
                           alt={member.name}
                           fill
                           className="object-cover" />
-
                       </div>
-                      <CardTitle className="text-center text-xl">{member.name}</CardTitle>
-                      <CardDescription className="text-center">{member.role}</CardDescription>
+                      <CardTitle className="text-center text-lg">{member.name}</CardTitle>
+                      <CardDescription className="text-center text-sm">{member.role}</CardDescription>
                     </CardHeader>
                     <CardContent className="text-center">
-                      <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
+                      <p className="text-sm text-muted-foreground mb-3 line-clamp-3">{member.description}</p>
                       <div className="flex flex-wrap gap-2 justify-center">
                         {member.badges.map((badge) =>
-                        <Badge key={badge} variant="outline">
+                        <Badge key={badge} variant="outline" className="text-xs">
                             {badge}
                           </Badge>
                         )}
@@ -1897,7 +1863,6 @@ What started as one person's slow death became a resurrection that changes every
                     </CardContent>
                   </Card>
                 </div>);
-
             })}
           </div>
           
