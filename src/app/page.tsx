@@ -234,10 +234,10 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             {/* Container 1: Main Headline */}
             <div className="lg:col-span-7 space-y-6">
-              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 !tracking-[10px] ${
+              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 !tracking-[10px] !whitespace-pre-line ${
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
-                <Sparkles className="w-4 h-4" />Welcome to Ucon Ministres
+                <Sparkles className="w-4 h-4" />Welcome to United Convict Ministers
               </Badge>
               <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
               heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
@@ -2293,7 +2293,7 @@ ADDICTED? GUILT? HELP?
           <Card className="bg-gradient-to-br from-[#A92FFA]/10 to-[#F28C28]/10 border-2 border-[#A92FFA]/20">
             <CardContent className="pt-8">
               <div className="text-center max-w-2xl mx-auto">
-                <h3 className="text-2xl font-bold mb-4">Become a Convict</h3>
+                <h3 className="text-2xl font-bold mb-4 !whitespace-pre-line">Become a Convict</h3>
                 <p className="text-muted-foreground mb-6">
                   Together, we can multiply our impact and reach more people who need hope, healing, and purpose. Let's explore how your organization can join this transformational work.
                 </p>
@@ -2328,7 +2328,7 @@ ADDICTED? GUILT? HELP?
             <Card className="hover:shadow-xl transition-shadow border-2 hover:border-[#A92FFA]">
               <CardHeader>
                 <div className="w-16 h-16 bg-[#A92FFA] rounded-xl flex items-center justify-center mb-4">
-                  <GraduationCap className="w-8 h-8 text-[#A92FFA]/90" />
+                  <GraduationCap className="w-8 h-8 !text-white" />
                 </div>
                 <CardTitle className="text-xl">Apply to LDI</CardTitle>
                 <CardDescription>Begin Your Journey</CardDescription>
