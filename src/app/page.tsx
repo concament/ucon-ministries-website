@@ -762,9 +762,9 @@ ADDICTED? GUILT? HELP?
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
-            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px]">Our upcoming Track</Badge>
+            <Badge className="mb-4 !whitespace-pre-line !tracking-[10px] !whitespace-pre-line">Our Upcoming Track</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Leadership Development Institute</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">the LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">The LDI will be a  rigorous 64-week, four-tier program that transforms profound brokenness into authentic, purpose-driven leadership.
 
             </p>
           </div>
