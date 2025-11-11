@@ -1706,10 +1706,10 @@ ADDICTED? GUILT? HELP?
                 <p className="text-muted-foreground leading-relaxed !text-justify">
                   Through Christ's redemptive power—accepted and pursued—combined with professional therapy, biblical truth, personal accountability, and a community that walked alongside without carrying the load, transformation became possible. Not handed down from above. Not magically fixed. But fought for. Chosen. Built one hard decision at a time.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed !text-justify">
                   This hard-won journey revealed a profound truth: real transformation requires more than temporary fixes. It demands comprehensive support, biblical integration, clinical excellence, personal commitment to do the work, and most importantly—choosing the right people who believe in your potential while you build your own.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed !text-justify">
                   Ucon Ministries was born from that revelation. We became the ministry our founder desperately needed but couldn't find—one that meets people at their point of deepest need and provides the tools, truth, and support while they do the transformative work themselves. We walk with them through every step: from crisis stabilization to discovering dignity, from learning practical skills to finding lasting purpose, from being served to becoming servant leaders who transform entire communities.
                 </p>
                 <p className="text-muted-foreground leading-relaxed font-semibold">
