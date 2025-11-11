@@ -1219,7 +1219,7 @@ ADDICTED? GUILT? HELP?
                 <div className="w-12 h-12 bg-[#A92FFA]/10 rounded-lg flex items-center justify-center mb-4">
                   <Truck className="w-6 h-6 text-[#A92FFA]" />
                 </div>
-                <CardTitle className="!whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line">"UCON Transit</CardTitle>
+                <CardTitle className="!whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !whitespace-pre-line !tracking-[10px]">UCON TRANSIT</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground mb-4">
