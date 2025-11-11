@@ -1994,7 +1994,7 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <TrendingUp className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
                 <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">500+</CardTitle>
-                <CardDescription className="text-lg">Lives Transformed Since 2024</CardDescription>
+                <CardDescription className="text-lg !whitespace-pre-line">Lives Transformed Since 2024</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
@@ -2007,7 +2007,7 @@ ADDICTED? GUILT? HELP?
               <CardHeader>
                 <Users className="w-12 h-12 text-[#F28C28] mx-auto mb-4" />
                 <CardTitle className="text-5xl font-bold text-[#F28C28] mb-2">150</CardTitle>
-                <CardDescription className="text-lg">LDI Graduates Leading</CardDescription>
+                <CardDescription className="text-lg">LDI Applicants</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
