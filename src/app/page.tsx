@@ -289,8 +289,8 @@ ADDICTED? GUILT? HELP?
               heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
               }>
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold">64</CardTitle>
-                  <CardDescription className="text-white/80">Week Program</CardDescription>
+                  <CardTitle className="text-4xl font-bold !text-center">64</CardTitle>
+                  <CardDescription className="text-white/80 !text-center">Week Program</CardDescription>
                 </CardHeader>
               </Card>
               <Card className={`bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-lift transition-all duration-700 delay-400 ${
