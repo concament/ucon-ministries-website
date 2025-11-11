@@ -1697,7 +1697,7 @@ ADDICTED? GUILT? HELP?
                 <p className="text-muted-foreground leading-relaxed !text-justify">
                   Ucon Ministries was founded in 2024 by one man and other individuals who never imagined their darkest moments would become their greatest mission. Our founder spent years trapped in a cycle of worthlessness—broken by the justice system, consumed by addiction, crushed by homelessness, and drowning in mental health struggles that seemed impossible to overcome.
                 </p>
-                <p className="text-muted-foreground leading-relaxed">
+                <p className="text-muted-foreground leading-relaxed !text-justify">
                   Rock bottom felt permanent. Hope felt like a cruel joke. Purpose felt like something meant for other people.
                 </p>
                 <p className="text-muted-foreground leading-relaxed">
