@@ -10,6 +10,7 @@ import { Input } from "@/components/ui/input";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
+import WordShuffleHero from "@/components/WordShuffleHero";
 import {
   Heart, Users, Target, Compass, BookOpen, HandHeart,
   Home, Truck, Utensils, MessageSquare, Shield, Stethoscope,
@@ -208,10 +209,10 @@ export default function HomePage() {
     <div className="min-h-screen bg-background">
       <Navigation />
       
-      {/* SECTION 1: HERO - 12 Containers */}
+      {/* SECTION 1: HERO - FULLSCREEN with Word Shuffle */}
       <section
         ref={heroRef}
-        className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden mb-16">
+        className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden">
 
         {/* Hero Background Image */}
         <div className="absolute inset-0 z-0">
@@ -221,116 +222,56 @@ export default function HomePage() {
             fill
             className="object-cover opacity-20"
             priority />
-
           <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
         </div>
         
-        <div className="max-w-7xl mx-auto relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            {/* Container 1: Main Headline */}
-            <div className="lg:col-span-7 space-y-6">
-              <Badge className={`inline-flex items-center gap-2 bg-[#A92FFA] transition-all duration-700 !tracking-[10px] !whitespace-pre-line ${
-              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-              }>
-                <Sparkles className="w-4 h-4" />Welcome to United Convict Ministers
-              </Badge>
-              <h1 className={`text-5xl sm:text-6xl lg:text-7xl font-bold leading-tight transition-all duration-700 delay-100 ${
-              heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`
-              }>
-                <span className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent !text-[35px] !text-center">{`WORTHLESSNESS?
-NO PURPOSE? BROKEN?
-ADDICTED? GUILT? HELP? 
-`}</span>
-              </h1>
-              
-              {/* Container 2: Subheadline */}
-              <p className={`text-muted-foreground max-w-2xl transition-all duration-700 delay-200 !text-[40px] !text-left ${heroVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>Please come in.
-              </p>
-              
-              {/* Container 3-4: CTA Buttons */}
-              <div className={`flex flex-wrap gap-4 transition-all duration-700 delay-300 !text-center ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-              }>
-                <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
-                  <Link href="/contact" className="!text-center">
-                    Start Your Journey
-                    <ArrowRight className="ml-2 w-5 h-5" />
-                  </Link>
-                </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
-                  <Link href="/ldi" className="!whitespace-pre-line">The Leadership Development Institute</Link>
-                </Button>
-              </div>
-            </div>
-            
-            {/* Container 5-8: Hero Stats Grid */}
-            <div className="lg:col-span-5 grid grid-cols-2 gap-4">
-              <Card className={`bg-[#A92FFA] text-white hover-lift transition-all duration-700 delay-200 ${
-              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-              }>
-                <CardHeader>
-                  <CardTitle className="bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text font-bold !text-center !text-[28px]">Projected 500+</CardTitle>
-                  <CardDescription className="text-white/80 !text-center">Lives Transformed</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className={`bg-[#F28C28] text-white hover-lift transition-all duration-700 delay-300 ${
-              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-              }>
-                <CardHeader>
-                  <CardTitle className="text-4xl font-bold !text-center">64</CardTitle>
-                  <CardDescription className="text-white/80 !text-center">Week Program</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className={`bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-lift transition-all duration-700 delay-400 ${
-              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-              }>
-                <CardHeader>
-                  <CardTitle className="text-4xl font-bold !text-center">4</CardTitle>
-                  <CardDescription className="text-white/80 !text-center">Leadership Tiers</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card className={`hover-lift transition-all duration-700 delay-500 ${
-              heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-              }>
-                <CardHeader>
-                  <CardTitle className="text-4xl font-bold !text-center">24/7</CardTitle>
-                  <CardDescription className="!text-center">Support Available</CardDescription>
-                </CardHeader>
-              </Card>
-            </div>
+        <div className="max-w-7xl mx-auto relative z-10 py-20 w-full">
+          {/* Word Shuffle Animation */}
+          <div className={`transition-all duration-1000 ${heroVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-90'}`}>
+            <WordShuffleHero />
           </div>
           
-          {/* Container 9-12: Feature Badges */}
-          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 transition-all duration-700 delay-600 ${
-          heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
-          }>
-            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
-              <Heart className="w-8 h-8 text-[#A92FFA]" />
-              <div>
-                <p className="font-semibold">Unconditional Love</p>
-                <p className="text-sm text-muted-foreground">Christ-Centered</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
-              <Users className="w-8 h-8 text-[#F28C28]" />
-              <div>
-                <p className="font-semibold">Community</p>
-                <p className="text-sm text-muted-foreground">Support System</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
-              <Target className="w-8 h-8 text-[#A92FFA]" />
-              <div>
-                <p className="font-semibold">Purpose-Driven</p>
-                <p className="text-sm text-muted-foreground">Goal Oriented</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-3 p-4 bg-card rounded-lg border border-border hover-lift">
-              <Award className="w-8 h-8 text-[#F28C28]" />
-              <div>
-                <p className="font-semibold">Evidence-Based</p>
-                <p className="text-sm text-muted-foreground">Proven Methods</p>
-              </div>
-            </div>
+          {/* CTA Buttons */}
+          <div className={`flex flex-wrap gap-4 justify-center mt-12 transition-all duration-700 delay-500 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <Button size="lg" className="text-lg px-8 bg-[#F28C28] hover:bg-[#F28C28]/90" asChild>
+              <Link href="/contact">
+                Start Your Journey
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="text-lg px-8 border-[#A92FFA] hover:bg-[#A92FFA] hover:text-white" asChild>
+              <Link href="/ldi">
+                The Leadership Development Institute
+              </Link>
+            </Button>
+          </div>
+          
+          {/* Hero Stats Grid */}
+          <div className={`mt-16 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto transition-all duration-700 delay-700 ${heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <Card className="bg-[#A92FFA] text-white hover-lift">
+              <CardHeader className="p-4">
+                <CardTitle className="text-2xl font-bold text-center text-white">500+</CardTitle>
+                <CardDescription className="text-white/80 text-center text-xs">Lives Transformed</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="bg-[#F28C28] text-white hover-lift">
+              <CardHeader className="p-4">
+                <CardTitle className="text-2xl font-bold text-center text-white">64</CardTitle>
+                <CardDescription className="text-white/80 text-center text-xs">Week Program</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="bg-gradient-to-br from-[#A92FFA] to-[#F28C28] text-white hover-lift">
+              <CardHeader className="p-4">
+                <CardTitle className="text-2xl font-bold text-center text-white">4</CardTitle>
+                <CardDescription className="text-white/80 text-center text-xs">Leadership Tiers</CardDescription>
+              </CardHeader>
+            </Card>
+            <Card className="hover-lift">
+              <CardHeader className="p-4">
+                <CardTitle className="text-2xl font-bold text-center">24/7</CardTitle>
+                <CardDescription className="text-center text-xs">Support Available</CardDescription>
+              </CardHeader>
+            </Card>
           </div>
         </div>
       </section>
@@ -338,7 +279,7 @@ ADDICTED? GUILT? HELP?
       {/* SECTION 2: MISSION STATEMENT - 12 Containers */}
       <section
         ref={missionRef}
-        className={`px-4 sm:px-6 lg:px-8 overlay-gradient transition-all duration-700 mb-16 !py-0 ${
+        className={`px-4 sm:px-6 lg:px-8 py-20 overlay-gradient transition-all duration-1000 mb-16 ${
         missionVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -408,7 +349,7 @@ ADDICTED? GUILT? HELP?
               <h3 className="font-semibold mb-2">Leadership Development</h3>
               <p className="text-sm text-muted-foreground">Training next-generation servant leaders</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600">
+            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600 !shadow-[0_16px_24px_-4px_rgba(226,232,240,0.25),0_8px_16px_-4px_rgba(226,232,240,0.15)]">
               <CheckCircle2 className="w-8 h-8 text-[#A92FFA] mb-3" />
               <h3 className="font-semibold mb-2">Community Integration</h3>
               <p className="text-sm text-muted-foreground">Building lasting connections and support networks</p>
@@ -428,7 +369,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 3: CORE VALUES - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 animate-fade-in mb-16 !py-0">
+      <section 
+        ref={valuesRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 mb-16 transition-all duration-1000 ${
+        valuesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -549,7 +494,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 4: THREE-TRACK MODEL - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16 !py-0">
+      <section 
+        ref={tracksRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16 transition-all duration-1000 ${
+        tracksVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -745,7 +694,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 5: LDI OVERVIEW - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 animate-slide-in-up mb-16 !py-0">
+      <section 
+        ref={ldiRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 mb-16 transition-all duration-1000 ${
+        ldiVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -960,7 +913,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 6: TRACK 2 SERVICES - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 bg-muted/50 overlay-gradient mb-16 !py-0">
+      <section 
+        ref={servicesRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 bg-muted/50 overlay-gradient mb-16 transition-all duration-1000 ${
+        servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1188,7 +1145,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 7: TRACK 3 OUTREACH - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 animate-fade-in mb-16 !py-0">
+      <section 
+        ref={outreachRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 mb-16 transition-all duration-1000 ${
+        outreachVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1457,7 +1418,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 8: TESTIMONIALS - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16 !py-0">
+      <section 
+        ref={testimonialsRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 double-exposure mb-16 transition-all duration-1000 ${
+        testimonialsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -1972,7 +1937,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 9: IMPACT STATS - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 overlay-gradient animate-grow mb-16 !py-0">
+      <section 
+        ref={impactRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 overlay-gradient mb-16 transition-all duration-1000 ${
+        impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2135,7 +2104,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 10: COMMUNITY & PARTNERSHIP - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 bg-muted/50 double-exposure mb-16 !py-0">
+      <section 
+        ref={impactRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 bg-muted/50 double-exposure mb-16 transition-all duration-1000 ${
+        impactVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
@@ -2307,7 +2280,11 @@ ADDICTED? GUILT? HELP?
       </section>
 
       {/* SECTION 11: CALL-TO-ACTION - 12 Containers */}
-      <section className="px-4 sm:px-6 lg:px-8 animate-fade-in mb-16 !py-0">
+      <section 
+        ref={ctaRef}
+        className={`px-4 sm:px-6 lg:px-8 py-20 mb-16 transition-all duration-1000 ${
+        ctaVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
+        }>
         <div className="max-w-7xl mx-auto">
           {/* Container 1-2: Header */}
           <div className="text-center mb-16">
