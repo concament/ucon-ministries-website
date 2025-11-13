@@ -80,7 +80,7 @@ export default function PrayerWall() {
     prayerRequest: ""
   });
 
-  // Fetch prayers from API
+  // Fetch prayers from API - LIMIT TO 5000 MAX
   useEffect(() => {
     fetchPrayers();
   }, []);
@@ -88,10 +88,11 @@ export default function PrayerWall() {
   const fetchPrayers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/prayers?limit=100');
+      const response = await fetch('/api/prayers?limit=100'); // Limit to 100 per page
       if (response.ok) {
         const data = await response.json();
-        setPrayers(data);
+        // Limit total prayers to 5000 max
+        setPrayers(data.slice(0, 5000));
       }
     } catch (error) {
       console.error('Error fetching prayers:', error);
@@ -232,7 +233,7 @@ export default function PrayerWall() {
 
   // Stats with null safety
   const totalPrayers = prayers.length;
-  const totalPrayerCount = prayers.reduce((sum, p) => sum + ((p.prayers?.length || p.prayerCount) || 0), 0);
+  const totalPrayerCount = prayers.reduce((sum, p) => sum + ((p.prayers?.length || p.prayCount) || 0), 0);
   const activeCategories = new Set(prayers.map(p => p.category).filter(Boolean)).size;
 
   return (
@@ -459,7 +460,8 @@ export default function PrayerWall() {
                 const category = categories.find(c => c.value === prayer.category);
                 const isFromLeft = index % 2 === 0;
                 const isExpanded = expandedPrayer === prayer.id;
-                const prayers_list = prayer.prayers || [];
+                // FIXED: Ensure prayers_list is always an array
+                const prayers_list = Array.isArray(prayer.prayers) ? prayer.prayers : [];
                 const prayerCount = prayers_list.length;
                 
                 return (

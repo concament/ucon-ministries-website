@@ -57,43 +57,81 @@ export default function HomePage() {
   const [impactRef, impactVisible] = useIntersectionObserver();
   const [ctaRef, ctaVisible] = useIntersectionObserver();
 
+  // NEW: Live stats state
+  const [liveStats, setLiveStats] = useState({
+    livesTransformed: 500,
+    ldiApplicants: 150,
+    communityTouchPoints: 25000,
+    prayersCount: 0,
+    communityPrayers: 0
+  });
+
   // Staff animation state
   const [staffAnimationPhase, setStaffAnimationPhase] = useState<'idle' | 'stacking' | 'spreading' | 'pulsing'>('idle');
   const [startStaffAnimation, setStartStaffAnimation] = useState(false);
   const [releasedCards, setReleasedCards] = useState<Set<number>>(new Set());
   const [pulsingCard, setPulsingCard] = useState<number | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
+  // NEW: Fetch live stats on mount
+  useEffect(() => {
+    const fetchStats = async () => {
+      try {
+        const response = await fetch('/api/stats');
+        if (response.ok) {
+          const data = await response.json();
+          setLiveStats(data);
+        }
+      } catch (error) {
+        console.error('Error fetching stats:', error);
+      }
+    };
+    
+    fetchStats();
+  }, []);
+
+  // NEW: Detect mobile/tablet viewport
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024); // lg breakpoint
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  // Staff animation - MODIFIED for mobile
   useEffect(() => {
     if (staffVisible && !startStaffAnimation) {
-      // Trigger the start of animation
       setStartStaffAnimation(true);
+      
+      // On mobile/tablet: skip animation, just show cards
+      if (isMobile) {
+        setStaffAnimationPhase('pulsing');
+        setReleasedCards(new Set([0, 1, 2, 3, 4, 5]));
+        return;
+      }
+      
+      // Desktop: full animation
       setStaffAnimationPhase('stacking');
 
-      // After stacking completes (6 cards * 2s each = 12s), spread them out
       setTimeout(() => {
         setStaffAnimationPhase('spreading');
-
-        // Release cards one by one to their final positions AND pulse at the same time
-        // Alternating corner order: 0 (top-left), 2 (top-right), 3 (bottom-left), 5 (bottom-right), 1 (middle-left), 4 (middle-right)
         const cornerOrder = [0, 2, 3, 5, 1, 4];
 
         cornerOrder.forEach((cardIndex, orderIndex) => {
           setTimeout(() => {
-            // Release card to final position
             setReleasedCards((prev) => new Set([...prev, cardIndex]));
-
-            // Pulse at the same time the card spreads
             setPulsingCard(cardIndex);
-
-            // Clear pulse after animation completes
             setTimeout(() => {
               setPulsingCard(null);
-            }, 600); // Duration of pulse animation
-          }, orderIndex * 300); // 300ms delay between each card release
+            }, 600);
+          }, orderIndex * 300);
         });
       }, 12000);
     }
-  }, [staffVisible, startStaffAnimation]);
+  }, [staffVisible, startStaffAnimation, isMobile]);
 
   const teamMembers = [
   {
@@ -1784,7 +1822,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEW SECTION: STAFF TEAM - 12 Containers */}
+      {/* NEW SECTION: STAFF TEAM - MOBILE OPTIMIZED */}
       <section
         ref={staffRef}
         className={`px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-x-hidden !py-20 ${
@@ -1801,13 +1839,15 @@ export default function HomePage() {
             </p>
           </div>
           
-          {/* Container 3-8: Staff Members with Stacking Animation */}
+          {/* Container 3-8: Staff Members - MOBILE OPTIMIZED */}
           <div
-            className={`relative mx-auto overflow-visible ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mx-auto overflow-visible ${
+              isMobile || staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''
+            }`}
             style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '800px',
-              maxWidth: staffAnimationPhase === 'pulsing' ? '100%' : '100%',
-              display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
+              minHeight: isMobile || staffAnimationPhase === 'pulsing' ? 'auto' : '800px',
+              maxWidth: isMobile || staffAnimationPhase === 'pulsing' ? '100%' : '100%',
+              display: isMobile || staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center'
             }}>
@@ -1815,15 +1855,51 @@ export default function HomePage() {
             {teamMembers.map((member, index) => {
               const position = getCardPosition(index, staffAnimationPhase);
               const delay = getCardDelay(index, staffAnimationPhase);
-              const isAbsolutePositioned = staffAnimationPhase !== 'pulsing';
+              const isAbsolutePositioned = !isMobile && staffAnimationPhase !== 'pulsing';
 
-              // Z-index logic:
-              // - Stacking: newer cards on top (index + 10)
-              // - Spreading: unreleased cards (in center) on top (index + 20), released cards behind (index)
               const zIndex = staffAnimationPhase === 'stacking' ?
               index + 10 :
               releasedCards.has(index) ? index : index + 20;
 
+              // Mobile: simple fade-in animation
+              if (isMobile) {
+                return (
+                  <div
+                    key={member.name}
+                    className="animate-fade-in"
+                    style={{ 
+                      animationDelay: `${index * 150}ms`,
+                      opacity: 0,
+                      animationFillMode: 'forwards'
+                    }}>
+                    <Card className="hover-lift hover-glow h-full">
+                      <CardHeader>
+                        <div className="w-full h-48 rounded-lg overflow-hidden mb-4 relative">
+                          <Image
+                            src={member.image}
+                            alt={member.name}
+                            fill
+                            className="object-cover" />
+                        </div>
+                        <CardTitle className="text-center text-xl">{member.name}</CardTitle>
+                        <CardDescription className="text-center">{member.role}</CardDescription>
+                      </CardHeader>
+                      <CardContent className="text-center">
+                        <p className="text-sm text-muted-foreground mb-3">{member.description}</p>
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {member.badges.map((badge) =>
+                          <Badge key={badge} variant="outline">
+                              {badge}
+                            </Badge>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                );
+              }
+
+              // Desktop: full animation
               return (
                 <div
                   key={member.name}
@@ -1851,7 +1927,6 @@ export default function HomePage() {
                           alt={member.name}
                           fill
                           className="object-cover" />
-
                       </div>
                       <CardTitle className="text-center text-xl">{member.name}</CardTitle>
                       <CardDescription className="text-center">{member.role}</CardDescription>
@@ -1867,8 +1942,8 @@ export default function HomePage() {
                       </div>
                     </CardContent>
                   </Card>
-                </div>);
-
+                </div>
+              );
             })}
           </div>
           
@@ -1947,18 +2022,18 @@ export default function HomePage() {
           <div className="text-center mb-16">
             <Badge className="mb-4 !tracking-[10px]">Our Impact</Badge>
             <h2 className="text-4xl sm:text-5xl font-bold mb-6">Measuring Transformation</h2>
-            <p className="text-xl text-muted-foreground max-w-3xl mx-auto !whitespace-pre-line">We have live milestones so you can follow or impact and transformational journey
-
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Live milestones tracking our impact and transformational journey
             </p>
           </div>
           
-          {/* Container 3-8: Major Stats Grid */}
+          {/* Container 3-8: Major Stats Grid - LIVE DATA */}
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             <Card className="text-center bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
               <CardHeader>
                 <TrendingUp className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
-                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">500+</CardTitle>
-                <CardDescription className="text-lg !whitespace-pre-line">Lives Transformed Since 2024</CardDescription>
+                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">{liveStats.livesTransformed}+</CardTitle>
+                <CardDescription className="text-lg">Lives Transformed Since 2024</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
@@ -1970,12 +2045,12 @@ export default function HomePage() {
             <Card className="text-center bg-gradient-to-br from-[#F28C28]/10 to-[#F28C28]/5 border-2 border-[#F28C28]/20">
               <CardHeader>
                 <Users className="w-12 h-12 text-[#F28C28] mx-auto mb-4" />
-                <CardTitle className="text-5xl font-bold text-[#F28C28] mb-2">150</CardTitle>
-                <CardDescription className="text-lg !whitespace-pre-line">LDI Applicants</CardDescription>
+                <CardTitle className="text-5xl font-bold text-[#F28C28] mb-2">{liveStats.ldiApplicants}</CardTitle>
+                <CardDescription className="text-lg">LDI Applicants</CardDescription>
               </CardHeader>
               <CardContent>
-                <p className="text-sm text-muted-foreground !whitespace-pre-line">Future servant leaders equipped to mentor others, manage programs, and advocate for systemic change.
-
+                <p className="text-sm text-muted-foreground">
+                  Future servant leaders equipped to mentor others, manage programs, and advocate for systemic change.
                 </p>
               </CardContent>
             </Card>
@@ -1983,7 +2058,7 @@ export default function HomePage() {
             <Card className="text-center bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
               <CardHeader>
                 <HandHeart className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
-                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">25K+</CardTitle>
+                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">{liveStats.communityTouchPoints.toLocaleString()}+</CardTitle>
                 <CardDescription className="text-lg">Community Touch Points</CardDescription>
               </CardHeader>
               <CardContent>
@@ -2543,6 +2618,6 @@ export default function HomePage() {
 
       {/* SECTION 12: FOOTER - 12 Containers */}
       <Footer />
-    </div>);
-
+    </div>
+  );
 }
