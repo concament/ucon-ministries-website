@@ -10,8 +10,7 @@ const WORDS = [
   "Convict",
   "Ministers",
   "WORTHLESSNESS?",
-  "NO",
-  "PURPOSE?",
+  "NO PURPOSE?",
   "BROKEN?",
   "ADDICTED?",
   "GUILT?",
@@ -71,7 +70,7 @@ const getRandomEffect = () => {
         opacity: 1, 
         scale: 1, 
         y: 0,
-        transition: { type: "spring", stiffness: 200, damping: 10 }
+        transition: { type: "spring", stiffness: 150, damping: 12 }
       },
       exit: { opacity: 0, scale: 0 }
     }
@@ -92,7 +91,7 @@ export default function WordShuffleHero() {
         // Show word
         setCurrentWord({ word: WORDS[currentIndex], effect: getRandomEffect() });
         
-        // Hide word after 600ms and show next
+        // Hide word after 1200ms and show next (slower, more dramatic)
         setTimeout(() => {
           setCurrentWord(null);
           setTimeout(() => {
@@ -103,10 +102,10 @@ export default function WordShuffleHero() {
               // Show final words after last word fades out
               setTimeout(() => {
                 setShowFinal(true);
-              }, 300);
+              }, 500);
             }
-          }, 300); // Brief pause between words
-        }, 600); // Display duration for each word
+          }, 500); // Longer pause between words (more dramatic)
+        }, 1200); // Longer display duration for each word
       }
     };
     
@@ -121,9 +120,9 @@ export default function WordShuffleHero() {
           <motion.span
             key={currentWord.word}
             {...currentWord.effect}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.8 }}
             className={`
-              inline-block font-bold
+              inline-block font-bold text-center
               ${currentWord.word.includes("?") 
                 ? "text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(169,47,250,0.6)]" 
                 : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground"
@@ -148,10 +147,10 @@ export default function WordShuffleHero() {
                 initial={{ opacity: 0, scale: 0.5, y: 50 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.6, 
-                  delay: index * 0.2,
+                  duration: 0.8, 
+                  delay: index * 0.3,
                   type: "spring",
-                  stiffness: 200,
+                  stiffness: 150,
                   damping: 15
                 }}
                 className="inline-block font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#A92FFA] drop-shadow-[0_0_40px_rgba(169,47,250,0.8)]"
