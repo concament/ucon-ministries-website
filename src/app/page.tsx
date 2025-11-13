@@ -155,23 +155,21 @@ export default function HomePage() {
     } else if (phase === 'spreading') {
       // Check if this card has been released
       if (releasedCards.has(index)) {
-        // Calculate grid position for released cards - use smaller dimensions
+        // Use percentage-based positioning relative to container for responsiveness
         const row = Math.floor(index / 3);
         const col = index % 3;
-        const cardWidth = 300; // Reduced for safer fit
-        const gap = 20; // Reduced gap
+        
+        // Use much smaller values - about 80-100px spread per card
+        const horizontalSpread = 90; // pixels from center
+        const verticalSpread = 180; // pixels between rows
+        
+        // Calculate position from center
+        // Columns: -1, 0, 1 (left, center, right)
+        const colOffset = (col - 1) * horizontalSpread;
+        // Rows: -0.5, 0.5 (top, bottom)
+        const rowOffset = (row - 0.5) * verticalSpread;
 
-        // Calculate offset from center - constrained spread
-        const totalWidth = 3 * cardWidth + 2 * gap;
-        const startX = -totalWidth / 2 + cardWidth / 2;
-        const x = startX + col * (cardWidth + gap);
-
-        const cardHeight = 280; // Approximate card height
-        const totalHeight = 2 * cardHeight + gap;
-        const startY = -totalHeight / 2 + cardHeight / 2;
-        const y = startY + row * (cardHeight + gap);
-
-        return { x, y, rotate: 0, opacity: 1 };
+        return { x: colOffset, y: rowOffset, rotate: 0, opacity: 1 };
       } else {
         // Stay stacked in center
         return { x: 0, y: 0, rotate: 0, opacity: 1 };
@@ -181,19 +179,14 @@ export default function HomePage() {
       if (releasedCards.has(index)) {
         const row = Math.floor(index / 3);
         const col = index % 3;
-        const cardWidth = 300;
-        const gap = 20;
+        
+        const horizontalSpread = 90;
+        const verticalSpread = 180;
+        
+        const colOffset = (col - 1) * horizontalSpread;
+        const rowOffset = (row - 0.5) * verticalSpread;
 
-        const totalWidth = 3 * cardWidth + 2 * gap;
-        const startX = -totalWidth / 2 + cardWidth / 2;
-        const x = startX + col * (cardWidth + gap);
-
-        const cardHeight = 280;
-        const totalHeight = 2 * cardHeight + gap;
-        const startY = -totalHeight / 2 + cardHeight / 2;
-        const y = startY + row * (cardHeight + gap);
-
-        return { x, y, rotate: 0, opacity: 1 };
+        return { x: colOffset, y: rowOffset, rotate: 0, opacity: 1 };
       }
       return { x: 0, y: 0, rotate: 0, opacity: 1 };
     }
@@ -1827,7 +1820,7 @@ ADDICTED? GUILT? HELP?
       {/* NEW SECTION: STAFF TEAM - 12 Containers */}
       <section
         ref={staffRef}
-        className={`px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-hidden !py-0 ${
+        className={`px-4 sm:px-6 lg:px-8 bg-white dark:bg-background transition-all duration-1000 mb-16 overflow-x-hidden !py-20 ${
         staffVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`
         }>
 
@@ -1843,10 +1836,10 @@ ADDICTED? GUILT? HELP?
           
           {/* Container 3-8: Staff Members with Stacking Animation */}
           <div
-            className={`relative mx-auto ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
+            className={`relative mx-auto overflow-visible ${staffAnimationPhase === 'pulsing' ? 'grid md:grid-cols-2 lg:grid-cols-3 gap-8' : ''}`}
             style={{
-              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '700px',
-              maxWidth: staffAnimationPhase === 'pulsing' ? '100%' : '1200px',
+              minHeight: staffAnimationPhase === 'pulsing' ? 'auto' : '800px',
+              maxWidth: staffAnimationPhase === 'pulsing' ? '100%' : '100%',
               display: staffAnimationPhase === 'pulsing' ? 'grid' : 'flex',
               alignItems: 'center',
               justifyContent: 'center'
@@ -1872,7 +1865,7 @@ ADDICTED? GUILT? HELP?
                     left: '50%',
                     top: '50%',
                     width: '100%',
-                    maxWidth: '340px',
+                    maxWidth: 'min(340px, 90vw)',
                     transform: `translate(-50%, -50%) translate(${position.x}px, ${position.y}px) rotate(${position.rotate}deg)`,
                     opacity: position.opacity,
                     transition: `all 2s cubic-bezier(0.4, 0, 0.2, 1) ${delay}s`,
