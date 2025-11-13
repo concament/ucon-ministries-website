@@ -155,13 +155,15 @@ export default function HomePage() {
     } else if (phase === 'spreading') {
       // Check if this card has been released
       if (releasedCards.has(index)) {
-        // Use percentage-based positioning relative to container for responsiveness
+        // Use responsive positioning based on viewport
         const row = Math.floor(index / 3);
         const col = index % 3;
         
-        // Use much smaller values - about 80-100px spread per card
-        const horizontalSpread = 90; // pixels from center
-        const verticalSpread = 180; // pixels between rows
+        // Use vw units for horizontal spread (scales with viewport)
+        // Mobile: ~60px, Tablet: ~80px, Desktop: ~90px
+        const horizontalSpread = typeof window !== 'undefined' ? window.innerWidth * 0.06 : 60; // 6vw
+        // Vertical spread stays consistent
+        const verticalSpread = 160;
         
         // Calculate position from center
         // Columns: -1, 0, 1 (left, center, right)
@@ -180,8 +182,8 @@ export default function HomePage() {
         const row = Math.floor(index / 3);
         const col = index % 3;
         
-        const horizontalSpread = 90;
-        const verticalSpread = 180;
+        const horizontalSpread = typeof window !== 'undefined' ? window.innerWidth * 0.06 : 60;
+        const verticalSpread = 160;
         
         const colOffset = (col - 1) * horizontalSpread;
         const rowOffset = (row - 0.5) * verticalSpread;
