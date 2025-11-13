@@ -15,11 +15,10 @@ const WORDS = [
   "BROKEN?",
   "ADDICTED?",
   "GUILT?",
-  "HELP?",
-  "PLEASE",
-  "COME",
-  "IN."
+  "HELP?"
 ];
+
+const FINAL_WORDS = ["PLEASE", "COME", "IN."];
 
 const getRandomEffect = () => {
   const effects = [
@@ -82,53 +81,89 @@ const getRandomEffect = () => {
 };
 
 export default function WordShuffleHero() {
-  const [displayedWords, setDisplayedWords] = useState<Array<{ word: string; effect: any }>>([]);
+  const [currentWord, setCurrentWord] = useState<{ word: string; effect: any } | null>(null);
+  const [showFinal, setShowFinal] = useState(false);
 
   useEffect(() => {
     let currentIndex = 0;
     
-    const interval = setInterval(() => {
+    const showNextWord = () => {
       if (currentIndex < WORDS.length) {
-        setDisplayedWords(prev => [...prev, { word: WORDS[currentIndex], effect: getRandomEffect() }]);
-        currentIndex++;
-      } else {
-        clearInterval(interval);
+        // Show word
+        setCurrentWord({ word: WORDS[currentIndex], effect: getRandomEffect() });
+        
+        // Hide word after 600ms and show next
+        setTimeout(() => {
+          setCurrentWord(null);
+          setTimeout(() => {
+            currentIndex++;
+            if (currentIndex < WORDS.length) {
+              showNextWord();
+            } else {
+              // Show final words after last word fades out
+              setTimeout(() => {
+                setShowFinal(true);
+              }, 300);
+            }
+          }, 300); // Brief pause between words
+        }, 600); // Display duration for each word
       }
-    }, 200); // Show new word every 200ms
-
-    return () => clearInterval(interval);
+    };
+    
+    showNextWord();
   }, []);
 
   return (
-    <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center items-center min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
-      <AnimatePresence mode="popLayout">
-        {displayedWords.map((item, index) => {
-          const word = item?.word || "";
-          const effect = item?.effect || { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } };
-          
-          return (
-            <motion.span
-              key={`${word}-${index}`}
-              {...effect}
-              transition={{ duration: 0.5 }}
-              className={`
-                inline-block font-bold
-                ${word.includes("?") 
-                  ? "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent" 
-                  : word === "Welcome" || word === "to" || word === "United" || word === "Convict" || word === "Ministers"
-                  ? "text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground"
-                  : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#A92FFA]"
-                }
-                ${word.includes("?") ? "drop-shadow-[0_0_20px_rgba(169,47,250,0.5)]" : ""}
-              `}
-              style={{
-                perspective: 1000
-              }}
-            >
-              {word}
-            </motion.span>
-          );
-        })}
+    <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center items-center min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh]">
+      {/* Individual words that fade in and out */}
+      <AnimatePresence mode="wait">
+        {currentWord && (
+          <motion.span
+            key={currentWord.word}
+            {...currentWord.effect}
+            transition={{ duration: 0.5 }}
+            className={`
+              inline-block font-bold
+              ${currentWord.word.includes("?") 
+                ? "text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(169,47,250,0.6)]" 
+                : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground"
+              }
+            `}
+            style={{
+              perspective: 1000
+            }}
+          >
+            {currentWord.word}
+          </motion.span>
+        )}
+      </AnimatePresence>
+
+      {/* Final words that stay on screen */}
+      <AnimatePresence>
+        {showFinal && (
+          <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center items-center">
+            {FINAL_WORDS.map((word, index) => (
+              <motion.span
+                key={word}
+                initial={{ opacity: 0, scale: 0.5, y: 50 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                transition={{ 
+                  duration: 0.6, 
+                  delay: index * 0.2,
+                  type: "spring",
+                  stiffness: 200,
+                  damping: 15
+                }}
+                className="inline-block font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#A92FFA] drop-shadow-[0_0_40px_rgba(169,47,250,0.8)]"
+                style={{
+                  perspective: 1000
+                }}
+              >
+                {word}
+              </motion.span>
+            ))}
+          </div>
+        )}
       </AnimatePresence>
     </div>
   );
