@@ -88,7 +88,7 @@ export default function PrayerWall() {
   const fetchPrayers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/prayers?limit=100'); // Limit to 100 per page
+      const response = await fetch('/api/prayers?limit=5000'); // Fetch up to 5000 prayers
       if (response.ok) {
         const data = await response.json();
         // Limit total prayers to 5000 max
@@ -123,6 +123,15 @@ export default function PrayerWall() {
       }
       return 0;
     });
+
+  // Get top 3 featured prayers by popularity (live)
+  const featuredPrayers = [...prayers]
+    .sort((a, b) => {
+      const aCount = (a.prayers?.length || a.prayerCount || 0);
+      const bCount = (b.prayers?.length || b.prayerCount || 0);
+      return bCount - aCount;
+    })
+    .slice(0, 3);
 
   const handlePrayFor = async (prayerId: number) => {
     if (!prayerText[prayerId]?.trim()) return;
@@ -398,6 +407,94 @@ export default function PrayerWall() {
       {/* Main Content */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
+          {/* Featured Prayers - Top 3 Most Popular (Live) */}
+          {!loading && featuredPrayers.length > 0 && (
+            <div className="mb-12">
+              <div className="text-center mb-8">
+                <Badge className="mb-4 bg-gradient-to-r from-[#A92FFA] to-[#F28C28]">
+                  <Sparkles className="w-4 h-4 mr-2" />
+                  Featured Prayers
+                </Badge>
+                <h2 className="text-3xl font-bold mb-2">Most Prayed For</h2>
+                <p className="text-muted-foreground">Join our community in praying for these urgent needs</p>
+              </div>
+              
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                {featuredPrayers.map((prayer, index) => {
+                  const category = categories.find(c => c.value === prayer.category);
+                  const prayers_list = Array.isArray(prayer.prayers) ? prayer.prayers : [];
+                  const prayerCount = prayers_list.length;
+                  
+                  return (
+                    <Card 
+                      key={prayer.id}
+                      className={`relative overflow-hidden hover-lift hover-glow border-2 ${
+                        index === 0 ? 'border-[#A92FFA]' : 
+                        index === 1 ? 'border-[#F28C28]' : 
+                        'border-accent'
+                      }`}
+                    >
+                      {/* Rank Badge */}
+                      <div className={`absolute top-4 right-4 w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${
+                        index === 0 ? 'bg-[#A92FFA]' : 
+                        index === 1 ? 'bg-[#F28C28]' : 
+                        'bg-accent'
+                      }`}>
+                        #{index + 1}
+                      </div>
+                      
+                      <CardHeader>
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-10 h-10 bg-gradient-to-br from-[#A92FFA]/20 to-[#F28C28]/20 rounded-full flex items-center justify-center">
+                            <User className="w-5 h-5 text-primary" />
+                          </div>
+                          <div>
+                            <p className="font-semibold text-sm">{prayer.isAnonymous ? "Anonymous" : prayer.name || "Anonymous"}</p>
+                            <p className="text-xs text-muted-foreground flex items-center gap-1">
+                              <Clock className="w-3 h-3" />
+                              {new Date(prayer.createdAt).toLocaleDateString()}
+                            </p>
+                          </div>
+                        </div>
+                        <Badge className={category?.color}>{category?.label}</Badge>
+                      </CardHeader>
+                      <CardContent>
+                        <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                          {prayer.prayerRequest}
+                        </p>
+                        
+                        <div className="flex items-center justify-between pt-4 border-t">
+                          <div className="flex items-center gap-2 text-sm font-semibold">
+                            <Heart className="w-4 h-4 text-[#A92FFA]" fill="currentColor" />
+                            <span className="text-[#A92FFA]">{prayerCount} prayer{prayerCount !== 1 ? 's' : ''}</span>
+                          </div>
+                          <Button 
+                            size="sm" 
+                            className="bg-[#F28C28] hover:bg-[#F28C28]/90"
+                            onClick={() => {
+                              setExpandedPrayer(prayer.id);
+                              // Scroll to the prayer in the main list
+                              setTimeout(() => {
+                                const element = document.getElementById(`prayer-${prayer.id}`);
+                                if (element) {
+                                  element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                }
+                              }, 100);
+                            }}
+                          >
+                            Pray Now
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  );
+                })}
+              </div>
+              
+              <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent mb-8" />
+            </div>
+          )}
+          
           {/* Filters and Search */}
           <div 
             ref={filtersRef}
@@ -466,7 +563,8 @@ export default function PrayerWall() {
                 
                 return (
                   <Card 
-                    key={prayer.id} 
+                    key={prayer.id}
+                    id={`prayer-${prayer.id}`}
                     className={`hover:shadow-lg transition-all duration-1000 flex flex-col hover-lift ${
                       isFromLeft ? 'animate-slide-in-left' : 'animate-slide-in-right'
                     }`}
