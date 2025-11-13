@@ -82,16 +82,14 @@ const getRandomEffect = () => {
 };
 
 export default function WordShuffleHero() {
-  const [displayedWords, setDisplayedWords] = useState<string[]>([]);
-  const [wordEffects, setWordEffects] = useState<any[]>([]);
+  const [displayedWords, setDisplayedWords] = useState<Array<{ word: string; effect: any }>>([]);
 
   useEffect(() => {
     let currentIndex = 0;
     
     const interval = setInterval(() => {
       if (currentIndex < WORDS.length) {
-        setDisplayedWords(prev => [...prev, WORDS[currentIndex]]);
-        setWordEffects(prev => [...prev, getRandomEffect()]);
+        setDisplayedWords(prev => [...prev, { word: WORDS[currentIndex], effect: getRandomEffect() }]);
         currentIndex++;
       } else {
         clearInterval(interval);
@@ -104,28 +102,33 @@ export default function WordShuffleHero() {
   return (
     <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4 justify-center items-center min-h-[200px] sm:min-h-[250px] md:min-h-[300px]">
       <AnimatePresence mode="popLayout">
-        {displayedWords.map((word, index) => (
-          <motion.span
-            key={`${word}-${index}`}
-            {...wordEffects[index]}
-            transition={{ duration: 0.5 }}
-            className={`
-              inline-block font-bold
-              ${word.includes("?") 
-                ? "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent" 
-                : word === "Welcome" || word === "to" || word === "United" || word === "Convict" || word === "Ministers"
-                ? "text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground"
-                : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#A92FFA]"
-              }
-              ${word.includes("?") ? "drop-shadow-[0_0_20px_rgba(169,47,250,0.5)]" : ""}
-            `}
-            style={{
-              perspective: 1000
-            }}
-          >
-            {word}
-          </motion.span>
-        ))}
+        {displayedWords.map((item, index) => {
+          const word = item?.word || "";
+          const effect = item?.effect || { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 } };
+          
+          return (
+            <motion.span
+              key={`${word}-${index}`}
+              {...effect}
+              transition={{ duration: 0.5 }}
+              className={`
+                inline-block font-bold
+                ${word.includes("?") 
+                  ? "text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent" 
+                  : word === "Welcome" || word === "to" || word === "United" || word === "Convict" || word === "Ministers"
+                  ? "text-xl sm:text-2xl md:text-3xl lg:text-4xl text-foreground"
+                  : "text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-[#A92FFA]"
+                }
+                ${word.includes("?") ? "drop-shadow-[0_0_20px_rgba(169,47,250,0.5)]" : ""}
+              `}
+              style={{
+                perspective: 1000
+              }}
+            >
+              {word}
+            </motion.span>
+          );
+        })}
       </AnimatePresence>
     </div>
   );
