@@ -83,15 +83,21 @@ export default function PrayerWall() {
   // Fetch prayers from API - LIMIT TO 5000 MAX
   useEffect(() => {
     fetchPrayers();
+    
+    // Set up live polling every 30 seconds
+    const interval = setInterval(() => {
+      fetchPrayers();
+    }, 30000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   const fetchPrayers = async () => {
     try {
       setLoading(true);
-      const response = await fetch('/api/prayers?limit=5000'); // Fetch up to 5000 prayers
+      const response = await fetch('/api/prayers?limit=5000');
       if (response.ok) {
         const data = await response.json();
-        // Limit total prayers to 5000 max
         setPrayers(data.slice(0, 5000));
       }
     } catch (error) {
@@ -117,23 +123,25 @@ export default function PrayerWall() {
     .sort((a, b) => {
       if (sortBy === "recent") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
       if (sortBy === "popular") {
-        const aCount = (a.prayers?.length || a.prayerCount || 0);
-        const bCount = (b.prayers?.length || b.prayerCount || 0);
+        // FIXED: Use prayCount field for sorting by popularity
+        const aCount = a.prayCount || 0;
+        const bCount = b.prayCount || 0;
         return bCount - aCount;
       }
       return 0;
     });
 
-  // Get top 3 featured prayers by popularity (live)
+  // Get top 3 featured prayers by popularity (live) - RANDOM
   const featuredPrayers = [...prayers]
-    .sort(() => Math.random() - 0.5) // Randomize
+    .sort(() => Math.random() - 0.5)
     .slice(0, 3);
 
-  // Get top 3 most prayed for (by prayer count)
+  // Get top 3 most prayed for (by prayCount field)
   const mostPrayedFor = [...prayers]
     .sort((a, b) => {
-      const aCount = (a.prayers?.length || a.prayerCount || 0);
-      const bCount = (b.prayers?.length || b.prayerCount || 0);
+      // FIXED: Use prayCount field instead of prayers.length
+      const aCount = a.prayCount || 0;
+      const bCount = b.prayCount || 0;
       return bCount - aCount;
     })
     .slice(0, 3);
@@ -245,9 +253,9 @@ export default function PrayerWall() {
     }
   };
 
-  // Stats with null safety
+  // Stats with null safety - FIXED: Use prayCount field
   const totalPrayers = prayers.length;
-  const totalPrayerCount = prayers.reduce((sum, p) => sum + ((p.prayers?.length || p.prayCount) || 0), 0);
+  const totalPrayerCount = prayers.reduce((sum, p) => sum + (p.prayCount || 0), 0);
   const activeCategories = new Set(prayers.map(p => p.category).filter(Boolean)).size;
 
   return (
@@ -292,7 +300,7 @@ export default function PrayerWall() {
             </div>
           </div>
           
-          {/* Stats */}
+          {/* Stats - FIXED: Show totalPrayerCount properly */}
           <div 
             ref={statsRef}
             className={`grid grid-cols-1 md:grid-cols-4 gap-4 mt-12 transition-all duration-1000 ${
@@ -412,7 +420,7 @@ export default function PrayerWall() {
       {/* Main Content */}
       <section className="py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
-          {/* Featured Prayers - Top 3 Most Popular (Live) */}
+          {/* Featured Prayers - Random */}
           {!loading && featuredPrayers.length > 0 && (
             <div className="mb-12">
               <div className="text-center mb-8">
@@ -425,10 +433,10 @@ export default function PrayerWall() {
               </div>
               
               <div className="grid md:grid-cols-3 gap-6 mb-8">
-                {featuredPrayers.map((prayer, index) => {
+                {featuredPrayers.map((prayer) => {
                   const category = categories.find(c => c.value === prayer.category);
-                  const prayers_list = Array.isArray(prayer.prayers) ? prayer.prayers : [];
-                  const prayerCount = prayers_list.length;
+                  // FIXED: Use prayCount field
+                  const prayerCount = prayer.prayCount || 0;
                   
                   return (
                     <Card 
@@ -465,7 +473,6 @@ export default function PrayerWall() {
                             className="bg-[#F28C28] hover:bg-[#F28C28]/90"
                             onClick={() => {
                               setExpandedPrayer(prayer.id);
-                              // Scroll to the prayer in the main list
                               setTimeout(() => {
                                 const element = document.getElementById(`prayer-${prayer.id}`);
                                 if (element) {
@@ -487,7 +494,7 @@ export default function PrayerWall() {
             </div>
           )}
           
-          {/* Most Prayed For Section - Top 3 by Community Prayers */}
+          {/* Most Prayed For Section */}
           {!loading && mostPrayedFor.length > 0 && (
             <div className="mb-12">
               <div className="text-center mb-8">
@@ -502,8 +509,8 @@ export default function PrayerWall() {
               <div className="grid md:grid-cols-3 gap-6 mb-8">
                 {mostPrayedFor.map((prayer, index) => {
                   const category = categories.find(c => c.value === prayer.category);
-                  const prayers_list = Array.isArray(prayer.prayers) ? prayer.prayers : [];
-                  const prayerCount = prayers_list.length;
+                  // FIXED: Use prayCount field
+                  const prayerCount = prayer.prayCount || 0;
                   
                   return (
                     <Card 
@@ -553,7 +560,6 @@ export default function PrayerWall() {
                             className="bg-[#F28C28] hover:bg-[#F28C28]/90"
                             onClick={() => {
                               setExpandedPrayer(prayer.id);
-                              // Scroll to the prayer in the main list
                               setTimeout(() => {
                                 const element = document.getElementById(`prayer-${prayer.id}`);
                                 if (element) {
@@ -637,9 +643,10 @@ export default function PrayerWall() {
                 const category = categories.find(c => c.value === prayer.category);
                 const isFromLeft = index % 2 === 0;
                 const isExpanded = expandedPrayer === prayer.id;
-                // FIXED: Ensure prayers_list is always an array
+                // FIXED: Use prayCount for display, prayers array for messages
+                const prayerCount = prayer.prayCount || 0;
                 const prayers_list = Array.isArray(prayer.prayers) ? prayer.prayers : [];
-                const prayerCount = prayers_list.length;
+                const messageCount = prayers_list.length;
                 
                 return (
                   <Card 
@@ -683,7 +690,11 @@ export default function PrayerWall() {
                       <div className="flex items-center justify-between pt-4 border-t">
                         <div className="flex items-center gap-2 text-sm text-muted-foreground">
                           <Heart className="w-4 h-4" fill="currentColor" />
+                          {/* FIXED: Show prayCount and message count separately */}
                           <span>{prayerCount} prayer{prayerCount !== 1 ? 's' : ''}</span>
+                          {messageCount > 0 && (
+                            <span className="text-xs">({messageCount} message{messageCount !== 1 ? 's' : ''})</span>
+                          )}
                         </div>
                         <Button 
                           size="sm" 
@@ -696,14 +707,16 @@ export default function PrayerWall() {
                         </Button>
                       </div>
                       
-                      {/* Expanded Content */}
+                      {/* Expanded Content - Shows prayer messages */}
                       {isExpanded && (
                         <div className="mt-4 pt-4 border-t space-y-4 animate-slide-in-up">
-                          {/* Display Prayers */}
+                          {/* Display Prayer Messages */}
                           <div className="space-y-2 max-h-60 overflow-y-auto">
-                            <p className="text-xs font-semibold text-muted-foreground mb-2">Prayers from the community:</p>
+                            <p className="text-xs font-semibold text-muted-foreground mb-2">
+                              {messageCount} prayer message{messageCount !== 1 ? 's' : ''} from the community:
+                            </p>
                             {prayers_list.length === 0 ? (
-                              <p className="text-sm text-muted-foreground italic">No prayers yet. Be the first to pray!</p>
+                              <p className="text-sm text-muted-foreground italic">No prayer messages yet. Be the first to share!</p>
                             ) : (
                               prayers_list.map((p: any, idx: number) => (
                                 <div key={idx} className="p-2 bg-muted/50 rounded text-sm">
@@ -717,7 +730,7 @@ export default function PrayerWall() {
                           {/* Add Prayer Form */}
                           <div className="space-y-2">
                             <Textarea
-                              placeholder="Add your prayer..."
+                              placeholder="Add your prayer message..."
                               value={prayerText[prayer.id] || ''}
                               onChange={(e) => setPrayerText({...prayerText, [prayer.id]: e.target.value})}
                               rows={2}

@@ -73,7 +73,7 @@ export default function HomePage() {
   const [pulsingCard, setPulsingCard] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
 
-  // NEW: Fetch live stats on mount
+  // NEW: Fetch live stats on mount and poll every 30 seconds
   useEffect(() => {
     const fetchStats = async () => {
       try {
@@ -88,6 +88,13 @@ export default function HomePage() {
     };
     
     fetchStats();
+    
+    // Poll every 30 seconds for live updates
+    const interval = setInterval(() => {
+      fetchStats();
+    }, 30000);
+    
+    return () => clearInterval(interval);
   }, []);
 
   // NEW: Detect mobile/tablet viewport
@@ -2058,13 +2065,48 @@ export default function HomePage() {
             <Card className="text-center bg-gradient-to-br from-[#A92FFA]/10 to-[#A92FFA]/5 border-2 border-[#A92FFA]/20">
               <CardHeader>
                 <HandHeart className="w-12 h-12 text-[#A92FFA] mx-auto mb-4" />
-                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">{liveStats.communityTouchPoints.toLocaleString()}+</CardTitle>
-                <CardDescription className="text-lg">Community Touch Points</CardDescription>
+                <CardTitle className="text-5xl font-bold text-[#A92FFA] mb-2">{liveStats.communityPrayers.toLocaleString()}+</CardTitle>
+                <CardDescription className="text-lg">Community Prayers</CardDescription>
               </CardHeader>
               <CardContent>
                 <p className="text-sm text-muted-foreground">
-                  Meals served, rides provided, counseling sessions, and moments of unconditional connection.
+                  Times our community has prayed together, supporting each other through faith and connection.
                 </p>
+              </CardContent>
+            </Card>
+          </div>
+          
+          {/* NEW: Prayer Wall Stats Card */}
+          <div className="mb-12">
+            <Card className="bg-gradient-to-br from-[#A92FFA]/5 to-[#F28C28]/5 border-2 border-[#A92FFA]/20 hover-lift">
+              <CardContent className="pt-6">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 bg-[#A92FFA] rounded-full flex items-center justify-center">
+                      <Heart className="w-8 h-8 text-white" fill="currentColor" />
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold mb-1">Active Prayer Wall</h3>
+                      <p className="text-muted-foreground">Our community united in prayer</p>
+                    </div>
+                  </div>
+                  <div className="flex gap-6">
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-[#A92FFA]">{liveStats.prayersCount}</p>
+                      <p className="text-sm text-muted-foreground">Active Prayers</p>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-3xl font-bold text-[#F28C28]">{liveStats.communityPrayers.toLocaleString()}</p>
+                      <p className="text-sm text-muted-foreground">Times Prayed</p>
+                    </div>
+                  </div>
+                  <Button size="lg" asChild className="bg-[#F28C28] hover:bg-[#F28C28]/90">
+                    <Link href="/prayer-wall">
+                      Visit Prayer Wall
+                      <ArrowRight className="ml-2 w-5 h-5" />
+                    </Link>
+                  </Button>
+                </div>
               </CardContent>
             </Card>
           </div>
