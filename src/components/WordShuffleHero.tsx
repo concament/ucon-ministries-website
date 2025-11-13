@@ -4,11 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const WORDS = [
-  "Welcome",
-  "to",
-  "United",
-  "Convict",
-  "Ministers",
+  "Welcome to United Convict Ministries",
   "WORTHLESSNESS?",
   "NO PURPOSE?",
   "BROKEN?",
@@ -88,10 +84,10 @@ export default function WordShuffleHero() {
     
     const showNextWord = () => {
       if (currentIndex < WORDS.length) {
-        // Show word
+        // Show word/phrase
         setCurrentWord({ word: WORDS[currentIndex], effect: getRandomEffect() });
         
-        // Hide word after 1200ms and show next (slower, more dramatic)
+        // Hide word after 2500ms (much slower, more cinematic)
         setTimeout(() => {
           setCurrentWord(null);
           setTimeout(() => {
@@ -102,10 +98,10 @@ export default function WordShuffleHero() {
               // Show final words after last word fades out
               setTimeout(() => {
                 setShowFinal(true);
-              }, 500);
+              }, 1000); // Longer dramatic pause before final reveal
             }
-          }, 500); // Longer pause between words (more dramatic)
-        }, 1200); // Longer display duration for each word
+          }, 1000); // Much longer pause between words (more dramatic)
+        }, 2500); // Much longer display duration for each word/phrase
       }
     };
     
@@ -114,13 +110,13 @@ export default function WordShuffleHero() {
 
   return (
     <div className="flex flex-wrap gap-3 sm:gap-4 md:gap-6 justify-center items-center min-h-[50vh] sm:min-h-[60vh] md:min-h-[70vh]">
-      {/* Individual words that fade in and out */}
+      {/* Individual words/phrases that fade in and out */}
       <AnimatePresence mode="wait">
         {currentWord && (
           <motion.span
             key={currentWord.word}
             {...currentWord.effect}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 1.8 }}
             className={`
               inline-block font-bold text-center
               ${currentWord.word.includes("?") 
@@ -147,10 +143,10 @@ export default function WordShuffleHero() {
                 initial={{ opacity: 0, scale: 0.5, y: 50 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.3,
+                  duration: 1.5, 
+                  delay: index * 0.5,
                   type: "spring",
-                  stiffness: 150,
+                  stiffness: 100,
                   damping: 15
                 }}
                 className="inline-block font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#A92FFA] drop-shadow-[0_0_40px_rgba(169,47,250,0.8)]"
