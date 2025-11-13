@@ -15,68 +15,8 @@ const WORDS = [
 
 const FINAL_WORDS = ["PLEASE", "COME", "IN."];
 
-const getRandomEffect = () => {
-  const effects = [
-    // Fade and scale
-    {
-      initial: { opacity: 0, scale: 0.5 },
-      animate: { opacity: 1, scale: 1 },
-      exit: { opacity: 0, scale: 0.5 }
-    },
-    // Slide from left
-    {
-      initial: { opacity: 0, x: -100 },
-      animate: { opacity: 1, x: 0 },
-      exit: { opacity: 0, x: 100 }
-    },
-    // Slide from right
-    {
-      initial: { opacity: 0, x: 100 },
-      animate: { opacity: 1, x: 0 },
-      exit: { opacity: 0, x: -100 }
-    },
-    // Slide from top
-    {
-      initial: { opacity: 0, y: -100 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: 100 }
-    },
-    // Slide from bottom
-    {
-      initial: { opacity: 0, y: 100 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: -100 }
-    },
-    // Rotate and fade
-    {
-      initial: { opacity: 0, rotateY: 90 },
-      animate: { opacity: 1, rotateY: 0 },
-      exit: { opacity: 0, rotateY: -90 }
-    },
-    // Flip
-    {
-      initial: { opacity: 0, rotateX: 90 },
-      animate: { opacity: 1, rotateX: 0 },
-      exit: { opacity: 0, rotateX: -90 }
-    },
-    // Bounce in
-    {
-      initial: { opacity: 0, scale: 0, y: -50 },
-      animate: { 
-        opacity: 1, 
-        scale: 1, 
-        y: 0,
-        transition: { type: "spring", stiffness: 150, damping: 12 }
-      },
-      exit: { opacity: 0, scale: 0 }
-    }
-  ];
-  
-  return effects[Math.floor(Math.random() * effects.length)];
-};
-
 export default function WordShuffleHero() {
-  const [currentWord, setCurrentWord] = useState<{ word: string; effect: any } | null>(null);
+  const [currentWord, setCurrentWord] = useState<string | null>(null);
   const [showFinal, setShowFinal] = useState(false);
 
   useEffect(() => {
@@ -84,10 +24,10 @@ export default function WordShuffleHero() {
     
     const showNextWord = () => {
       if (currentIndex < WORDS.length) {
-        // Show word/phrase
-        setCurrentWord({ word: WORDS[currentIndex], effect: getRandomEffect() });
+        // Show word/phrase with simple fade
+        setCurrentWord(WORDS[currentIndex]);
         
-        // Hide word after 2500ms (much slower, more cinematic)
+        // Hide word after 2500ms (slow, cinematic)
         setTimeout(() => {
           setCurrentWord(null);
           setTimeout(() => {
@@ -98,10 +38,10 @@ export default function WordShuffleHero() {
               // Show final words after last word fades out
               setTimeout(() => {
                 setShowFinal(true);
-              }, 1000); // Longer dramatic pause before final reveal
+              }, 1000); // Dramatic pause before final reveal
             }
-          }, 1000); // Much longer pause between words (more dramatic)
-        }, 2500); // Much longer display duration for each word/phrase
+          }, 1000); // Pause between words
+        }, 2500); // Display duration for each word/phrase
       }
     };
     
@@ -114,21 +54,20 @@ export default function WordShuffleHero() {
       <AnimatePresence mode="wait">
         {currentWord && (
           <motion.span
-            key={currentWord.word}
-            {...currentWord.effect}
+            key={currentWord}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 1.8 }}
             className={`
               inline-block font-bold text-center
-              ${currentWord.word.includes("?") 
+              ${currentWord.includes("?") 
                 ? "text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl bg-gradient-to-r from-[#A92FFA] to-[#F28C28] bg-clip-text text-transparent drop-shadow-[0_0_30px_rgba(169,47,250,0.6)]" 
                 : "text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground"
               }
             `}
-            style={{
-              perspective: 1000
-            }}
           >
-            {currentWord.word}
+            {currentWord}
           </motion.span>
         )}
       </AnimatePresence>
@@ -140,19 +79,13 @@ export default function WordShuffleHero() {
             {FINAL_WORDS.map((word, index) => (
               <motion.span
                 key={word}
-                initial={{ opacity: 0, scale: 0.5, y: 50 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
                 transition={{ 
                   duration: 1.5, 
-                  delay: index * 0.5,
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15
+                  delay: index * 0.5
                 }}
                 className="inline-block font-bold text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl text-[#A92FFA] drop-shadow-[0_0_40px_rgba(169,47,250,0.8)]"
-                style={{
-                  perspective: 1000
-                }}
               >
                 {word}
               </motion.span>
