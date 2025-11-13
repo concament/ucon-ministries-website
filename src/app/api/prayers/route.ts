@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
     const id = searchParams.get('id');
     const category = searchParams.get('category');
     const isAnswered = searchParams.get('is_answered');
-    const limit = Math.min(parseInt(searchParams.get('limit') ?? '10'), 100);
+    const limit = Math.min(parseInt(searchParams.get('limit') ?? '100'), 5000);
     const offset = parseInt(searchParams.get('offset') ?? '0');
 
     // Single prayer by ID
