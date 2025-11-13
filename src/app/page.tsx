@@ -158,13 +158,13 @@ export default function HomePage() {
         // Use responsive positioning based on viewport
         const row = Math.floor(index / 3);
         const col = index % 3;
-        
+
         // Use vw units for horizontal spread (scales with viewport)
         // Mobile: ~60px, Tablet: ~80px, Desktop: ~90px
         const horizontalSpread = typeof window !== 'undefined' ? window.innerWidth * 0.06 : 60; // 6vw
         // Vertical spread stays consistent
         const verticalSpread = 160;
-        
+
         // Calculate position from center
         // Columns: -1, 0, 1 (left, center, right)
         const colOffset = (col - 1) * horizontalSpread;
@@ -181,10 +181,10 @@ export default function HomePage() {
       if (releasedCards.has(index)) {
         const row = Math.floor(index / 3);
         const col = index % 3;
-        
+
         const horizontalSpread = typeof window !== 'undefined' ? window.innerWidth * 0.06 : 60;
         const verticalSpread = 160;
-        
+
         const colOffset = (col - 1) * horizontalSpread;
         const rowOffset = (row - 0.5) * verticalSpread;
 
@@ -398,7 +398,7 @@ ADDICTED? GUILT? HELP?
               <h3 className="font-semibold mb-2">Immediate Support</h3>
               <p className="text-sm text-muted-foreground">24/7 crisis intervention and practical assistance</p>
             </div>
-            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600">
+            <div className="p-6 bg-card rounded-lg border border-border !border-violet-600 !shadow-[0_16px_24px_-4px_rgba(248,250,252,0.25),0_8px_16px_-4px_rgba(248,250,252,0.15)]">
               <CheckCircle2 className="w-8 h-8 text-[#F28C28] mb-3" />
               <h3 className="font-semibold mb-2">Long-term Healing</h3>
               <p className="text-sm text-muted-foreground">Comprehensive 64-week transformation program</p>
